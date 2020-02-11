@@ -6,7 +6,9 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 import {routes} from '../js/routes';
 import VueRouter from 'vue-router';
+import wysiwyg from "vue-wysiwyg";
 
+Vue.use(wysiwyg, {maxHeight: "300px"});
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);   
 
