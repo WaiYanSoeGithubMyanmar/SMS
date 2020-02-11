@@ -62,6 +62,11 @@ import StaffAttendanceReport from '../views/Reports/StaffAttendanceReport.vue';
 import GeneralSetting from '../views/SystemSettings/GeneralSetting.vue';
 import SessionSetting from '../views/SystemSettings/SessionSetting.vue';
 
+//Homework
+import AddHomework from '../views/Homework/AddHomework.vue';
+import EvaluationReport from '../views/Homework/EvaluationReport.vue';
+
+
 export const routes = [
     {
         name: 'stuattendance',
@@ -287,5 +292,15 @@ export const routes = [
         name : 'sessetting',
         path : '/sessetting',
         component : SessionSetting
+    },
+    {
+        name: 'homework',
+        path: '/homework',
+        component: AddHomework
+    },
+    {
+        name: 'evaluation_report',
+        path: '/evaluation_report',
+        component: EvaluationReport
     }
 ];

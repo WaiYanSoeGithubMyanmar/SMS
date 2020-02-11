@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class RoomTypeController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -30,11 +30,12 @@ class RoomTypeController extends Controller
     {
         //
     }
-
     public function store(Request $request)
     {
         $request->validate([
             'room_type' => 'required'
+        ], [
+            'room_type.required' => 'Password is required'
         ]);
         $roomtype = new RoomType([
             'room_type' => $request->input('room_type'),
@@ -80,8 +81,16 @@ class RoomTypeController extends Controller
      */
     public function delete($id)
     {
-        $hostel = RoomType::find($id);
-        $hostel->delete();
+        $roomtype = RoomType::find($id);
+        $roomtype->delete();
         return response()->json('The RoomType successfully deleted');
+    }
+
+    public function search($data)
+    {  
+        $roomtypes = RoomType::where('room_type', 'like', '%' . $data . '%')
+            ->orderBy('id', 'desc')
+            ->get()->toArray();
+        return array_reverse($roomtypes);
     }
 }

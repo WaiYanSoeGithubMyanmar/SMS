@@ -1691,6 +1691,10 @@ input[type=file] {
   border-radius: 5px;
 }
 
+/**
+  Wai Yan Soe
+**/
+
 .confirmBtn {
   width: 100px;
   font-size: 14px;
@@ -1704,6 +1708,54 @@ input[type=file] {
   border: none;
   border-radius: 5px;
 }
+
+.confirmBtn-outline {
+  width: 100px;
+  font-size: 14px;
+  margin-right: 0px;
+  margin-bottom: 0;
+  float: right;
+  outline: none;
+  color: black;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(white));
+  background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+  height: 30px;
+  border: 1px solid rgba(128, 128, 128, 0.219);
+  border-radius: 5px;
+}
+
+.confirmBtn-outline:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(128, 128, 128, 0.267)), to(rgba(34, 36, 34, 0.377)));
+  background-image: linear-gradient(rgba(128, 128, 128, 0.267), rgba(34, 36, 34, 0.377));
+}
+
+.confirm-modal-header {
+  padding: 0.9rem 1rem !important;
+}
+
+.confirm-modal-header .confirm-q {
+  margin-top: 0.3rem;
+  color: #db0202;
+  cursor: pointer;
+}
+
+.confirm-q {
+  -webkit-transition: zoom 1s;
+  transition: zoom 1s;
+}
+
+.confirm-q:hover {
+  zoom: 1;
+  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+}
+
+.confirm-modal-body {
+  padding: 1rem 1rem !important;
+}
+
+/**
+  End of Wai Yan Soe
+**/
 
 .viewButton {
   padding: 3px 0.5rem;

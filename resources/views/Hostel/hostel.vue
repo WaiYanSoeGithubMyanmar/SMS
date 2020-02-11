@@ -7,6 +7,8 @@
       </h4>
     </div>
     <hr />
+    <confirm :url="delurl"></confirm>
+
     <div class="row" style="align-items: end !important;">
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
@@ -61,7 +63,13 @@
             <h6>Hostel List</h6>
           </div>
           <div class="card-body">
-            <input type="text" placeholder="Search..." class="searchText" />
+            <input
+              v-model="search"
+              @input="searchData()"
+              type="text"
+              placeholder="Search..."
+              class="searchText"
+            />
             <div class="copyRows">
               <div class="row" id="copyRow">
                 <div class="col-2">
@@ -91,15 +99,31 @@
                 </div>
               </div>
             </div>
+
             <div class="table-responsive">
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
                   <tr>
-                    <th class="all" nowrap>Hostel Name</th>
-                    <th class="all" nowrap>Type</th>
-                    <th class="all" nowrap>Address</th>
-                    <th class="all" nowrap>Intake</th>
-                    <th class="all" nowrap>Action</th>
+                    <th class="all" nowrap>
+                      Hostel Name
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </th>
+                    <th class="all" nowrap>
+                      Type
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </th>
+                    <th class="all" nowrap>
+                      Address
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </th>
+                    <th class="all" nowrap>
+                      Intake
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </th>
+                    <th class="all" nowrap>
+                      Action
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -117,15 +141,25 @@
                     <td class="all" nowrap>{{hos.type}}</td>
                     <td class="all" nowrap>{{hos.address}}</td>
                     <td class="all" nowrap>{{hos.intake}}</td>
-                    <td class="all" nowrap>
+                    <td>
                       <i @click="editHostel(hos)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
-                      <i @click="deleteHostel(hos.id)" class="fa fa-trash time">
+                      <!-- @click=" deleteHostel(hos.id)" -->
+                      <i
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                        class="fa fa-trash time"
+                        data-id="hos"
+                        @click="deleteHostel(hos.id)"
+                      >
                         <span class="timeLabel">Delete</span>
                       </i>
                     </td>
                   </tr>
+                  <td style="text-align : center;" colspan="5" v-if="noMatch == true">
+                    <span class="text-danger">No matching records found</span>
+                  </td>
                 </tbody>
               </table>
             </div>
@@ -136,29 +170,52 @@
   </div>
 </template>
 <script>
+/**
+ *  COMPONENTS
+ */
+import confirm from "../message/confirm.vue";
+import { EventBus } from "../../js/event-bus.js";
+
 export default {
+  components: {
+    confirm
+  },
   data() {
     return {
       hostel: {},
+      search: "",
       hostels: [],
-      isEdit: false
+      url: "",
+      id: "",
+      isEdit: false,
+      noMatch: false,
+      delurl: ""
     };
   },
   mounted() {
     this.getHostels();
   },
   created() {
+    EventBus.$on("clicked", clickCount => {
+      this.getHostels();
+    });
     this.axios
       .get("/api/hostels")
       .then(response => (this.hostels = response.data));
     this.hostel.type = "Select";
   },
   methods: {
+    /**
+     * GET DATA
+     */
     getHostels() {
       this.axios
         .get("/api/hostels")
         .then(response => (this.hostels = response.data));
     },
+    /**
+     * STORE DATA
+     */
     addHostel() {
       console.log("-->" + JSON.stringify(this.hostel));
       this.axios
@@ -169,6 +226,9 @@ export default {
         })
         .catch(error => console.log(error));
     },
+    /**
+     * EDIT SHOW DATA
+     */
     editHostel(hos) {
       let to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
       window.scroll({
@@ -187,6 +247,9 @@ export default {
       this.hostel.description = hos.description;
       this.isEdit = true;
     },
+    /**
+     * UPDATE
+     */
     updateHostel() {
       this.axios
         .post(`/api/hostel/update/${this.hostel.id}`, this.hostel)
@@ -198,11 +261,30 @@ export default {
         });
     },
     deleteHostel(id) {
-      this.axios.delete(`/api/hostel/delete/${id}`).then(response => {
-        this.getHostels();
-        let i = this.hostels.map(item => item.id).indexOf(id); // find index of your object
-        this.hostels.splice(i, 1);
-      });
+      this.delurl = `hostel/delete/${id}`;
+    },
+    /**
+     * SEARCH
+     */
+    searchData() {
+      if (this.search == "") {
+        this.axios.get(`api/hostels`).then(response => {
+          this.hostels = [];
+          this.noMatch = false;
+          this.hostels = response.data;
+        });
+      } else {
+        this.axios.get(`api/hostel/search/${this.search}`).then(response => {
+          console.log(JSON.stringify(response.data));
+          this.hostels = [];
+          this.hostels = response.data;
+          if (this.hostels == "") {
+            this.noMatch = true;
+          } else {
+            this.noMatch = false;
+          }
+        });
+      }
     }
   }
 };

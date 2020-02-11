@@ -21,6 +21,7 @@
                   <strong>*</strong>
                 </label>
                 <input type="text" class="inputbox" v-model="room.room_type" />
+                <span class="text-danger">Room Type is required</span>
               </div>
               <div class="col-12 end">
                 <label for="description">Description</label>
@@ -35,14 +36,19 @@
           </div>
         </div>
       </div>
-
       <div class="col-lg-7 col-md-12" style="padding-left:0;">
         <div class="card">
           <div class="card-header">
             <h6>Room Type List</h6>
           </div>
           <div class="card-body">
-            <input type="text" placeholder="Search..." class="searchText" />
+            <input
+              v-model="search"
+              @input="searchData()"
+              type="text"
+              placeholder="Search..."
+              class="searchText"
+            />
             <div class="copyRows">
               <div class="row" id="copyRow">
                 <div class="col-2">
@@ -72,6 +78,7 @@
                 </div>
               </div>
             </div>
+
             <div class="table-responsive">
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
@@ -83,7 +90,7 @@
                 <tbody>
                   <tr v-for="(roomType) in roomtypes" v-bind:key="roomType.id" class="active">
                     <td class="all" nowrap>{{roomType.room_type}}</td>
-                    <td style="text-align: right;" class="all" nowrap>
+                    <td style="text-align: right;">
                       <i @click="editRoomType(roomType)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
@@ -105,6 +112,7 @@
 export default {
   data() {
     return {
+      search: "",
       room: {},
       roomtypes: [],
       isEdit: false
@@ -125,16 +133,20 @@ export default {
         .then(response => (this.roomtypes = response.data));
     },
     addRoomType() {
-      console.log(JSON.stringify(this.room));
-      this.axios
-        .post("/api/roomtype/store", this.room)
-        .then(response => {
-          this.getRoomTypes();
-          setTimeout(() => {
-            this.room = {};
-          }, 100);
-        })
-        .catch(error => console.log(error));
+      console.log(JSON.stringify(this.room.room_type));
+      if (this.room.room_type == "" || this.room.room_type == undefined) {
+        alert("Room Type is required");
+      } else {
+        this.axios
+          .post("/api/roomtype/store", this.room)
+          .then(response => {
+            this.getRoomTypes();
+            setTimeout(() => {
+              this.room = {};
+            }, 100);
+          })
+          .catch(error => console.log(error));
+      }
     },
     editRoomType(data) {
       let to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
@@ -168,6 +180,19 @@ export default {
         let i = this.roomtypes.map(item => item.id).indexOf(id); // find index of your object
         this.roomtypes.splice(i, 1);
       });
+    },
+    searchData() {
+      if (this.search == "") {
+        this.axios.get(`api/roomtypes`).then(response => {
+          this.roomtypes = [];
+          this.roomtypes = response.data;
+        });
+      } else {
+        this.axios.get(`api/roomtype/search/${this.search}`).then(response => {
+          this.roomtypes = [];
+          this.roomtypes = response.data;
+        });
+      }
     }
   }
 };

@@ -15,10 +15,9 @@ class HostelController extends Controller
     public function index()
     {
         //
-        $hostels = Hostel::
-        orderBy('id', 'desc')
-        ->get()
-        ->toArray();
+        $hostels = Hostel::orderBy('id', 'desc')
+            ->get()
+            ->toArray();
         return array_reverse($hostels);
     }
 
@@ -42,21 +41,21 @@ class HostelController extends Controller
     {
         //
         // if ($request->input('hostel_name') == "") {
-            
+
         // } else {
-            $request->validate([
-               'hostel_name' => 'required'
-            ]);
-            $hostel = new Hostel([
-                'hostel_name' => $request->input('hostel_name'),
-                'type'        => $request->input('type'),
-                'address'     => $request->input('address'),
-                'intake'      => $request->input('intake'),
-                'description' => $request->input('description'),
-                'is_active'   => "No"
-            ]);
-            $hostel->save();
-            return response()->json('The Hostel successfully added');
+        $request->validate([
+            'hostel_name' => 'required'
+        ]);
+        $hostel = new Hostel([
+            'hostel_name' => $request->input('hostel_name'),
+            'type'        => $request->input('type'),
+            'address'     => $request->input('address'),
+            'intake'      => $request->input('intake'),
+            'description' => $request->input('description'),
+            'is_active'   => "No"
+        ]);
+        $hostel->save();
+        return response()->json('The Hostel successfully added');
         // }
     }
 
@@ -91,7 +90,7 @@ class HostelController extends Controller
      * @param  \App\Hostel  $hostel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //
         $hostel = Hostel::find($id);
@@ -112,4 +111,16 @@ class HostelController extends Controller
         $hostel->delete();
         return response()->json('The Hostel successfully deleted');
     }
+    public function search($data)
+    {
+        $hostel = Hostel::where('hostel_name', 'like', '%' . $data . '%')
+            ->orWhere('type' , 'like' , '%' . $data . '%')
+            ->orWhere('address' , 'like' , '%' . $data . '%')
+            ->orWhere('intake' , 'like' , '%' . $data . '%')
+            ->orderBy('id', 'desc')
+            ->get()->toArray();
+        return array_reverse($hostel);
+    }
+
+    
 }

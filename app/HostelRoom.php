@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class HostelRoom extends Model
 {
     //
-    protected $fillable = ['room_no', 'hostel_id', 'room_type_id', 'no_of_bed', 'cost_per_bed', 'description', 'is_active'];
+    protected $guarded = [];
 
-    public function roomtype()
+    public function roomType()
     {
         return $this->belongsTo(RoomType::class);
     }

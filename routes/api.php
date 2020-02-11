@@ -18,18 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Thein Gyi
-Route::get('ExamList','ExamsController@index');
-Route::group(['prefix' => 'exams'], function() {
-    Route::post('addexam','ExamsController@store');
-    Route::get('editexam/{id}','ExamsController@edit');
-    Route::get('deleteexam/{id}','ExamsController@destroy');
+Route::get('ExamList', 'ExamsController@index');
+Route::group(['prefix' => 'exams'], function () {
+    Route::post('addexam', 'ExamsController@store');
+    Route::get('editexam/{id}', 'ExamsController@edit');
+    Route::get('deleteexam/{id}', 'ExamsController@destroy');
 });
 Route::get('activeacademicyr', 'AcademicYearController@activeAcademic');
 
 /***
  * Wai Yan Soe
  */
-
 
 /**
  * Hostel
@@ -40,6 +39,7 @@ Route::group(['prefix' => 'hostel'], function () {
     Route::get('edit/{id}', 'HostelController@edit');
     Route::post('update/{id}', 'HostelController@update');
     Route::delete('delete/{id}', 'HostelController@delete');
+    Route::get('search/{data}', 'HostelController@search');
 });
 
 /**
@@ -51,6 +51,7 @@ Route::group(['prefix' => 'roomtype'], function () {
     Route::get('edit/{id}', 'RoomTypeController@edit');
     Route::post('update/{id}', 'RoomTypeController@update');
     Route::delete('delete/{id}', 'RoomTypeController@delete');
+    Route::get('search/{data}', 'RoomTypeController@search');
 });
 
 
@@ -63,64 +64,64 @@ Route::group(['prefix' => 'hostelroom'], function () {
     Route::get('edit/{id}', 'HostelRoomController@edit');
     Route::post('update/{id}', 'HostelRoomController@update');
     Route::delete('delete/{id}', 'HostelRoomController@delete');
+    Route::get('search/{data}', 'HostelRoomController@search');
 });
-
 /***
  * End Code of Wai Yan Soe
  */
 
 //  Wai Yan Moung
-Route::get('attendancetypes','AttendanceTypeController@index');
-Route::group(['prefix' => 'attendancetype'], function() {
-    Route::post('add','AttendanceTypeController@store');
-    Route::get('edit/{id}','AttendanceTypeController@edit');
-    Route::post('update/{id}','AttendanceTypeController@update');
-    Route::delete('delete/{id}','AttendanceTypeController@destroy');
+Route::get('attendancetypes', 'AttendanceTypeController@index');
+Route::group(['prefix' => 'attendancetype'], function () {
+    Route::post('add', 'AttendanceTypeController@store');
+    Route::get('edit/{id}', 'AttendanceTypeController@edit');
+    Route::post('update/{id}', 'AttendanceTypeController@update');
+    Route::delete('delete/{id}', 'AttendanceTypeController@destroy');
 });
-Route::get('studentattendances','StudentAttendancesController@index');
-Route::group(['prefix' => 'studentattendance'], function() {
-    Route::post('add','StudentAttendancesController@store');
-    Route::get('show/{para}','StudentAttendancesController@show');
-    Route::get('edit/{id}','StudentAttendancesController@edit');
-    Route::post('update/{id}','StudentAttendancesController@update');
-    Route::delete('delete/{id}','StudentAttendancesController@destroy');
+Route::get('studentattendances', 'StudentAttendancesController@index');
+Route::group(['prefix' => 'studentattendance'], function () {
+    Route::post('add', 'StudentAttendancesController@store');
+    Route::get('show/{para}', 'StudentAttendancesController@show');
+    Route::get('edit/{id}', 'StudentAttendancesController@edit');
+    Route::post('update/{id}', 'StudentAttendancesController@update');
+    Route::delete('delete/{id}', 'StudentAttendancesController@destroy');
 });
 
 // Kyaw Soe Hein
 Route::get('tranRouteList', 'RouteController@index');
-Route::group(['prefix' => 'TranRoute'], function() {
-    Route::post('save','RouteController@store');
-    Route::get('edit/{id}','RouteController@edit');
-    Route::get('delete/{id}','RouteController@destroy');
+Route::group(['prefix' => 'TranRoute'], function () {
+    Route::post('save', 'RouteController@store');
+    Route::get('edit/{id}', 'RouteController@edit');
+    Route::get('delete/{id}', 'RouteController@destroy');
 });
 
 Route::get('tranVehicleList', 'VehicleController@index');
-Route::group(['prefix' => 'TranVehicle'], function() {
-    Route::post('save','VehicleController@store');
-    Route::get('edit/{id}','VehicleController@edit');
-    Route::get('delete/{id}','VehicleController@destroy');
+Route::group(['prefix' => 'TranVehicle'], function () {
+    Route::post('save', 'VehicleController@store');
+    Route::get('edit/{id}', 'VehicleController@edit');
+    Route::get('delete/{id}', 'VehicleController@destroy');
 });
 
 //Academic Year Route
 Route::get('academicyr', 'AcademicYearController@index');
-Route::group(['prefix' => 'AcademicYear'], function() {
-    Route::post('save','AcademicYearController@store');
-    Route::get('edit/{id}','AcademicYearController@edit');
-    Route::get('delete/{id}','AcademicYearController@destroy');
+Route::group(['prefix' => 'AcademicYear'], function () {
+    Route::post('save', 'AcademicYearController@store');
+    Route::get('edit/{id}', 'AcademicYearController@edit');
+    Route::get('delete/{id}', 'AcademicYearController@destroy');
 });
 
 //Section Route
 Route::get('section', 'SectionController@index');
-Route::group(['prefix' => 'Section'], function() {
-    Route::post('save','SectionController@store');
-    Route::get('edit/{id}','SectionController@edit');
-    Route::get('delete/{id}','SectionController@destroy');
+Route::group(['prefix' => 'Section'], function () {
+    Route::post('save', 'SectionController@store');
+    Route::get('edit/{id}', 'SectionController@edit');
+    Route::get('delete/{id}', 'SectionController@destroy');
 });
 
 //Class Route
 Route::get('class', 'ClassesController@index');
-Route::group(['prefix' => 'Class'], function() {
-    Route::post('save','ClassesController@store');
-    Route::get('edit/{id}','ClassesController@edit');
-    Route::get('delete/{id}','ClassesController@destroy');
+Route::group(['prefix' => 'Class'], function () {
+    Route::post('save', 'ClassesController@store');
+    Route::get('edit/{id}', 'ClassesController@edit');
+    Route::get('delete/{id}', 'ClassesController@destroy');
 });
