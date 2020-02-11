@@ -1,7 +1,7 @@
 <template>
   <div class="form" id="bar">
     <div class="toplink">
-      <h2 class="stuName">Reports</h2>
+      <h2 class="stuName">Report</h2>
       <h4 class="stuLink">
         <router-link to="/home" class="home">Home</router-link>> Attendance Report
       </h4>
