@@ -6138,6 +6138,9 @@ __webpack_require__.r(__webpack_exports__);
         _this6.roomtypes = response.data;
         console.log(JSON.stringify(_this6.roomtypes));
       });
+    },
+    searchData: function searchData() {
+      alert("aa");
     }
   }
 });
@@ -88841,8 +88844,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
