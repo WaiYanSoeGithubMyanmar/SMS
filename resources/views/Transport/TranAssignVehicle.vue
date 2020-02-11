@@ -12,7 +12,7 @@
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
           <div class="card-header">
-            <h6>Assign Vehicle On Routes</h6>
+            <h6>Assign Vehicle On Route</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
             <div class="col-12">
