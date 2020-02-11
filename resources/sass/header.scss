@@ -1,0 +1,73 @@
+.header {
+  width: 100%;
+  height: 61px;
+  .body_content {
+    height: 90.1vh;
+    margin: 0px;
+    background: #1b5e20;
+    overflow-y: auto;
+    .additional-menu {
+      color: #ffffffa8;
+    }
+    .additional-menu .navList:hover .routerLink {
+        color: white;
+    }
+    .active > a {
+      color: white;
+      background: #113511;
+    }
+    .dropdownForm {
+      background: #044604;
+    }
+    .navList {
+      width: 100%;
+      text-decoration: none;
+      position: relative;
+      display: flex;
+      transition: all 0.2s;
+      align-items: center;
+      border-bottom: 1px solid rgba(245, 245, 245, 0.24);
+      // justify-content: center;
+      height: 50px;
+      #sidebarIcon {
+        margin: 0 2rem;
+      }
+      .dropIcon {
+        transition: all 0.5s;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+      }
+    }
+    #body_content > .nav-item:active,
+    #body_content > .nav-item:focus,
+    .nav-item:hover {
+      background-color: #666;
+      color: white;
+    }
+    .link {
+      padding: 0;
+      display: none;
+      color: #ffffffa8;
+      margin: 0;
+      .nav-list:hover {
+        color: white;
+      }
+      .nav-list {
+        text-decoration: none;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        outline: none;
+        border: none;
+        .listItem {
+          float: left;
+          color: white;
+          margin: 0 2rem;
+        }
+      }
+    }
+  }
+}

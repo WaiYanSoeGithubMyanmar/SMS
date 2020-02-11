@@ -1,0 +1,12 @@
+$font-path: "../fonts";
+
+@font-face {
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 400;
+    // src: url('#{$font-path}/Dosis/dosis.ttf') format("truetype");
+    src: url('#{$font-path}/Barlow/Barlow-Regular.ttf') format("truetype");
+    // src: url('#{$font-path}/Barlow_Condensed/BarlowCondensed-Regular.ttf') format("truetype");
+    // src: url('#{$font-path}/Catamaran/Catamaran-Regular.ttf') format("truetype");
+    // src: url('#{$font-path}/Maven_Pro/MavenPro-Regular.ttf') format("truetype");
+}

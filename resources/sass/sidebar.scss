@@ -1,0 +1,23 @@
+.sidebar {
+    padding: 0;
+    margin: 0;
+    // float: left;
+    .expandsidebar {
+        float: left;
+        z-index: 2;
+        position: fixed;
+        width: 245px;
+        background-color: #1b5e20;
+    }
+
+    .sidebar_header {
+        color:white;
+        height:100%;
+        margin:0px;
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    .treeview-custom {
+        height: 200px;
+    }
+}

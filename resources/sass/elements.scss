@@ -1,0 +1,473 @@
+// All Text Box & Select Box
+.inputbox {
+  padding-left: 5px;
+  font-size: 9.5pt;
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  height: 28px !important;
+  line-height: 1.5;
+  color: black;
+  border-radius: 0rem;
+  border: 1px solid #d2d6de;
+}
+.inputbox:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: gray;
+}
+.inputbox:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: gray;
+  border: 0.5px solid green;
+}
+// All Text Box & Select Box
+
+// All Text Box Label
+label {
+  font-weight: bold;
+  font-size: 13px;
+}
+// All Text Box Label
+
+// All Card Header & Card Title Font
+// Search Card
+.card-header {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  background-color: #1b5e20;
+  margin: -20px 15px 0px 15px;
+  padding: 0;
+  padding-left: 20px;
+  color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  h6 {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+.card-body {
+  background-color: white;
+  box-shadow: 0px 7px 15px #888888;
+  padding: 0;
+  margin: 0 15px 15px;
+}
+// Search Card
+
+// Database Card
+.sub-header {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  background-color: #1b5e20;
+  margin: 0 15px 0px 15px;
+  padding: 0;
+  padding-left: 20px;
+  color: white;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  h6 {
+    margin: 0;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+// Database Card
+// All Card Header & Card Title Font
+
+// All TextArea
+.textarea {
+  padding-left: 5px;
+  width: 50%;
+  margin-top: 4.5px;
+  .inputbox {
+    width: 99%;
+  }
+}
+
+.textareas {
+  width: 100%;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #d2d6de;
+}
+.textareas:focus {
+  border: 0.5px solid green;
+}
+// All TextArea
+
+// Search Bar & PDF Print
+.searchText {
+  margin: 1rem;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  border-bottom: 1px solid #ddd;
+  float: left;
+}
+.searchText:focus {
+  border-bottom: 1px solid #1b5e20;
+}
+.copyRows {
+  #copyRow {
+    float: right;
+    margin-top: 1rem;
+    margin-right: -8px;
+    .col-2 {
+      padding: 0;
+      padding-right: 5px;
+      background: whitesmoke;
+      padding-bottom: 2px;
+      border-bottom: 1px solid #dfdfdf;
+      a {
+        color: #000000a8;
+        padding: 1px 5px 5px;
+      }
+      a:hover {
+        background: #e7e7e7;
+        color: black;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+}
+// Search Bar & PDF Print
+
+// ** Assign Elements
+strong {
+  color: var(--danger);
+}
+// *** Assign Elements
+
+// Database Table Design
+
+.table-responsive {
+  padding: 0 1rem 1rem 1rem;
+  .table {
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+    }
+    th {
+      // text-align: center;
+      // padding: 10px .75rem;
+      padding: 10px 5px;
+      cursor: pointer;
+      font-size: 10pt;
+      border: none;
+    }
+    td {
+      vertical-align: middle;
+      font-size: 13px;
+    }
+  }
+
+  .table .active td {
+    padding: 3px;
+    input[type="radio"]:after {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      top: -2px;
+      left: -1px;
+      position: relative;
+      background-color: #d1d3d1;
+      content: "";
+      display: inline-block;
+      visibility: visible;
+      border: 2px solid white;
+    }
+
+    input[type="radio"]:checked:after {
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      top: -2px;
+      left: -1px;
+      position: relative;
+      background-color: #1b5e20;
+      content: "";
+      display: inline-block;
+      visibility: visible;
+      border: 2px solid white;
+    }
+    .note {
+      outline: none;
+    }
+  }
+}
+// Database Table Design
+
+// Show Absence & Result Button
+.btn-sm {
+  padding: 3px 0.5rem;
+  font-size: 11px;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+// Add Button
+.add {
+  position: absolute;
+  right: 2rem;
+  border-radius: 2px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.904);
+  border: none;
+  color: #1b5e1fd7;
+  font-weight: bold;
+  padding: 2px 15px;
+}
+.add:active,
+.add:hover {
+  background: white;
+  color: #1b5e20;
+  outline: none;
+}
+// Add Button
+//Check Box with label in Database
+.form-group .checkbox .checkLabel {
+  display: flex;
+  align-items: center;
+}
+
+// Dashboard Home for Link Css
+.home {
+  text-decoration: none;
+  color: #1b5e20;
+}
+
+//Choose Photo File css
+input[type="file"] {
+  position: relative;
+  border: 1px solid #bbb;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+}
+::-webkit-file-upload-button {
+  background-color: #1b5e20;
+  color: white;
+  height: 26px;
+  font-size: 15px;
+  border: none;
+  margin-left: -5px;
+}
+
+// Hover ToolTip Text (Right)
+.active {
+  .toolText {
+    cursor: pointer;
+    margin-bottom: 0;
+    color: #1b5e20;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+  }
+  .toolText .tooltipLabel {
+    visibility: hidden;
+    width: auto;
+    background: #1b5e20;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+  }
+  .toolText .tooltipLabel::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #1b5e20 transparent transparent;
+  }
+  .toolText:hover .tooltipLabel {
+    visibility: visible;
+  }
+}
+
+// Hover ToolTip Text (Top)
+.active {
+  .pen,
+  .time,
+  .download {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+  }
+  .pen .penLabel,
+  .time .timeLabel,
+  .download .downloadLabel {
+    visibility: hidden;
+    width: 50px;
+    font-size: 10px;
+    background-color: #1b5e20;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    left: 220%;
+    margin-left: -60px;
+  }
+  .pen .penLabel:hover,
+  .time .timeLabel:hover,
+  .download .downloadLabel:hover {
+    visibility: hidden;
+  }
+  .pen .penLabel::after,
+  .time .timeLabel::after,
+  .download .downloadLabel::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1b5e20 transparent transparent transparent;
+  }
+  .pen:hover .penLabel,
+  .time:hover .timeLabel,
+  .download:hover .downloadLabel {
+    visibility: visible;
+  }
+}
+
+// Search Button & Save Button
+.searchButton {
+  float: right;
+  width: 80px !important;
+  height: 30px;
+  font-size: 13px;
+  margin: 1rem 0 0 1rem;
+  border: none;
+  color: White;
+  background-color: #1b5e20;
+  border-radius: 3px;
+}
+.save {
+  margin: 1rem;
+  width: 100px;
+  font-size: 14px;
+  margin-right: 0px;
+  margin-bottom: 0;
+  float: right;
+  outline: none;
+  color: white;
+  height: 30px;
+  background: #1b5e20;
+  border: none;
+  border-radius: 5px;
+}
+
+.confirmBtn{
+  width: 100px;
+  font-size: 14px;
+  margin-right: 0px;
+  margin-bottom: 0;
+  float: right;
+  outline: none;
+  color: white;
+  height: 30px;
+  background: #1b5e20;
+  border: none;
+  border-radius: 5px;
+}
+
+// View Button
+.viewButton {
+  padding: 3px 0.5rem;
+  font-size: 10px;
+  line-height: 1.5;
+  background: #1b5e20;
+  border-radius: 0.2rem;
+  border: none;
+  color: white;
+  margin-right: 5px;
+}
+
+// All Button Ripple Effect
+.save,
+.searchButton,
+.tableLink,
+.tableLinks {
+  background-position: center;
+  transition: background 0.6s;
+}
+.save:hover,
+.searchButton:hover,
+.tableLink:hover {
+  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+}
+.tableLinks:hover {
+  background: whitesmoke radial-gradient(circle, transparent 1%, whitesmoke 1%) center/15000%;
+}
+.save:active,
+.searchButton:active,
+.tableLink:active,
+.tableLinks:active {
+  background-color: rgba(44, 92, 51, 0.623);
+  background-size: 100%;
+  transition: background 0s;
+}
+
+// Save & Edit & Delete Table Icon
+.pen,
+.time,
+.download {
+  padding: 5px;
+  color: rgba(0, 0, 0, 0.658);
+}
+.pen:hover,
+.time:hover,
+.download:hover {
+  background: #e7e7e7;
+  border-radius: 5px;
+  color: black;
+}
+
+// Table Header Columns
+.columns {
+  width: 200px;
+  z-index: 1;
+  display: none;
+  background: whitesmoke;
+  right: 0px;
+  cursor: pointer;
+  position: absolute;
+  border-radius: 5px;
+  .tableLink,
+  .tableLinks {
+    border: none;
+    display: block;
+    font-weight: bolder;
+    padding: 5px 0 5px 1rem;
+    font-size: 15px;
+    margin-bottom: 0px !important;
+  }
+  .tableLink {
+    background: #1b5e20;
+    color: white;
+  }
+  .tableLinks {
+    color: black;
+  }
+}
+
+//Form Margin
+.rowContainer {
+  margin-top: -1rem;
+}

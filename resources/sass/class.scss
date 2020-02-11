@@ -1,0 +1,40 @@
+// .row .card .card-body .checkbox{
+//     position: relative;
+//     display: block;
+// }
+
+// .row .card .card-body .checkboxlabel{
+//     min-height: 20px;
+//     padding-left: 20px;
+//     margin-bottom: 0;
+//     font-weight: 400;
+//     cursor: pointer;
+// }
+
+// .row .card .card-body .checkboxinput{
+//     position: absolute;
+//     margin-left: -20px;
+// }
+.row {
+    .card{
+        .card-body{
+            .checkbox{
+                position: relative;
+                display: block;
+            }
+            .checkboxlabel{
+                min-height: 20px;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                margin-bottom: 0;
+                font-weight: 400;
+                cursor: pointer;
+            }
+            .checkboxinput{
+                position: absolute;
+                margin-left: -20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,326 @@
+@import "sidebar";
+@import "header";
+@import "body";
+@import "attendance";
+@import "smallbar";
+@import "mobilesidebar";
+@import "AddStudent";
+@import "elements";
+@import "StudentInformation";
+@import "class";
+@import "styles";
+@import "assignsubjects";
+@import "promotestudents";
+@import "StaffInformation";
+@import "ViewStudent";
+@import "generalsetting.scss";
+
+* {
+  font-family: "Dosis";
+}
+body {
+  margin: 0;
+}
+
+.toplink {
+  margin-top: -30px;
+  h4 {
+    color: #1b5e20;
+  }
+  h6 {
+    color: gray;
+    a {
+      color: rgb(72, 139, 72);
+      text-decoration: none;
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: grey;
+}
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4e733acf;
+}
+
+@media (max-width: 767.9px) {
+  // .content {
+  //   height: 0;
+  // }
+  .page,
+  header {
+    display: block;
+  }
+  .pc {
+    display: none;
+  }
+  #bar,.ViewStudent {
+    margin-left: 0 !important;
+    margin-top: -94vh !important;
+    z-index: 0;
+  }
+  .saveexamschadule {
+    .card {
+      .card-body {
+        .dropdown {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  .Student,
+  .StudentInformation,
+  .StaffInformation,
+  .StudentHistory {
+    margin-top: -94vh !important;
+  }
+}
+@media (min-width: 768px) {
+  // .content {
+  //   height: auto;
+  //   background: whitesmoke;
+  // }
+  .settingModal {
+    width: 80% !important;
+  }
+  .page,
+  header {
+    display: none;
+  }
+  .pc {
+    display: block;
+  }
+  #bar {
+    margin-left: 15.5rem;
+    margin-top: 2rem;
+  }
+  .Student {
+    margin-top: 4.3rem !important;
+  }
+}
+@media (max-height: 460px) {
+  .body_content {
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  // .row {
+  //     margin-left: 0 !important;
+  // }
+  .form .card .smallButton {
+    margin: 1rem 6px;
+    width: 116px;
+    font-size: 11px;
+  }
+  .stucard-body .searchText,
+  .searchText {
+    display: block;
+    margin: 1rem auto !important;
+    float: inherit;
+  }
+  .copyRows {
+    width: 100%;
+    display: flex;
+    margin: 0 12px;
+    justify-content: center;
+    #copyRow {
+      margin: 0;
+    }
+  }
+  .textbox {
+    width: 100% !important;
+  }
+  .textarea {
+    margin-left: 5px;
+    width: 100% !important;
+    .inputbox {
+      height: 100px;
+    }
+    .search {
+      margin-right: 10px !important;
+    }
+  }
+  .imgcard {
+    padding: 5px;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 395px) {
+  // .row {
+  //     margin-left: 0 !important;
+  // }
+  .form .card .smallButton {
+    margin: 1rem 6px;
+    width: 116px;
+    font-size: 11px;
+  }
+  .stucard-body .searchText,
+  .searchText {
+    display: block;
+    float: inherit;
+    margin: 1rem auto !important;
+  }
+  .copyRows {
+    width: 100%;
+    display: flex;
+    margin: 0 12px;
+    justify-content: center;
+    #copyRow {
+      margin: 0;
+    }
+  }
+  .textbox {
+    width: 100% !important;
+  }
+  .textarea {
+    margin-right: 10px;
+    width: 100% !important;
+    .inputbox {
+      height: 100px;
+    }
+    .search {
+      margin-right: 10px !important;
+    }
+  }
+  .imgcard {
+    padding: 5px;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 395.1px) and (max-width: 425px) {
+  // .row {
+  //     margin-left: 0 !important;
+  // }
+  .textbox {
+    width: 50% !important;
+  }
+  .textarea {
+    width: 100% !important;
+  }
+  .imgcard {
+    padding: 5px;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  // .row {
+  //     margin-left: 0 !important;
+  // }
+  // #bar {
+  //   margin-left: 15.5rem;
+  // }
+  .textbox {
+    width: 50% !important;
+  }
+  .textarea {
+    width: 100% !important;
+  }
+  .imgcard {
+    padding: 5px;
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023.9px) {
+  // .row {
+  //     margin-left: 5px !important;
+  // }
+  .textbox {
+    width: 33.33% !important;
+  }
+  .textarea {
+    width: 33.33% !important;
+  }
+  .imgcard {
+    padding: 5px;
+    width: 50% !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  // .row {
+  //     margin-left: 5px !important;
+  // }
+  .textbox {
+    width: 25% !important;
+  }
+  .textarea {
+    width: 50% !important;
+  }
+  .imgcard {
+    padding: 5px;
+    width: 33.33% !important;
+  }
+}
+
+@media (min-width: 1441px) and (max-width: 2560px) {
+  // .row {
+  //     margin-left: 5px !important;
+  // }
+  .textbox {
+    width: 20% !important;
+  }
+  .textarea {
+    width: 40% !important;
+  }
+  .imgcard {
+    padding: 5px;
+    width: 25% !important;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 500px) {
+  .body_content {
+    padding-bottom: 1rem;
+  }
+}
+//Modal Section Media
+
+@media (max-width: 790px) and (min-width: 530px) {
+  .modal-content {
+    width: 510px !important;
+  }
+}
+@media (max-width: 530px) and (min-width: 411px) {
+  .modal-content {
+    width: 98% !important;
+  }
+}
+@media (max-width: 411px) and (min-width: 375px) {
+  .modal-content {
+    width: 98% !important;
+  }
+}
+@media (max-width: 375px) and (min-width: 360px) {
+  .modal-content {
+    width: 98% !important;
+  }
+}
+
+@media (max-width: 360px) and (min-width: 320px) {
+  .modal-content {
+    width: 98% !important;
+  }
+}
+@media (max-width: 320px) and (min-width: 0px) {
+  .modal-content {
+    width: 98% !important;
+  }
+}
+
+//End modal section css.
