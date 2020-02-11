@@ -5637,6 +5637,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _message_confirm_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../message/confirm.vue */ "./resources/views/message/confirm.vue");
+/* harmony import */ var _js_event_bus_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../js/event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -5774,12 +5776,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/**
+ *  COMPONENTS
+ */
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    confirm: _message_confirm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       hostel: {},
+      search: "",
       hostels: [],
-      isEdit: false
+      url: "",
+      id: "",
+      isEdit: false,
+      noMatch: false,
+      delurl: ""
     };
   },
   mounted: function mounted() {
@@ -5788,12 +5838,18 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    _js_event_bus_js__WEBPACK_IMPORTED_MODULE_1__["EventBus"].$on("clicked", function (clickCount) {
+      _this.getHostels();
+    });
     this.axios.get("/api/hostels").then(function (response) {
       return _this.hostels = response.data;
     });
     this.hostel.type = "Select";
   },
   methods: {
+    /**
+     * GET DATA
+     */
     getHostels: function getHostels() {
       var _this2 = this;
 
@@ -5801,6 +5857,10 @@ __webpack_require__.r(__webpack_exports__);
         return _this2.hostels = response.data;
       });
     },
+
+    /**
+     * STORE DATA
+     */
     addHostel: function addHostel() {
       var _this3 = this;
 
@@ -5813,6 +5873,10 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(error);
       });
     },
+
+    /**
+     * EDIT SHOW DATA
+     */
     editHostel: function editHostel(hos) {
       var to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
       window.scroll({
@@ -5831,6 +5895,10 @@ __webpack_require__.r(__webpack_exports__);
       this.hostel.description = hos.description;
       this.isEdit = true;
     },
+
+    /**
+     * UPDATE
+     */
     updateHostel: function updateHostel() {
       var _this4 = this;
 
@@ -5843,18 +5911,34 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteHostel: function deleteHostel(id) {
+      this.delurl = "hostel/delete/".concat(id);
+    },
+
+    /**
+     * SEARCH
+     */
+    searchData: function searchData() {
       var _this5 = this;
 
-      this.axios["delete"]("/api/hostel/delete/".concat(id)).then(function (response) {
-        _this5.getHostels();
+      if (this.search == "") {
+        this.axios.get("api/hostels").then(function (response) {
+          _this5.hostels = [];
+          _this5.noMatch = false;
+          _this5.hostels = response.data;
+        });
+      } else {
+        this.axios.get("api/hostel/search/".concat(this.search)).then(function (response) {
+          console.log(JSON.stringify(response.data));
+          _this5.hostels = [];
+          _this5.hostels = response.data;
 
-        var i = _this5.hostels.map(function (item) {
-          return item.id;
-        }).indexOf(id); // find index of your object
-
-
-        _this5.hostels.splice(i, 1);
-      });
+          if (_this5.hostels == "") {
+            _this5.noMatch = true;
+          } else {
+            _this5.noMatch = false;
+          }
+        });
+      }
     }
   }
 });
@@ -6027,14 +6111,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       hostelroom: {},
+      search: "",
       hostelrooms: [],
       hostel_table: [],
       roomtypes: [],
-      isEdit: false
+      isEdit: false,
+      noMatc: false
     };
   },
   mounted: function mounted() {
@@ -6138,6 +6234,33 @@ __webpack_require__.r(__webpack_exports__);
         _this6.roomtypes = response.data;
         console.log(JSON.stringify(_this6.roomtypes));
       });
+    },
+
+    /***
+     * SEARCH FILTER
+     */
+    searchData: function searchData() {
+      var _this7 = this;
+
+      if (this.search == "") {
+        this.axios.get("api/hostelrooms").then(function (response) {
+          _this7.hostelrooms = [];
+          _this7.noMatch = false;
+          _this7.hostelrooms = response.data;
+        });
+      } else {
+        this.axios.get("api/hostelroom/search/".concat(this.search)).then(function (response) {
+          console.log(JSON.stringify(response.data));
+          _this7.hostelrooms = [];
+          _this7.hostelrooms = response.data;
+
+          if (_this7.hostels == "") {
+            _this7.noMatch = true;
+          } else {
+            _this7.noMatch = false;
+          }
+        });
+      }
     }
   }
 });
@@ -6256,9 +6379,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      search: "",
       room: {},
       roomtypes: [],
       isEdit: false
@@ -6285,16 +6416,21 @@ __webpack_require__.r(__webpack_exports__);
     addRoomType: function addRoomType() {
       var _this3 = this;
 
-      console.log(JSON.stringify(this.room));
-      this.axios.post("/api/roomtype/store", this.room).then(function (response) {
-        _this3.getRoomTypes();
+      console.log(JSON.stringify(this.room.room_type));
 
-        setTimeout(function () {
-          _this3.room = {};
-        }, 100);
-      })["catch"](function (error) {
-        return console.log(error);
-      });
+      if (this.room.room_type == "" || this.room.room_type == undefined) {
+        alert("Room Type is required");
+      } else {
+        this.axios.post("/api/roomtype/store", this.room).then(function (response) {
+          _this3.getRoomTypes();
+
+          setTimeout(function () {
+            _this3.room = {};
+          }, 100);
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
     },
     editRoomType: function editRoomType(data) {
       var to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
@@ -6337,6 +6473,21 @@ __webpack_require__.r(__webpack_exports__);
 
         _this5.roomtypes.splice(i, 1);
       });
+    },
+    searchData: function searchData() {
+      var _this6 = this;
+
+      if (this.search == "") {
+        this.axios.get("api/roomtypes").then(function (response) {
+          _this6.roomtypes = [];
+          _this6.roomtypes = response.data;
+        });
+      } else {
+        this.axios.get("api/roomtype/search/".concat(this.search)).then(function (response) {
+          _this6.roomtypes = [];
+          _this6.roomtypes = response.data;
+        });
+      }
     }
   }
 });
@@ -8321,6 +8472,72 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.alertdeletemsg = response.data, $("#deleteAlert").css("display", "block");
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/message/confirm.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/message/confirm.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/event-bus.js */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    url: ""
+  },
+  data: function data() {
+    return {
+      clickCount: 0
+    };
+  },
+  methods: {
+    deleteData: function deleteData() {
+      this.axios["delete"]("/api/".concat(this.url)).then(function (response) {});
+      this.clickCount++;
+      _js_event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("clicked", this.clickCount);
     }
   }
 });
@@ -58030,410 +58247,477 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
-    _c("div", { staticClass: "toplink" }, [
-      _c("h2", { staticClass: "stuName" }, [_vm._v("Hostel")]),
+  return _c(
+    "div",
+    { staticClass: "form", attrs: { id: "bar" } },
+    [
+      _c("div", { staticClass: "toplink" }, [
+        _c("h2", { staticClass: "stuName" }, [_vm._v("Hostel")]),
+        _vm._v(" "),
+        _c(
+          "h4",
+          { staticClass: "stuLink" },
+          [
+            _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
+              _vm._v("Home")
+            ]),
+            _vm._v(">Hostel\n    ")
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("confirm", { attrs: { url: _vm.delurl } }),
       _vm._v(" "),
       _c(
-        "h4",
-        { staticClass: "stuLink" },
+        "div",
+        {
+          staticClass: "row",
+          staticStyle: { "align-items": "end !important" }
+        },
         [
-          _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
-            _vm._v("Home")
-          ]),
-          _vm._v(">Hostel\n    ")
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "row", staticStyle: { "align-items": "end !important" } },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "col-lg-5 col-md-12",
-            staticStyle: { "padding-left": "2px" }
-          },
-          [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "card-body",
-                  staticStyle: {
-                    padding: "1rem 0",
-                    "border-bottom": "1px solid #8080808c"
-                  }
-                },
-                [
-                  _c(
-                    "form",
-                    {
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.addHostel($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "col-12" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.hostel.hostel_name,
-                              expression: "hostel.hostel_name"
-                            }
-                          ],
-                          staticClass: "inputbox",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.hostel.hostel_name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.hostel,
-                                "hostel_name",
-                                $event.target.value
-                              )
-                            }
+          _c(
+            "div",
+            {
+              staticClass: "col-lg-5 col-md-12",
+              staticStyle: { "padding-left": "2px" }
+            },
+            [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "card-body",
+                    staticStyle: {
+                      padding: "1rem 0",
+                      "border-bottom": "1px solid #8080808c"
+                    }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.addHostel($event)
                           }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          {
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "col-12" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.hostel.type,
-                                expression: "hostel.type"
+                                value: _vm.hostel.hostel_name,
+                                expression: "hostel.hostel_name"
                               }
                             ],
                             staticClass: "inputbox",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.hostel.hostel_name },
                             on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
                                 _vm.$set(
                                   _vm.hostel,
-                                  "type",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
+                                  "hostel_name",
+                                  $event.target.value
                                 )
                               }
                             }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { selected: "", disabled: "" } },
-                              [_vm._v("Select")]
-                            ),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Boys" } }, [
-                              _vm._v("Boys")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Girls" } }, [
-                              _vm._v("Girls")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "Combine" } }, [
-                              _vm._v("Combine")
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _c("label", { attrs: { for: "address" } }, [
-                          _vm._v("Address")
+                          })
                         ]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
+                        _c("div", { staticClass: "col-12" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "select",
                             {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.hostel.address,
-                              expression: "hostel.address"
-                            }
-                          ],
-                          staticClass: "inputbox",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.hostel.address },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.hostel,
-                                "address",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _c("label", { attrs: { for: "intake" } }, [
-                          _vm._v("Intake")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.hostel.intake,
-                              expression: "hostel.intake"
-                            }
-                          ],
-                          staticClass: "inputbox",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.hostel.intake },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.hostel,
-                                "intake",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12 end" }, [
-                        _c("label", { attrs: { for: "description" } }, [
-                          _vm._v("Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("textarea", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.hostel.description,
-                              expression: "hostel.description"
-                            }
-                          ],
-                          staticClass: "textareas",
-                          attrs: { rows: "3" },
-                          domProps: { value: _vm.hostel.description },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.hostel,
-                                "description",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        this.isEdit == false
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "save",
-                                attrs: { type: "submit" }
-                              },
-                              [_vm._v("Save")]
-                            )
-                          : _c(
-                              "button",
-                              {
-                                staticClass: "save",
-                                attrs: { type: "button" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.updateHostel()
-                                  }
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.hostel.type,
+                                  expression: "hostel.type"
                                 }
-                              },
-                              [_vm._v("Save")]
-                            )
-                      ])
-                    ]
-                  )
-                ]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "col-lg-7 col-md-12",
-            staticStyle: { "padding-left": "0" }
-          },
-          [
-            _c("div", { staticClass: "card" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("input", {
-                  staticClass: "searchText",
-                  attrs: { type: "text", placeholder: "Search..." }
-                }),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _c("div", { staticClass: "table-responsive" }, [
-                  _c(
-                    "table",
-                    {
-                      staticClass: "table table-hover table-striped",
-                      attrs: { id: "studenttable" }
-                    },
-                    [
-                      _vm._m(5),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.hostels, function(hos) {
-                          return _c(
-                            "tr",
-                            { key: hos.id, staticClass: "active" },
+                              ],
+                              staticClass: "inputbox",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.hostel,
+                                    "type",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
                             [
                               _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
-                                [
-                                  _c("p", { staticClass: "toolText" }, [
-                                    _vm._v(
-                                      "\n                      " +
-                                        _vm._s(hos.hostel_name) +
-                                        "\n                      "
-                                    ),
-                                    hos.hostel_name
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "tooltipLabel" },
-                                          [_vm._v(_vm._s(hos.description))]
-                                        )
-                                      : _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              "tooltipLabel text-danger"
-                                          },
-                                          [_vm._v("No Description")]
-                                        )
-                                  ])
-                                ]
+                                "option",
+                                { attrs: { selected: "", disabled: "" } },
+                                [_vm._v("Select")]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
-                                [_vm._v(_vm._s(hos.type))]
-                              ),
+                              _c("option", { attrs: { value: "Boys" } }, [
+                                _vm._v("Boys")
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
-                                [_vm._v(_vm._s(hos.address))]
-                              ),
+                              _c("option", { attrs: { value: "Girls" } }, [
+                                _vm._v("Girls")
+                              ]),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
-                                [_vm._v(_vm._s(hos.intake))]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
+                              _c("option", { attrs: { value: "Combine" } }, [
+                                _vm._v("Combine")
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("label", { attrs: { for: "address" } }, [
+                            _vm._v("Address")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.hostel.address,
+                                expression: "hostel.address"
+                              }
+                            ],
+                            staticClass: "inputbox",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.hostel.address },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.hostel,
+                                  "address",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("label", { attrs: { for: "intake" } }, [
+                            _vm._v("Intake")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.hostel.intake,
+                                expression: "hostel.intake"
+                              }
+                            ],
+                            staticClass: "inputbox",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.hostel.intake },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.hostel,
+                                  "intake",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12 end" }, [
+                          _c("label", { attrs: { for: "description" } }, [
+                            _vm._v("Description")
+                          ]),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.hostel.description,
+                                expression: "hostel.description"
+                              }
+                            ],
+                            staticClass: "textareas",
+                            attrs: { rows: "3" },
+                            domProps: { value: _vm.hostel.description },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.hostel,
+                                  "description",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          this.isEdit == false
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "save",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Save")]
+                              )
+                            : _c(
+                                "button",
+                                {
+                                  staticClass: "save",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.updateHostel()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Save")]
+                              )
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "col-lg-7 col-md-12",
+              staticStyle: { "padding-left": "0" }
+            },
+            [
+              _c("div", { staticClass: "card" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "searchText",
+                    attrs: { type: "text", placeholder: "Search..." },
+                    domProps: { value: _vm.search },
+                    on: {
+                      input: [
+                        function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.search = $event.target.value
+                        },
+                        function($event) {
+                          return _vm.searchData()
+                        }
+                      ]
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      {
+                        staticClass: "table table-hover table-striped",
+                        attrs: { id: "studenttable" }
+                      },
+                      [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c(
+                          "tbody",
+                          [
+                            _vm._l(_vm.hostels, function(hos) {
+                              return _c(
+                                "tr",
+                                { key: hos.id, staticClass: "active" },
                                 [
                                   _c(
-                                    "i",
+                                    "td",
                                     {
-                                      staticClass: "fa fa-pencil pen",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editHostel(hos)
-                                        }
-                                      }
+                                      staticClass: "all",
+                                      attrs: { nowrap: "" }
                                     },
                                     [
-                                      _c("span", { staticClass: "penLabel" }, [
-                                        _vm._v("Edit")
+                                      _c("p", { staticClass: "toolText" }, [
+                                        _vm._v(
+                                          "\n                      " +
+                                            _vm._s(hos.hostel_name) +
+                                            "\n                      "
+                                        ),
+                                        hos.hostel_name
+                                          ? _c(
+                                              "span",
+                                              { staticClass: "tooltipLabel" },
+                                              [_vm._v(_vm._s(hos.description))]
+                                            )
+                                          : _c(
+                                              "span",
+                                              {
+                                                staticClass:
+                                                  "tooltipLabel text-danger"
+                                              },
+                                              [_vm._v("No Description")]
+                                            )
                                       ])
                                     ]
                                   ),
                                   _vm._v(" "),
                                   _c(
-                                    "i",
+                                    "td",
                                     {
-                                      staticClass: "fa fa-trash time",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteHostel(hos.id)
-                                        }
-                                      }
+                                      staticClass: "all",
+                                      attrs: { nowrap: "" }
                                     },
-                                    [
-                                      _c("span", { staticClass: "timeLabel" }, [
-                                        _vm._v("Delete")
-                                      ])
-                                    ]
-                                  )
+                                    [_vm._v(_vm._s(hos.type))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass: "all",
+                                      attrs: { nowrap: "" }
+                                    },
+                                    [_vm._v(_vm._s(hos.address))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "td",
+                                    {
+                                      staticClass: "all",
+                                      attrs: { nowrap: "" }
+                                    },
+                                    [_vm._v(_vm._s(hos.intake))]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("td", [
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass: "fa fa-pencil pen",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.editHostel(hos)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "penLabel" },
+                                          [_vm._v("Edit")]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass: "fa fa-trash time",
+                                        attrs: {
+                                          "data-toggle": "modal",
+                                          "data-target": "#exampleModalCenter",
+                                          "data-id": "hos"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.deleteHostel(hos.id)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "timeLabel" },
+                                          [_vm._v("Delete")]
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ]
                               )
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    ]
-                  )
+                            }),
+                            _vm._v(" "),
+                            _vm.noMatch == true
+                              ? _c(
+                                  "td",
+                                  {
+                                    staticStyle: { "text-align": "center" },
+                                    attrs: { colspan: "5" }
+                                  },
+                                  [
+                                    _c("span", { staticClass: "text-danger" }, [
+                                      _vm._v("No matching records found")
+                                    ])
+                                  ]
+                                )
+                              : _vm._e()
+                          ],
+                          2
+                        )
+                      ]
+                    )
+                  ])
                 ])
               ])
-            ])
-          ]
-        )
-      ]
-    )
-  ])
+            ]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -58515,23 +58799,43 @@ var staticRenderFns = [
     return _c("thead", [
       _c("tr", [
         _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Hostel Name")
+          _vm._v("\n                    Hostel Name\n                    "),
+          _c("i", {
+            staticClass: "fa fa-angle-down",
+            attrs: { "aria-hidden": "true" }
+          })
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Type")
+          _vm._v("\n                    Type\n                    "),
+          _c("i", {
+            staticClass: "fa fa-angle-down",
+            attrs: { "aria-hidden": "true" }
+          })
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Address")
+          _vm._v("\n                    Address\n                    "),
+          _c("i", {
+            staticClass: "fa fa-angle-down",
+            attrs: { "aria-hidden": "true" }
+          })
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Intake")
+          _vm._v("\n                    Intake\n                    "),
+          _c("i", {
+            staticClass: "fa fa-angle-down",
+            attrs: { "aria-hidden": "true" }
+          })
         ]),
         _vm._v(" "),
         _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Action")
+          _vm._v("\n                    Action\n                    "),
+          _c("i", {
+            staticClass: "fa fa-angle-down",
+            attrs: { "aria-hidden": "true" }
+          })
         ])
       ])
     ])
@@ -58871,8 +59175,30 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
                   staticClass: "searchText",
-                  attrs: { type: "text", placeholder: "Search..." }
+                  attrs: { type: "text", placeholder: "Search..." },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      },
+                      function($event) {
+                        return _vm.searchData()
+                      }
+                    ]
+                  }
                 }),
                 _vm._v(" "),
                 _vm._m(8),
@@ -58904,11 +59230,17 @@ var render = function() {
                                         _vm._s(room.room_no) +
                                         "\n                      "
                                     ),
-                                    _c(
-                                      "span",
-                                      { staticClass: "tooltipLabel" },
-                                      [_vm._v("No Description")]
-                                    )
+                                    room.description
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "tooltipLabel" },
+                                          [_vm._v(_vm._s(room.description))]
+                                        )
+                                      : _c(
+                                          "span",
+                                          { staticClass: "tooltipLabel" },
+                                          [_vm._v("No Description")]
+                                        )
                                   ])
                                 ]
                               ),
@@ -58919,10 +59251,11 @@ var render = function() {
                                 [_vm._v(_vm._s(room.hostel.hostel_name))]
                               ),
                               _vm._v(" "),
-                              _c("td", {
-                                staticClass: "all",
-                                attrs: { nowrap: "" }
-                              }),
+                              _c(
+                                "td",
+                                { staticClass: "all", attrs: { nowrap: "" } },
+                                [_vm._v(_vm._s(room.room_type.room_type))]
+                              ),
                               _vm._v(" "),
                               _c(
                                 "td",
@@ -58936,45 +59269,41 @@ var render = function() {
                                 [_vm._v(_vm._s(room.cost_per_bed))]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "all", attrs: { nowrap: "" } },
-                                [
-                                  _c(
-                                    "i",
-                                    {
-                                      staticClass: "fa fa-pencil pen",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editHostelRoom(room)
-                                        }
+                              _c("td", [
+                                _c(
+                                  "i",
+                                  {
+                                    staticClass: "fa fa-pencil pen",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.editHostelRoom(room)
                                       }
-                                    },
-                                    [
-                                      _c("span", { staticClass: "penLabel" }, [
-                                        _vm._v("Edit")
-                                      ])
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "i",
-                                    {
-                                      staticClass: "fa fa-trash time",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteHostelRoom(room.id)
-                                        }
+                                    }
+                                  },
+                                  [
+                                    _c("span", { staticClass: "penLabel" }, [
+                                      _vm._v("Edit")
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "i",
+                                  {
+                                    staticClass: "fa fa-trash time",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.deleteHostelRoom(room.id)
                                       }
-                                    },
-                                    [
-                                      _c("span", { staticClass: "timeLabel" }, [
-                                        _vm._v("Delete")
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              )
+                                    }
+                                  },
+                                  [
+                                    _c("span", { staticClass: "timeLabel" }, [
+                                      _vm._v("Delete")
+                                    ])
+                                  ]
+                                )
+                              ])
                             ]
                           )
                         }),
@@ -59236,7 +59565,11 @@ var render = function() {
                               )
                             }
                           }
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text-danger" }, [
+                          _vm._v("Room Type is required")
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-12 end" }, [
@@ -59315,8 +59648,30 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
                   staticClass: "searchText",
-                  attrs: { type: "text", placeholder: "Search..." }
+                  attrs: { type: "text", placeholder: "Search..." },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: [
+                      function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      },
+                      function($event) {
+                        return _vm.searchData()
+                      }
+                    ]
+                  }
                 }),
                 _vm._v(" "),
                 _vm._m(3),
@@ -59346,11 +59701,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "td",
-                                {
-                                  staticClass: "all",
-                                  staticStyle: { "text-align": "right" },
-                                  attrs: { nowrap: "" }
-                                },
+                                { staticStyle: { "text-align": "right" } },
                                 [
                                   _c(
                                     "i",
@@ -66350,6 +66701,134 @@ var staticRenderFns = [
           [_vm._v("Action")]
         )
       ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/message/confirm.vue?vue&type=template&id=381d39e2&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/message/confirm.vue?vue&type=template&id=381d39e2& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "exampleModalCenter",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "exampleModalCenterTitle",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal-dialog modal-dialog-centered modal-sm",
+          attrs: { role: "document" }
+        },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.deleteData($event)
+                  }
+                }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "modal-footer confirm-modal-footer" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "confirmBtn",
+                        staticStyle: { "text-align": "center" },
+                        attrs: { type: "submit", "data-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteData(_vm.url)
+                          }
+                        }
+                      },
+                      [_vm._v("Yes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "confirmBtn-outline",
+                        attrs: { type: "button", "data-dismiss": "modal" }
+                      },
+                      [_vm._v("No")]
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal-header confirm-modal-header",
+        staticStyle: { background: "#1b5e20" }
+      },
+      [
+        _c(
+          "h6",
+          { staticClass: "modal-title", staticStyle: { color: "white" } },
+          [_vm._v("Message")]
+        ),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-close confirm-q",
+          attrs: { "data-dismiss": "modal", "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body confirm-modal-body" }, [
+      _c("h6", { staticClass: "modal-title" }, [_vm._v("Are you sure?")])
     ])
   }
 ]
@@ -85691,6 +86170,23 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/event-bus.js":
+/*!***********************************!*\
+  !*** ./resources/js/event-bus.js ***!
+  \***********************************/
+/*! exports provided: EventBus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventBus", function() { return EventBus; });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+
+var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
+
+/***/ }),
+
 /***/ "./resources/js/routes.js":
 /*!********************************!*\
   !*** ./resources/js/routes.js ***!
@@ -88834,6 +89330,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/views/message/confirm.vue":
+/*!*********************************************!*\
+  !*** ./resources/views/message/confirm.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./confirm.vue?vue&type=template&id=381d39e2& */ "./resources/views/message/confirm.vue?vue&type=template&id=381d39e2&");
+/* harmony import */ var _confirm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./confirm.vue?vue&type=script&lang=js& */ "./resources/views/message/confirm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _confirm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/message/confirm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/message/confirm.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/views/message/confirm.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_confirm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./confirm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/message/confirm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_confirm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/views/message/confirm.vue?vue&type=template&id=381d39e2&":
+/*!****************************************************************************!*\
+  !*** ./resources/views/message/confirm.vue?vue&type=template&id=381d39e2& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./confirm.vue?vue&type=template&id=381d39e2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/message/confirm.vue?vue&type=template&id=381d39e2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_confirm_vue_vue_type_template_id_381d39e2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -88841,8 +89406,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Program Face\a.Program Development\Projects\Laravel projects\Git with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Program Face\a.Program Development\Projects\Laravel projects\Git with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

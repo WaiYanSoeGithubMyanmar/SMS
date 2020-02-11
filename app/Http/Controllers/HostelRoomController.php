@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Hostel;
 use App\HostelRoom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HostelRoomController extends Controller
 {
@@ -17,7 +19,7 @@ class HostelRoomController extends Controller
         //
         // $hostelrooms = HostelRoom::all()->toArray();
         // return array_reverse($hostelrooms);
-         $hostelrooms = HostelRoom::with('roomtype','hostel')->get()->toArray();
+        $hostelrooms = HostelRoom::with('roomType', 'hostel')->orderBy('id', 'desc')->get()->toArray();
         return array_reverse($hostelrooms);
     }
 
@@ -28,10 +30,7 @@ class HostelRoomController extends Controller
      */
     public function create()
     {
-        //
-      
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +44,7 @@ class HostelRoomController extends Controller
             "room_no" => $request->input("room_no"),
             "hostel_id" =>  $request->input("hostel_id"),
             "room_type_id" => $request->input("room_type_id"),
-            "no_of_bed" =>$request->input("no_of_bed"),
+            "no_of_bed" => $request->input("no_of_bed"),
             "cost_per_bed" => $request->input("cost_per_bed"),
             "description" => $request->input("description"),
             "is_active"   => "No"
@@ -89,7 +88,6 @@ class HostelRoomController extends Controller
         $hostelroom = HostelRoom::find($id);
         $hostelroom->update($request->all());
         return response()->json('The HostelRoom successfully updated');
-
     }
 
     /**
@@ -103,5 +101,21 @@ class HostelRoomController extends Controller
         $hostelroom = HostelRoom::find($id);
         $hostelroom->delete();
         return response()->json('The HostelRoom successfully deleted');
+    }
+
+
+    public function search($data)
+    {
+        // $hostelrooms = DB::table('hostel_rooms')
+        //     ->select('hostels.hostel_name as hostel_name')
+        //     ->leftJoin('hostels', 'hostels.id', '=', 'hostel_rooms.hostel_id');
+        // ->where('hostels.hostel_name' , 'like', '%' . $data . '%')->with('roomType','hostel')->get()->toArray();
+        // echo ($hostelrooms);
+        $hostelrooms = HostelRoom::where('room_no', 'like', '%' . $data . '%')
+            ->orWhere('hostel_id', '=', '"{{$hostel.id}}"', 'like', '%' . $data . '%')
+            ->with('roomType', 'hostel')
+            ->orderBy('id', 'desc')
+            ->get()->toArray();
+        return array_reverse($hostelrooms);
     }
 }

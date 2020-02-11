@@ -82,7 +82,13 @@
             <h6>Hostel Room List</h6>
           </div>
           <div class="card-body">
-            <input type="text" placeholder="Search..." class="searchText" />
+            <input
+              v-model="search"
+              @input="searchData()"
+              type="text"
+              placeholder="Search..."
+              class="searchText"
+            />
             <div class="copyRows">
               <div class="row" id="copyRow">
                 <div class="col-2">
@@ -112,6 +118,7 @@
                 </div>
               </div>
             </div>
+
             <div class="table-responsive">
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
@@ -129,15 +136,18 @@
                     <td class="all" nowrap>
                       <p class="toolText">
                         {{room.room_no}}
-                        <span class="tooltipLabel">No Description</span>
+                        <span
+                          v-if="room.description"
+                          class="tooltipLabel"
+                        >{{room.description}}</span>
+                        <span v-else class="tooltipLabel">No Description</span>
                       </p>
                     </td>
                     <td class="all" nowrap>{{room.hostel.hostel_name}}</td>
-                    <!--  <td class="all" nowrap>{{roomtypes[room.room_type_id].description}}</td> -->
-                    <td class="all" nowrap></td>
+                    <td class="all" nowrap>{{room.room_type.room_type}}</td>
                     <td class="all" nowrap>{{room.no_of_bed}}</td>
                     <td class="all" nowrap>{{room.cost_per_bed}}</td>
-                    <td class="all" nowrap>
+                    <td>
                       <i @click="editHostelRoom(room)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
@@ -160,10 +170,12 @@ export default {
   data() {
     return {
       hostelroom: {},
+      search: "",
       hostelrooms: [],
       hostel_table: [],
       roomtypes: [],
-      isEdit: false
+      isEdit: false,
+      noMatc: false
     };
   },
   mounted() {
@@ -250,8 +262,31 @@ export default {
         console.log(JSON.stringify(this.roomtypes));
       });
     },
-    searchData(){
-       alert("aa");
+
+    /***
+     * SEARCH FILTER
+     */
+    searchData() {
+      if (this.search == "") {
+        this.axios.get(`api/hostelrooms`).then(response => {
+          this.hostelrooms = [];
+          this.noMatch = false;
+          this.hostelrooms = response.data;
+        });
+      } else {
+        this.axios
+          .get(`api/hostelroom/search/${this.search}`)
+          .then(response => {
+            console.log(JSON.stringify(response.data));
+            this.hostelrooms = [];
+            this.hostelrooms = response.data;
+            if (this.hostels == "") {
+              this.noMatch = true;
+            } else {
+              this.noMatch = false;
+            }
+          });
+      }
     }
   }
 };

@@ -373,6 +373,10 @@ input[type="file"] {
   border-radius: 5px;
 }
 
+/**
+  Wai Yan Soe
+**/
+
 .confirmBtn{
   width: 100px;
   font-size: 14px;
@@ -386,6 +390,44 @@ input[type="file"] {
   border: none;
   border-radius: 5px;
 }
+.confirmBtn-outline{
+  width: 100px;
+  font-size: 14px;
+  margin-right: 0px;
+  margin-bottom: 0;
+  float: right;
+  outline: none;
+  color: black;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 5));
+  height: 30px;
+  border: 1px solid rgba(128, 128, 128, 0.219);
+  border-radius: 5px;
+}
+.confirmBtn-outline:hover{
+    background-image: linear-gradient(rgba(128, 128, 128, 0.267),rgba(34, 36, 34, 0.377));
+}
+.confirm-modal-header{
+  padding: 0.9rem 1rem !important;
+  .confirm-q{
+    margin-top: 0.3rem;
+    color: rgb(219, 2, 2);
+    cursor: pointer;
+  }
+}
+.confirm-q{
+ transition:  zoom 1s;
+}
+.confirm-q:hover{
+  zoom: 1;
+  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+}
+.confirm-modal-body{
+  padding: 1rem 1rem !important;
+}
+
+/**
+  End of Wai Yan Soe
+**/
 
 // View Button
 .viewButton {
