@@ -249,6 +249,9 @@ export default {
         this.roomtypes = response.data;
         console.log(JSON.stringify(this.roomtypes));
       });
+    },
+    searchData(){
+       
     }
   }
 };
