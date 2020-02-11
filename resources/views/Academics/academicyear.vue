@@ -1,7 +1,7 @@
 <template>
   <div class="form" id="bar">
     <div class="toplink">
-      <h2 class="stuName">Academicss</h2>
+      <h2 class="stuName">Academics</h2>
       <h4 class="stuLink">
         <router-link to="/home" class="home">Home</router-link>> Academic-Year
       </h4>
