@@ -1,3 +1,4 @@
+
 ## School Management
 
 git clone https://github.com/Mogok-TS/SMS.git
@@ -16,4 +17,4 @@ php artisan migrate
 
 php artisan serve
 
-localhost:8000 
+localhost:8000
