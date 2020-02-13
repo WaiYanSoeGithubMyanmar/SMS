@@ -102,26 +102,36 @@ Route::group(['prefix' => 'TranVehicle'], function () {
     Route::get('delete/{id}', 'VehicleController@destroy');
 });
 
+//Lwin Kyaw Phyo
 //Academic Year Route
 Route::get('academicyr', 'AcademicYearController@index');
-Route::group(['prefix' => 'AcademicYear'], function () {
-    Route::post('save', 'AcademicYearController@store');
-    Route::get('edit/{id}', 'AcademicYearController@edit');
-    Route::get('delete/{id}', 'AcademicYearController@destroy');
+Route::group(['prefix' => 'AcademicYear'], function() {
+    Route::post('save','AcademicYearController@store');
+    Route::get('edit/{id}','AcademicYearController@edit');
+    Route::get('delete/{id}','AcademicYearController@destroy');
 });
 
 //Section Route
 Route::get('section', 'SectionController@index');
-Route::group(['prefix' => 'Section'], function () {
-    Route::post('save', 'SectionController@store');
-    Route::get('edit/{id}', 'SectionController@edit');
-    Route::get('delete/{id}', 'SectionController@destroy');
+Route::group(['prefix' => 'Section'], function() {
+    Route::post('save','SectionController@store');
+    Route::get('edit/{id}','SectionController@edit');
+    Route::get('delete/{id}','SectionController@destroy');
 });
 
 //Class Route
 Route::get('class', 'ClassesController@index');
-Route::group(['prefix' => 'Class'], function () {
-    Route::post('save', 'ClassesController@store');
-    Route::get('edit/{id}', 'ClassesController@edit');
-    Route::get('delete/{id}', 'ClassesController@destroy');
+Route::group(['prefix' => 'Class'], function() {
+    Route::post('save','ClassesController@store');
+    Route::get('edit/{id}','ClassesController@edit');
+    Route::get('delete/{id}','ClassesController@destroy');
 });
+
+//Subject Route
+Route::get('subject', 'SubjectController@index');
+Route::group(['prefix' => 'Subject'], function() {
+    Route::post('save','SubjectController@store');
+    Route::get('edit/{id}','SubjectController@edit');
+    Route::get('delete/{id}','SubjectController@destroy');
+});
+//Lwin Kyaw Phyo

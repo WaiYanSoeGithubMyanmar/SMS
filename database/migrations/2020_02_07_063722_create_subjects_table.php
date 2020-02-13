@@ -18,7 +18,8 @@ class CreateSubjectsTable extends Migration
             $table->char('name', 100);
             $table->char('code', 100);
             $table->char('type', 100);
-            $table->char('is_active', 25);
+            $table->char('is_active', 25)->default('yes');
+            $table->char('domain', 100);
             $table->timestamps();
         });
     }
