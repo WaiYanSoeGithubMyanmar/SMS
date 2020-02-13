@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Department;
+use Illuminate\Http\Request;
+
+class DepartmentController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $departments = Department::orderBy('id', 'desc')
+            ->get()
+            ->toArray();
+        return array_reverse($departments);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $department = new Department([
+            "department_name" => $request->input('department_name'),
+            "is_active"       => "No"
+        ]);
+        $department->save();
+        return response()->json("The Designation successfully added");
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Department  $department
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Department $department)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Department  $department
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Department $department)
+    {
+        //
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Department  $department
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+        $department = Department::find($id);
+        $department->update($request->all());
+        return response()->json("The Department successfully updated");
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Department  $department
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        //
+        $department = Department::find($id);
+        $department->delete();
+        return response()->json("The Department successfully deleted");
+    }
+}
