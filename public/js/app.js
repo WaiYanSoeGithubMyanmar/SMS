@@ -2019,10 +2019,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2056,20 +2052,41 @@ __webpack_require__.r(__webpack_exports__);
         _this.SessionList = response.data;
       });
     },
+    onValidate: function onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined) document.getElementById(inputId).style.border = 'solid 1px red';else {
+        document.getElementById(inputId).style.border = 'solid 1px #d2d6de';
+        document.getElementById(megId).style.display = 'none';
+      }
+    },
+    onValidateMessage: function onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = 'solid 1px red';
+      document.getElementById(megId).style.display = 'block';
+    },
+    checkValidate: function checkValidate() {
+      if (this.AcademicYr.session == "" || this.AcademicYr.session == undefined) {
+        this.onValidateMessage('sessionid', 'sessionmsg');
+      } else {
+        return true;
+      }
+
+      return false;
+    },
     goSave: function goSave() {
       var _this2 = this;
 
-      this.axios.post("/api/AcademicYear/save", this.AcademicYr).then(function (response) {
-        return _this2.AcademicYr = {
-          id: "",
-          session: "",
-          is_active: "",
-          created_at: "",
-          updated_at: ""
-        }, _this2.getAllSession(), _this2.msg.text = response.data.text, _this2.msg.type = response.data.type;
-      })["catch"](function (error) {
-        console.log("err->" + JSON.stringify(_this2.error.response));
-      });
+      if (this.checkValidate()) {
+        this.axios.post("/api/AcademicYear/save", this.AcademicYr).then(function (response) {
+          return _this2.AcademicYr = {
+            id: "",
+            session: "",
+            is_active: "",
+            created_at: "",
+            updated_at: ""
+          }, _this2.getAllSession(), _this2.msg.text = response.data.text, _this2.msg.type = response.data.type;
+        })["catch"](function (error) {
+          console.log("err->" + JSON.stringify(_this2.error.response));
+        });
+      }
     },
     goAlertClose: function goAlertClose(aVal) {
       if (aVal == 1) $("#OthAlert").css("display", "none");else $("#deleteAlert").css("display", "none");
@@ -44599,9 +44616,23 @@ var render = function() {
                         }
                       ],
                       staticClass: "inputbox",
-                      attrs: { type: "text" },
+                      attrs: { id: "sessionid", type: "text" },
                       domProps: { value: _vm.AcademicYr.session },
                       on: {
+                        keyup: function($event) {
+                          return _vm.onValidate(
+                            _vm.AcademicYr.session,
+                            "sessionid",
+                            "sessionmsg"
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.onValidate(
+                            _vm.AcademicYr.session,
+                            "sessionid",
+                            "sessionmsg"
+                          )
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -44613,7 +44644,16 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "error_message",
+                        attrs: { id: "sessionmsg" }
+                      },
+                      [_vm._v("Session is required")]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12" }, [
@@ -48228,7 +48268,7 @@ var render = function() {
               "alert errorAlert": _vm.alertmessage.type === "error",
               "alert successAlert": _vm.alertmessage.type === "success"
             },
-            staticStyle: { margin: "0 10px 10px 10px" },
+            staticStyle: { margin: "10px 10px 10px 10px" },
             attrs: { role: "alert" }
           },
           [
@@ -92392,8 +92432,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

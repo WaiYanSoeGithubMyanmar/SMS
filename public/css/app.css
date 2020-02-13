@@ -2319,6 +2319,14 @@ input[type=file] {
   margin-top: -1rem;
 }
 
+.error_message {
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+}
+
 .StudentInformation .metaBtn,
 .StudentHistory .metaBtn {
   color: white;
