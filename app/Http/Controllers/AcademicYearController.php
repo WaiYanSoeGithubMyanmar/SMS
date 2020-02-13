@@ -15,6 +15,15 @@ class AcademicYearController extends Controller
         return array_reverse($academicyr);
     }
 
+
+// Thein Htike Aung Section 
+public function activeAcademic()
+{
+    $academicyr = AcademicYear::where('is_active','yes')->get()->toArray();
+    return array_reverse($academicyr);
+}
+// End Thein Htike Aung Section 
+
     // Save and Update Session
     public function store(Request $request)
     {           

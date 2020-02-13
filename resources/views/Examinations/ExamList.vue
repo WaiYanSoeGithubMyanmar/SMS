@@ -15,20 +15,25 @@
             <h6>Add Exam</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <div class="col-12">
-              <label for="name">
-                Name
-                <strong>*</strong>
-              </label>
-              <input type="text" class="inputbox" name="name" />
+            <div id="OthAlert" style="margin: 0 10px 10px 10px;display:none;" class="alert alert-success" role="alert">
+                {{ successAlertmsg }}
+                <button @click="goAlertClose(1)" type="button" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="col-12">
-              <label for="note">Note</label>
-              <br />
-              <textarea class="textareas" rows="3"></textarea>
+              <label for="name">Name<strong>*</strong></label>
+              <input id="nameid" type="text" class="inputbox" name="name" v-model="saveexam.name"
+              @keyup="onValidate(saveexam.name, 'nameid', 'namemsg')" 
+                v-on:blur="onValidate(saveexam.name, 'nameid', 'namemsg')"/>
+                 <span id="namemsg" class="error_message">Name is required</span>
             </div>
             <div class="col-12">
-              <button class="save">Save</button>
+              <label for="note">Note</label><br>
+              <textarea class="textareas" rows="3" v-model="saveexam.remark"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="save" @click="addExam(SessionList.id)" v-for="SessionList in SessionList" :key="SessionList.id">Save</button>
             </div>
           </div>
         </div>
@@ -40,7 +45,13 @@
             <h6>Exam List</h6>
           </div>
           <div class="card-body">
-            <input type="text" placeholder="Search..." class="searchText" />
+            <div id="deleteAlert" style="margin: 10px 10px 10px 10px;display:none;" class="alert alert-success" role="alert">
+                {{successAlertmsg1}}
+                <button @click="goAlertClose(2)" type="button" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <input v-on:keyup="searchTable()" type="text" placeholder="Search..." class="searchText" id="myInput" />
             <div class="copyRows">
               <div class="row" id="copyRow">
                 <div class="col-2">
@@ -93,115 +104,20 @@
                     <th class="all" style="text-align: right;" nowrap>Action</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="active">
-                    <td class="all" nowrap>
+                <tbody id="myTable">
+                  <tr class="active" v-for="exams in exams" :key="exams.id">
+                    <td class="all" nowrap v-if="exams.is_active != 'delete'">
                       <p class="toolText">
-                        Unit Test-January
-                        <span class="tooltipLabel">No Description</span>
+                        {{ exams.name }}
+                        <span class="tooltipLabel" v-if="exams.remark != 'delete'">{{ exams.remark }}</span>
+                        <span class="tooltipLabel" v-if="exams.remark == null">No Description</span>
                       </p>
                     </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
+                    <td style="text-align: right;" v-if="exams.is_active != 'delete'">
+                      <i class="fa fa-pencil pen" @click="goEdit(exams.id)">
                         <span class="penLabel">Edit</span>
                       </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-February
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-March
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-April
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-May
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-June
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>
-                      <p class="toolText">
-                        Unit Test-July
-                        <span class="tooltipLabel">No Description</span>
-                      </p>
-                    </td>
-                    <td style="text-align: right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
+                      <i class="fa fa-trash time" @click="goDelete(exams.id)">
                         <span class="timeLabel">Delete</span>
                       </i>
                     </td>
@@ -216,14 +132,132 @@
   </div>
 </template>
 <script>
-export default {
-  methods: {
-    allTableHeader(id, id1) {
-      document.getElementById(id).style.background = "#1b5e20";
-      document.getElementById(id).style.color = "white";
-      document.getElementById(id1).style.background = "#1b5e20";
-      document.getElementById(id1).style.color = "white";
-    }
+    export default {
+        data() {
+            return {
+                exams: [],
+                SessionList: [],
+                 saveexam: {},
+                errors: [],
+                successAlertmsg: "",
+                successAlertmsg1: "",
+                erroralertmsg: ""
+            }
+        },
+        created() {
+            this.getdata();
+            this.getAcademic();
+        },
+        methods: {
+            getdata(){
+              this.axios
+                .get('/api/ExamList')
+                .then(response => {
+                    this.exams = response.data;
+                });
+            },getAcademic(){
+               this.axios
+                .get('/api/activeacademicyr') 
+                .then(response => {
+                this.SessionList = response.data;
+                });
+            },Test(para){
+              console.log(para);
+            },
+            addExam(session_id) {
+              if(this.checkValidate())
+              {
+                if(this.saveexam.remark==null){
+                this.saveexam.remark='No Description'
+                }
+                this.saveexam.session_id=session_id;
+                this.axios
+                .post('/api/exams/addexam', this.saveexam)
+                .then(response => (   
+                
+                // this.saveexam = {"id":"","name":"","session_id":"","remark":"","created_at":"","updated_at":""},
+                this.saveexam.name=null,
+                this.saveexam.remark=null,
+                this.getdata(),
+                console.log(JSON.stringify(response)),
+                this.successAlertmsg = response.data,
+                $('#OthAlert').css('display', 'block')
+                ))
+              .catch(error => {            
+                console.log("err->" + JSON.stringify(error));         
+              });
+                  }
+                  },
+                  goAlertClose(aVal){
+                  if(aVal == 1) $('#OthAlert').css('display', 'none')
+                  else $('#deleteAlert').css('display', 'none')
+                  },
+                  goEdit(id){      
+                  this.axios
+                    .get(`/api/exams/editexam/${id}`)
+                    .then(response => {
+                        this.saveexam = response.data;
+                    });
+                },
+                goDelete(id){
+                this.axios
+                .get(`/api/exams/deleteexam/${id}`)
+                .then(response => {
+                let i = this.exams.map(item => item.id).indexOf(id);
+                this.exams.splice(i, 1);
+                this.successAlertmsg1 = response.data,
+                $('#deleteAlert').css('display', 'block')
+                });
+                },
+                searchTable(){      
+                var input, filter, found, table, tr, td, i, j;
+                input = document.getElementById("myInput");      
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");      
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td");
+                    for (j = 0; j < td.length; j++) {
+                        if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            found = true;
+                        }
+                    }
+          if (found) {
+              tr[i].style.display = "";
+              found = false;
+          } else {
+              tr[i].style.display = "none";
+          }
+      }
+    },onValidate(value, inputId, megId)
+    {
+        if(value == "" || value == undefined) document.getElementById(inputId).style.border = 'solid 1px red';
+        else 
+        {
+            document.getElementById(inputId).style.border = 'solid 1px #d2d6de';
+            document.getElementById(megId).style.display = 'none';
+        }
+    },
+
+    onValidateMessage(inputId, megId)
+    {
+        document.getElementById(inputId).style.border = 'solid 1px red';
+        document.getElementById(megId).style.display = 'block';
+    },
+
+    checkValidate()
+    {
+        if(this.saveexam.name == "" || this.saveexam.name == undefined)
+        {
+            this.onValidateMessage('nameid', 'namemsg');
+        }
+        else
+        {
+            return true;
+        }
+        return false;
+    },
   }
-}
+  }
+    
 </script>

@@ -135,3 +135,20 @@ Route::group(['prefix' => 'Subject'], function() {
     Route::get('delete/{id}','SubjectController@destroy');
 });
 //Lwin Kyaw Phyo
+
+
+// Thein Htike Aung Section
+Route::get('ExamList','ExamsController@index');
+Route::group(['prefix' => 'exams'], function() {
+    Route::post('addexam','ExamsController@store');
+    Route::get('editexam/{id}','ExamsController@edit');
+    Route::get('deleteexam/{id}','ExamsController@destroy');
+});
+Route::get('activeacademicyr', 'AcademicYearController@activeAcademic');
+Route::get('getClasses', 'ClassesController@index');
+Route::get('getSection', 'SectionController@index');
+Route::get('getClassSectionId/{arrayids}','ClassSectionController@getAssignSub_id');
+Route::get('getClassSection/{id}', 'ClassSectionController@index');
+Route::get('searchExamSchadule/{arrayClassSectionExam}', 'ExamSchaduleController@index');
+Route::get('getSubjects', 'SubjectController@index');
+// End Thei Htike Aung Section
