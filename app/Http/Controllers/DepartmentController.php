@@ -39,12 +39,15 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'department_name' => 'required'
+        ]);
         $department = new Department([
             "department_name" => $request->input('department_name'),
             "is_active"       => "No"
         ]);
         $department->save();
-        return response()->json("The Designation successfully added");
+        return response()->json(['text' => 'Department added successfully', 'type' => 'success']);
     }
 
     /**
@@ -80,7 +83,7 @@ class DepartmentController extends Controller
         //
         $department = Department::find($id);
         $department->update($request->all());
-        return response()->json("The Department successfully updated");
+        return response()->json(['text' => 'Department updated successfully', 'type' => 'success']);
     }
 
     /**
@@ -94,6 +97,6 @@ class DepartmentController extends Controller
         //
         $department = Department::find($id);
         $department->delete();
-        return response()->json("The Department successfully deleted");
+        return response()->json(['text' => 'Department deleted successfully', 'type' => 'success']);
     }
 }

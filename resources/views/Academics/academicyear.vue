@@ -42,8 +42,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>-->
-            <message :alertmessage="deletemsg" />
-
+            <message :alertmessage="deletemsg"/>
             <input
               v-on:keyup="searchTable()"
               id="myInput"
@@ -192,7 +191,6 @@ export default {
       if (aStatus == "yes") return "Active";
       else return "";
     },
-
     searchTable() {
       var input, filter, found, table, tr, td, i, j;
       input = document.getElementById("myInput");
