@@ -66,6 +66,20 @@ Route::group(['prefix' => 'hostelroom'], function () {
     Route::delete('delete/{id}', 'HostelRoomController@delete');
     Route::get('search/{data}', 'HostelRoomController@search');
 });
+
+
+/**
+ * HRM  DESIGNATION
+ */
+Route::get('designations', 'DesignationController@index');
+Route::group(['prefix' => 'designation'], function () {
+    Route::post('store', 'DesignationController@store');
+    Route::get('edit/{id}', 'DesignationController@edit');
+    Route::post('update/{id}', 'DesignationController@update');
+    Route::delete('delete/{id}', 'DesignationController@delete');
+    Route::get('search/{data}', 'DesignationController@search');
+});
+
 /***
  * End Code of Wai Yan Soe
  */
