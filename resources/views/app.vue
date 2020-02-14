@@ -628,12 +628,12 @@
                   <div class="dropdownForm">
                     <ul class="link" id="link6">
                       <li class="nav-list">
-                        <router-link class="nav-list" to>
+                        <router-link class="nav-list" to="/homework">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Add Homework
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to class="nav-list">
+                        <router-link to="/evaluation_report" class="nav-list">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Evaluation Report
                         </router-link>
                       </li>
@@ -1003,13 +1003,13 @@
               <li>
                 <i class="fa fa-flask smallIcon" style="zoom:1.3 !important;"></i>
                 <ul class="smallLists">
-                  <router-link to class="smallLink">
+                  <router-link to="/homework" class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Add Homework
                     </li>
                   </router-link>
-                  <router-link to class="smallLink">
+                  <router-link to="/evaluation_report" class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Evaluation Report

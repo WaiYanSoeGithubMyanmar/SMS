@@ -7,124 +7,96 @@ use Illuminate\Http\Request;
 
 class AcademicYearController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // get All Session
     public function index()
     {
-        $academicyr = AcademicYear::all()->toArray();
-        // $academicyr = AcademicYear::where('is_active','<>','delete')->get();
+        $academicyr = AcademicYear::where('domain','TS')->get()->toArray();
         return array_reverse($academicyr);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Save and Update Session
     public function store(Request $request)
     {           
         if($request->input('id') == "")
         {          
             //Save  
-            $request->validate([
-                'session' => 'required'
-            ]);
-
-            $check = AcademicYear::where('session', $request->input('session'))->count();            
-            if ($check > 0)
-            {
-                $checkActive = AcademicYear::where('session', $request->input('session'))->get();                
-                if($checkActive[0]->is_active == 'delete')
-                {
-                    //Save Update is_active
-                    $checkActive[0]->is_active = "no";
-                    $checkActive[0]->save(); 
-                    return response()->json(['text' => 'Session added successfully', 'type' => 'success']);
-                }
-                else        return response()->json(['text' => 'Session already exists', 'type' => 'error']);
-            }
-            else
-            {
-                $academicyr = new AcademicYear([
-                    'session' => $request->input('session'),
-                    'is_active' => 'no'
-                ]);
-        
-                $academicyr->save();
-                return response()->json(['text' => 'Session added successfully', 'type' => 'success']);
-            }
+            return $this->SaveSession($request);
         }
         else
-        {       
-            //Update     
-            $academicyr = AcademicYear::find($request->input('id'));
-            $academicyr->update($request->all());
-
-            return response()->json('Session updated successfully');
+        {
+            //Update
+            return $this->UpdateSession($request);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function SaveSession($request){
+        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();
+        if ($check > 0)
+        {
+            $checkActive = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get();
+            if($checkActive[0]->is_active == 'delete')
+            {
+                //Save Update is_active
+                $checkActive[0]->is_active = "no";
+                $checkActive[0]->save(); 
+                return response()->json(['text' => 'Session added successfully', 'type' => 'success']);
+            }
+            else        return response()->json(['text' => 'Session already exists', 'type' => 'error']);
+        }
+        else
+        {
+            //Save
+            $academicyr = new AcademicYear([
+                'session' => $request->input('session'),
+                'is_active' => 'no',
+                'domain' => 'TS'
+            ]);
+    
+            $academicyr->save();
+            return response()->json(['text' => 'Session added successfully', 'type' => 'success']);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function UpdateSession($request){
+        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();            
+        if ($check > 0)
+        {
+            $checkSession = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get();                
+            $Session = AcademicYear::where('id', $request->input('id'))->where('domain', 'TS')->get()->get();
+            for( $i = 0; $i < count($checkSession); $i++){                
+                $a = 0;
+                if($checkSession[$i]->is_active == "delete") $a = 1;
+            }
+            if($a == 1)
+            {
+                $Session[0]->session = $request->input('session');
+                $Session[0]->is_active = "no";
+                $Session[0]->save();               
+                return response()->json(['text' => 'Session updated successfully', 'type' => 'success']);
+            }
+            else        return response()->json(['text' => 'Session already exists', 'type' => 'error']);
+        }
+        else
+        {
+            $academicyr = AcademicYear::find($request->input('id'));
+            $academicyr->update($request->all());                
+            return response()->json(['text' => 'Session updated successfully', 'type' => 'success']);
+        }
+    }
+
     public function edit($id)
     {        
         $academicyr = AcademicYear::find($id);
         return response()->json($academicyr);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Delete Session
     public function destroy($id)
     {
-        $academicyr = AcademicYear::find($id);        
-
+        $academicyr = AcademicYear::find($id);
         $academicyr->is_active = "delete";
-        $academicyr->save();        
+        $academicyr->save();
         
         return response()->json(['text' => 'Session deleted successfully', 'type' => 'success']);
     }

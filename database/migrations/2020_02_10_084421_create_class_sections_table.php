@@ -14,10 +14,11 @@ class CreateClassSectionsTable extends Migration
     public function up()
     {
         Schema::create('class_sections', function (Blueprint $table) {
-            $table->bigIncrements('id',11);
-            $table->integer('class_id')->length(11)->unsigned();
-            $table->integer('section_id')->length(11)->unsigned();
+            $table->increments('id');
+            $table->integer('class_id')->unsigned();
+            $table->integer('section_id')->unsigned();
             $table->char('is_active', 25)->default('yes');
+            $table->char('domain', 100);
             $table->timestamps();
         });
     }

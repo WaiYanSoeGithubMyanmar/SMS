@@ -20,7 +20,10 @@
                 Session
                 <strong>*</strong>
               </label>
-              <input type="text" class="inputbox" v-model="AcademicYr.session" />
+              <input id="sessionid" type="text" class="inputbox" v-model="AcademicYr.session" 
+                @keyup="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')" 
+                v-on:blur="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')"/>
+              <span id="sessionmsg" class="error_message">Session is required</span>
             </div>
             <div class="col-12">
               <button @click="goSave()" class="save">Save</button>
@@ -34,15 +37,9 @@
           <div class="card-header">
             <h6>Session List</h6>
           </div>
-          <div class="card-body">
-            <!--
-            <div id="deleteAlert" style="margin: 10px 10px 10px 10px;display:none;" class="alert alert-success" role="alert">
-                {{successAlertmsg1}}
-                <button @click="goAlertClose(2)" type="button" class="close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>-->
-            <message :alertmessage="deletemsg"/>
+          <div class="card-body">            
+            <message :alertmessage="deletemsg" />
+
             <input
               v-on:keyup="searchTable()"
               id="myInput"
@@ -144,26 +141,58 @@ export default {
       });
     },
 
+    onValidate(value, inputId, megId)
+    {
+        if(value == "" || value == undefined) document.getElementById(inputId).style.border = 'solid 1px red';
+        else 
+        {
+            document.getElementById(inputId).style.border = 'solid 1px #d2d6de';
+            document.getElementById(megId).style.display = 'none';
+        }
+    },
+
+    onValidateMessage(inputId, megId)
+    {
+        document.getElementById(inputId).style.border = 'solid 1px red';
+        document.getElementById(megId).style.display = 'block';
+    },
+
+    checkValidate()
+    {
+        if(this.AcademicYr.session == "" || this.AcademicYr.session == undefined)
+        {
+            this.onValidateMessage('sessionid', 'sessionmsg');
+        }
+        else
+        {
+            return true;
+        }
+        return false;
+    },
+
     goSave() {
-      this.axios
-        .post("/api/AcademicYear/save", this.AcademicYr)
-        .then(
-          response => (
-            (this.AcademicYr = {
-              id: "",
-              session: "",
-              is_active: "",
-              created_at: "",
-              updated_at: ""
-            }),
-            this.getAllSession(),
-            (this.msg.text = response.data.text),
-            (this.msg.type = response.data.type)
+      if(this.checkValidate())
+      {
+        this.axios
+          .post("/api/AcademicYear/save", this.AcademicYr)
+          .then(
+            response => (
+              (this.AcademicYr = {
+                id: "",
+                session: "",
+                is_active: "",
+                created_at: "",
+                updated_at: ""
+              }),
+              this.getAllSession(),
+              (this.msg.text = response.data.text),
+              (this.msg.type = response.data.type)
+            )
           )
-        )
-        .catch(error => {
-          console.log("err->" + JSON.stringify(this.error.response));
-        });
+          .catch(error => {
+            console.log("err->" + JSON.stringify(this.error.response));
+          });
+      }
     },
 
     goAlertClose(aVal) {
@@ -191,6 +220,7 @@ export default {
       if (aStatus == "yes") return "Active";
       else return "";
     },
+
     searchTable() {
       var input, filter, found, table, tr, td, i, j;
       input = document.getElementById("myInput");

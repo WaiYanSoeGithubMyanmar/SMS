@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <div v-if="alertmessage.text != ''" style="margin: 0 10px 10px 10px;"
+        <div v-if="alertmessage.text != ''" style="margin: 10px 10px 10px 10px;"
             :class="{
                 'alert errorAlert': alertmessage.type === 'error',
                 'alert successAlert': alertmessage.type === 'success'
