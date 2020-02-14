@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassesTable extends Migration
+class CreateClassSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('class_sections', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('class', 60);
+            $table->integer('class_id')->unsigned();
+            $table->integer('section_id')->unsigned();
             $table->char('is_active', 25)->default('yes');
             $table->char('domain', 100);
             $table->timestamps();
@@ -29,6 +30,6 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('class_sections');
     }
 }

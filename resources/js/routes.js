@@ -33,6 +33,7 @@ import StaDirectory from '../views/HRM/StaffDirectory.vue';
 import StaAttendance from '../views/HRM/StaffAttendance.vue';
 import Department from '../views/HRM/Department.vue';
 import Designation from '../views/HRM/Designation.vue';
+import Role from '../views/HRM/role_permission.vue';
 
 //Download Center
 import UploadContent from '../views/DownloadCenter/UploadContent.vue';
@@ -192,6 +193,12 @@ export const routes = [
         name: 'designation',
         path: '/designation',
         component: Designation
+    },
+    
+    {
+        name: 'role',
+        path: '/role',
+        component: Role
     },
     {
         name: 'uploadcontent',

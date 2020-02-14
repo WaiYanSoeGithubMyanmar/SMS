@@ -31,10 +31,10 @@ class AcademicYearController extends Controller
     }
 
     public function SaveSession($request){
-        $check = AcademicYear::where('session', $request->input('session'))->count();
+        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();
         if ($check > 0)
         {
-            $checkActive = AcademicYear::where('session', $request->input('session'))->get();
+            $checkActive = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 //Save Update is_active
@@ -59,11 +59,11 @@ class AcademicYearController extends Controller
     }
 
     public function UpdateSession($request){
-        $check = AcademicYear::where('session', $request->input('session'))->count();            
+        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();            
         if ($check > 0)
         {
-            $checkSession = AcademicYear::where('session', $request->input('session'))->get();                
-            $Session = AcademicYear::where('id', $request->input('id'))->get();                
+            $checkSession = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get();                
+            $Session = AcademicYear::where('id', $request->input('id'))->where('domain', 'TS')->get()->get();
             for( $i = 0; $i < count($checkSession); $i++){                
                 $a = 0;
                 if($checkSession[$i]->is_active == "delete") $a = 1;
@@ -94,8 +94,7 @@ class AcademicYearController extends Controller
     // Delete Session
     public function destroy($id)
     {
-        $academicyr = AcademicYear::find($id);        
-
+        $academicyr = AcademicYear::find($id);
         $academicyr->is_active = "delete";
         $academicyr->save();
         

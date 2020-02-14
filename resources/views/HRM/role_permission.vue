@@ -3,7 +3,7 @@
     <div class="toplink">
       <h2 class="stuName">HRM</h2>
       <h4 class="stuLink">
-        <router-link to="/home" class="home">Home</router-link>> Department
+        <router-link to="/home" class="home">Home</router-link>> Role Permissions
       </h4>
     </div>
     <hr />
@@ -12,30 +12,19 @@
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
           <div class="card-header">
-            <h6>Add Department</h6>
+            <h6>Add Role</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form @submit.prevent="addDepartment">
-              <message :alertmessage="msg" />
+            <form @submit.prevent="addRole">
               <div class="col-12">
                 <label for="name">
                   Name
                   <strong>*</strong>
                 </label>
-                <input
-                  id="sessionid"
-                  type="text"
-                  class="inputbox"
-                  v-model="department.department_name"
-                  @keyup="onValidate(department.department_name, 'sessionid', 'sessionmsg')"
-                  v-on:blur="onValidate(department.department_name, 'sessionid', 'sessionmsg')"
-                />
-                <span id="sessionmsg" class="error_message">Name is required</span>
+                <input type="text" class="inputbox" v-model="role.name" />
               </div>
               <div class="col-12">
-                <!--- store -->
-                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
-                <button v-else @click="updateDepartment()" type="button" class="save">Save</button>
+                <button type="submit" class="save">Save</button>
               </div>
             </form>
           </div>
@@ -45,7 +34,7 @@
       <div class="col-lg-7 col-md-12" style="padding-left:0;">
         <div class="card">
           <div class="card-header">
-            <h6>Department List</h6>
+            <h6>Role List</h6>
           </div>
           <div class="card-body">
             <input type="text" placeholder="Search..." class="searchText" />
@@ -87,16 +76,19 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(des) in departments" v-bind:key="des.id" class="active">
-                    <td class="all" nowrap>{{des.department_name}}</td>
+                  <tr v-for="(rol) in roles" v-bind:key="rol.id" class="active">
+                    <td class="all" nowrap>{{rol.name}}</td>
                     <td style="text-align: right;">
-                      <i @click="editDepartment(des)" class="fa fa-pencil pen">
+                      <i class="fa fa-tag assign" aria-hidden="true">
+                        <span class="assignLbl">Assign Permission</span>
+                      </i>
+                      <i @click="editRole(rol)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
                       <i
                         data-toggle="modal"
                         data-target="#exampleModalCenter"
-                        @click="deleteDepartment(des.id)"
+                        @click="deleteRole(rol.id)"
                         class="fa fa-trash time"
                       >
                         <span class="timeLabel">Delete</span>
@@ -112,98 +104,55 @@
     </div>
   </div>
 </template>
+
 <script>
 /**
  *  COMPONENTS
  */
 import confirm from "../message/confirm.vue";
 import { EventBus } from "../../js/event-bus.js";
-import message from "../Alertmessage/message.vue";
 export default {
   components: {
-    confirm,
-    message
+    confirm
   },
   data() {
     return {
       search: "",
-      department: {},
-      departments: [],
+      role: {},
+      roles: [],
       isEdit: false,
-      delurl: "",
-      msg: {
-        text: "",
-        type: ""
-      }
+      delurl: ""
     };
   },
   mounted() {
-    this.getDepartments();
+    this.getRoles();
   },
   created() {
-    EventBus.$on("clicked", response => {
-      this.getDepartments();
-      (this.msg.text = response.text), (this.msg.type = response.type);
+    EventBus.$on("clicked", clickCount => {
+      this.getRoles();
     });
-    this.getDepartments();
+    this.getRoles();
   },
   methods: {
-    /***
-     *
-     * Form Validation
-     *
-     */
-    onValidate(value, inputId, megId) {
-      if (value == "" || value == undefined)
-        document.getElementById(inputId).style.border = "solid 1px red";
-      else document.getElementById(inputId).style.border = "solid 1px #d2d6de";
-      document.getElementById(megId).style.display = "none";
-    },
-    onValidationMessage(inputId, megId) {
-      document.getElementById(inputId).style.border = "solid 1px red";
-      document.getElementById(megId).style.display = "block";
-    },
-
-    checkValidate() {
-      if (
-        this.department.department_name == "" ||
-        this.department.department_name == undefined
-      ) {
-        this.onValidationMessage("sessionid", "sessionmsg");
-      } else {
-        return true;
-      }
-      return false;
-    },
-
-    /***
-     *
-     *End of Form Validation
-     *
-     */
-    getDepartments() {
+    getRoles() {
       this.axios
-        .get("/api/departments")
-        .then(response => (this.departments = response.data));
+        .get("/api/roles")
+        .then(response => (this.roles = response.data));
     },
-    addDepartment() {
-      console.log(JSON.stringify(this.department));
-      if (this.checkValidate()) {
-        this.axios
-          .post("/api/department/store", this.department)
-          .then(response => {
-            this.getDepartments();
-            setTimeout(() => {
-              this.department = {};
-              (this.msg.text = response.data.text),
-                (this.msg.type = response.data.type);
-            }, 100);
-          })
-          .catch(error => console.log(error));
-      }
+    addRole() {
+      console.log(JSON.stringify(this.role));
+      this.axios
+        .post("/api/role/store", this.role)
+        .then(response => {
+          this.getRoles();
+          setTimeout(() => {
+            this.role = {};
+          }, 100);
+        })
+        .catch(error => console.log(error));
     },
-    editDepartment(data) {
-      console.log(JSON.stringify(data.department_name));
+    editRole(data) {
+      console.log(JSON.stringify(data.name));
       let to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
       window.scroll({
         top: to,
@@ -211,29 +160,26 @@ export default {
         behavior: "smooth"
       });
       this.moveToDown = !this.moveToDown;
-      this.department = {};
+      this.role = {};
       this.moveToDown = !this.moveToDown;
-      this.department.id = data.id;
-      this.department.department_name = data.department_name;
+      this.role.id = data.id;
+      this.role.name = data.name;
       this.isEdit = true;
     },
-    updateDepartment() {
+    updateRole() {
+      console.log(JSON.stringify(this.role));
       this.axios
-        .post(`/api/department/update/${this.department.id}`, this.department)
-        .then(response => {
-          this.msg.text = response.data.text;
-          this.msg.type = response.data.type;
-          setTimeout(() => {
-            this.getDepartments();
-            console.log("Response text ==> " + response.data.text);
-            this.isEdit = false;
-            this.department = {};
-          }, 100);
+        .post(`/api/role/update/${this.role.id}`, this.role)
+        .then(res => {
+          this.isEdit = false;
+          this.role = {};
+          this.getRoles();
+          console.log(JSON.stringify(res));
         });
     },
-    deleteDepartment(id) {
-      var funName = "delete"; /**Delete function **/
-      this.delurl = `department/${funName}/${id}`;
+    deleteRole(id) {
+      var funName = "delete"; /**Delete function */
+      this.delurl = `role/${funName}/${id}`;
     },
     searchData() {
       if (this.search == "") {

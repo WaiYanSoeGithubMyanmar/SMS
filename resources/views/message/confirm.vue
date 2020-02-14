@@ -10,12 +10,11 @@
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
       <div class="modal-content">
         <form @submit.prevent="deleteData">
-          <div class="modal-header confirm-modal-header" style="background: #1b5e20;">
+          <div class="modal-header confirm-modal-header">
             <h6 class="modal-title" style="color: white;">Message</h6>
-           <i data-dismiss="modal" class="fa fa-close confirm-q" aria-hidden="true"></i>
-           
+            <i data-dismiss="modal" class="fa fa-close confirm-q" aria-hidden="true"></i>
           </div>
-          <div class="modal-body confirm-modal-body">
+          <div class="confirm-body">
             <h6 class="modal-title">Are you sure?</h6>
           </div>
           <div class="modal-footer confirm-modal-footer">
@@ -41,13 +40,26 @@ export default {
   },
   data() {
     return {
-      clickCount: 0
+      response: [
+        {
+          text: ""
+        },
+        {
+          type: ""
+        }
+      ]
     };
-  },  methods: {
+  },
+  methods: {
     deleteData() {
-      this.axios.delete(`/api/${this.url}`).then(response => {});
-      this.clickCount++;
-      EventBus.$emit("clicked", this.clickCount);
+      this.axios.delete(`/api/${this.url}`).then(response => {
+        this.response = response.data;
+        console.log("" + JSON.stringify(response.data));
+
+        setTimeout(() => {
+          EventBus.$emit("clicked", this.response);
+        }, 100);
+      });
     }
   }
 };

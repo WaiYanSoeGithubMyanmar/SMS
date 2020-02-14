@@ -2115,7 +2115,7 @@ input[type=file] {
 .active .pen .penLabel:hover,
 .active .time .timeLabel:hover,
 .active .download .downloadLabel:hover {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .active .pen .penLabel::after,
@@ -2203,12 +2203,14 @@ input[type=file] {
 }
 
 .confirm-modal-header {
-  padding: 0.9rem 1rem !important;
+  padding: 0.4rem 1rem 0.4rem 1rem !important;
+  background-image: -webkit-gradient(linear, left top, right top, from(#057514), to(green));
+  background-image: linear-gradient(to right, #057514, green);
 }
 
 .confirm-modal-header .confirm-q {
   margin-top: 0.3rem;
-  color: #db0202;
+  color: grey;
   cursor: pointer;
 }
 
@@ -2219,11 +2221,24 @@ input[type=file] {
 
 .confirm-q:hover {
   zoom: 1;
-  background: #1b5e20 radial-gradient(circle, transparent 1%, #1b5e20 1%) center/15000%;
+  color: #db0202;
 }
 
-.confirm-modal-body {
-  padding: 1rem 1rem !important;
+.confirm-body {
+  padding: 0.7rem 1rem !important;
+  border-bottom: 0 none !important;
+}
+
+.confirm-modal-footer {
+  padding: 0.2rem 1rem 0.3rem !important;
+}
+
+.error_message {
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
 }
 
 /**

@@ -66,6 +66,46 @@ Route::group(['prefix' => 'hostelroom'], function () {
     Route::delete('delete/{id}', 'HostelRoomController@delete');
     Route::get('search/{data}', 'HostelRoomController@search');
 });
+
+
+/**
+ * HRM  DESIGNATION
+ */
+Route::get('designations', 'DesignationController@index');
+Route::group(['prefix' => 'designation'], function () {
+    Route::post('store', 'DesignationController@store');
+    Route::get('edit/{id}', 'DesignationController@edit');
+    Route::post('update/{id}', 'DesignationController@update');
+    Route::delete('delete/{id}', 'DesignationController@delete');
+    Route::get('search/{data}', 'DesignationController@search');
+});
+
+/**
+ * HRM  DEPARTMENT
+ */
+Route::get('departments', 'DepartmentController@index');
+Route::group(['prefix' => 'department'], function () {
+    Route::post('store', 'DepartmentController@store');
+    Route::get('edit/{id}', 'DepartmentController@edit');
+    Route::post('update/{id}', 'DepartmentController@update');
+    Route::delete('delete/{id}', 'DepartmentController@delete');
+    Route::get('search/{data}', 'DepartmentController@search');
+});
+
+
+
+/**
+ * Roles Permissions
+ */
+Route::get('roles', 'RoleController@index');
+Route::group(['prefix' => 'department'], function () {
+    Route::post('store', 'RoleController@store');
+    Route::get('edit/{id}', 'RoleController@edit');
+    Route::post('update/{id}', 'RoleController@update');
+    Route::delete('delete/{id}', 'RoleController@delete');
+    Route::get('search/{data}', 'RoleController@search');
+});
+
 /***
  * End Code of Wai Yan Soe
  */

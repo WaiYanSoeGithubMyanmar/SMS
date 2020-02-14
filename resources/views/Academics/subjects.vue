@@ -109,7 +109,7 @@
                     <td class="all" nowrap>{{ sub.type }}</td>
                     <td style="text-align:right;">
                         <i @click="goEdit(sub.id)" class="fa fa-pencil pen"></i>
-                        <i @click="goDelete(sub.id)" class="fa fa-trash time"></i>
+                        <i @click="goDelete(sub.id)" class="fa fa-times time"></i>
                     </td>
                   </tr>                  
                 </tbody>

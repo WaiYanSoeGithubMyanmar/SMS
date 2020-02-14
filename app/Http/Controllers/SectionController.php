@@ -30,15 +30,15 @@ class SectionController extends Controller
 
     public function SaveSection($request)
     {
-        $check = Section::where('section', $request->input('section'))->count();
+        $check = Section::where('section', $request->input('section'))->where('domain', 'TS')->get()->count();
         if ($check > 0)
         {
-            $checkActive = Section::where('section', $request->input('section'))->get();
+            $checkActive = Section::where('section', $request->input('section'))->where('domain', 'TS')->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 //Save Update is_active
                 $checkActive[0]->is_active = "yes";
-                $checkActive[0]->save(); 
+                $checkActive[0]->save();
                 return response()->json(['text' => 'Section added successfully', 'type' => 'success']);
             }
             else        return response()->json(['text' => 'Section already exists', 'type' => 'error']);
@@ -56,15 +56,15 @@ class SectionController extends Controller
     }
 
     public function UpdateSection($request){
-        $check = Section::where('section', $request->input('section'))->count();
+        $check = Section::where('section', $request->input('section'))->where('domain', 'TS')->get()->count();
         if($check > 0)
         {
-            $checkActive = Section::where('section', $request->input('section'))->get();
-            $Section = Section::where('id', $request->input('id'))->get();
+            $checkActive = Section::where('section', $request->input('section'))->where('domain', 'TS')->get();
+            $Section = Section::where('id', $request->input('id'))->where('domain', 'TS')->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 $Section[0]->section = $request->input('section');                    
-                $Section[0]->save();               
+                $Section[0]->save();
                 return response()->json(['text' => 'Session updated successfully', 'type' => 'success']);
             }
             else        return response()->json(['text' => 'Section already exists', 'type' => 'error']);

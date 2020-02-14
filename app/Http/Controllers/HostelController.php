@@ -121,6 +121,4 @@ class HostelController extends Controller
             ->get()->toArray();
         return array_reverse($hostel);
     }
-
-    
 }

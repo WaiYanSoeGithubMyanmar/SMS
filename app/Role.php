@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class class_section extends Model
+class Role extends Model
 {
-    protected $guarded = [];    
+    //
+    protected $guarded = [];
+
 }

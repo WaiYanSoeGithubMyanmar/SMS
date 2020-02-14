@@ -3,11 +3,11 @@
     <div class="toplink">
       <h2 class="stuName">HRM</h2>
       <h4 class="stuLink">
-        <router-link class="home" to="/home">Home</router-link>> Designation
+        <router-link to="/home" class="home">Home</router-link>> Designation
       </h4>
     </div>
     <hr />
-
+    <confirm :url="delurl"></confirm>
     <div class="row rowContainer" style="align-items: end !important;">
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
@@ -15,16 +15,20 @@
             <h6>Add Designation</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <div class="col-12">
-              <label for="name">
-                Name
-                <strong>*</strong>
-              </label>
-              <input type="text" class="inputbox" name="name" />
-            </div>
-            <div class="col-12">
-              <button class="save">Save</button>
-            </div>
+            <form @submit.prevent="addDesignation">
+              <div class="col-12">
+                <label for="name">
+                  Name
+                  <strong>*</strong>
+                </label>
+                <input type="text" class="inputbox" v-model="designation.designation_name" />
+              </div>
+              <div class="col-12">
+           <!--- store -->
+                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
+                <button v-else @click="updateDesignation()" type="button" class="save">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -69,84 +73,23 @@
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
                   <tr>
-                    <th class="all" nowrap>Designation</th>
-                    <th class="all" style="text-align:right;" nowrap>Action</th>
+                    <th class="all" nowrap>Name</th>
+                    <th class="all" nowrap style="text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="active">
-                    <td class="all" nowrap>Faculty</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
+                  <tr v-for="(des) in designations" v-bind:key="des.id" class="active">
+                    <td class="all" nowrap>{{des.designation_name}}</td>
+                    <td style="text-align: right;">
+                      <i @click="editDesignation(des)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Accountant</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Librarian</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Admin</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Receptionist</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Principal</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
-                        <span class="timeLabel">Delete</span>
-                      </i>
-                    </td>
-                  </tr>
-                  <tr class="active">
-                    <td class="all" nowrap>Director</td>
-                    <td style="text-align:right;">
-                      <i class="fa fa-pencil pen">
-                        <span class="penLabel">Edit</span>
-                      </i>
-                      <i class="fa fa-trash time">
+                      <i
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                        @click="deleteDesignation(des.id)"
+                        class="fa fa-trash time"
+                      >
                         <span class="timeLabel">Delete</span>
                       </i>
                     </td>
@@ -160,3 +103,98 @@
     </div>
   </div>
 </template>
+
+<script>
+/**
+ *  COMPONENTS
+ */
+import confirm from "../message/confirm.vue";
+import { EventBus } from "../../js/event-bus.js";
+export default {
+  components: {
+    confirm
+  },
+  data() {
+    return {
+      search: "",
+      designation: {},
+      designations: [],
+      isEdit: false,
+      delurl: ""
+    };
+  },
+  mounted() {
+    this.getDesignations();
+  },
+  created() {
+    EventBus.$on("clicked", clickCount => {
+      this.getDesignations();
+    });
+    this.getDesignations();
+  },
+  methods: {
+    getDesignations() {
+      this.axios
+        .get("/api/designations")
+        .then(response => (this.designations = response.data));
+    },
+    addDesignation() {
+      console.log(JSON.stringify(this.designation));
+      this.axios
+        .post("/api/designation/store", this.designation)
+        .then(response => {
+          this.getDesignations();
+          setTimeout(() => {
+            this.designation = {};
+          }, 100);
+        })
+        .catch(error => console.log(error));
+    },
+    editDesignation(data) {
+      console.log(JSON.stringify(data.name));
+      let to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
+      window.scroll({
+        top: to,
+        left: 0,
+        behavior: "smooth"
+      });
+      this.moveToDown = !this.moveToDown;
+      this.designation = {};
+      this.moveToDown = !this.moveToDown;
+      this.designation.id = data.id;
+      this.designation.designation_name = data.designation_name;
+      this.isEdit = true;
+    },
+    updateDesignation() {
+      console.log(JSON.stringify(this.designation));
+      this.axios
+        .post(`/api/designation/update/${this.designation.id}`, this.designation)
+        .then(res => {
+          this.isEdit = false;
+          this.designation = {};
+          this.getDesignations();
+          console.log(JSON.stringify(res));
+        });
+    },
+    deleteDesignation(id) {
+      var funName = "delete"; /**Delete function */
+      this.delurl = `designation/${funName}/${id}`;
+    },
+    searchData() {
+      if (this.search == "") {
+        this.axios.get(`api/departments`).then(response => {
+          this.roomtypes = [];
+          this.roomtypes = response.data;
+        });
+      } else {
+        this.axios
+          .get(`api/department/search`, { params: { keywords: this.search } })
+          .then(response => {
+            this.roomtypes = [];
+            this.roomtypes = response.data;
+          });
+      }
+    }
+  }
+};
+</script>

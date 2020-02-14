@@ -29,10 +29,10 @@ class SubjectController extends Controller
 
     public function SaveSubject($request)
     {
-        $check = subject::where('name', $request->input('name'))->count();
+        $check = subject::where('name', $request->input('name'))->where('domain', 'TS')->get()->count();
         if ($check > 0)
         {
-            $checkActive = subject::where('name', $request->input('name'))->get();
+            $checkActive = subject::where('name', $request->input('name'))->where('domain', 'TS')->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 //Save Update is_active
@@ -58,12 +58,12 @@ class SubjectController extends Controller
         }
     }
 
-    public function UpdateSection($request){
-        $check = subject::where('name', $request->input('name'))->count();
+    public function UpdateSubject($request){
+        $check = subject::where('name', $request->input('name'))->where('domain', 'TS')->get()->count();
         if($check > 0)
         {
-            $checkActive = subject::where('name', $request->input('name'))->get();
-            $Subjects = subject::where('id', $request->input('id'))->get();
+            $checkActive = subject::where('name', $request->input('name'))->where('domain', 'TS')->get();
+            $Subjects = subject::where('id', $request->input('id'))->where('domain', 'TS')->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 $Subjects[0]->name = $request->input('name');

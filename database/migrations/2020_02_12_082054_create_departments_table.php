@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassesTable extends Migration
+class CreateDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('class', 60);
-            $table->char('is_active', 25)->default('yes');
-            $table->char('domain', 100);
+            $table->string('department_name', 200);
+            $table->string('is_active', 25);
+            $table->text('domain')->default('tastysoft');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateClassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classes');
+        Schema::dropIfExists('departments');
     }
 }
