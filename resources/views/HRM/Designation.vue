@@ -15,7 +15,7 @@
             <h6>Add Designation</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form @submit.prevent="addDesignation">
+            <form>
               <div class="col-12">
                 <label for="name">
                   Name
@@ -25,8 +25,8 @@
               </div>
               <div class="col-12">
            <!--- store -->
-                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
-                <button v-else @click="updateDesignation()" type="button" class="save">Save</button>
+                <button v-if="this.isEdit == false" @click="addDesignation" type="submit" class="save">Save</button>
+                <button v-else @click="updateDesignation()" type="submit" class="save">Save</button>
               </div>
             </form>
           </div>

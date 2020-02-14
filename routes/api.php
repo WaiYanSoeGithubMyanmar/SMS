@@ -98,13 +98,19 @@ Route::group(['prefix' => 'department'], function () {
  * Roles Permissions
  */
 Route::get('roles', 'RoleController@index');
-Route::group(['prefix' => 'department'], function () {
+Route::group(['prefix' => 'role'], function () {
     Route::post('store', 'RoleController@store');
     Route::get('edit/{id}', 'RoleController@edit');
     Route::post('update/{id}', 'RoleController@update');
     Route::delete('delete/{id}', 'RoleController@delete');
     Route::get('search/{data}', 'RoleController@search');
 });
+
+
+/**
+ * Assign Permissions
+ */
+Route::get('features', 'ActivityController@index');
 
 /***
  * End Code of Wai Yan Soe

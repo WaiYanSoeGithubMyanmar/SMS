@@ -15,7 +15,7 @@
             <h6>Add Department</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form @submit.prevent="addDepartment">
+            <form>
               <message :alertmessage="msg" />
               <div class="col-12">
                 <label for="name">
@@ -34,8 +34,8 @@
               </div>
               <div class="col-12">
                 <!--- store -->
-                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
-                <button v-else @click="updateDepartment()" type="button" class="save">Save</button>
+                <button v-if="this.isEdit == false" @click="addDepartment" type="submit" class="save">Save</button>
+                <button v-else @click="updateDepartment()" type="submit" class="save">Save</button>
               </div>
             </form>
           </div>

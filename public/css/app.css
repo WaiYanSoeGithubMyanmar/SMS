@@ -1615,10 +1615,27 @@ input[type=file] {
 
 .active .pen,
 .active .time,
-.active .download {
+.active .download,
+.active .assign {
   cursor: pointer;
   position: relative;
   display: inline-block;
+}
+
+.active .assign .assignLbl {
+  width: 100px !important;
+  visibility: hidden;
+  font-size: 10px;
+  background-color: #1b5e20;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 0 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 130%;
+  left: 90%;
+  margin-left: -60px;
 }
 
 .active .pen .penLabel,
@@ -1641,13 +1658,15 @@ input[type=file] {
 
 .active .pen .penLabel:hover,
 .active .time .timeLabel:hover,
-.active .download .downloadLabel:hover {
+.active .download .downloadLabel:hover,
+.active .assign .assignLbl:hover {
   visibility: hidden !important;
 }
 
 .active .pen .penLabel::after,
 .active .time .timeLabel::after,
-.active .download .downloadLabel::after {
+.active .download .downloadLabel::after,
+.active .assign .assignLbl::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -1660,7 +1679,8 @@ input[type=file] {
 
 .active .pen:hover .penLabel,
 .active .time:hover .timeLabel,
-.active .download:hover .downloadLabel {
+.active .download:hover .downloadLabel,
+.active .assign:hover .assignLbl {
   visibility: visible;
 }
 
@@ -1814,14 +1834,16 @@ input[type=file] {
 
 .pen,
 .time,
-.download {
+.download,
+.assign {
   padding: 5px;
   color: rgba(0, 0, 0, 0.658);
 }
 
 .pen:hover,
 .time:hover,
-.download:hover {
+.download:hover,
+.assign:hover {
   background: #e7e7e7;
   border-radius: 5px;
   color: black;

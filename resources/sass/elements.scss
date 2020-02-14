@@ -300,14 +300,29 @@ input[type="file"] {
 .active {
   .pen,
   .time,
-  .download {
+  .download ,.assign{
     cursor: pointer;
     position: relative;
     display: inline-block;
   }
+  .assign .assignLbl{
+    width: 100px !important;
+    visibility: hidden;
+    font-size: 10px;
+    background-color: #1b5e20;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 130%;
+    left: 90%;
+    margin-left: -60px;
+  }
   .pen .penLabel,
   .time .timeLabel,
-  .download .downloadLabel {
+  .download .downloadLabel{
     visibility: hidden;
     width: 50px;
     font-size: 10px;
@@ -324,12 +339,12 @@ input[type="file"] {
   }
   .pen .penLabel:hover,
   .time .timeLabel:hover,
-  .download .downloadLabel:hover {
+  .download .downloadLabel:hover ,.assign .assignLbl:hover {
     visibility: hidden !important;
   }
   .pen .penLabel::after,
   .time .timeLabel::after,
-  .download .downloadLabel::after {
+  .download .downloadLabel::after ,.assign .assignLbl::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -341,7 +356,7 @@ input[type="file"] {
   }
   .pen:hover .penLabel,
   .time:hover .timeLabel,
-  .download:hover .downloadLabel {
+  .download:hover .downloadLabel, .assign:hover .assignLbl {
     visibility: visible;
   }
 }
@@ -479,13 +494,13 @@ input[type="file"] {
 // Save & Edit & Delete Table Icon
 .pen,
 .time,
-.download {
+.download,.assign {
   padding: 5px;
   color: rgba(0, 0, 0, 0.658);
 }
 .pen:hover,
 .time:hover,
-.download:hover {
+.download:hover,.assign:hover {
   background: #e7e7e7;
   border-radius: 5px;
   color: black;

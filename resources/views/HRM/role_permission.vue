@@ -1,9 +1,9 @@
 <template>
   <div class="form" id="bar">
     <div class="toplink">
-      <h2 class="stuName">HRM</h2>
+      <h2 class="stuName">System Settings</h2>
       <h4 class="stuLink">
-        <router-link to="/home" class="home">Home</router-link>> Role Permissions
+        <router-link to="/home" class="home">Home</router-link> / Role Permissions
       </h4>
     </div>
     <hr />
@@ -15,7 +15,7 @@
             <h6>Add Role</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form @submit.prevent="addRole">
+            <form>
               <div class="col-12">
                 <label for="name">
                   Name
@@ -24,7 +24,9 @@
                 <input type="text" class="inputbox" v-model="role.name" />
               </div>
               <div class="col-12">
-                <button type="submit" class="save">Save</button>
+                <button v-if="isEdit == false" @click="addRole" type="submit" class="save">Save</button>
+                <button v-else @click="updateRole" type="submit" class="save">Save</button>
+                
               </div>
             </form>
           </div>
@@ -79,13 +81,15 @@
                   <tr v-for="(rol) in roles" v-bind:key="rol.id" class="active">
                     <td class="all" nowrap>{{rol.name}}</td>
                     <td style="text-align: right;">
+                      <router-link to="role/assign">
                       <i class="fa fa-tag assign" aria-hidden="true">
                         <span class="assignLbl">Assign Permission</span>
                       </i>
+                      </router-link>
                       <i @click="editRole(rol)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
-                      <i
+                      <i v-if="checkDelete == true"
                         data-toggle="modal"
                         data-target="#exampleModalCenter"
                         @click="deleteRole(rol.id)"
@@ -121,6 +125,7 @@ export default {
       role: {},
       roles: [],
       isEdit: false,
+      checkDelete: false,
       delurl: ""
     };
   },
@@ -165,6 +170,7 @@ export default {
       this.role.id = data.id;
       this.role.name = data.name;
       this.isEdit = true;
+      this.checkDelete = true;
     },
     updateRole() {
       console.log(JSON.stringify(this.role));
@@ -172,6 +178,7 @@ export default {
         .post(`/api/role/update/${this.role.id}`, this.role)
         .then(res => {
           this.isEdit = false;
+          this.checkDelete = false;
           this.role = {};
           this.getRoles();
           console.log(JSON.stringify(res));

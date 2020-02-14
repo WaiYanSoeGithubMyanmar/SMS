@@ -34,6 +34,7 @@ import StaAttendance from '../views/HRM/StaffAttendance.vue';
 import Department from '../views/HRM/Department.vue';
 import Designation from '../views/HRM/Designation.vue';
 import Role from '../views/HRM/role_permission.vue';
+import Assign from '../views/HRM/assign_permission.vue';
 
 //Download Center
 import UploadContent from '../views/DownloadCenter/UploadContent.vue';
@@ -194,6 +195,11 @@ export const routes = [
         name: 'role',
         path: '/role',
         component: Role
+    },
+    {
+        name: 'assign',
+        path: '/role/assign',
+        component: Assign
     },
     {
         name: 'uploadcontent',
