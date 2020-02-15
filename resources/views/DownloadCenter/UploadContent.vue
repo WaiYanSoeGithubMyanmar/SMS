@@ -91,7 +91,7 @@
             <div class="col-12">
               <label for="Description">Description</label>
               <br />
-              <textarea class="textareas" id="Description" rows="3"></textarea>
+              <textarea class="textareas" id="Description" rows="3" autocomplete="off"></textarea>
             </div>
             <div class="col-12">
               <label for="faPhoto">

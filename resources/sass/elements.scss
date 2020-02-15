@@ -511,13 +511,12 @@ input[type="file"] {
   width: 200px;
   z-index: 1;
   display: none;
-  background: whitesmoke;
   right: 0px;
   cursor: pointer;
   position: absolute;
-  border-radius: 5px;
-  .tableLink,
-  .tableLinks {
+  margin: 10px 0px;
+  border: 1px solid #aba2a2;
+  .tableLink, .tableLinkActive {
     border: none;
     display: block;
     font-weight: bolder;
@@ -529,7 +528,8 @@ input[type="file"] {
     background: #1b5e20;
     color: white;
   }
-  .tableLinks {
+  .tableLinkActive {
+    background: rgb(213, 220, 215);
     color: black;
   }
 }

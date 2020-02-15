@@ -7179,6 +7179,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Homework_add_homework_modal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Homework/add_homework_modal.vue */ "./resources/views/Homework/add_homework_modal.vue");
+/* harmony import */ var _Homework_edit_homework_modal_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Homework/edit_homework_modal.vue */ "./resources/views/Homework/edit_homework_modal.vue");
+/* harmony import */ var _Homework_detail_homework_modal_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Homework/detail_homework_modal.vue */ "./resources/views/Homework/detail_homework_modal.vue");
 //
 //
 //
@@ -7357,6 +7360,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    addmodal: _Homework_add_homework_modal_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    editmodal: _Homework_edit_homework_modal_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    detailmodal: _Homework_detail_homework_modal_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      className: "data",
+      arrayTableColumns: [{
+        "Name": "Class",
+        "Id": "ClassId",
+        "class": "tbl_body_Class"
+      }, {
+        "Name": "Section",
+        "Id": "SectionId",
+        "class": "tbl_body_Section"
+      }, {
+        "Name": "Subject",
+        "Id": "SubjectId",
+        "class": "tbl_body_Subject"
+      }, {
+        "Name": "Homework Date",
+        "Id": "HomeworkDateId",
+        "class": "tbl_body_Homework"
+      }, {
+        "Name": "Submission Date",
+        "Id": "SubmissionDateId",
+        "class": "tbl_body_Submission"
+      }, {
+        "Name": "Evaluation Date",
+        "Id": "Evaluation DateId",
+        "class": "tbl_body_Evaluation"
+      }, {
+        "Name": "Created By",
+        "Id": "CreatedById",
+        "class": "tbl_body_Created"
+      }, {
+        "Name": "Action",
+        "Id": "ActionId",
+        "class": "tbl_body_Action"
+      }]
+    };
+  },
+  methods: {
+    clickHideColumn: function clickHideColumn(data) {
+      showTableHeader(data);
+    },
+    clickShowColumn: function clickShowColumn(data) {
+      clickShowAllColumn(data);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Homework_detail_evaluation_modal_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Homework/detail_evaluation_modal.vue */ "./resources/views/Homework/detail_evaluation_modal.vue");
 //
 //
 //
@@ -7396,6 +7468,368 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    detailmodal: _Homework_detail_evaluation_modal_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      checkColumns: false,
+      arrayTableColumns: [{
+        "Name": "Subject",
+        "Id": "SubjectId",
+        "class": "tbl_body_Subject"
+      }, {
+        "Name": "Homework Date",
+        "Id": "HomeworkDateId",
+        "class": "tbl_body_Homework"
+      }, {
+        "Name": "Submission Date",
+        "Id": "SubmissionDateId",
+        "class": "tbl_body_Submission"
+      }, {
+        "Name": "Complete/Incomplete",
+        "Id": "CompleteIncompleteId",
+        "class": "tbl_body_CompleteIncomplete"
+      }, {
+        "Name": "Complete%",
+        "Id": "CompleteId",
+        "class": "tbl_body_Complete"
+      }, {
+        "Name": "Action",
+        "Id": "ActionId",
+        "class": "tbl_body_Action"
+      }]
+    };
+  },
+  methods: {
+    clickHideColumn: function clickHideColumn(data) {
+      showTableHeader(data);
+    },
+    clickShowColumn: function clickShowColumn(data) {
+      clickShowAllColumn(data);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      checkColumns: false,
+      arrayTableColumns: [{
+        "Name": "Admission Number",
+        "Id": "AdmissionNumberId",
+        "class": "tbl_body_Admission"
+      }, {
+        "Name": "Name",
+        "Id": "NameId",
+        "class": "tbl_body_Name"
+      }, {
+        "Name": "Status",
+        "Id": "StatusId",
+        "class": "tbl_body_Status"
+      }]
+    };
+  },
+  methods: {
+    clickHideColumn: function clickHideColumn(data) {
+      showTableHeader(data);
+    },
+    clickShowColumn: function clickShowColumn(data) {
+      clickShowAllColumn(data);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -56131,7 +56565,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("textarea", {
         staticClass: "textareas",
-        attrs: { id: "Description", rows: "3" }
+        attrs: { id: "Description", rows: "3", autocomplete: "off" }
       })
     ])
   },
@@ -60982,7 +61416,7 @@ var render = function() {
                         attrs: { id: "studenttable" }
                       },
                       [
-                        _vm._m(5),
+                        _vm._m(4),
                         _vm._v(" "),
                         _c(
                           "tbody",
@@ -61001,7 +61435,26 @@ var render = function() {
                                   "td",
                                   { staticStyle: { "text-align": "right" } },
                                   [
-                                    _vm._m(6, true),
+                                    _c(
+                                      "router-link",
+                                      { attrs: { to: "role/assign" } },
+                                      [
+                                        _c(
+                                          "i",
+                                          {
+                                            staticClass: "fa fa-tag assign",
+                                            attrs: { "aria-hidden": "true" }
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "assignLbl" },
+                                              [_vm._v("Assign Permission")]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
                                     _vm._v(" "),
                                     _c(
                                       "i",
@@ -61022,29 +61475,33 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c(
-                                      "i",
-                                      {
-                                        staticClass: "fa fa-trash time",
-                                        attrs: {
-                                          "data-toggle": "modal",
-                                          "data-target": "#exampleModalCenter"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.deleteRole(rol.id)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          { staticClass: "timeLabel" },
-                                          [_vm._v("Delete")]
+                                    _vm.checkDelete == true
+                                      ? _c(
+                                          "i",
+                                          {
+                                            staticClass: "fa fa-trash time",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target":
+                                                "#exampleModalCenter"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteRole(rol.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "timeLabel" },
+                                              [_vm._v("Delete")]
+                                            )
+                                          ]
                                         )
-                                      ]
-                                    )
-                                  ]
+                                      : _vm._e()
+                                  ],
+                                  1
                                 )
                               ]
                             )
@@ -61080,16 +61537,6 @@ var staticRenderFns = [
     return _c("label", { attrs: { for: "name" } }, [
       _vm._v("\n                Name\n                "),
       _c("strong", [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("button", { staticClass: "save", attrs: { type: "submit" } }, [
-        _vm._v("Save")
-      ])
     ])
   },
   function() {
@@ -61159,16 +61606,6 @@ var staticRenderFns = [
         )
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "i",
-      { staticClass: "fa fa-tag assign", attrs: { "aria-hidden": "true" } },
-      [_c("span", { staticClass: "assignLbl" }, [_vm._v("Assign Permission")])]
-    )
   }
 ]
 render._withStripped = true
@@ -61193,617 +61630,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal", attrs: { id: "AddHomework" } }, [
-      _c("div", { staticClass: "modal-dialog modal-lg" }, [
-        _c("div", { staticClass: "modal-content modal-media-content" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "modal-body", staticStyle: { padding: "10px 0px" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "row",
-                  staticStyle: { margin: "0px" },
-                  attrs: { id: "row" }
-                },
-                [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "col-sm-12 col-lg-12 col-12",
-                      staticStyle: { "margin-top": "10px" }
-                    },
-                    [_c("wysiwyg")],
-                    1
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _vm._m(8)
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal", attrs: { id: "EvaluateHomework" } }, [
-      _c("div", { staticClass: "modal-dialog modal-lg" }, [
-        _c("div", { staticClass: "modal-content modal-media-content" }, [
-          _vm._m(9),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "modal-body", staticStyle: { padding: "0px" } },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "row",
-                  staticStyle: { margin: "0px" },
-                  attrs: { id: "row" }
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "col-lg-8 col-12",
-                      staticStyle: { padding: "15px" }
-                    },
-                    [
-                      _c("div", { staticClass: "alert alert-primary" }, [
-                        _vm._v(
-                          "\n                                Homework already evaluated, now you can update evaluation.\n                            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "row",
-                          staticStyle: {
-                            margin: "0px",
-                            "align-items": "center"
-                          },
-                          attrs: { id: "row" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-lg col-12",
-                              staticStyle: { padding: "0px" }
-                            },
-                            [
-                              _vm._m(10),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticStyle: {
-                                    padding: "15px",
-                                    height: "450px",
-                                    "background-color": "#eae6e6"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "row",
-                                      staticStyle: {
-                                        margin: "0px",
-                                        "margin-bottom": "10px"
-                                      }
-                                    },
-                                    [
-                                      _vm._m(11),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "col-2",
-                                          staticStyle: { padding: "0px" }
-                                        },
-                                        [
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass: "btn_check_box",
-                                              staticStyle: { float: "right" },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.checkStudent()
-                                                }
-                                              }
-                                            },
-                                            [
-                                              !_vm.checkUnCompleted
-                                                ? _c("i", {
-                                                    staticClass:
-                                                      "fa fa-square-o"
-                                                  })
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              _vm.checkUnCompleted
-                                                ? _c("i", {
-                                                    staticClass:
-                                                      "fa fa-check-square-o"
-                                                  })
-                                                : _vm._e()
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        height: "382px",
-                                        "background-color": "white",
-                                        "overflow-y": "scroll"
-                                      }
-                                    },
-                                    _vm._l(_vm.showStudents, function(
-                                      item,
-                                      index
-                                    ) {
-                                      return _c("div", [
-                                        !item.active
-                                          ? _c(
-                                              "div",
-                                              {
-                                                staticClass: "div_noactive",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.clickStudent(
-                                                      index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                    " +
-                                                    _vm._s(item.name) +
-                                                    "\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        item.active
-                                          ? _c(
-                                              "div",
-                                              {
-                                                staticClass: "div_active",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.clickStudent(
-                                                      index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                    " +
-                                                    _vm._s(item.name) +
-                                                    "\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ])
-                                    }),
-                                    0
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-lg-1 col-12",
-                              staticStyle: {
-                                "text-align": "center",
-                                padding: "5px 0px"
-                              }
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticStyle: { "text-align": "center" } },
-                                [
-                                  _c("div", { staticClass: "row" }, [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "col-sm-6 col-md-6 col-lg-12 div_remove_student"
-                                      },
-                                      [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn_check_box btn_check_small",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.goUnCompleted()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-angle-left",
-                                              staticStyle: {
-                                                "font-size": "19px",
-                                                "font-weight": "bold"
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          "col-sm-6 col-md-6 col-lg-12 div_remove_student"
-                                      },
-                                      [
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "btn_check_box btn_check_small1",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.goCompleted()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-angle-right",
-                                              staticStyle: {
-                                                "font-size": "19px",
-                                                "font-weight": "bold"
-                                              }
-                                            })
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-lg col-12",
-                              staticStyle: { padding: "0px" }
-                            },
-                            [
-                              _vm._m(12),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticStyle: {
-                                    padding: "15px",
-                                    height: "450px",
-                                    "background-color": "#eae6e6"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "row",
-                                      staticStyle: {
-                                        margin: "0px",
-                                        "margin-bottom": "10px"
-                                      }
-                                    },
-                                    [
-                                      _vm._m(13),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "col-2",
-                                          staticStyle: { padding: "0px" }
-                                        },
-                                        [
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass: "btn_check_box",
-                                              staticStyle: { float: "right" },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.checkCompletedStudent()
-                                                }
-                                              }
-                                            },
-                                            [
-                                              !_vm.checkCompleted
-                                                ? _c("i", {
-                                                    staticClass:
-                                                      "fa fa-square-o"
-                                                  })
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              _vm.checkCompleted
-                                                ? _c("i", {
-                                                    staticClass:
-                                                      "fa fa-check-square-o"
-                                                  })
-                                                : _vm._e()
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        height: "382px",
-                                        "background-color": "white",
-                                        "overflow-y": "scroll"
-                                      }
-                                    },
-                                    _vm._l(_vm.showCompletedStudents, function(
-                                      item,
-                                      index
-                                    ) {
-                                      return _c("div", [
-                                        !item.active
-                                          ? _c(
-                                              "div",
-                                              {
-                                                staticClass: "div_noactive",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.clickCompletedStudent(
-                                                      index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                    " +
-                                                    _vm._s(item.name) +
-                                                    "\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        item.active
-                                          ? _c(
-                                              "div",
-                                              {
-                                                staticClass: "div_active",
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.clickCompletedStudent(
-                                                      index
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                    " +
-                                                    _vm._s(item.name) +
-                                                    "\n                                                "
-                                                )
-                                              ]
-                                            )
-                                          : _vm._e()
-                                      ])
-                                    }),
-                                    0
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(14)
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(15)
-                ]
-              )
-            ]
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
-      _c("div", { staticClass: "toplink" }, [
-        _c("h2", { staticClass: "stuName" }, [
-          _vm._v("\n                Homework\n            ")
-        ]),
-        _vm._v(" "),
-        _c("h4", { staticClass: "stuLink" }, [
-          _c(
-            "a",
-            {
-              staticStyle: { "text-decoration": "none", color: "#1b5e20" },
-              attrs: { href: "" }
-            },
-            [_vm._v("Home ")]
-          ),
-          _vm._v(" > Homework\n            ")
-        ])
-      ]),
+    _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
+      _vm._m(0),
       _vm._v(" "),
       _c("hr", { staticStyle: { "margin-bottom": "-0.5rem" } }),
       _vm._v(" "),
       _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _c("h6", [_vm._v("Select Criteria")])
-        ]),
+        _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "div",
-            {
-              staticClass: "row",
-              staticStyle: { margin: "0px" },
-              attrs: { id: "row" }
-            },
-            [
-              _c("div", { staticClass: "col-sm-4 col-lg-4 col-12 " }, [
-                _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-                  _vm._v("Class\n                            "),
-                  _c("strong", [_vm._v("*")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  { staticClass: "inputbox", attrs: { name: "class" } },
-                  [
-                    _c("option", { attrs: { selected: "", disabled: "" } }, [
-                      _vm._v("Select Class")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Class 1" } }, [
-                      _vm._v("Class 1")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Class 2" } }, [
-                      _vm._v("Class 2")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Class 3" } }, [
-                      _vm._v("Class 2")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4 col-lg-4 col-12" }, [
-                _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-                  _vm._v("Section\n                        ")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  { staticClass: "inputbox", attrs: { name: "class" } },
-                  [
-                    _c("option", { attrs: { selected: "", disabled: "" } }, [
-                      _vm._v("Select Section")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Section A" } }, [
-                      _vm._v("Section A")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Section B" } }, [
-                      _vm._v("Section B")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Section C" } }, [
-                      _vm._v("Section C")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-sm-4 col-lg-4 col-12" }, [
-                _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-                  _vm._v("Subject\n                        ")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  { staticClass: "inputbox", attrs: { name: "class" } },
-                  [
-                    _c("option", { attrs: { selected: "", disabled: "" } }, [
-                      _vm._v("Select Subject")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Subject 1" } }, [
-                      _vm._v("Subject 1")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Subject 2" } }, [
-                      _vm._v("Subject 2")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "Subject 3" } }, [
-                      _vm._v("Subject 3")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-12" }, [
-                _c("button", { staticClass: "searchButton" }, [
-                  _vm._v("Search")
-                ])
-              ])
-            ]
-          )
-        ]),
+        _vm._m(2),
         _vm._v(" "),
-        _c("div", { staticClass: "sub-header" }, [
-          _c("h6", [_vm._v("Homework List")]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "add",
-              attrs: { "data-toggle": "modal", "data-target": "#AddHomework" }
-            },
-            [_vm._v("Add")]
-          )
-        ]),
+        _vm._m(3),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _c("input", {
@@ -61813,34 +61650,626 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "copyRows" }, [
             _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
+              _vm._v(" "),
               _c("div", { staticClass: "col-2" }, [
-                _c("a", { attrs: { href: "#", title: "Copy" } }, [
-                  _c("i", { staticClass: "fa fa-copy" })
+                _vm._m(8),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "columns", attrs: { id: "columns" } },
+                  [
+                    _vm._l(_vm.arrayTableColumns, function(item) {
+                      return _c("div", [
+                        _c(
+                          "p",
+                          {
+                            staticClass: "tableLink",
+                            attrs: { id: item.Id },
+                            on: {
+                              click: function($event) {
+                                return _vm.clickHideColumn(item)
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v(_vm._s(item.Name))])]
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c(
+                        "p",
+                        {
+                          staticClass: "tableLinkActive",
+                          on: {
+                            click: function($event) {
+                              return _vm.clickShowColumn(_vm.arrayTableColumns)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Restore visibility")])]
+                      )
+                    ])
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", {
+                  staticStyle: {
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    background: "transparent"
+                  },
+                  attrs: {
+                    onclick: "clickBackground('columns','backgroundColumn')",
+                    id: "backgroundColumn"
+                  }
+                })
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table table-hover table-striped" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[0].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Class")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[1].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Section")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[2].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Subject")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[3].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Homework Date")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[4].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Submission Date")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[5].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Evaluation Date")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[6].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Created By")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      class: _vm.arrayTableColumns[7].class,
+                      staticStyle: { "text-align": "right" },
+                      attrs: { nowrap: "" }
+                    },
+                    [_vm._v("Action")]
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
-                _c("a", { attrs: { href: "#", title: "Excel" } }, [
-                  _c("i", { staticClass: "fa fa-file-excel-o" })
+              _c("tbody", [
+                _c("tr", { staticClass: "active" }, [
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[0].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    Class 1\n                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[1].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    Section 1\n                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[2].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    Subject 1\n                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[3].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    07/02/2018\n                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[4].class,
+                      attrs: { nowrap: "" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                    07/02/2018\n                                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("td", {
+                    class: _vm.arrayTableColumns[5].class,
+                    attrs: { nowrap: "" }
+                  }),
+                  _vm._v(" "),
+                  _c("td", {
+                    class: _vm.arrayTableColumns[6].class,
+                    attrs: { nowrap: "" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      class: _vm.arrayTableColumns[7].class,
+                      staticStyle: {
+                        "text-align": "right",
+                        "min-width": "80px"
+                      }
+                    },
+                    [
+                      _vm._m(9),
+                      _vm._v(" "),
+                      _vm._m(10),
+                      _vm._v(" "),
+                      _vm._m(11)
+                    ]
+                  )
                 ])
-              ]),
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "AddHomework" } },
+      [_c("addmodal")],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "EditHomework" } },
+      [_c("editmodal")],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "EvaluateHomework" } },
+      [_c("detailmodal")],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "toplink" }, [
+      _c("h2", { staticClass: "stuName" }, [
+        _vm._v("\n                Homework\n            ")
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "stuLink" }, [
+        _c(
+          "a",
+          {
+            staticStyle: { "text-decoration": "none", color: "#1b5e20" },
+            attrs: { href: "" }
+          },
+          [_vm._v("Home ")]
+        ),
+        _vm._v(" > Homework\n            ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("Select Criteria")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c(
+        "div",
+        {
+          staticClass: "row",
+          staticStyle: { margin: "0px" },
+          attrs: { id: "row" }
+        },
+        [
+          _c("div", { staticClass: "col-sm-4 col-lg-4 col-12 " }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Class\n                            "),
+              _c("strong", [_vm._v("*")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Class")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class 1" } }, [
+                  _vm._v("Class 1")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class 2" } }, [
+                  _vm._v("Class 2")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class 3" } }, [
+                  _vm._v("Class 2")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4 col-lg-4 col-12" }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Section\n                        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Section")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section A" } }, [
+                  _vm._v("Section A")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section B" } }, [
+                  _vm._v("Section B")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section C" } }, [
+                  _vm._v("Section C")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-4 col-lg-4 col-12" }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Subject\n                        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Subject")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 1" } }, [
+                  _vm._v("Subject 1")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 2" } }, [
+                  _vm._v("Subject 2")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 3" } }, [
+                  _vm._v("Subject 3")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c("button", { staticClass: "searchButton" }, [_vm._v("Search")])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sub-header" }, [
+      _c("h6", [_vm._v("Homework List")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "add",
+          attrs: { "data-toggle": "modal", "data-target": "#AddHomework" }
+        },
+        [_vm._v("Add")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Copy" } }, [
+        _c("i", { staticClass: "fa fa-copy" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Excel" } }, [
+        _c("i", { staticClass: "fa fa-file-excel-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "PDF" } }, [
+        _c("i", { staticClass: "fa fa-file-pdf-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Print" } }, [
+        _c("i", { staticClass: "fa fa-print" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          title: "Columns",
+          onclick: "showColumns('columns','backgroundColumn')"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-columns" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "i",
+      {
+        staticClass: "fa fa-list pen",
+        attrs: { "data-toggle": "modal", "data-target": "#EvaluateHomework" }
+      },
+      [_c("span", { staticClass: "penLabel" }, [_vm._v("Detail")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "i",
+      {
+        staticClass: "fa fa-pencil pen",
+        attrs: { "data-toggle": "modal", "data-target": "#EditHomework" }
+      },
+      [_c("span", { staticClass: "penLabel" }, [_vm._v("Edit")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", { staticClass: "fa fa-trash time" }, [
+      _c("span", { staticClass: "timeLabel" }, [_vm._v("Delete")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("hr", { staticStyle: { "margin-bottom": "-0.5rem" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("input", {
+            staticClass: "searchText",
+            attrs: { type: "text", placeholder: "Search..." }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "copyRows" }, [
+            _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _vm._m(7),
               _vm._v(" "),
               _c("div", { staticClass: "col-2" }, [
-                _c("a", { attrs: { href: "#", title: "PDF" } }, [
-                  _c("i", { staticClass: "fa fa-file-pdf-o" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
-                _c("a", { attrs: { href: "#", title: "Print" } }, [
-                  _c("i", { staticClass: "fa fa-print" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-2" }, [
-                _c("a", { attrs: { href: "#", title: "Columns" } }, [
-                  _c("i", { staticClass: "fa fa-columns" })
-                ])
+                _vm._m(8),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "columns", attrs: { id: "columns" } },
+                  [
+                    _vm._l(_vm.arrayTableColumns, function(item) {
+                      return _c("div", [
+                        _c(
+                          "p",
+                          {
+                            staticClass: "tableLink",
+                            attrs: { id: item.Id },
+                            on: {
+                              click: function($event) {
+                                return _vm.clickHideColumn(item)
+                              }
+                            }
+                          },
+                          [_c("span", [_vm._v(_vm._s(item.Name))])]
+                        )
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("div", [
+                      _c(
+                        "p",
+                        {
+                          staticClass: "tableLinkActive",
+                          on: {
+                            click: function($event) {
+                              return _vm.clickShowColumn(_vm.arrayTableColumns)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("Restore visibility")])]
+                      )
+                    ])
+                  ],
+                  2
+                ),
+                _vm._v(" "),
+                _c("div", {
+                  staticStyle: {
+                    top: "0",
+                    left: "0",
+                    width: "100%",
+                    height: "100%",
+                    background: "transparent"
+                  },
+                  attrs: {
+                    onclick: "clickBackground('columns','backgroundColumn')",
+                    id: "backgroundColumn"
+                  }
+                })
               ])
             ])
           ]),
@@ -61855,38 +62284,55 @@ var staticRenderFns = [
               [
                 _c("thead", [
                   _c("tr", [
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Class")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Section")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Subject")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Homework Date")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Submission Date")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Evaluation Date")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v("Created By")
-                    ]),
+                    _c(
+                      "th",
+                      {
+                        class: _vm.arrayTableColumns[0].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [_vm._v("Subject")]
+                    ),
                     _vm._v(" "),
                     _c(
                       "th",
                       {
-                        staticClass: "all",
+                        class: _vm.arrayTableColumns[1].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [_vm._v("Homework Date")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        class: _vm.arrayTableColumns[2].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [_vm._v("Submission Date")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        class: _vm.arrayTableColumns[3].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [_vm._v("Complete/Incomplete")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        class: _vm.arrayTableColumns[4].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [_vm._v("Complete%")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "th",
+                      {
+                        class: _vm.arrayTableColumns[5].class,
                         staticStyle: { "text-align": "right" },
                         attrs: { nowrap: "" }
                       },
@@ -61897,77 +62343,62 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("tbody", [
                   _c("tr", { staticClass: "active" }, [
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v(
-                        "\n                                    Class 1\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v(
-                        "\n                                    Section 1\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v(
-                        "\n                                    Subject 1\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v(
-                        "\n                                    07/02/2018\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                      _vm._v(
-                        "\n                                    07/02/2018\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "all", attrs: { nowrap: "" } }),
+                    _c(
+                      "td",
+                      {
+                        class: _vm.arrayTableColumns[0].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Subject 1\n                                "
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
                     _c(
                       "td",
                       {
-                        staticStyle: {
-                          "text-align": "right",
-                          "min-width": "80px"
-                        }
+                        class: _vm.arrayTableColumns[1].class,
+                        attrs: { nowrap: "" }
                       },
                       [
-                        _c(
-                          "i",
-                          {
-                            staticClass: "fa fa-list pen",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#EvaluateHomework"
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "penLabel" }, [
-                              _vm._v("Detail")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-pencil pen" }, [
-                          _c("span", { staticClass: "penLabel" }, [
-                            _vm._v("Edit")
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "fa fa-trash time" }, [
-                          _c("span", { staticClass: "timeLabel" }, [
-                            _vm._v("Delete")
-                          ])
-                        ])
+                        _vm._v(
+                          "\n                                    07/02/2018\n                                "
+                        )
                       ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: _vm.arrayTableColumns[2].class,
+                        attrs: { nowrap: "" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    07/02/2018\n                                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("td", {
+                      class: _vm.arrayTableColumns[3].class,
+                      attrs: { nowrap: "" }
+                    }),
+                    _vm._v(" "),
+                    _c("td", {
+                      class: _vm.arrayTableColumns[4].class,
+                      attrs: { nowrap: "" }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      {
+                        class: _vm.arrayTableColumns[5].class,
+                        staticStyle: { "text-align": "right" }
+                      },
+                      [_vm._m(9)]
                     )
                   ])
                 ])
@@ -61976,8 +62407,298 @@ var staticRenderFns = [
           ])
         ])
       ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "modal", attrs: { id: "EvaluateHomework" } },
+      [_c("detailmodal")],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "toplink" }, [
+      _c("h2", { staticClass: "stuName" }, [
+        _vm._v("\n                Homework\n            ")
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "stuLink" }, [
+        _c(
+          "a",
+          {
+            staticStyle: { "text-decoration": "none", color: "#1b5e20" },
+            attrs: { href: "" }
+          },
+          [_vm._v("Home ")]
+        ),
+        _vm._v(" > Evaluation Report\n            ")
+      ])
     ])
   },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("Select Criteria")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c(
+        "div",
+        {
+          staticClass: "row",
+          staticStyle: { margin: "0px" },
+          attrs: { id: "row" }
+        },
+        [
+          _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Class\n                            "),
+              _c("strong", [_vm._v("*")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Class")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class A" } }, [
+                  _vm._v("Class A")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class B" } }, [
+                  _vm._v("Class B")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Class C" } }, [
+                  _vm._v("Class C")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Section\n                            "),
+              _c("strong", [_vm._v("*")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Section")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section A" } }, [
+                  _vm._v("Section A")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section B" } }, [
+                  _vm._v("Section B")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Section C" } }, [
+                  _vm._v("Section C")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
+            _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+              _vm._v("Subject\n                        ")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "inputbox", attrs: { name: "class" } },
+              [
+                _c("option", { attrs: { selected: "", disabled: "" } }, [
+                  _vm._v("Select Subject")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 1" } }, [
+                  _vm._v("Subject 1")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 2" } }, [
+                  _vm._v("Subject 2")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "Subject 3" } }, [
+                  _vm._v("Subject 3")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c("button", { staticClass: "searchButton" }, [_vm._v("Search")])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sub-header" }, [
+      _c("h6", [_vm._v("Evaluation Report")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Copy" } }, [
+        _c("i", { staticClass: "fa fa-copy" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Excel" } }, [
+        _c("i", { staticClass: "fa fa-file-excel-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "PDF" } }, [
+        _c("i", { staticClass: "fa fa-file-pdf-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Print" } }, [
+        _c("i", { staticClass: "fa fa-print" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          title: "Columns",
+          onclick: "showColumns('columns','backgroundColumn')"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-columns" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "i",
+      {
+        staticClass: "fa fa-list pen",
+        attrs: { "data-toggle": "modal", "data-target": "#EvaluateHomework" }
+      },
+      [_c("span", { staticClass: "penLabel" }, [_vm._v("Detail")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal-dialog modal-lg" }, [
+    _c("div", { staticClass: "modal-content modal-media-content" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-body", staticStyle: { padding: "10px 0px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "row",
+              staticStyle: { margin: "0px" },
+              attrs: { id: "row" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-sm-12 col-lg-12 col-12",
+                  staticStyle: { "margin-top": "10px" }
+                },
+                [_vm._m(7), _vm._v(" "), _c("wysiwyg")],
+                1
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(8)
+    ])
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -61989,7 +62710,7 @@ var staticRenderFns = [
         staticStyle: { padding: "0px 15px", margin: "0px" }
       },
       [
-        _c("h6", [_vm._v("Homework List")]),
+        _c("h6", [_vm._v("Add Homework")]),
         _vm._v(" "),
         _c("i", {
           staticClass: "fa fa-times time modal_close_btn",
@@ -62004,7 +62725,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-lg-4 col-12" }, [
       _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-        _vm._v("Class\n                                "),
+        _vm._v("Class\r\n                        "),
         _c("strong", [_vm._v("*")])
       ]),
       _vm._v(" "),
@@ -62027,7 +62748,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-lg-4 col-12" }, [
       _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-        _vm._v("Section\n                                "),
+        _vm._v("Section\r\n                        "),
         _c("strong", [_vm._v("*")])
       ]),
       _vm._v(" "),
@@ -62050,7 +62771,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-lg-4 col-12" }, [
       _c("label", { staticClass: "title", attrs: { for: "name" } }, [
-        _vm._v("Subject\n                                "),
+        _vm._v("Subject\r\n                        "),
         _c("strong", [_vm._v("*")])
       ]),
       _vm._v(" "),
@@ -62112,6 +62833,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+      _vm._v("Description\r\n                        "),
+      _c("strong", [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "modal-footer", staticStyle: { padding: "10px 15px" } },
@@ -62123,7 +62853,1001 @@ var staticRenderFns = [
         )
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal-dialog modal-lg" }, [
+    _c("div", { staticClass: "modal-content modal-media-content" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-body", staticStyle: { padding: "0px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "row",
+              staticStyle: { margin: "0px" },
+              attrs: { id: "row" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-8 col-12",
+                  staticStyle: { padding: "0px" }
+                },
+                [
+                  _c("input", {
+                    staticClass: "searchText",
+                    attrs: { type: "text", placeholder: "Search..." }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "copyRows" }, [
+                    _c(
+                      "div",
+                      { staticClass: "row", attrs: { id: "copyRow" } },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-2" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "columns",
+                              attrs: { id: "ModalColumns" }
+                            },
+                            [
+                              _vm._l(_vm.arrayTableColumns, function(item) {
+                                return _c("div", [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: "tableLink",
+                                      attrs: { id: item.Id },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.clickHideColumn(item)
+                                        }
+                                      }
+                                    },
+                                    [_c("span", [_vm._v(_vm._s(item.Name))])]
+                                  )
+                                ])
+                              }),
+                              _vm._v(" "),
+                              _c("div", [
+                                _c(
+                                  "p",
+                                  {
+                                    staticClass: "tableLinkActive",
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.clickShowColumn(
+                                          _vm.arrayTableColumns
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_c("span", [_vm._v("Restore visibility")])]
+                                )
+                              ])
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("div", {
+                            staticStyle: {
+                              top: "0",
+                              left: "0",
+                              width: "100%",
+                              height: "100%",
+                              background: "transparent"
+                            },
+                            attrs: {
+                              onclick:
+                                "clickBackground('ModalColumns','ModalBackground')",
+                              id: "ModalBackground"
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "table-responsive" }, [
+                    _c(
+                      "table",
+                      {
+                        staticClass: "table table-hover table-striped",
+                        attrs: { id: "studenttable" }
+                      },
+                      [
+                        _c("thead", [
+                          _c("tr", [
+                            _c(
+                              "th",
+                              {
+                                class: _vm.arrayTableColumns[0].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [_vm._v("Admission Number")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "th",
+                              {
+                                class: _vm.arrayTableColumns[1].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [_vm._v("Name")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "th",
+                              {
+                                class: _vm.arrayTableColumns[2].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [_vm._v("Status")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tbody", [
+                          _c("tr", { staticClass: "active" }, [
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[0].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n                                        18001\r\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[1].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n                                        Edward Thomas\r\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[2].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-success btn-sm",
+                                    staticStyle: { "text-decoration": "none" },
+                                    attrs: { href: "#" }
+                                  },
+                                  [_vm._v("Complete")]
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", { staticClass: "active" }, [
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[0].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n                                        18001\r\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[1].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _vm._v(
+                                  "\r\n                                        Edward Thomas\r\n                                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                class: _vm.arrayTableColumns[2].class,
+                                attrs: { nowrap: "" }
+                              },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn-success btn-sm",
+                                    staticStyle: { "text-decoration": "none" },
+                                    attrs: { href: "#" }
+                                  },
+                                  [_vm._v("Complete")]
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(6)
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "sub-header",
+        staticStyle: { padding: "0px 15px", margin: "0px" }
+      },
+      [
+        _c("h6", [_vm._v("Homework Evaluation")]),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-times time modal_close_btn",
+          attrs: { "data-dismiss": "modal" }
+        })
+      ]
+    )
   },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Copy" } }, [
+        _c("i", { staticClass: "fa fa-copy" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Excel" } }, [
+        _c("i", { staticClass: "fa fa-file-excel-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "PDF" } }, [
+        _c("i", { staticClass: "fa fa-file-pdf-o" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2" }, [
+      _c("a", { attrs: { href: "#", title: "Print" } }, [
+        _c("i", { staticClass: "fa fa-print" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        attrs: {
+          title: "Columns",
+          onclick: "showColumns('ModalColumns','ModalBackground')"
+        }
+      },
+      [_c("i", { staticClass: "fa fa-columns" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "col-lg-4 col-12",
+        staticStyle: { "background-color": "#eae6e6", padding: "1rem" }
+      },
+      [
+        _c("h4", { staticStyle: { margin: "0px", "margin-bottom": "10px" } }, [
+          _vm._v("Summary")
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticStyle: { padding: "0px", margin: "0px" } }),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "div",
+            { staticStyle: { padding: "5px 0px", "margin-top": "5px" } },
+            [
+              _c(
+                "p",
+                {
+                  staticStyle: {
+                    padding: "0px",
+                    margin: "0px !important",
+                    "font-size": "14px"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-calendar",
+                    staticStyle: { "font-size": "15px" }
+                  }),
+                  _vm._v(
+                    "\r\n                                 \r\n                                "
+                  ),
+                  _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                    _vm._v("Homework Date:")
+                  ]),
+                  _vm._v(" 07/16/2018\r\n                            ")
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticStyle: { padding: "5px 0px" } }, [
+            _c(
+              "p",
+              {
+                staticStyle: {
+                  padding: "0px",
+                  margin: "0px !important",
+                  "font-size": "14px"
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-calendar",
+                  staticStyle: { "font-size": "15px" }
+                }),
+                _vm._v(
+                  "\r\n                                 \r\n                                "
+                ),
+                _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                  _vm._v("Submission Date:")
+                ]),
+                _vm._v(" 07/16/2018\r\n                            ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { padding: "5px 0px" } }, [
+            _c(
+              "p",
+              {
+                staticStyle: {
+                  padding: "0px",
+                  margin: "0px !important",
+                  "font-size": "14px"
+                }
+              },
+              [
+                _c("i", {
+                  staticClass: "fa fa-calendar",
+                  staticStyle: { "font-size": "15px" }
+                }),
+                _vm._v(
+                  "\r\n                                 \r\n                                "
+                ),
+                _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                  _vm._v("Evaluation Date:")
+                ]),
+                _vm._v(" 07/16/2018\r\n                            ")
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Created By:")
+              ]),
+              _vm._v(" Joe Black\r\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Evaluated By:")
+              ]),
+              _vm._v(" Joe Black\r\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Section:")
+              ]),
+              _vm._v(" A\r\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Class:")
+              ]),
+              _vm._v(" Class 1\r\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Subject:")
+              ]),
+              _vm._v(" Mathematics\r\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { padding: "5px 0px" } }, [
+          _c(
+            "p",
+            {
+              staticStyle: {
+                padding: "0px",
+                margin: "0px !important",
+                "font-size": "14px"
+              }
+            },
+            [
+              _c("span", { staticStyle: { "font-weight": "bold" } }, [
+                _vm._v("Description:")
+              ]),
+              _vm._v(" Study table from 1-10 .\r\n                        ")
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "modal-dialog modal-lg" }, [
+    _c("div", { staticClass: "modal-content modal-media-content" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "modal-body", staticStyle: { padding: "0px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "row",
+              staticStyle: { margin: "0px" },
+              attrs: { id: "row" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "col-lg-8 col-12",
+                  staticStyle: { padding: "15px" }
+                },
+                [
+                  _c("div", { staticClass: "alert alert-primary" }, [
+                    _vm._v(
+                      "\r\n                        Homework already evaluated, now you can update evaluation.\r\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "row",
+                      staticStyle: { margin: "0px", "align-items": "center" },
+                      attrs: { id: "row" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg col-12",
+                          staticStyle: { padding: "0px" }
+                        },
+                        [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticStyle: {
+                                padding: "15px",
+                                height: "450px",
+                                "background-color": "#eae6e6"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "row",
+                                  staticStyle: {
+                                    margin: "0px",
+                                    "margin-bottom": "10px"
+                                  }
+                                },
+                                [
+                                  _vm._m(2),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "col-2",
+                                      staticStyle: { padding: "0px" }
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn_check_box",
+                                          staticStyle: { float: "right" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.checkStudent()
+                                            }
+                                          }
+                                        },
+                                        [
+                                          !_vm.checkUnCompleted
+                                            ? _c("i", {
+                                                staticClass: "fa fa-square-o"
+                                              })
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _vm.checkUnCompleted
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fa fa-check-square-o"
+                                              })
+                                            : _vm._e()
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    height: "382px",
+                                    "background-color": "white",
+                                    "overflow-y": "scroll"
+                                  }
+                                },
+                                _vm._l(_vm.showStudents, function(item, index) {
+                                  return _c("div", [
+                                    !item.active
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass: "div_noactive",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.clickStudent(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\r\n                                            " +
+                                                _vm._s(item.name) +
+                                                "\r\n                                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.active
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass: "div_active",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.clickStudent(index)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\r\n                                            " +
+                                                _vm._s(item.name) +
+                                                "\r\n                                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                }),
+                                0
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg-1 col-12",
+                          staticStyle: {
+                            "text-align": "center",
+                            padding: "5px 0px"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticStyle: { "text-align": "center" } },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-sm-6 col-md-6 col-lg-12 div_remove_student"
+                                  },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn_check_box btn_check_small",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.goUnCompleted()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa fa-angle-left",
+                                          staticStyle: {
+                                            "font-size": "19px",
+                                            "font-weight": "bold"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-sm-6 col-md-6 col-lg-12 div_remove_student"
+                                  },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass:
+                                          "btn_check_box btn_check_small1",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.goCompleted()
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa fa-angle-right",
+                                          staticStyle: {
+                                            "font-size": "19px",
+                                            "font-weight": "bold"
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-lg col-12",
+                          staticStyle: { padding: "0px" }
+                        },
+                        [
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticStyle: {
+                                padding: "15px",
+                                height: "450px",
+                                "background-color": "#eae6e6"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "row",
+                                  staticStyle: {
+                                    margin: "0px",
+                                    "margin-bottom": "10px"
+                                  }
+                                },
+                                [
+                                  _vm._m(4),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "col-2",
+                                      staticStyle: { padding: "0px" }
+                                    },
+                                    [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass: "btn_check_box",
+                                          staticStyle: { float: "right" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.checkCompletedStudent()
+                                            }
+                                          }
+                                        },
+                                        [
+                                          !_vm.checkCompleted
+                                            ? _c("i", {
+                                                staticClass: "fa fa-square-o"
+                                              })
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _vm.checkCompleted
+                                            ? _c("i", {
+                                                staticClass:
+                                                  "fa fa-check-square-o"
+                                              })
+                                            : _vm._e()
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    height: "382px",
+                                    "background-color": "white",
+                                    "overflow-y": "scroll"
+                                  }
+                                },
+                                _vm._l(_vm.showCompletedStudents, function(
+                                  item,
+                                  index
+                                ) {
+                                  return _c("div", [
+                                    !item.active
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass: "div_noactive",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.clickCompletedStudent(
+                                                  index
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\r\n                                            " +
+                                                _vm._s(item.name) +
+                                                "\r\n                                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.active
+                                      ? _c(
+                                          "div",
+                                          {
+                                            staticClass: "div_active",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.clickCompletedStudent(
+                                                  index
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\r\n                                            " +
+                                                _vm._s(item.name) +
+                                                "\r\n                                        "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                }),
+                                0
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(6)
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -62344,12 +64068,12 @@ var staticRenderFns = [
                     staticStyle: { "font-size": "15px" }
                   }),
                   _vm._v(
-                    "\n                                         \n                                        "
+                    "\r\n                                 \r\n                                "
                   ),
                   _c("span", { staticStyle: { "font-weight": "bold" } }, [
                     _vm._v("Homework Date:")
                   ]),
-                  _vm._v(" 07/16/2018\n                                    ")
+                  _vm._v(" 07/16/2018\r\n                            ")
                 ]
               )
             ]
@@ -62371,12 +64095,12 @@ var staticRenderFns = [
                   staticStyle: { "font-size": "15px" }
                 }),
                 _vm._v(
-                  "\n                                         \n                                        "
+                  "\r\n                                 \r\n                                "
                 ),
                 _c("span", { staticStyle: { "font-weight": "bold" } }, [
                   _vm._v("Submission Date:")
                 ]),
-                _vm._v(" 07/16/2018\n                                    ")
+                _vm._v(" 07/16/2018\r\n                            ")
               ]
             )
           ]),
@@ -62397,12 +64121,12 @@ var staticRenderFns = [
                   staticStyle: { "font-size": "15px" }
                 }),
                 _vm._v(
-                  "\n                                         \n                                        "
+                  "\r\n                                 \r\n                                "
                 ),
                 _c("span", { staticStyle: { "font-weight": "bold" } }, [
                   _vm._v("Evaluation Date:")
                 ]),
-                _vm._v(" 07/16/2018\n                                    ")
+                _vm._v(" 07/16/2018\r\n                            ")
               ]
             )
           ])
@@ -62422,7 +64146,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Created By:")
               ]),
-              _vm._v(" Joe Black\n                                ")
+              _vm._v(" Joe Black\r\n                        ")
             ]
           )
         ]),
@@ -62441,7 +64165,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Evaluated By:")
               ]),
-              _vm._v(" Joe Black\n                                ")
+              _vm._v(" Joe Black\r\n                        ")
             ]
           )
         ]),
@@ -62460,7 +64184,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Section:")
               ]),
-              _vm._v(" A\n                                ")
+              _vm._v(" A\r\n                        ")
             ]
           )
         ]),
@@ -62479,7 +64203,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Class:")
               ]),
-              _vm._v(" Class 1\n                                ")
+              _vm._v(" Class 1\r\n                        ")
             ]
           )
         ]),
@@ -62498,7 +64222,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Subject:")
               ]),
-              _vm._v(" Mathematics\n                                ")
+              _vm._v(" Mathematics\r\n                        ")
             ]
           )
         ]),
@@ -62517,9 +64241,7 @@ var staticRenderFns = [
               _c("span", { staticStyle: { "font-weight": "bold" } }, [
                 _vm._v("Description:")
               ]),
-              _vm._v(
-                " Study table from 1-10 .\n                                "
-              )
+              _vm._v(" Study table from 1-10 .\r\n                        ")
             ]
           )
         ])
@@ -62533,10 +64255,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6& ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -62548,897 +64270,189 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
-        _c("div", { staticClass: "toplink" }, [
-          _c("h2", { staticClass: "stuName" }, [
-            _vm._v("\n                Homework\n            ")
-          ]),
-          _vm._v(" "),
-          _c("h4", { staticClass: "stuLink" }, [
-            _c(
-              "a",
-              {
-                staticStyle: { "text-decoration": "none", color: "#1b5e20" },
-                attrs: { href: "" }
-              },
-              [_vm._v("Home ")]
-            ),
-            _vm._v(" > Evaluation Report\n            ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("hr", { staticStyle: { "margin-bottom": "-0.5rem" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h6", [_vm._v("Select Criteria")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              {
-                staticClass: "row",
-                staticStyle: { margin: "0px" },
-                attrs: { id: "row" }
-              },
-              [
-                _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
-                  _c(
-                    "label",
-                    { staticClass: "title", attrs: { for: "name" } },
-                    [
-                      _vm._v("Class\n                            "),
-                      _c("strong", [_vm._v("*")])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "inputbox", attrs: { name: "class" } },
-                    [
-                      _c("option", { attrs: { selected: "", disabled: "" } }, [
-                        _vm._v("Select Class")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Class A" } }, [
-                        _vm._v("Class A")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Class B" } }, [
-                        _vm._v("Class B")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Class C" } }, [
-                        _vm._v("Class C")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
-                  _c(
-                    "label",
-                    { staticClass: "title", attrs: { for: "name" } },
-                    [
-                      _vm._v("Section\n                            "),
-                      _c("strong", [_vm._v("*")])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "inputbox", attrs: { name: "class" } },
-                    [
-                      _c("option", { attrs: { selected: "", disabled: "" } }, [
-                        _vm._v("Select Section")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Section A" } }, [
-                        _vm._v("Section A")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Section B" } }, [
-                        _vm._v("Section B")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Section C" } }, [
-                        _vm._v("Section C")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-lg-4 col-12 textbox" }, [
-                  _c(
-                    "label",
-                    { staticClass: "title", attrs: { for: "name" } },
-                    [_vm._v("Subject\n                        ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    { staticClass: "inputbox", attrs: { name: "class" } },
-                    [
-                      _c("option", { attrs: { selected: "", disabled: "" } }, [
-                        _vm._v("Select Subject")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Subject 1" } }, [
-                        _vm._v("Subject 1")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Subject 2" } }, [
-                        _vm._v("Subject 2")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "Subject 3" } }, [
-                        _vm._v("Subject 3")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c("button", { staticClass: "searchButton" }, [
-                    _vm._v("Search")
-                  ])
-                ])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "sub-header" }, [
-            _c("h6", [_vm._v("Evaluation Report")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("input", {
-              staticClass: "searchText",
-              attrs: { type: "text", placeholder: "Search..." }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "copyRows" }, [
-              _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-                _c("div", { staticClass: "col-2" }, [
-                  _c("a", { attrs: { href: "#", title: "Copy" } }, [
-                    _c("i", { staticClass: "fa fa-copy" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2" }, [
-                  _c("a", { attrs: { href: "#", title: "Excel" } }, [
-                    _c("i", { staticClass: "fa fa-file-excel-o" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2" }, [
-                  _c("a", { attrs: { href: "#", title: "PDF" } }, [
-                    _c("i", { staticClass: "fa fa-file-pdf-o" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2" }, [
-                  _c("a", { attrs: { href: "#", title: "Print" } }, [
-                    _c("i", { staticClass: "fa fa-print" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-2" }, [
-                  _c("a", { attrs: { href: "#", title: "Columns" } }, [
-                    _c("i", { staticClass: "fa fa-columns" })
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "table-responsive" }, [
-              _c(
-                "table",
-                {
-                  staticClass: "table table-hover table-striped",
-                  attrs: { id: "studenttable" }
-                },
-                [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v("Class")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v("Homework Date")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v("Submission Date")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v("Complete/Incomplete")
-                      ]),
-                      _vm._v(" "),
-                      _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v("Complete%")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "th",
-                        {
-                          staticClass: "all",
-                          staticStyle: { "text-align": "right" },
-                          attrs: { nowrap: "" }
-                        },
-                        [_vm._v("Action")]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tbody", [
-                    _c("tr", { staticClass: "active" }, [
-                      _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v(
-                          "\n                                    Class 1\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v(
-                          "\n                                    07/02/2018\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                        _vm._v(
-                          "\n                                    07/02/2018\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "all", attrs: { nowrap: "" } }),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "all", attrs: { nowrap: "" } }),
-                      _vm._v(" "),
-                      _c("td", { staticStyle: { "text-align": "right" } }, [
-                        _c(
-                          "i",
-                          {
-                            staticClass: "fa fa-list pen",
-                            attrs: {
-                              "data-toggle": "modal",
-                              "data-target": "#EvaluateHomework"
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "penLabel" }, [
-                              _vm._v("Detail")
-                            ])
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
+  return _c("div", { staticClass: "modal-dialog modal-lg" }, [
+    _c("div", { staticClass: "modal-content modal-media-content" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "modal", attrs: { id: "EvaluateHomework" } }, [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
-          _c("div", { staticClass: "modal-content modal-media-content" }, [
-            _c(
-              "div",
-              {
-                staticClass: "sub-header",
-                staticStyle: { padding: "0px 15px", margin: "0px" }
-              },
-              [
-                _c("h6", [_vm._v("Homework Evaluation")]),
-                _vm._v(" "),
-                _c("i", {
-                  staticClass: "fa fa-times time modal_close_btn",
-                  attrs: { "data-dismiss": "modal" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "modal-body", staticStyle: { padding: "0px" } },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "row",
-                    staticStyle: { margin: "0px" },
-                    attrs: { id: "row" }
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-lg-8 col-12",
-                        staticStyle: { padding: "0px" }
-                      },
-                      [
-                        _c("input", {
-                          staticClass: "searchText",
-                          attrs: { type: "text", placeholder: "Search..." }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "copyRows" }, [
-                          _c(
-                            "div",
-                            { staticClass: "row", attrs: { id: "copyRow" } },
-                            [
-                              _c("div", { staticClass: "col-2" }, [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "#", title: "Copy" } },
-                                  [_c("i", { staticClass: "fa fa-copy" })]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-2" }, [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "#", title: "Excel" } },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-file-excel-o"
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-2" }, [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "#", title: "PDF" } },
-                                  [_c("i", { staticClass: "fa fa-file-pdf-o" })]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-2" }, [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "#", title: "Print" } },
-                                  [_c("i", { staticClass: "fa fa-print" })]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-2" }, [
-                                _c(
-                                  "a",
-                                  { attrs: { href: "#", title: "Columns" } },
-                                  [_c("i", { staticClass: "fa fa-columns" })]
-                                )
-                              ])
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "table-responsive" }, [
-                          _c(
-                            "table",
-                            {
-                              staticClass: "table table-hover table-striped",
-                              attrs: { id: "studenttable" }
-                            },
-                            [
-                              _c("thead", [
-                                _c("tr", [
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [_vm._v("Admission Number")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [_vm._v("Name")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "th",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [_vm._v("Status")]
-                                  )
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("tbody", [
-                                _c("tr", { staticClass: "active" }, [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                18001\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                Edward Thomas\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn-success btn-sm",
-                                          staticStyle: {
-                                            "text-decoration": "none"
-                                          },
-                                          attrs: { href: "#" }
-                                        },
-                                        [_vm._v("Complete")]
-                                      )
-                                    ]
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c("tr", { staticClass: "active" }, [
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                18001\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                Edward Thomas\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    {
-                                      staticClass: "all",
-                                      attrs: { nowrap: "" }
-                                    },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass: "btn-danger btn-sm",
-                                          staticStyle: {
-                                            "text-decoration": "none"
-                                          },
-                                          attrs: { href: "#" }
-                                        },
-                                        [_vm._v("Incomplete")]
-                                      )
-                                    ]
-                                  )
-                                ])
-                              ])
-                            ]
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-lg-4 col-12",
-                        staticStyle: {
-                          "background-color": "#eae6e6",
-                          padding: "1rem"
-                        }
-                      },
-                      [
-<<<<<<< HEAD
-                        _vm._m(4),
-                        _vm._v(" "),
-=======
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
-                        _c(
-                          "h4",
-                          {
-                            staticStyle: {
-                              margin: "0px",
-                              "margin-bottom": "10px"
-                            }
-                          },
-                          [_vm._v("Summary")]
-                        ),
-                        _vm._v(" "),
-                        _c("hr", {
-                          staticStyle: { padding: "0px", margin: "0px" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "div",
-                            {
-                              staticStyle: {
-                                padding: "5px 0px",
-                                "margin-top": "5px"
-                              }
-                            },
-                            [
-                              _c(
-                                "p",
-                                {
-                                  staticStyle: {
-                                    padding: "0px",
-                                    margin: "0px !important",
-                                    "font-size": "14px"
-                                  }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-calendar",
-                                    staticStyle: { "font-size": "15px" }
-                                  }),
-                                  _vm._v(
-                                    "\n                                         \n                                        "
-                                  ),
-                                  _c(
-                                    "span",
-                                    { staticStyle: { "font-weight": "bold" } },
-                                    [_vm._v("Homework Date:")]
-                                  ),
-                                  _vm._v(
-                                    " 07/16/2018\n                                    "
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                            _c(
-                              "p",
-                              {
-                                staticStyle: {
-                                  padding: "0px",
-                                  margin: "0px !important",
-                                  "font-size": "14px"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-calendar",
-                                  staticStyle: { "font-size": "15px" }
-                                }),
-                                _vm._v(
-                                  "\n                                         \n                                        "
-                                ),
-                                _c(
-                                  "span",
-                                  { staticStyle: { "font-weight": "bold" } },
-                                  [_vm._v("Submission Date:")]
-                                ),
-                                _vm._v(
-                                  " 07/16/2018\n                                    "
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                            _c(
-                              "p",
-                              {
-                                staticStyle: {
-                                  padding: "0px",
-                                  margin: "0px !important",
-                                  "font-size": "14px"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-calendar",
-                                  staticStyle: { "font-size": "15px" }
-                                }),
-                                _vm._v(
-                                  "\n                                         \n                                        "
-                                ),
-                                _c(
-<<<<<<< HEAD
-                                  "td",
-                                  { staticStyle: { "text-align": "right" } },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      { attrs: { to: "role/assign" } },
-                                      [
-                                        _c(
-                                          "i",
-                                          {
-                                            staticClass: "fa fa-tag assign",
-                                            attrs: { "aria-hidden": "true" }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "assignLbl" },
-                                              [_vm._v("Assign Permission")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "i",
-                                      {
-                                        staticClass: "fa fa-pencil pen",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editRole(rol)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          { staticClass: "penLabel" },
-                                          [_vm._v("Edit")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _vm.checkDelete == true
-                                      ? _c(
-                                          "i",
-                                          {
-                                            staticClass: "fa fa-trash time",
-                                            attrs: {
-                                              "data-toggle": "modal",
-                                              "data-target":
-                                                "#exampleModalCenter"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.deleteRole(rol.id)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "timeLabel" },
-                                              [_vm._v("Delete")]
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-=======
-                                  "span",
-                                  { staticStyle: { "font-weight": "bold" } },
-                                  [_vm._v("Evaluation Date:")]
-                                ),
-                                _vm._v(
-                                  " 07/16/2018\n                                    "
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
-                                )
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Created By:")]
-                              ),
-                              _vm._v(
-                                " Joe Black\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Evaluated By:")]
-                              ),
-                              _vm._v(
-                                " Joe Black\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Section:")]
-                              ),
-                              _vm._v(" A\n                                ")
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Class:")]
-                              ),
-                              _vm._v(
-                                " Class 1\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Subject:")]
-                              ),
-                              _vm._v(
-                                " Mathematics\n                                "
-                              )
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Description:")]
-                              ),
-                              _vm._v(
-                                " Study table from 1-10 .\n                                "
-                              )
-                            ]
-                          )
-                        ])
-                      ]
-                    )
-<<<<<<< HEAD
-                  ])
-                ])
-              ])
+      _c(
+        "div",
+        { staticClass: "modal-body", staticStyle: { padding: "10px 0px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "row",
+              staticStyle: { margin: "0px" },
+              attrs: { id: "row" }
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-sm-12 col-lg-12 col-12",
+                  staticStyle: { "margin-top": "10px" }
+                },
+                [_vm._m(7), _vm._v(" "), _c("wysiwyg")],
+                1
+              )
             ]
           )
         ]
-      )
-    ],
-    1
-  )
+      ),
+      _vm._v(" "),
+      _vm._m(8)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h6", [_vm._v("Add Role")])
+    return _c(
+      "div",
+      {
+        staticClass: "sub-header",
+        staticStyle: { padding: "0px 15px", margin: "0px" }
+      },
+      [
+        _c("h6", [_vm._v("Edit Homework")]),
+        _vm._v(" "),
+        _c("i", {
+          staticClass: "fa fa-times time modal_close_btn",
+          attrs: { "data-dismiss": "modal" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+        _vm._v("Class\r\n                        "),
+        _c("strong", [_vm._v("*")])
+      ]),
+      _vm._v(" "),
+      _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+        _c("option", { attrs: { selected: "", disabled: "" } }, [
+          _vm._v("Select Class")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Class 1" } }, [_vm._v("Class 1")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Class 2" } }, [_vm._v("Class 2")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Class 3" } }, [_vm._v("Class 2")])
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "name" } }, [
-      _vm._v("\n                Name\n                "),
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+        _vm._v("Section\r\n                        "),
+        _c("strong", [_vm._v("*")])
+      ]),
+      _vm._v(" "),
+      _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+        _c("option", { attrs: { selected: "", disabled: "" } }, [
+          _vm._v("Select Section")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Section A" } }, [_vm._v("Section A")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Section B" } }, [_vm._v("Section B")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Section C" } }, [_vm._v("Section C")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+        _vm._v("Subject\r\n                        "),
+        _c("strong", [_vm._v("*")])
+      ]),
+      _vm._v(" "),
+      _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+        _c("option", { attrs: { selected: "", disabled: "" } }, [
+          _vm._v("Select Subject")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Subject 1" } }, [_vm._v("Subject 1")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Subject 2" } }, [_vm._v("Subject 2")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "Subject 3" } }, [_vm._v("Subject 3")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { attrs: { for: "uploadDate" } }, [_vm._v("Homework Date")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "inputbox",
+        attrs: { type: "date", id: "uploadDate" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { attrs: { for: "uploadDate" } }, [
+        _vm._v("Submission Date")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "inputbox",
+        attrs: { type: "date", id: "uploadDate" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-12" }, [
+      _c("label", { attrs: { for: "faPhoto" } }, [_vm._v("Attach Document")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "inputbox",
+        attrs: { type: "file", id: "faPhoto" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "title", attrs: { for: "name" } }, [
+      _vm._v("Description\r\n                        "),
       _c("strong", [_vm._v("*")])
     ])
   },
@@ -63446,78 +64460,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h6", [_vm._v("Role List")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copyRows" }, [
-      _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Copy" } }, [
-            _c("i", { staticClass: "fa fa-copy" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Excel" } }, [
-            _c("i", { staticClass: "fa fa-file-excel-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "PDF" } }, [
-            _c("i", { staticClass: "fa fa-file-pdf-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Print" } }, [
-            _c("i", { staticClass: "fa fa-print" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Columns" } }, [
-            _c("i", { staticClass: "fa fa-columns" })
-=======
-                  ]
-                )
-              ]
-            )
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
-          ])
-        ])
-      ])
-    ])
-<<<<<<< HEAD
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-          _vm._v("Name")
-        ]),
-        _vm._v(" "),
+    return _c(
+      "div",
+      { staticClass: "modal-footer", staticStyle: { padding: "10px 15px" } },
+      [
         _c(
-          "th",
-          {
-            staticClass: "all",
-            staticStyle: { "text-align": "right" },
-            attrs: { nowrap: "" }
-          },
-          [_vm._v("Action")]
+          "button",
+          { staticClass: "save btn-dark", staticStyle: { margin: "0px" } },
+          [_vm._v("Save")]
         )
-      ])
-    ])
-=======
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -91528,7 +92481,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_HRM_Department_vue__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../views/HRM/Department.vue */ "./resources/views/HRM/Department.vue");
 /* harmony import */ var _views_HRM_Designation_vue__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../views/HRM/Designation.vue */ "./resources/views/HRM/Designation.vue");
 /* harmony import */ var _views_HRM_role_permission_vue__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../views/HRM/role_permission.vue */ "./resources/views/HRM/role_permission.vue");
-<<<<<<< HEAD
 /* harmony import */ var _views_HRM_assign_permission_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../views/HRM/assign_permission.vue */ "./resources/views/HRM/assign_permission.vue");
 /* harmony import */ var _views_DownloadCenter_UploadContent_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../views/DownloadCenter/UploadContent.vue */ "./resources/views/DownloadCenter/UploadContent.vue");
 /* harmony import */ var _views_DownloadCenter_Assignment_vue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../views/DownloadCenter/Assignment.vue */ "./resources/views/DownloadCenter/Assignment.vue");
@@ -91548,28 +92500,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_Reports_StaffAttendanceReport_vue__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../views/Reports/StaffAttendanceReport.vue */ "./resources/views/Reports/StaffAttendanceReport.vue");
 /* harmony import */ var _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../views/SystemSettings/GeneralSetting.vue */ "./resources/views/SystemSettings/GeneralSetting.vue");
 /* harmony import */ var _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../views/SystemSettings/SessionSetting.vue */ "./resources/views/SystemSettings/SessionSetting.vue");
-=======
-/* harmony import */ var _views_DownloadCenter_UploadContent_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../views/DownloadCenter/UploadContent.vue */ "./resources/views/DownloadCenter/UploadContent.vue");
-/* harmony import */ var _views_DownloadCenter_Assignment_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../views/DownloadCenter/Assignment.vue */ "./resources/views/DownloadCenter/Assignment.vue");
-/* harmony import */ var _views_DownloadCenter_StudyMaterial_vue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../views/DownloadCenter/StudyMaterial.vue */ "./resources/views/DownloadCenter/StudyMaterial.vue");
-/* harmony import */ var _views_DownloadCenter_Syllabus_vue__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../views/DownloadCenter/Syllabus.vue */ "./resources/views/DownloadCenter/Syllabus.vue");
-/* harmony import */ var _views_DownloadCenter_OtherDownload_vue__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../views/DownloadCenter/OtherDownload.vue */ "./resources/views/DownloadCenter/OtherDownload.vue");
-/* harmony import */ var _views_Transport_TranRoutes_vue__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../views/Transport/TranRoutes.vue */ "./resources/views/Transport/TranRoutes.vue");
-/* harmony import */ var _views_Transport_TranVehicles_vue__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../views/Transport/TranVehicles.vue */ "./resources/views/Transport/TranVehicles.vue");
-/* harmony import */ var _views_Transport_TranAssignVehicle_vue__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../views/Transport/TranAssignVehicle.vue */ "./resources/views/Transport/TranAssignVehicle.vue");
-/* harmony import */ var _views_Hostel_hostel_rooms_vue__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../views/Hostel/hostel_rooms.vue */ "./resources/views/Hostel/hostel_rooms.vue");
-/* harmony import */ var _views_Hostel_room_type_vue__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../views/Hostel/room_type.vue */ "./resources/views/Hostel/room_type.vue");
-/* harmony import */ var _views_Hostel_hostel_vue__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../views/Hostel/hostel.vue */ "./resources/views/Hostel/hostel.vue");
-/* harmony import */ var _views_Reports_StudentReport_vue__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../views/Reports/StudentReport.vue */ "./resources/views/Reports/StudentReport.vue");
-/* harmony import */ var _views_Reports_attendancereport_vue__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../views/Reports/attendancereport.vue */ "./resources/views/Reports/attendancereport.vue");
-/* harmony import */ var _views_Reports_StudentTransportReport_vue__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../views/Reports/StudentTransportReport.vue */ "./resources/views/Reports/StudentTransportReport.vue");
-/* harmony import */ var _views_Reports_StudentHostelReport_vue__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../views/Reports/StudentHostelReport.vue */ "./resources/views/Reports/StudentHostelReport.vue");
-/* harmony import */ var _views_Reports_StaffAttendanceReport_vue__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../views/Reports/StaffAttendanceReport.vue */ "./resources/views/Reports/StaffAttendanceReport.vue");
-/* harmony import */ var _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../views/SystemSettings/GeneralSetting.vue */ "./resources/views/SystemSettings/GeneralSetting.vue");
-/* harmony import */ var _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../views/SystemSettings/SessionSetting.vue */ "./resources/views/SystemSettings/SessionSetting.vue");
-/* harmony import */ var _views_Homework_AddHomework_vue__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../views/Homework/AddHomework.vue */ "./resources/views/Homework/AddHomework.vue");
-/* harmony import */ var _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../views/Homework/EvaluationReport.vue */ "./resources/views/Homework/EvaluationReport.vue");
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
+/* harmony import */ var _views_Homework_AddHomework_vue__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../views/Homework/AddHomework.vue */ "./resources/views/Homework/AddHomework.vue");
+/* harmony import */ var _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../views/Homework/EvaluationReport.vue */ "./resources/views/Homework/EvaluationReport.vue");
 // Attendance
 
  // Examinations
@@ -91816,19 +92748,15 @@ var routes = [{
 }, {
   name: 'sessetting',
   path: '/sessetting',
-<<<<<<< HEAD
   component: _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_45__["default"]
-=======
-  component: _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_44__["default"]
 }, {
   name: 'homework',
   path: '/homework',
-  component: _views_Homework_AddHomework_vue__WEBPACK_IMPORTED_MODULE_45__["default"]
+  component: _views_Homework_AddHomework_vue__WEBPACK_IMPORTED_MODULE_46__["default"]
 }, {
   name: 'evaluation_report',
   path: '/evaluation_report',
-  component: _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_46__["default"]
->>>>>>> 3823edd13c33af220abb85eaf08613ba7fe0d81d
+  component: _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_47__["default"]
 }];
 
 /***/ }),
@@ -93922,15 +94850,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EvaluationReport_vue_vue_type_template_id_201f3b66___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EvaluationReport.vue?vue&type=template&id=201f3b66& */ "./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _EvaluationReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EvaluationReport.vue?vue&type=script&lang=js& */ "./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EvaluationReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _EvaluationReport_vue_vue_type_template_id_201f3b66___WEBPACK_IMPORTED_MODULE_0__["render"],
   _EvaluationReport_vue_vue_type_template_id_201f3b66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -93947,6 +94877,20 @@ component.options.__file = "resources/views/Homework/EvaluationReport.vue"
 
 /***/ }),
 
+/***/ "./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EvaluationReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EvaluationReport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/EvaluationReport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EvaluationReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66&":
 /*!**************************************************************************************!*\
   !*** ./resources/views/Homework/EvaluationReport.vue?vue&type=template&id=201f3b66& ***!
@@ -93960,6 +94904,250 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EvaluationReport_vue_vue_type_template_id_201f3b66___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EvaluationReport_vue_vue_type_template_id_201f3b66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/views/Homework/add_homework_modal.vue":
+/*!*********************************************************!*\
+  !*** ./resources/views/Homework/add_homework_modal.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add_homework_modal.vue?vue&type=template&id=69be73b2& */ "./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/Homework/add_homework_modal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2&":
+/*!****************************************************************************************!*\
+  !*** ./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./add_homework_modal.vue?vue&type=template&id=69be73b2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/add_homework_modal.vue?vue&type=template&id=69be73b2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_add_homework_modal_vue_vue_type_template_id_69be73b2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_evaluation_modal.vue":
+/*!**************************************************************!*\
+  !*** ./resources/views/Homework/detail_evaluation_modal.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detail_evaluation_modal.vue?vue&type=template&id=c1e3945c& */ "./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c&");
+/* harmony import */ var _detail_evaluation_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detail_evaluation_modal.vue?vue&type=script&lang=js& */ "./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _detail_evaluation_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/Homework/detail_evaluation_modal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_evaluation_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./detail_evaluation_modal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_evaluation_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./detail_evaluation_modal.vue?vue&type=template&id=c1e3945c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_evaluation_modal.vue?vue&type=template&id=c1e3945c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_evaluation_modal_vue_vue_type_template_id_c1e3945c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_homework_modal.vue":
+/*!************************************************************!*\
+  !*** ./resources/views/Homework/detail_homework_modal.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detail_homework_modal.vue?vue&type=template&id=095b4606& */ "./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606&");
+/* harmony import */ var _detail_homework_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detail_homework_modal.vue?vue&type=script&lang=js& */ "./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _detail_homework_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/Homework/detail_homework_modal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_homework_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./detail_homework_modal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_homework_modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_homework_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./detail_homework_modal.vue?vue&type=template&id=095b4606& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/detail_homework_modal.vue?vue&type=template&id=095b4606&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_homework_modal_vue_vue_type_template_id_095b4606___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/views/Homework/edit_homework_modal.vue":
+/*!**********************************************************!*\
+  !*** ./resources/views/Homework/edit_homework_modal.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit_homework_modal.vue?vue&type=template&id=263887a6& */ "./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/Homework/edit_homework_modal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./edit_homework_modal.vue?vue&type=template&id=263887a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/Homework/edit_homework_modal.vue?vue&type=template&id=263887a6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_homework_modal_vue_vue_type_template_id_263887a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -95102,8 +96290,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

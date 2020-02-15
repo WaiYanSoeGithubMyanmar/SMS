@@ -2326,15 +2326,15 @@ input[type=file] {
   width: 200px;
   z-index: 1;
   display: none;
-  background: whitesmoke;
   right: 0px;
   cursor: pointer;
   position: absolute;
-  border-radius: 5px;
+  margin: 10px 0px;
+  border: 1px solid #aba2a2;
 }
 
 .columns .tableLink,
-.columns .tableLinks {
+.columns .tableLinkActive {
   border: none;
   display: block;
   font-weight: bolder;
@@ -2348,7 +2348,8 @@ input[type=file] {
   color: white;
 }
 
-.columns .tableLinks {
+.columns .tableLinkActive {
+  background: #d5dcd7;
   color: black;
 }
 

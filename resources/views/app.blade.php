@@ -107,25 +107,46 @@ $('.additional-menu a').on('click',function() {
 })
 
 // For Popover Table
-function showTableHeader(id) {
-  if (document.getElementById(id).style.background == "whitesmoke") {
-    document.getElementById(id).style.background = "#1b5e20";
-    document.getElementById(id).style.color = "white";
-  } else {
-    document.getElementById(id).style.background = "whitesmoke";
-    document.getElementById(id).style.color = "black";
-  }
+function showColumns(id,idBg) {
+    document.getElementById(id).style.display = "block";
+    document.getElementById(idBg).style.display = "block";
+    this.checkColumns = true;
+    document.getElementById(idBg).style.position = "fixed";
 }
 
-// Table Modal 
-function showColumns() {
-      if (this.show) {
-        document.getElementById("columns").style.display = "none";
-        this.show = null;
-      } else {
-        document.getElementById("columns").style.display = "block";
-        this.show = true;
-      }
+function clickBackground(id,idBg){
+    document.getElementById(id).style.display = "none";
+    document.getElementById(idBg).style.display = "none";
+    this.checkColumns = false;
+}
+
+function showTableHeader(data){
+    if (document.getElementById(data.Id).style.background == "rgb(213, 220, 215)") {
+        document.getElementById(data.Id).style.background = "#1b5e20";
+        document.getElementById(data.Id).style.color = "white";
+        var all_col=document.getElementsByClassName(data.class);
+        for(var i=0;i<all_col.length;i++){
+            all_col[i].style.display="table-cell";
+        }
+    } else {
+        document.getElementById(data.Id).style.background = "rgb(213, 220, 215)";
+        document.getElementById(data.Id).style.color = "black";
+        var all_col=document.getElementsByClassName(data.class);
+        for(var i=0;i<all_col.length;i++){
+            all_col[i].style.display="none";
+        }
     }
+}
+
+function clickShowAllColumn(data){
+    for(let i = 0; i < data.length;i++){
+        document.getElementById(data[i].Id).style.background = "#1b5e20";
+        document.getElementById(data[i].Id).style.color = "white";
+        var all_col=document.getElementsByClassName(data[i].class);
+        for(var a = 0;a<all_col.length;a++){
+            all_col[a].style.display="table-cell";
+        }
+    }
+}
 
 </script>
