@@ -22,6 +22,7 @@ class Vehicles extends Migration
             $table->string('driver_contact',20)->nullable();
             $table->string('note',200)->nullable();
             $table->string('is_active',25)->default("Yes");
+            $table->string('domain',100);
             $table->timestamps();
         });
     }

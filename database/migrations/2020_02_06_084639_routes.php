@@ -19,6 +19,7 @@ class Routes extends Migration
             $table->string('fare',100)->nullable();
             $table->string('remark',200)->default("-");
             $table->string('is_active',25)->default("Yes");
+            $table->string('domain',100);
             $table->timestamps();
         });
     }

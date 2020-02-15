@@ -10877,24 +10877,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      tranRoute: {},
+      tranRoute: {
+        "id": "",
+        "route_title": "",
+        "fare": ""
+      },
       routeList: [],
       alertmessage: "",
       alertdeletemsg: ""
@@ -10907,25 +10897,27 @@ __webpack_require__.r(__webpack_exports__);
     getRouteList: function getRouteList() {
       var _this = this;
 
-      this.axios.get("/api/tranRouteList").then(function (response) {
+      this.axios.get('/api/tranRouteList').then(function (response) {
         _this.routeList = response.data;
       });
     },
     goSave: function goSave() {
       var _this2 = this;
 
-      this.axios.post("/api/TranRoute/save", this.tranRoute).then(function (response) {
-        return _this2.tranRoute = {
-          id: "",
-          route_title: "",
-          fare: ""
-        }, _this2.getRouteList(), _this2.alertmessage = response.data, $("#OthAlert").css("display", "block");
-      })["catch"](function (error) {
-        console.log("err->" + JSON.stringify(_this2.error.response));
-      });
+      if (this.checkValidate()) {
+        this.axios.post('/api/TranRoute/save', this.tranRoute).then(function (response) {
+          return _this2.tranRoute = {
+            "id": "",
+            "route_title": "",
+            "fare": ""
+          }, _this2.getRouteList(), _this2.alertmessage = response.data, $('#OthAlert').css('display', 'block');
+        })["catch"](function (error) {
+          console.log("err->" + JSON.stringify(_this2.error.response));
+        });
+      }
     },
     goAlertClose: function goAlertClose(aVal) {
-      if (aVal == 1) $("#OthAlert").css("display", "none");else $("#deleteAlert").css("display", "none");
+      if (aVal == 1) $('#OthAlert').css('display', 'none');else $('#deleteAlert').css('display', 'none');
     },
     goEdit: function goEdit(aId) {
       var _this3 = this;
@@ -10944,8 +10936,68 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.routeList.splice(i, 1);
 
-        _this4.alertdeletemsg = response.data, $("#deleteAlert").css("display", "block");
+        _this4.alertdeletemsg = response.data, $('#deleteAlert').css('display', 'block');
       });
+    },
+    onValidate: function onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined) document.getElementById(inputId).style.border = 'solid 1px red';else {
+        document.getElementById(inputId).style.border = 'solid 1px #d2d6de';
+        document.getElementById(megId).style.display = 'none';
+      }
+    },
+    onValidateMessage: function onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = 'solid 1px red';
+      document.getElementById(megId).style.display = 'block';
+    },
+    checkValidate: function checkValidate() {
+      if (this.tranRoute.route_title == "" || this.tranRoute.route_title == undefined) {
+        this.onValidateMessage('route_title', 'route_title_msg');
+      } else {
+        return true;
+      }
+
+      return false;
+    },
+    restrictSpecialCharacter: function restrictSpecialCharacter(event, fid, value) {
+      if (event.which != 9) {
+        if (fid == 101) {
+          if (/^[\\\"\'\;\:\>\|~`!@#\$%^&*\(\)]$/i.test(event.key)) {
+            event.preventDefault();
+          }
+        }
+
+        if (!(event.which > 47 && event.which < 58 || event.which == 8 || event.which == 46 || event.which == 37 || event.which == 39 || event.which == 190 || event.keyCode >= 96 && event.keyCode <= 105)) {
+          event.preventDefault();
+        }
+
+        if (value != undefined) {
+          if (value.includes(".")) {
+            if (/^[\\\"\'\;\:\>\|~`!@#\$%^&*.\(\)]$/i.test(event.key)) {
+              event.preventDefault();
+            }
+          }
+        }
+      }
+    },
+    formatFare: function formatFare() {
+      var amount = this.tranRoute.fare.replace(/,/g, '');
+
+      if (amount == "" || parseFloat(amount) == 0) {
+        this.tranRoute.fare = "0.00";
+      } else {
+        this.tranRoute.fare = this.thousand_sperator(parseFloat(amount).toFixed(2));
+      }
+    },
+    thousand_sperator: function thousand_sperator(num) {
+      if (num != "" && num != undefined && num != null) {
+        num = num.replace(/,/g, "");
+      }
+
+      var parts = num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      return parts;
+    },
+    selectAll: function selectAll() {
+      this.$refs.input.select();
     }
   }
 });
@@ -10961,26 +11013,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -11131,29 +11163,31 @@ __webpack_require__.r(__webpack_exports__);
     getVehicleList: function getVehicleList() {
       var _this = this;
 
-      this.axios.get("/api/tranVehicleList").then(function (response) {
+      this.axios.get('/api/tranVehicleList').then(function (response) {
         _this.vehicleList = response.data;
       });
     },
     goSave: function goSave() {
       var _this2 = this;
 
-      this.axios.post("/api/TranVehicle/save", this.tranVehicle).then(function (response) {
-        return _this2.tranVehicle = {
-          id: "",
-          vehicle_no: "",
-          vehicle_mocel: "",
-          driver_name: "",
-          driver_licence: "",
-          driver_contact: "",
-          note: ""
-        }, _this2.getVehicleList(), _this2.alertmessage = response.data, $("#OthAlert").css("display", "block");
-      })["catch"](function (error) {
-        console.log("err->" + JSON.stringify(_this2.error.response));
-      });
+      if (this.checkValidate()) {
+        this.axios.post('/api/TranVehicle/save', this.tranVehicle).then(function (response) {
+          return _this2.tranVehicle = {
+            "id": "",
+            "vehicle_no": "",
+            "vehicle_mocel": "",
+            "driver_name": "",
+            "driver_licence": "",
+            "driver_contact": "",
+            "note": ""
+          }, _this2.getVehicleList(), _this2.alertmessage = response.data, $('#OthAlert').css('display', 'block');
+        })["catch"](function (error) {
+          console.log("err->" + JSON.stringify(_this2.error.response));
+        });
+      }
     },
     goAlertClose: function goAlertClose(aVal) {
-      if (aVal == 1) $("#OthAlert").css("display", "none");else $("#deleteAlert").css("display", "none");
+      if (aVal == 1) $('#OthAlert').css('display', 'none');else $('#deleteAlert').css('display', 'none');
     },
     goEdit: function goEdit(aId) {
       var _this3 = this;
@@ -11172,8 +11206,38 @@ __webpack_require__.r(__webpack_exports__);
 
         _this4.vehicleList.splice(i, 1);
 
-        _this4.alertdeletemsg = response.data, $("#deleteAlert").css("display", "block");
+        _this4.alertdeletemsg = response.data, $('#deleteAlert').css('display', 'block');
       });
+    },
+    onValidate: function onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined) document.getElementById(inputId).style.border = 'solid 1px red';else {
+        document.getElementById(inputId).style.border = 'solid 1px #d2d6de';
+        document.getElementById(megId).style.display = 'none';
+      }
+    },
+    onValidateMessage: function onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = 'solid 1px red';
+      document.getElementById(megId).style.display = 'block';
+    },
+    checkValidate: function checkValidate() {
+      if (this.tranVehicle.vehicle_no == "" || this.tranVehicle.vehicle_no == undefined) {
+        this.onValidateMessage('vehicle_number', 'vehicle_number_msg');
+      } else {
+        return true;
+      }
+
+      return false;
+    },
+    restrictPhoneNo: function restrictPhoneNo(event, value) {
+      if (event.keyCode != 8 && !/[0-9\+\-\ ]/i.test(event.key)) {
+        event.preventDefault();
+      }
+
+      if (value != undefined && value != "") {
+        if (/^[\\\"\'\;\:\>\|~`!@#\$%^&*+\(\)]$/i.test(event.key)) {
+          event.preventDefault();
+        }
+      }
     }
   }
 });
@@ -72573,7 +72637,7 @@ var render = function() {
           _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
             _vm._v("Home")
           ]),
-          _vm._v("> Routes\n    ")
+          _vm._v("> Routes\n        ")
         ],
         1
       )
@@ -72617,9 +72681,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n            " +
+                        "\n                        " +
                           _vm._s(_vm.alertmessage) +
-                          "\n            "
+                          "\n                        "
                       ),
                       _c(
                         "button",
@@ -72654,9 +72718,23 @@ var render = function() {
                         }
                       ],
                       staticClass: "inputbox",
-                      attrs: { type: "text" },
+                      attrs: { type: "text", id: "route_title" },
                       domProps: { value: _vm.tranRoute.route_title },
                       on: {
+                        keyup: function($event) {
+                          return _vm.onValidate(
+                            _vm.tranRoute.route_title,
+                            "route_title",
+                            "route_title_msg"
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.onValidate(
+                            _vm.tranRoute.route_title,
+                            "route_title",
+                            "route_title_msg"
+                          )
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -72668,11 +72746,20 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "error_message",
+                        attrs: { id: "route_title_msg" }
+                      },
+                      [_vm._v("Route title is required")]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12" }, [
-                    _c("label", { attrs: { for: "name" } }, [_vm._v("Fare")]),
+                    _c("label", { attrs: { for: "fare" } }, [_vm._v("Fare")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -72683,10 +72770,39 @@ var render = function() {
                           expression: "tranRoute.fare"
                         }
                       ],
+                      ref: "input",
                       staticClass: "inputbox",
                       attrs: { type: "text" },
                       domProps: { value: _vm.tranRoute.fare },
                       on: {
+                        keydown: function($event) {
+                          return _vm.restrictSpecialCharacter(
+                            $event,
+                            101,
+                            _vm.tranRoute.fare
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.formatFare()
+                        },
+                        keyup: function($event) {
+                          if (
+                            !$event.type.indexOf("key") &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.formatFare()
+                        },
+                        click: function($event) {
+                          return _vm.selectAll()
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -72740,9 +72856,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n            " +
+                      "\n                        " +
                         _vm._s(_vm.alertdeletemsg) +
-                        "\n            "
+                        "\n                        "
                     ),
                     _c(
                       "button",
@@ -72797,7 +72913,7 @@ var render = function() {
                               _c(
                                 "td",
                                 { staticClass: "all", attrs: { nowrap: "" } },
-                                [_vm._v(_vm._s(route.fare))]
+                                [_vm._v(_vm._s(route.fare) + " MMK")]
                               ),
                               _vm._v(" "),
                               _c(
@@ -72824,7 +72940,7 @@ var render = function() {
                                   _c(
                                     "i",
                                     {
-                                      staticClass: "fa fa-trash time",
+                                      staticClass: "fa fa-times time",
                                       on: {
                                         click: function($event) {
                                           return _vm.goDelete(route.id)
@@ -72868,8 +72984,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "name" } }, [
-      _vm._v("\n              Route Title\n              "),
+    return _c("label", { attrs: { for: "route" } }, [
+      _vm._v("Route Title"),
       _c("strong", [_vm._v("*")])
     ])
   },
@@ -72885,36 +73001,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copyRows" }, [
-      _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Copy" } }, [
-            _c("i", { staticClass: "fa fa-copy" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Excel" } }, [
-            _c("i", { staticClass: "fa fa-file-excel-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "PDF" } }, [
-            _c("i", { staticClass: "fa fa-file-pdf-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Print" } }, [
-            _c("i", { staticClass: "fa fa-print" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Columns" } }, [
-            _c("i", { staticClass: "fa fa-columns" })
-          ])
+    return _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Copy" } }, [
+          _c("i", { staticClass: "fa fa-copy" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Excel" } }, [
+          _c("i", { staticClass: "fa fa-file-excel-o" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "PDF" } }, [
+          _c("i", { staticClass: "fa fa-file-pdf-o" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Print" } }, [
+          _c("i", { staticClass: "fa fa-print" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Columns" } }, [
+          _c("i", { staticClass: "fa fa-columns" })
         ])
       ])
     ])
@@ -72978,7 +73092,7 @@ var render = function() {
           _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
             _vm._v("Home")
           ]),
-          _vm._v("> Vehicles\n    ")
+          _vm._v("> Vehicles\n        ")
         ],
         1
       )
@@ -73022,9 +73136,9 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n            " +
+                        "\n                        " +
                           _vm._s(_vm.alertmessage) +
-                          "\n            "
+                          "\n                        "
                       ),
                       _c(
                         "button",
@@ -73059,9 +73173,23 @@ var render = function() {
                         }
                       ],
                       staticClass: "inputbox",
-                      attrs: { type: "text" },
+                      attrs: { type: "text", id: "vehicle_number" },
                       domProps: { value: _vm.tranVehicle.vehicle_no },
                       on: {
+                        keyup: function($event) {
+                          return _vm.onValidate(
+                            _vm.tranVehicle.vehicle_no,
+                            "vehicle_number",
+                            "vehicle_number_msg"
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.onValidate(
+                            _vm.tranVehicle.vehicle_no,
+                            "vehicle_number",
+                            "vehicle_number_msg"
+                          )
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -73073,11 +73201,20 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "error_message",
+                        attrs: { id: "vehicle_number_msg" }
+                      },
+                      [_vm._v("Vehicle number is required")]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12" }, [
-                    _c("label", { attrs: { for: "name" } }, [
+                    _c("label", { attrs: { for: "model" } }, [
                       _vm._v("Vehicle Model")
                     ]),
                     _vm._v(" "),
@@ -73141,7 +73278,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12" }, [
-                    _c("label", { attrs: { for: "name" } }, [
+                    _c("label", { attrs: { for: "licence" } }, [
                       _vm._v("Driver Licence")
                     ]),
                     _vm._v(" "),
@@ -73173,7 +73310,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12" }, [
-                    _c("label", { attrs: { for: "name" } }, [
+                    _c("label", { attrs: { for: "contact" } }, [
                       _vm._v("Driver Contact")
                     ]),
                     _vm._v(" "),
@@ -73190,6 +73327,12 @@ var render = function() {
                       attrs: { type: "text" },
                       domProps: { value: _vm.tranVehicle.driver_contact },
                       on: {
+                        keydown: function($event) {
+                          return _vm.restrictPhoneNo(
+                            $event,
+                            _vm.tranVehicle.driver_contact
+                          )
+                        },
                         input: function($event) {
                           if ($event.target.composing) {
                             return
@@ -73205,9 +73348,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-12 end" }, [
-                    _c("label", { attrs: { for: "description" } }, [
-                      _vm._v("Note")
-                    ]),
+                    _c("label", { attrs: { for: "note" } }, [_vm._v("Note")]),
                     _vm._v(" "),
                     _c("textarea", {
                       directives: [
@@ -73276,9 +73417,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n            " +
+                      "\n                        " +
                         _vm._s(_vm.alertdeletemsg) +
-                        "\n            "
+                        "\n                        "
                     ),
                     _c(
                       "button",
@@ -73378,7 +73519,7 @@ var render = function() {
                                   _c(
                                     "i",
                                     {
-                                      staticClass: "fa fa-trash time",
+                                      staticClass: "fa fa-times time",
                                       on: {
                                         click: function($event) {
                                           return _vm.goDelete(vehicle.id)
@@ -73422,8 +73563,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "name" } }, [
-      _vm._v("\n              Vehicle Number\n              "),
+    return _c("label", { attrs: { for: "number" } }, [
+      _vm._v("Vehicle Number "),
       _c("strong", [_vm._v("*")])
     ])
   },
@@ -73439,36 +73580,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copyRows" }, [
-      _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Copy" } }, [
-            _c("i", { staticClass: "fa fa-copy" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Excel" } }, [
-            _c("i", { staticClass: "fa fa-file-excel-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "PDF" } }, [
-            _c("i", { staticClass: "fa fa-file-pdf-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Print" } }, [
-            _c("i", { staticClass: "fa fa-print" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#", title: "Columns" } }, [
-            _c("i", { staticClass: "fa fa-columns" })
-          ])
+    return _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Copy" } }, [
+          _c("i", { staticClass: "fa fa-copy" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Excel" } }, [
+          _c("i", { staticClass: "fa fa-file-excel-o" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "PDF" } }, [
+          _c("i", { staticClass: "fa fa-file-pdf-o" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Print" } }, [
+          _c("i", { staticClass: "fa fa-print" })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-2" }, [
+        _c("a", { attrs: { href: "#", title: "Columns" } }, [
+          _c("i", { staticClass: "fa fa-columns" })
         ])
       ])
     ])
@@ -96851,8 +96990,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\PHP\Upload Github\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\PHP\Upload Github\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
