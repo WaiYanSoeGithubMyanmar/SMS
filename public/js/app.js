@@ -52820,7 +52820,7 @@ var render = function() {
                                   "router-link",
                                   {
                                     staticClass: "nav-list",
-                                    attrs: { to: "/evaluation_report" }
+                                    attrs: { to: "/homework" }
                                   },
                                   [
                                     _c("i", {

@@ -618,7 +618,7 @@
                   <div class="dropdownForm">
                     <ul class="link" id="link6">
                       <li class="nav-list">
-                        <router-link class="nav-list" to="/evaluation_report">
+                        <router-link class="nav-list" to="/homework">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Add Homework
                         </router-link>
                       </li>
