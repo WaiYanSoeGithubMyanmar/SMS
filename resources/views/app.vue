@@ -426,11 +426,6 @@
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Admission
                         </router-link>
                       </li>
-                      <li class="nav-list">
-                        <router-link to="/studenthistory" class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student History
-                        </router-link>
-                      </li>
                     </ul>
                   </div>
                 </li>
@@ -493,7 +488,7 @@
                     <router-link class="routerLink" to>
                       <i
                         class="fa fa-graduation-cap"
-                        style="margin:0 1.8rem !important;"
+                        style="margin:0 1.3rem !important;"
                         id="sidebarIcon"
                       ></i>Academics
                       <i class="fa fa-angle-right dropIcon" id="dropIcon3"></i>
@@ -573,11 +568,6 @@
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Designation
                         </router-link>
                       </li>
-                      <li class="nav-list">
-                        <router-link to class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Roles Permissions
-                        </router-link>
-                      </li>
                     </ul>
                   </div>
                 </li>
@@ -628,12 +618,12 @@
                   <div class="dropdownForm">
                     <ul class="link" id="link6">
                       <li class="nav-list">
-                        <router-link class="nav-list" to="/homework">
+                        <router-link class="nav-list" to>
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Add Homework
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to="/evaluation_report" class="nav-list">
+                        <router-link to class="nav-list">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Evaluation Report
                         </router-link>
                       </li>
@@ -699,7 +689,7 @@
                     <router-link class="routerLink" to>
                       <i
                         class="fa fa-bar-chart"
-                        style="margin:0 1.9rem !important;"
+                        style="margin:0 1.3rem !important;"
                         id="sidebarIcon"
                       ></i>Reports
                       <i class="fa fa-angle-right dropIcon" id="dropIcon9"></i>
@@ -713,18 +703,13 @@
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to="/stutransportreport" class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Transport Report
+                        <router-link class="nav-list" to>
+                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Guardian
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to="/stuhostelreport" class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Hostel Report
-                        </router-link>
-                      </li>
-                      <li class="nav-list">
-                        <router-link to class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Transaction Report
+                        <router-link to="/studenthistory" class="nav-list">
+                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student History
                         </router-link>
                       </li>
                       <li class="nav-list">
@@ -740,6 +725,16 @@
                       <li class="nav-list">
                         <router-link to="/staattreport" class="nav-list">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Staff Attendance Report
+                        </router-link>
+                      </li>
+                      <li class="nav-list">
+                        <router-link to="/stutransportreport" class="nav-list">
+                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Transport Report
+                        </router-link>
+                      </li>
+                      <li class="nav-list">
+                        <router-link to="/stuhostelreport" class="nav-list">
+                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Student Hostel Report
                         </router-link>
                       </li>
                     </ul>
@@ -760,17 +755,12 @@
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to="/sessetting" class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Session Setting
+                        <router-link to="role" class="nav-list">
+                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Roles Permissions
                         </router-link>
                       </li>
                       <li class="nav-list">
-                        <router-link to class="nav-list">
-                          <i class="fa fa-angle-double-right listItem" id="listItem"></i>Languages
-                        </router-link>
-                      </li>
-                      <li class="nav-list">
-                        <router-link to class="nav-list">
+                        <router-link to="/users" class="nav-list">
                           <i class="fa fa-angle-double-right listItem" id="listItem"></i>Users
                         </router-link>
                       </li>
@@ -809,12 +799,6 @@
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Student Admission
-                    </li>
-                  </router-link>
-                  <router-link to="/studenthistory" class="smallLink">
-                    <li class="smLink">
-                      <i class="fa fa-angle-double-right smIcon"></i>
-                      Student History
                     </li>
                   </router-link>
                 </ul>
@@ -953,12 +937,6 @@
                       Designation
                     </li>
                   </router-link>
-                  <router-link to class="smallLink">
-                    <li class="smLink">
-                      <i class="fa fa-angle-double-right smIcon"></i>
-                      Roles Permission
-                    </li>
-                  </router-link>
                 </ul>
               </li>
             </a>
@@ -1003,13 +981,13 @@
               <li>
                 <i class="fa fa-flask smallIcon" style="zoom:1.3 !important;"></i>
                 <ul class="smallLists">
-                  <router-link to="/homework" class="smallLink">
+                  <router-link to class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Add Homework
                     </li>
                   </router-link>
-                  <router-link to="/evaluation_report" class="smallLink">
+                  <router-link to class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Evaluation Report
@@ -1078,22 +1056,16 @@
                       Student Report
                     </li>
                   </router-link>
-                  <router-link to="/stutransportreport" class="smallLink">
-                    <li class="smLink">
-                      <i class="fa fa-angle-double-right smIcon"></i>
-                      Student Transport Report
-                    </li>
-                  </router-link>
-                  <router-link to="/stuhostelreport" class="smallLink">
-                    <li class="smLink">
-                      <i class="fa fa-angle-double-right smIcon"></i>
-                      Student Hostel Report
-                    </li>
-                  </router-link>
                   <router-link to class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
-                      Transaction Report
+                      Guardian Report
+                    </li>
+                  </router-link>
+                  <router-link to="/studenthistory" class="smallLink">
+                    <li class="smLink">
+                      <i class="fa fa-angle-double-right smIcon"></i>
+                      Student History
                     </li>
                   </router-link>
                   <router-link to="/studenthistory" class="smallLink">
@@ -1114,6 +1086,18 @@
                       Staff Attendance Report
                     </li>
                   </router-link>
+                  <router-link to="/stutransportreport" class="smallLink">
+                    <li class="smLink">
+                      <i class="fa fa-angle-double-right smIcon"></i>
+                      Student Transport Report
+                    </li>
+                  </router-link>
+                  <router-link to="/stuhostelreport" class="smallLink">
+                    <li class="smLink">
+                      <i class="fa fa-angle-double-right smIcon"></i>
+                      Student Hostel Report
+                    </li>
+                  </router-link>
                 </ul>
               </li>
             </a>
@@ -1127,19 +1111,13 @@
                       General Setting
                     </li>
                   </router-link>
-                  <router-link to="/sessetting" class="smallLink">
-                    <li class="smLink">
-                      <i class="fa fa-angle-double-right smIcon"></i>
-                      Session Setting
-                    </li>
-                  </router-link>
                   <router-link to class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
-                      Languages
+                      Roles Permission
                     </li>
                   </router-link>
-                  <router-link to class="smallLink">
+                  <router-link to="/users" class="smallLink">
                     <li class="smLink">
                       <i class="fa fa-angle-double-right smIcon"></i>
                       Users

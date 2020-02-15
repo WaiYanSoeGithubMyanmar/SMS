@@ -10,7 +10,7 @@
       color: #ffffffa8;
     }
     .additional-menu .navList:hover .routerLink {
-        color: white;
+      color: white;
     }
     .active > a {
       color: white;
@@ -30,7 +30,7 @@
       // justify-content: center;
       height: 50px;
       #sidebarIcon {
-        margin: 0 2rem;
+        margin: 0 1.5rem;
       }
       .dropIcon {
         transition: all 0.5s;
@@ -65,7 +65,7 @@
         .listItem {
           float: left;
           color: white;
-          margin: 0 2rem;
+          margin: 0 10px 0 4rem;
         }
       }
     }

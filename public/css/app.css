@@ -539,7 +539,7 @@
 }
 
 .header .body_content .navList #sidebarIcon {
-  margin: 0 2rem;
+  margin: 0 1.5rem;
 }
 
 .header .body_content .navList .dropIcon {
@@ -584,7 +584,7 @@
 .header .body_content .link .nav-list .listItem {
   float: left;
   color: white;
-  margin: 0 2rem;
+  margin: 0 10px 0 4rem;
 }
 
 body {
