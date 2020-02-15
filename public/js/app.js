@@ -52820,7 +52820,7 @@ var render = function() {
                                   "router-link",
                                   {
                                     staticClass: "nav-list",
-                                    attrs: { to: "" }
+                                    attrs: { to: "/evaluation_report" }
                                   },
                                   [
                                     _c("i", {
@@ -52845,7 +52845,7 @@ var render = function() {
                                   "router-link",
                                   {
                                     staticClass: "nav-list",
-                                    attrs: { to: "" }
+                                    attrs: { to: "/evaluation_report" }
                                   },
                                   [
                                     _c("i", {
@@ -54011,7 +54011,10 @@ var render = function() {
                       [
                         _c(
                           "router-link",
-                          { staticClass: "smallLink", attrs: { to: "" } },
+                          {
+                            staticClass: "smallLink",
+                            attrs: { to: "/homework" }
+                          },
                           [
                             _c("li", { staticClass: "smLink" }, [
                               _c("i", {
@@ -54026,7 +54029,10 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "router-link",
-                          { staticClass: "smallLink", attrs: { to: "" } },
+                          {
+                            staticClass: "smallLink",
+                            attrs: { to: "/evaluation_report" }
+                          },
                           [
                             _c("li", { staticClass: "smLink" }, [
                               _c("i", {
@@ -61530,819 +61536,6 @@ var render = function() {
                     ])
                   ]
                 )
-<<<<<<< HEAD
-              ])
-            ])
-          : _c("div", { staticClass: "stucard-body view" }, [_vm._m(4)])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "stucard-header" }, [
-      _c("h6", [_vm._v("Select Criteria")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "stucard-body" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "textarea" }, [
-          _c("label", { attrs: { for: "class" } }, [
-            _vm._v("\n            Role\n            "),
-            _c("strong", [_vm._v("*")])
-          ]),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox", attrs: { id: "class" } }, [
-            _c("option", { attrs: { value: "Super Admin" } }, [
-              _vm._v("Super Admin")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Admin" } }, [_vm._v("Admin")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Role" } }, [_vm._v("Role")])
-          ]),
-          _vm._v(" "),
-          _c("button", { staticClass: "search" }, [_vm._v("Search")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "textarea" }, [
-          _c("label", { attrs: { for: "other" } }, [
-            _vm._v("Search By Other Option")
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
-            staticClass: "inputbox",
-            attrs: { id: "other", placeholder: "Search By Name,Nrc,..etc." }
-          }),
-          _vm._v(" "),
-          _c("button", { staticClass: "search" }, [_vm._v("Search")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "copyRows" }, [
-      _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "fa fa-copy" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "fa fa-file-excel-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "fa fa-file-pdf-o" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "fa fa-print" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-2" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "fa fa-columns" })
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { staticClass: "active", attrs: { nowrap: "" } }, [
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Staff ID")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Role")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Department")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Designation")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Mobile Number")]),
-        _vm._v(" "),
-        _c("th", { attrs: { nowrap: "" } }, [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row main" }, [
-        _c("div", { staticClass: "imgcard" }, [
-          _c("div", { staticClass: "staffinfo-box" }, [
-            _c("div", { staticClass: "staffleft-box" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "staffleft-content" }, [
-              _c("h5", [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Name",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Selena Gomez")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("9000")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("09123456789")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Ground Floor, Admin")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "staffsub" }, [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Role",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Super Admin")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Designation",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Admin")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "overlay3" }, [
-              _c("div", { staticClass: "stafficons" }, [
-                _c("a", { attrs: { title: "Show" } }, [
-                  _c("i", { staticClass: "fa fa-navicon" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { title: "Edit" } }, [
-                  _c("i", { staticClass: "fa fa-pencil" })
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "imgcard" }, [
-          _c("div", { staticClass: "staffinfo-box" }, [
-            _c("div", { staticClass: "staffleft-box" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "staffleft-content" }, [
-              _c("h5", [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Name",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Selena Gomez")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("9000")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("09123456789")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Ground Floor, Admin")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "staffsub" }, [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Role",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Super Admin")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Designation",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Admin")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "overlay3" }, [
-              _c("div", { staticClass: "stafficons" }, [
-                _c("a", { attrs: { title: "Show" } }, [
-                  _c("i", { staticClass: "fa fa-navicon" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { title: "Edit" } }, [
-                  _c("i", { staticClass: "fa fa-pencil" })
-                ])
-              ])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "imgcard" }, [
-          _c("div", { staticClass: "staffinfo-box" }, [
-            _c("div", { staticClass: "staffleft-box" }, [
-              _c("img", {
-                attrs: {
-                  src:
-                    "https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440",
-                  alt: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "staffleft-content" }, [
-              _c("h5", [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Name",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Selena Gomez")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("9000")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("09123456789")]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Ground Floor, Admin")]),
-              _vm._v(" "),
-              _c("p", { staticClass: "staffsub" }, [
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Role",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Super Admin")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    attrs: {
-                      "data-toggle": "tooltip",
-                      title: "Designation",
-                      "data-loading-text":
-                        "<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    }
-                  },
-                  [_vm._v("Admin")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "overlay3" }, [
-              _c("div", { staticClass: "stafficons" }, [
-                _c("a", { attrs: { title: "Show" } }, [
-                  _c("i", { staticClass: "fa fa-navicon" })
-                ]),
-                _vm._v(" "),
-                _c("a", { attrs: { title: "Edit" } }, [
-                  _c("i", { staticClass: "fa fa-pencil" })
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/HRM/assign_permission.vue?vue&type=template&id=30ef662a&":
-/*!****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/HRM/assign_permission.vue?vue&type=template&id=30ef662a& ***!
-  \****************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form", attrs: { id: "bar" } }, [
-    _c("div", { staticClass: "toplink" }, [
-      _c("h2", { staticClass: "stuName" }, [_vm._v("System Settings")]),
-      _vm._v(" "),
-      _c(
-        "h4",
-        { staticClass: "stuLink" },
-        [
-          _c(
-            "router-link",
-            { staticClass: "home", attrs: { to: "/Student" } },
-            [_vm._v("Home")]
-          ),
-          _vm._v("/\n      "),
-          _c("router-link", { staticClass: "home", attrs: { to: "/role" } }, [
-            _vm._v("Role Permissions")
-          ]),
-          _vm._v("/ Assign Permissions\n    ")
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", { staticStyle: { "padding-left": "2px" } }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "card-body",
-            staticStyle: {
-              padding: "1rem 0",
-              "border-bottom": "1px solid #8080808c"
-            }
-          },
-          [
-            _c("div", { staticClass: "table-responsive" }, [
-              _c("table", { staticClass: "table" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.features, function(val) {
-                    return _c("tr", [
-                      _c("td", [_vm._v(_vm._s(val.module))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(val.feature))]),
-                      _vm._v(" "),
-                      _c("td", [
-                        val.checked == val.checked
-                          ? _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: val.checked,
-                                  expression: "val.checked"
-                                }
-                              ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(val.checked)
-                                  ? _vm._i(val.checked, null) > -1
-                                  : val.checked
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.say(
-                                    val.id,
-                                    val.feature,
-                                    val.checked,
-                                    "view"
-                                  )
-                                },
-                                change: function($event) {
-                                  var $$a = val.checked,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          val,
-                                          "checked",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          val,
-                                          "checked",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(val, "checked", $$c)
-                                  }
-                                }
-                              }
-                            })
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          attrs: { type: "checkbox" },
-                          on: {
-                            click: function($event) {
-                              return _vm.say(val.id, val.feature, "add")
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          attrs: { type: "checkbox", value: "1" },
-                          on: {
-                            click: function($event) {
-                              return _vm.say(val.id, val.feature, "edit")
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c("input", {
-                          attrs: { type: "checkbox", value: "1" },
-                          on: {
-                            click: function($event) {
-                              return _vm.say(val.id, val.feature, "delete")
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h6", [_vm._v("Add Designation")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Module")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Feature")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("View")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Add")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/HRM/role_permission.vue?vue&type=template&id=63f4e883&":
-/*!**************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/HRM/role_permission.vue?vue&type=template&id=63f4e883& ***!
-  \**************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "form", attrs: { id: "bar" } },
-    [
-      _c("div", { staticClass: "toplink" }, [
-        _c("h2", { staticClass: "stuName" }, [_vm._v("System Settings")]),
-        _vm._v(" "),
-        _c(
-          "h4",
-          { staticClass: "stuLink" },
-          [
-            _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
-              _vm._v("Home")
-            ]),
-            _vm._v(" / Role Permissions\n    ")
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("confirm", { attrs: { url: _vm.delurl } }),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "row rowContainer",
-          staticStyle: { "align-items": "end !important" }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "col-lg-5 col-md-12",
-              staticStyle: { "padding-left": "2px" }
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "card-body",
-                    staticStyle: {
-                      padding: "1rem 0",
-                      "border-bottom": "1px solid #8080808c"
-                    }
-                  },
-                  [
-                    _c("form", [
-                      _c("div", { staticClass: "col-12" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.role.name,
-                              expression: "role.name"
-                            }
-                          ],
-                          staticClass: "inputbox",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.role.name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.role, "name", $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _vm.isEdit == false
-                          ? _c(
-                              "button",
-                              {
-                                staticClass: "save",
-                                attrs: { type: "submit" },
-                                on: { click: _vm.addRole }
-                              },
-                              [_vm._v("Save")]
-                            )
-                          : _c(
-                              "button",
-                              {
-                                staticClass: "save",
-                                attrs: { type: "submit" },
-                                on: { click: _vm.updateRole }
-                              },
-                              [_vm._v("Save")]
-                            )
-                      ])
-                    ])
-                  ]
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "col-lg-7 col-md-12",
-              staticStyle: { "padding-left": "0" }
-            },
-            [
-              _c("div", { staticClass: "card" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body" }, [
-                  _c("input", {
-                    staticClass: "searchText",
-                    attrs: { type: "text", placeholder: "Search..." }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "table-responsive" }, [
-                    _c(
-                      "table",
-                      {
-                        staticClass: "table table-hover table-striped",
-                        attrs: { id: "studenttable" }
-                      },
-                      [
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.roles, function(rol) {
-                            return _c(
-                              "tr",
-                              { key: rol.id, staticClass: "active" },
-                              [
-                                _c(
-                                  "td",
-                                  { staticClass: "all", attrs: { nowrap: "" } },
-                                  [_vm._v(_vm._s(rol.name))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  { staticStyle: { "text-align": "right" } },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      { attrs: { to: "role/assign" } },
-                                      [
-                                        _c(
-                                          "i",
-                                          {
-                                            staticClass: "fa fa-tag assign",
-                                            attrs: { "aria-hidden": "true" }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "assignLbl" },
-                                              [_vm._v("Assign Permission")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "i",
-                                      {
-                                        staticClass: "fa fa-pencil pen",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.editRole(rol)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          { staticClass: "penLabel" },
-                                          [_vm._v("Edit")]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _vm.checkDelete == true
-                                      ? _c(
-                                          "i",
-                                          {
-                                            staticClass: "fa fa-trash time",
-                                            attrs: {
-                                              "data-toggle": "modal",
-                                              "data-target":
-                                                "#exampleModalCenter"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.deleteRole(rol.id)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { staticClass: "timeLabel" },
-                                              [_vm._v("Delete")]
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ])
-                ])
-=======
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
               ])
             ])
           : _c("div", { staticClass: "stucard-body view" }, [_vm._m(3)])
@@ -62355,27 +61548,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< HEAD
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h6", [_vm._v("Add Role")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "name" } }, [
-      _vm._v("\n                Name\n                "),
-      _c("strong", [_vm._v("*")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h6", [_vm._v("Role List")])
-=======
     return _c("div", { staticClass: "stucard-body" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "textarea" }, [
@@ -62410,7 +61582,6 @@ var staticRenderFns = [
           _c("button", { staticClass: "search" }, [_vm._v("Search")])
         ])
       ])
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
     ])
   },
   function() {
@@ -62472,8 +61643,6 @@ var staticRenderFns = [
         _c("th", { attrs: { nowrap: "" } }, [_vm._v("Action")])
       ])
     ])
-<<<<<<< HEAD
-=======
   },
   function() {
     var _vm = this
@@ -62713,7 +61882,6 @@ var staticRenderFns = [
         ])
       ])
     ])
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
   }
 ]
 render._withStripped = true
@@ -64658,55 +63826,9 @@ var render = function() {
                                       )
                                     ]
                                   )
-<<<<<<< HEAD
                                 ]
                               ),
                               _vm._v(" "),
-=======
-                                ])
-                              ])
-                            ]
-                          )
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-lg-4 col-12",
-                        staticStyle: {
-                          "background-color": "#eae6e6",
-                          padding: "1rem"
-                        }
-                      },
-                      [
-                        _c(
-                          "h4",
-                          {
-                            staticStyle: {
-                              margin: "0px",
-                              "margin-bottom": "10px"
-                            }
-                          },
-                          [_vm._v("Summary")]
-                        ),
-                        _vm._v(" "),
-                        _c("hr", {
-                          staticStyle: { padding: "0px", margin: "0px" }
-                        }),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "div",
-                            {
-                              staticStyle: {
-                                padding: "5px 0px",
-                                "margin-top": "5px"
-                              }
-                            },
-                            [
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
                               _c(
                                 "div",
                                 {
@@ -64716,7 +63838,6 @@ var render = function() {
                                     "overflow-y": "scroll"
                                   }
                                 },
-<<<<<<< HEAD
                                 _vm._l(_vm.showStudents, function(item, index) {
                                   return _c("div", [
                                     !item.active
@@ -64763,108 +63884,6 @@ var render = function() {
                                   ])
                                 }),
                                 0
-=======
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-calendar",
-                                    staticStyle: { "font-size": "15px" }
-                                  }),
-                                  _vm._v(
-                                    "\n                                         \n                                        "
-                                  ),
-                                  _c(
-                                    "span",
-                                    { staticStyle: { "font-weight": "bold" } },
-                                    [_vm._v("Homework Date:")]
-                                  ),
-                                  _vm._v(
-                                    " 07/16/2018\n                                    "
-                                  )
-                                ]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                            _c(
-                              "p",
-                              {
-                                staticStyle: {
-                                  padding: "0px",
-                                  margin: "0px !important",
-                                  "font-size": "14px"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-calendar",
-                                  staticStyle: { "font-size": "15px" }
-                                }),
-                                _vm._v(
-                                  "\n                                         \n                                        "
-                                ),
-                                _c(
-                                  "span",
-                                  { staticStyle: { "font-weight": "bold" } },
-                                  [_vm._v("Submission Date:")]
-                                ),
-                                _vm._v(
-                                  " 07/16/2018\n                                    "
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                            _c(
-                              "p",
-                              {
-                                staticStyle: {
-                                  padding: "0px",
-                                  margin: "0px !important",
-                                  "font-size": "14px"
-                                }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fa fa-calendar",
-                                  staticStyle: { "font-size": "15px" }
-                                }),
-                                _vm._v(
-                                  "\n                                         \n                                        "
-                                ),
-                                _c(
-                                  "span",
-                                  { staticStyle: { "font-weight": "bold" } },
-                                  [_vm._v("Evaluation Date:")]
-                                ),
-                                _vm._v(
-                                  " 07/16/2018\n                                    "
-                                )
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticStyle: { padding: "5px 0px" } }, [
-                          _c(
-                            "p",
-                            {
-                              staticStyle: {
-                                padding: "0px",
-                                margin: "0px !important",
-                                "font-size": "14px"
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticStyle: { "font-weight": "bold" } },
-                                [_vm._v("Created By:")]
-                              ),
-                              _vm._v(
-                                " Joe Black\n                                "
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
                               )
                             ]
                           )
@@ -65087,7 +64106,6 @@ var render = function() {
                               )
                             ]
                           )
-<<<<<<< HEAD
                         ]
                       )
                     ]
@@ -65729,19 +64747,6 @@ var staticRenderFns = [
         )
       ]
     )
-=======
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ])
-        ])
-      ])
-    ])
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
   }
 ]
 render._withStripped = true
@@ -94036,28 +93041,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_HRM_StaffAttendance_vue__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../views/HRM/StaffAttendance.vue */ "./resources/views/HRM/StaffAttendance.vue");
 /* harmony import */ var _views_HRM_Department_vue__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../views/HRM/Department.vue */ "./resources/views/HRM/Department.vue");
 /* harmony import */ var _views_HRM_Designation_vue__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../views/HRM/Designation.vue */ "./resources/views/HRM/Designation.vue");
-<<<<<<< HEAD
-/* harmony import */ var _views_HRM_role_permission_vue__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../views/HRM/role_permission.vue */ "./resources/views/HRM/role_permission.vue");
-/* harmony import */ var _views_HRM_assign_permission_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../views/HRM/assign_permission.vue */ "./resources/views/HRM/assign_permission.vue");
-/* harmony import */ var _views_DownloadCenter_UploadContent_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../views/DownloadCenter/UploadContent.vue */ "./resources/views/DownloadCenter/UploadContent.vue");
-/* harmony import */ var _views_DownloadCenter_Assignment_vue__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ../views/DownloadCenter/Assignment.vue */ "./resources/views/DownloadCenter/Assignment.vue");
-/* harmony import */ var _views_DownloadCenter_StudyMaterial_vue__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../views/DownloadCenter/StudyMaterial.vue */ "./resources/views/DownloadCenter/StudyMaterial.vue");
-/* harmony import */ var _views_DownloadCenter_Syllabus_vue__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ../views/DownloadCenter/Syllabus.vue */ "./resources/views/DownloadCenter/Syllabus.vue");
-/* harmony import */ var _views_DownloadCenter_OtherDownload_vue__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ../views/DownloadCenter/OtherDownload.vue */ "./resources/views/DownloadCenter/OtherDownload.vue");
-/* harmony import */ var _views_Transport_TranRoutes_vue__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../views/Transport/TranRoutes.vue */ "./resources/views/Transport/TranRoutes.vue");
-/* harmony import */ var _views_Transport_TranVehicles_vue__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ../views/Transport/TranVehicles.vue */ "./resources/views/Transport/TranVehicles.vue");
-/* harmony import */ var _views_Transport_TranAssignVehicle_vue__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ../views/Transport/TranAssignVehicle.vue */ "./resources/views/Transport/TranAssignVehicle.vue");
-/* harmony import */ var _views_Hostel_hostel_rooms_vue__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../views/Hostel/hostel_rooms.vue */ "./resources/views/Hostel/hostel_rooms.vue");
-/* harmony import */ var _views_Hostel_room_type_vue__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ../views/Hostel/room_type.vue */ "./resources/views/Hostel/room_type.vue");
-/* harmony import */ var _views_Hostel_hostel_vue__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ../views/Hostel/hostel.vue */ "./resources/views/Hostel/hostel.vue");
-/* harmony import */ var _views_Reports_StudentReport_vue__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ../views/Reports/StudentReport.vue */ "./resources/views/Reports/StudentReport.vue");
-/* harmony import */ var _views_Reports_attendancereport_vue__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ../views/Reports/attendancereport.vue */ "./resources/views/Reports/attendancereport.vue");
-/* harmony import */ var _views_Reports_StudentTransportReport_vue__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ../views/Reports/StudentTransportReport.vue */ "./resources/views/Reports/StudentTransportReport.vue");
-/* harmony import */ var _views_Reports_StudentHostelReport_vue__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ../views/Reports/StudentHostelReport.vue */ "./resources/views/Reports/StudentHostelReport.vue");
-/* harmony import */ var _views_Reports_StaffAttendanceReport_vue__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../views/Reports/StaffAttendanceReport.vue */ "./resources/views/Reports/StaffAttendanceReport.vue");
-/* harmony import */ var _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../views/SystemSettings/GeneralSetting.vue */ "./resources/views/SystemSettings/GeneralSetting.vue");
-/* harmony import */ var _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../views/SystemSettings/SessionSetting.vue */ "./resources/views/SystemSettings/SessionSetting.vue");
-=======
 /* harmony import */ var _views_HRM_AddStaffDirectory_vue__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../views/HRM/AddStaffDirectory.vue */ "./resources/views/HRM/AddStaffDirectory.vue");
 /* harmony import */ var _views_DownloadCenter_UploadContent_vue__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../views/DownloadCenter/UploadContent.vue */ "./resources/views/DownloadCenter/UploadContent.vue");
 /* harmony import */ var _views_DownloadCenter_Assignment_vue__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../views/DownloadCenter/Assignment.vue */ "./resources/views/DownloadCenter/Assignment.vue");
@@ -94078,7 +93061,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ../views/SystemSettings/GeneralSetting.vue */ "./resources/views/SystemSettings/GeneralSetting.vue");
 /* harmony import */ var _views_SystemSettings_role_permission_vue__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ../views/SystemSettings/role_permission.vue */ "./resources/views/SystemSettings/role_permission.vue");
 /* harmony import */ var _views_SystemSettings_assign_permission_vue__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ../views/SystemSettings/assign_permission.vue */ "./resources/views/SystemSettings/assign_permission.vue");
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
 /* harmony import */ var _views_Homework_AddHomework_vue__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ../views/Homework/AddHomework.vue */ "./resources/views/Homework/AddHomework.vue");
 /* harmony import */ var _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ../views/Homework/EvaluationReport.vue */ "./resources/views/Homework/EvaluationReport.vue");
 // Attendance
@@ -94323,15 +93305,7 @@ var routes = [{
 }, {
   name: 'gensetting',
   path: '/gensetting',
-<<<<<<< HEAD
-  component: _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_44__["default"]
-}, {
-  name: 'sessetting',
-  path: '/sessetting',
-  component: _views_SystemSettings_SessionSetting_vue__WEBPACK_IMPORTED_MODULE_45__["default"]
-=======
   component: _views_SystemSettings_GeneralSetting_vue__WEBPACK_IMPORTED_MODULE_43__["default"]
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
 }, {
   name: 'homework',
   path: '/homework',
@@ -94340,13 +93314,10 @@ var routes = [{
   name: 'evaluation_report',
   path: '/evaluation_report',
   component: _views_Homework_EvaluationReport_vue__WEBPACK_IMPORTED_MODULE_47__["default"]
-<<<<<<< HEAD
-=======
 }, {
   name: 'addstadirectory',
   path: '/addstadirectory',
   component: _views_HRM_AddStaffDirectory_vue__WEBPACK_IMPORTED_MODULE_26__["default"]
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
 }];
 
 /***/ }),
@@ -97880,13 +96851,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! D:\Laravel\Gift with SMS\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> 951c118f790b9db523531a6477a66259d6fb0648
 
 
 /***/ })
