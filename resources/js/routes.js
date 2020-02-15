@@ -33,8 +33,7 @@ import StaDirectory from '../views/HRM/StaffDirectory.vue';
 import StaAttendance from '../views/HRM/StaffAttendance.vue';
 import Department from '../views/HRM/Department.vue';
 import Designation from '../views/HRM/Designation.vue';
-import Role from '../views/HRM/role_permission.vue';
-import Assign from '../views/HRM/assign_permission.vue';
+import AddStaDirectory from '../views/HRM/AddStaffDirectory.vue';
 
 //Download Center
 import UploadContent from '../views/DownloadCenter/UploadContent.vue';
@@ -62,12 +61,12 @@ import StaffAttendanceReport from '../views/Reports/StaffAttendanceReport.vue';
 
 //System Settings
 import GeneralSetting from '../views/SystemSettings/GeneralSetting.vue';
-import SessionSetting from '../views/SystemSettings/SessionSetting.vue';
+import Role from '../views/SystemSettings/role_permission.vue';
+import Assign from '../views/SystemSettings/assign_permission.vue';
 
 //Homework
 import AddHomework from '../views/Homework/AddHomework.vue';
 import EvaluationReport from '../views/Homework/EvaluationReport.vue';
-
 
 export const routes = [
     {
@@ -195,7 +194,7 @@ export const routes = [
         path: '/designation',
         component: Designation
     },
-    
+
     {
         name: 'role',
         path: '/role',
@@ -282,29 +281,24 @@ export const routes = [
         component: StuReport
     },
     {
-        name : 'stutransportreport',
-        path : '/stutransportreport',
-        component : StuTransportReport
+        name: 'stutransportreport',
+        path: '/stutransportreport',
+        component: StuTransportReport
     },
     {
-        name : 'stuhostelreport',
-        path : '/stuhostelreport',
-        component : StuHostelReport
+        name: 'stuhostelreport',
+        path: '/stuhostelreport',
+        component: StuHostelReport
     },
     {
-        name : 'staattreport',
-        path : '/staattreport',
-        component : StaffAttendanceReport
+        name: 'staattreport',
+        path: '/staattreport',
+        component: StaffAttendanceReport
     },
     {
-        name : 'gensetting',
-        path : '/gensetting',
-        component : GeneralSetting
-    },
-    {
-        name : 'sessetting',
-        path : '/sessetting',
-        component : SessionSetting
+        name: 'gensetting',
+        path: '/gensetting',
+        component: GeneralSetting
     },
     {
         name: 'homework',
@@ -315,5 +309,10 @@ export const routes = [
         name: 'evaluation_report',
         path: '/evaluation_report',
         component: EvaluationReport
+    },
+    {
+        name: 'addstadirectory',
+        path: '/addstadirectory',
+        component: AddStaDirectory
     }
 ];

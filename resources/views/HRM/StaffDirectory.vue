@@ -12,6 +12,7 @@
     <div class="card">
       <div class="stucard-header">
         <h6>Select Criteria</h6>
+        <router-link to="/addstadirectory" class="add">Add Staff</router-link>
       </div>
       <div class="stucard-body">
         <div class="row">
