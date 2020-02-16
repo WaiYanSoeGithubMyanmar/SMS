@@ -106,6 +106,17 @@ Route::group(['prefix' => 'role'], function () {
     Route::get('search/{data}', 'RoleController@search');
 });
 
+/**
+ * Staff Directory
+ */
+Route::get('staffs', 'StaffDirectoryController@index');
+Route::group(['prefix' => 'staffdirectory'], function () {
+    Route::post('store', 'StaffDirectoryController@store');
+    Route::get('edit/{id}', 'StaffDirectoryController@edit');
+    Route::post('update/{id}', 'StaffDirectoryController@update');
+    Route::delete('delete/{id}', 'StaffDirectoryController@delete');
+    Route::get('search/{data}', 'StaffDirectoryController@search');
+});
 
 /**
  * Assign Permissions

@@ -1,14 +1,13 @@
 <template>
-  <div class="StaffInformation" id="bar" style="transition:all 0.5s;">
+  <div class="StaffInformation" id="bar">
     <div class="toplink">
       <h4 style="color:var(--primary);margin-bottom:5px;">HRM</h4>
       <h6>
-        <router-link to="/Student">Home</router-link>> Staff Directory
+        <router-link class="home" to="/Student">Home</router-link>> Staff Directory
       </h6>
     </div>
     <hr />
     <br />
-
     <div class="card">
       <div class="stucard-header">
         <h6>Select Criteria</h6>
@@ -22,16 +21,16 @@
               <strong>*</strong>
             </label>
             <select id="class" class="inputbox">
-              <option value="Super Admin">Super Admin</option>
-              <option value="Admin">Admin</option>
-              <option value="Role">Role</option>
+              <option value="one">Grade One</option>
+              <option value="two">Grade Two</option>
+              <option value="three">Grade Three</option>
             </select>
-            <button class="search">Search</button>
+            <button class="save">Search</button>
           </div>
           <div class="textarea">
             <label for="other">Search By Other Option</label>
-            <textarea id="other" class="inputbox" placeholder="Search By Name,Nrc,..etc."></textarea>
-            <button class="search">Search</button>
+            <textarea id="other" class="inputbox" placeholder="Search By staff id,name,..etc."></textarea>
+            <button class="save">Search</button>
           </div>
         </div>
       </div>
@@ -41,6 +40,7 @@
           id="listView"
           onclick="changeMega('listView','detailsView')"
           @click="listView()"
+          style="margin-left:-20px;border-top-left-radius:3px;color:black;background:white;"
         >
           <i class="fa fa-list"></i> List View
         </button>
@@ -100,13 +100,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="active">
-                <td nowrap>9000</td>
-                <td nowrap>Selena Gomez</td>
-                <td nowrap>Super Admin</td>
-                <td nowrap>Admin</td>
-                <td nowrap>Admin</td>
-                <td nowarp>09789101112</td>
+              <tr class="active" v-for="(staff) in staffs" :key="staff.id">
+                <td nowrap>{{staff.staff_id}}</td>
+                <td nowrap>{{staff.name}}</td>
+                <td nowrap>{{staff.role.name}}</td>
+                <td nowrap>{{staff.department.department_name}}</td>
+                <td nowrap>{{staff.designation.designation_name}}</td>
+                <td nowarp>{{staff.phone}}</td>
                 <td>
                   <router-link to="#">
                     <i class="fa fa-list"></i>
@@ -120,17 +120,13 @@
           </table>
         </div>
       </div>
-
       <div class="stucard-body view" v-else>
         <div>
           <div class="row main">
-            <div class="imgcard">
+            <div class="imgcard" v-for="(staff) in staffs" :key="staff.id">
               <div class="staffinfo-box">
                 <div class="staffleft-box">
-                  <img
-                    src="https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440"
-                    alt
-                  />
+                  <img :src="'/staff_images/'+ staff.image" alt />
                 </div>
                 <div class="staffleft-content">
                   <h5>
@@ -138,112 +134,22 @@
                       data-toggle="tooltip"
                       title="Name"
                       data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Selena Gomez</span>
+                    >{{staff.name}}</span>
                   </h5>
-                  <p>9000</p>
-                  <p>09123456789</p>
-                  <p>Ground Floor, Admin</p>
+                  <p>{{staff.staff_id}}</p>
+                  <p>{{staff.phone}}</p>
+                  <p>Ground Floor, {{staff.department.department_name}}</p>
                   <p class="staffsub">
                     <span
                       data-toggle="tooltip"
                       title="Role"
                       data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Super Admin</span>
+                    >{{staff.role.name}}</span>
                     <span
                       data-toggle="tooltip"
                       title="Designation"
                       data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Admin</span>
-                  </p>
-                </div>
-                <div class="overlay3">
-                  <div class="stafficons">
-                    <a title="Show">
-                      <i class="fa fa-navicon"></i>
-                    </a>
-                    <a title="Edit">
-                      <i class="fa fa-pencil"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imgcard">
-              <div class="staffinfo-box">
-                <div class="staffleft-box">
-                  <img
-                    src="https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440"
-                    alt
-                  />
-                </div>
-                <div class="staffleft-content">
-                  <h5>
-                    <span
-                      data-toggle="tooltip"
-                      title="Name"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Selena Gomez</span>
-                  </h5>
-                  <p>9000</p>
-                  <p>09123456789</p>
-                  <p>Ground Floor, Admin</p>
-                  <p class="staffsub">
-                    <span
-                      data-toggle="tooltip"
-                      title="Role"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Super Admin</span>
-                    <span
-                      data-toggle="tooltip"
-                      title="Designation"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Admin</span>
-                  </p>
-                </div>
-                <div class="overlay3">
-                  <div class="stafficons">
-                    <a title="Show">
-                      <i class="fa fa-navicon"></i>
-                    </a>
-                    <a title="Edit">
-                      <i class="fa fa-pencil"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="imgcard">
-              <div class="staffinfo-box">
-                <div class="staffleft-box">
-                  <img
-                    src="https://qph.fs.quoracdn.net/main-qimg-d171a30624492d6041d5b23548136440"
-                    alt
-                  />
-                </div>
-                <div class="staffleft-content">
-                  <h5>
-                    <span
-                      data-toggle="tooltip"
-                      title="Name"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Selena Gomez</span>
-                  </h5>
-                  <p>9000</p>
-                  <p>09123456789</p>
-                  <p>Ground Floor, Admin</p>
-                  <p class="staffsub">
-                    <span
-                      data-toggle="tooltip"
-                      title="Role"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Super Admin</span>
-                    <span
-                      data-toggle="tooltip"
-                      title="Designation"
-                      data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing"
-                    >Admin</span>
+                    >{{staff.designation.designation_name}}</span>
                   </p>
                 </div>
                 <div class="overlay3">
@@ -270,10 +176,20 @@ export default {
   data() {
     return {
       view: true,
-      staff: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      staffs: []
     };
   },
+  created() {
+    this.getStaffs();
+  },
   methods: {
+    getStaffs() {
+      this.axios.get("/api/staffs").then(response => {
+        console.log(JSON.stringify(response.data));
+
+        this.staffs = response.data;
+      });
+    },
     listView() {
       this.view = true;
     },
@@ -283,5 +199,3 @@ export default {
   }
 };
 </script>
-
-    

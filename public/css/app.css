@@ -2321,6 +2321,27 @@ input[type=file] {
   Wai Yan Soe
 **/
 
+.metaBtn {
+  color: white;
+  background-color: #1b5e20;
+  border: none;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  width: 150px;
+  height: 34px;
+}
+
+.metaBtn:active {
+  border: none;
+  outline: none;
+}
+
+.metaBtn:focus {
+  border: none;
+  outline: none;
+}
+
 .confirmBtn {
   width: 100px;
   font-size: 14px;
@@ -2498,28 +2519,121 @@ input[type=file] {
   display: none;
 }
 
-.StudentInformation .metaBtn,
-.StudentHistory .metaBtn {
-  color: white;
-  background-color: #1b5e20;
-  border: none;
-  padding: 5px;
+.textbox input::-webkit-outer-spin-button,
+.textbox input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.textbox .vdp-datepicker input {
+  padding-left: 5px;
+  font-size: 9.5pt;
+  display: block;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  height: 28px !important;
+  line-height: 1.5;
+  color: black;
+  border-radius: 0rem;
+  border: 1px solid #d2d6de;
+}
+
+.textbox .vdp-datepicker input:hover {
+  box-shadow: none;
+  outline: gray;
+}
+
+.textbox .vdp-datepicker input:focus {
+  box-shadow: none;
+  outline: gray;
+  border: 0.5px solid green;
+}
+
+.textbox .vdp-datepicker__calendar {
+  position: absolute;
+  z-index: 100;
+  background: white;
+  width: 250px;
+  border: 1px solid #ccc;
+}
+
+.textbox header {
+  display: -webkit-box !important;
+  display: flex !important;
+  position: absolute;
+  width: 250px;
+  height: auto;
+  z-index: 1;
+  background: #044604;
+  color: #fff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-align: center;
-  font-size: 14px;
-  width: 150px;
-  height: 34px;
+  margin-left: 0px;
 }
 
-.StudentInformation .metaBtn:active,
-.StudentHistory .metaBtn:active {
-  border: none;
-  outline: none;
+.textbox header .up:not(.disabled):hover {
+  background-color: #1b5e20 !important;
 }
 
-.StudentInformation .metaBtn:focus,
-.StudentHistory .metaBtn:focus {
-  border: none;
-  outline: none;
+.textbox header .next:after {
+  border-left: 10px solid white !important;
+}
+
+.textbox header .next:hover,
+.textbox header .prev:hover {
+  background-color: #1b5e20 !important;
+}
+
+.textbox header .prev:after {
+  border-right: 10px solid white !important;
+}
+
+.row {
+  margin: 10px;
+}
+
+.row .textbox {
+  width: 25%;
+  padding: 5px;
+}
+
+.row .textbox p {
+  margin: 0;
+  padding: 0;
+}
+
+.row .textbox .span {
+  margin: 4px 5px 0px 0;
+  float: right;
+  padding: 0 7px;
+  cursor: pointer;
+  background-color: #1b5e20;
+  color: white;
+  border-radius: 3px;
+}
+
+.row .textbox img {
+  margin: 0 50px;
+  margin: 0;
+  text-align: center;
+}
+
+.row .textbox label {
+  font-size: 13px;
+}
+
+.row .textbox i {
+  font-weight: lighter;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.row .textarea span input {
+  margin-left: 10px;
+}
+
+.row textarea.form-control {
+  height: 180px;
 }
 
 .StudentInformation .table td,
@@ -2860,7 +2974,6 @@ button:focus {
   width: 100px;
   height: 100px;
   position: relative;
-  z-index: 1;
   background: #fff;
 }
 

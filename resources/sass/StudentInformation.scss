@@ -1,24 +1,7 @@
 .StudentInformation,
 .StudentHistory
 {
-    .metaBtn {  
-        color: white;
-        background-color: #1b5e20;
-        border: none;
-        padding: 5px;
-        text-align: center;
-        font-size: 14px;
-        width: 150px;
-        height: 34px;
-    }
-    .metaBtn:active {
-        border: none;
-        outline: none;
-    }
-    .metaBtn:focus {
-        border: none;
-        outline: none;
-    }
+   
     .table {
         td {
             text-align: center;

@@ -8,6 +8,7 @@ import {routes} from '../js/routes';
 import VueRouter from 'vue-router';
 import wysiwyg from "vue-wysiwyg";
 
+
 Vue.use(wysiwyg, {maxHeight: "300px"});
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);   
@@ -19,6 +20,7 @@ const router = new VueRouter({
 
 const app = new Vue({
   router: router,
+  
   el: '#app',
   render: a => a(App)
 });
