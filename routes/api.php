@@ -132,6 +132,14 @@ Route::group(['prefix' => 'studentattendance'], function () {
     Route::post('update/{id}', 'StudentAttendancesController@update');
     Route::delete('delete/{id}', 'StudentAttendancesController@destroy');
 });
+Route::get('student','StudentController@index');
+Route::group(['prefix' => 'student'], function() {
+    Route::post('add','StudentController@store');
+    Route::get('show/{para}','StudentController@show');
+    Route::get('edit/{id}','StudentController@edit');
+    Route::post('update/{id}','StudentController@update');
+    Route::delete('delete/{id}','StudentController@destroy');
+});
 
 // Kyaw Soe Hein
 Route::get('tranRouteList', 'RouteController@index');
