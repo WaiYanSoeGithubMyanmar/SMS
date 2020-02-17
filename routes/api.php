@@ -167,6 +167,14 @@ Route::group(['prefix' => 'TranVehicle'], function () {
     Route::get('delete/{id}', 'VehicleController@destroy');
 });
 
+//Vehicle Route  Route
+Route::get('vehicleroute', 'VehicleRoutesController@index');
+Route::group(['prefix' => 'VehicleRoute'], function() {
+    Route::post('save','VehicleRoutesController@store');
+    Route::get('edit/{id}','VehicleRoutesController@edit');
+    Route::get('delete/{id}','VehicleRoutesController@destroy');
+});
+
 //Lwin Kyaw Phyo
 //Academic Year Route
 Route::get('academicyr', 'AcademicYearController@index');
@@ -198,6 +206,14 @@ Route::group(['prefix' => 'Subject'], function() {
     Route::post('save','SubjectController@store');
     Route::get('edit/{id}','SubjectController@edit');
     Route::get('delete/{id}','SubjectController@destroy');
+});
+
+//Assign Class Teacher Route
+Route::get('classTeacher', 'AssignclassteacherController@index');
+Route::group(['prefix' => 'ClassTeacher'], function() {
+    Route::post('save','AssignclassteacherController@store');
+    Route::get('edit/{id}','AssignclassteacherController@edit');
+    Route::get('delete/{id}','AssignclassteacherController@destroy');
 });
 //Lwin Kyaw Phyo
 

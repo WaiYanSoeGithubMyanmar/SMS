@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Section;
 use Illuminate\Http\Request;
+use App\AcademicYear;
 
 class SectionController extends Controller
 {
 
     public function index()
     {        
-        $section = Section::where('is_active', 'yes')->where('domain', 'TS')->get()->toArray();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $section = Section::where('is_active', 'yes')
+                            ->where('domain', 'TS')
+                            ->where('session_id', $sessionid[0]->id)
+                            ->orderBy('id', 'DESC')->get()->toArray();
         return array_reverse($section);
     }
 
@@ -30,10 +35,15 @@ class SectionController extends Controller
 
     public function SaveSection($request)
     {
-        $check = Section::where('section', $request->input('section'))->where('domain', 'TS')->get()->count();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Section::where('section', $request->input('section'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();
         if ($check > 0)
         {
-            $checkActive = Section::where('section', $request->input('section'))->where('domain', 'TS')->get();
+            $checkActive = Section::where('section', $request->input('section'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 //Save Update is_active
@@ -47,7 +57,8 @@ class SectionController extends Controller
         {
             $section = new Section([
                 'section' => $request->input('section'),
-                'domain' => 'TS'
+                'domain' => 'TS',
+                'session_id' => $sessionid[0]->id
             ]);
     
             $section->save();            
@@ -56,12 +67,17 @@ class SectionController extends Controller
     }
 
     public function UpdateSection($request){
-        $check = Section::where('section', $request->input('section'))->where('domain', 'TS')->get()->count();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Section::where('section', $request->input('section'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();
         if($check > 0)
         {
-            $checkActive = Section::where('section', $request->input('section'))->where('domain', 'TS')->get();
-            $Section = Section::where('id', $request->input('id'))->where('domain', 'TS')->get();
-            if($checkActive[0]->is_active == 'delete')
+            $checkActive = Section::where('section', $request->input('section'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();
+            $Section = Section::where('id', $request->input('id'))->get();
+            if($checkActive[0]->is_active == 'delete' || $Section[0]->section == $request->input('section'))
             {
                 $Section[0]->section = $request->input('section');                    
                 $Section[0]->save();

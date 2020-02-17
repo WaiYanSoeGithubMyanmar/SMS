@@ -7,12 +7,14 @@ use App\class_section;
 use App\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\AcademicYear;
 
 class ClassesController extends Controller
 {
     public function index()
     {
-        $classList = DB::select("SELECT c.id, c.class, s.section FROM class_sections cs INNER JOIN classes c ON cs.class_id = c.id INNER JOIN Sections s ON cs.section_id = s.id WHERE cs.is_active='yes' AND c.is_active='yes' AND cs.domain='TS' AND c.domain='TS' ORDER BY cs.class_id");
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $classList = DB::select("SELECT c.id AS classid, c.class, s.id AS sectionid, s.section FROM class_sections cs INNER JOIN classes c ON cs.class_id = c.id INNER JOIN Sections s ON cs.section_id = s.id WHERE cs.is_active='yes' AND c.is_active='yes' AND cs.domain='TS' AND c.domain='TS' AND c.session_id=? AND cs.session_id=? ORDER BY cs.class_id", [$sessionid[0]->id,$sessionid[0]->id]);
         return $classList;
     }
 
@@ -33,19 +35,26 @@ class ClassesController extends Controller
     //Save
     public function SaveClass($request)
     {
-        $check = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get()->count();            
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Classes::where('class', $request->input('class'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();            
         if($check > 0)
         {
-            $checkActive = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get();                
+            $checkActive = Classes::where('class', $request->input('class'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();                
             if($checkActive[0]->is_active == 'delete')
             {
                 $checkActive[0]->class = $request->input('class');
                 $checkActive[0]->is_active = "yes";
                 $checkActive[0]->save();
 
-                DB::Delete('Delete from class_sections where class_id=? and domain=?',[$checkActive[0]->id],'TS');
+                DB::Delete('Delete from class_sections where class_id=? and domain=? and session_id=?',[$checkActive[0]->id,'TS', $sessionid[0]->id]);
 
-                $classId = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get('id');
+                $classId = Classes::where('class', $request->input('class'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get('id');
                 for( $i = 0; $i < count($request->section); $i++){
                     $classsection = new class_section([
                         'class_id' => $classId[0]->id,
@@ -63,16 +72,20 @@ class ClassesController extends Controller
         {
             $classes = new Classes([
                 'class' => $request->input('class'),
+                'session_id' => $sessionid[0]->id,
                 'domain' => 'TS'
             ]);    
             $classes->save();
 
-            $classId = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get('id');
+            $classId = Classes::where('class', $request->input('class'))
+                                ->where('domain', 'TS')
+                                ->where('session_id', $sessionid[0]->id)->get('id');
             for( $i = 0; $i < count($request->section); $i++){
                 $classsection = new class_section([
                     'class_id' => $classId[0]->id,
                     'section_id' => $request->section[$i],
-                    'domain' => 'TS'
+                    'domain' => 'TS',
+                    'session_id' => $sessionid[0]->id
                 ]);
         
                 $classsection->save();
@@ -84,22 +97,28 @@ class ClassesController extends Controller
     //Update
     public function UpdateClass($request)
     {
-        $check = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get()->count();            
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Classes::where('class', $request->input('class'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();            
         if($check > 0)
         {
-            $checkActive = Classes::where('class', $request->input('class'))->where('domain', 'TS')->get();
-            $classes = Classes::where('id', $request->input('id'))->where('domain', 'TS')->get();                
-            if($checkActive[0]->is_active == 'delete')
+            $checkActive = Classes::where('class', $request->input('class'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();
+            $classes = Classes::where('id', $request->input('id'))->get();
+            if($checkActive[0]->is_active == 'delete'  || $classes[0]->class == $request->input('class'))
             {
                 $classes[0]->class = $request->input('class');
                 $classes[0]->save();
-                DB::Delete('Delete from class_sections where class_id=? and domain=?',[$request->input('id'),'TS']);
+                DB::Delete('Delete from class_sections where class_id=? and domain=? and session_id=?',[$request->input('id'),'TS', $sessionid[0]->id]);
 
                 for( $i = 0; $i < count($request->section); $i++){            
                     $classsection = new class_section([
                         'class_id' => $request->input('id'),
                         'section_id' => $request->section[$i],
-                        'domain' => 'TS'
+                        'domain' => 'TS',
+                        'session_id' => $sessionid[0]->id
                     ]);
                     $classsection->save();
                 }
@@ -112,13 +131,14 @@ class ClassesController extends Controller
             $classes = Classes::find($request->input('id'));
             $classes->class = $request->input('class');
             $classes->save();
-            DB::Delete('Delete from class_sections where class_id=? and domain=?',[$request->input('id'),'TS']);
+            DB::Delete('Delete from class_sections where class_id=? and domain=? and session_id=?',[$request->input('id'),'TS', $sessionid[0]->id]);
 
             for( $i = 0; $i < count($request->section); $i++){            
                 $classsection = new class_section([
                     'class_id' => $request->input('id'),
                     'section_id' => $request->section[$i],
-                    'domain' => 'TS'
+                    'domain' => 'TS',
+                    'session_id' => $sessionid[0]->id
                 ]);
                 $classsection->save();
             }

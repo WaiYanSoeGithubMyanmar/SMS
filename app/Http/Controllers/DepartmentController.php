@@ -39,22 +39,16 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $request->validate([
             'department_name' => 'required'
         ]);
-=======
->>>>>>> 4a9ef5c06f22d27f8f4c55f5314c851a1375de18
         $department = new Department([
             "department_name" => $request->input('department_name'),
             "is_active"       => "No"
         ]);
         $department->save();
-<<<<<<< HEAD
         return response()->json(['text' => 'Department added successfully', 'type' => 'success']);
-=======
         return response()->json("The Designation successfully added");
->>>>>>> 4a9ef5c06f22d27f8f4c55f5314c851a1375de18
     }
 
     /**
@@ -90,11 +84,8 @@ class DepartmentController extends Controller
         //
         $department = Department::find($id);
         $department->update($request->all());
-<<<<<<< HEAD
         return response()->json(['text' => 'Department updated successfully', 'type' => 'success']);
-=======
         return response()->json("The Department successfully updated");
->>>>>>> 4a9ef5c06f22d27f8f4c55f5314c851a1375de18
     }
 
     /**
@@ -108,10 +99,7 @@ class DepartmentController extends Controller
         //
         $department = Department::find($id);
         $department->delete();
-<<<<<<< HEAD
         return response()->json(['text' => 'Department deleted successfully', 'type' => 'success']);
-=======
         return response()->json("The Department successfully deleted");
->>>>>>> 4a9ef5c06f22d27f8f4c55f5314c851a1375de18
     }
 }

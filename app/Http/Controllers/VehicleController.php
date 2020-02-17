@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Vehicle;
+use App\AcademicYear;
 
 class VehicleController extends Controller
 {
     public function index()
     {
-        $vehicle = Vehicle::where('is_active', 'Yes')->where('domain', 'TS')->get()->toArray();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $vehicle = Vehicle::where('is_active', 'Yes')
+                            ->where('domain', 'TS')
+                            ->where('session_id', $sessionid[0]->id)
+                            ->get()->toArray();
         return array_reverse($vehicle);
     }
 
@@ -27,7 +32,10 @@ class VehicleController extends Controller
 
     public function SaveVehicle($request)
     {
-        $check = Vehicle::where('vehicle_no', $request->input('vehicle_no'))->where('domain', 'TS')->count(); 
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Vehicle::where('vehicle_no', $request->input('vehicle_no'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->count(); 
         if ($check > 0)
         {
             return response()->json('Vehicle already exists!');
@@ -41,7 +49,8 @@ class VehicleController extends Controller
                 'driver_licence' => $request->input('driver_licence'),
                 'driver_contact' => $request->input('driver_contact'),
                 'note' => $request->input('note'),
-                'domain' => 'TS'
+                'domain' => 'TS',
+                'session_id' => $sessionid[0]->id
             ]);
 
             $vehicle->save();
@@ -51,10 +60,15 @@ class VehicleController extends Controller
 
     public function EditVehicle($request)
     {
-        $check = Vehicle::where('vehicle_no', $request->input('vehicle_no'))->where('domain', 'TS')->count(); 
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Vehicle::where('vehicle_no', $request->input('vehicle_no'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->count(); 
         if ($check > 0)
         {
-            $checkId = Vehicle::where('vehicle_no', $request->input('vehicle_no'))->where('domain', 'TS')->get(); 
+            $checkId = Vehicle::where('vehicle_no', $request->input('vehicle_no'))
+                                ->where('domain', 'TS')
+                                ->where('session_id', $sessionid[0]->id)->get(); 
             if($checkId[0]->id == $request->input('id'))
             {
                 $vehicle = Vehicle::find($request->input('id'));            

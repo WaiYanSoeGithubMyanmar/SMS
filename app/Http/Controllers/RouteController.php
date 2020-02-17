@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Route;
+use App\AcademicYear;
 
 class RouteController extends Controller
 {
     public function index()
     {
-        $route = Route::where('is_active', 'Yes')->where('domain', 'TS')->get()->toArray();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $route = Route::where('is_active', 'Yes')
+                        ->where('domain', 'TS')->get()
+                        ->where('session_id', $sessionid[0]->id)->toArray();
         return array_reverse($route);
     }
 
@@ -27,7 +31,10 @@ class RouteController extends Controller
 
     public function SaveRoute($request)
     {
-        $check = Route::where('route_title', $request->input('route_title'))->where('domain', 'TS')->count(); 
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Route::where('route_title', $request->input('route_title'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->count(); 
         if ($check > 0)
         {
             return response()->json('Route already exists!');
@@ -37,7 +44,8 @@ class RouteController extends Controller
             $route = new Route([
                 'route_title' => $request->input('route_title'),
                 'fare' => $request->input('fare'),
-                'domain' => 'TS'
+                'domain' => 'TS',
+                'session_id' => $sessionid[0]->id
             ]);
 
             $route->save();
@@ -47,10 +55,15 @@ class RouteController extends Controller
 
     public function EditRoute($request)
     {
-        $check = Route::where('route_title', $request->input('route_title'))->where('domain', 'TS')->count(); 
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = Route::where('route_title', $request->input('route_title'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->count(); 
         if ($check > 0)
         {
-            $checkId = Route::where('route_title', $request->input('route_title'))->where('domain', 'TS')->get(); 
+            $checkId = Route::where('route_title', $request->input('route_title'))
+                            ->where('domain', 'TS')
+                            ->where('session_id', $sessionid[0]->id)->get(); 
             if($checkId[0]->id == $request->input('id'))
             {
                 $route = Route::find($request->input('id'));            

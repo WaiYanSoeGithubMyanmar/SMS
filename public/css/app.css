@@ -2045,7 +2045,7 @@ label {
   margin-right: -8px;
 }
 
-.copyRows #copyRow .col-2 {
+.copyRows #copyRow .col-3 {
   padding: 0;
   padding-right: 5px;
   background: whitesmoke;
@@ -2053,12 +2053,12 @@ label {
   border-bottom: 1px solid #dfdfdf;
 }
 
-.copyRows #copyRow .col-2 a {
+.copyRows #copyRow .col-3 a {
   color: #000000a8;
   padding: 1px 5px 5px;
 }
 
-.copyRows #copyRow .col-2 a:hover {
+.copyRows #copyRow .col-3 a:hover {
   background: #e7e7e7;
   color: black;
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);

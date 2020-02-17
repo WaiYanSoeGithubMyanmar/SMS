@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\subject;
 use Illuminate\Http\Request;
+use App\AcademicYear;
 
 class SubjectController extends Controller
 {
     public function index()
-    {        
-        $sub1 = subject::where('is_active', 'yes')->where('domain', 'TS')->get()->toArray();
+    {
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $sub1 = subject::where('is_active', 'yes')
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)
+                        ->orderBy('id', 'DESC')->get()->toArray();
         return array_reverse($sub1);
     }
 
@@ -29,10 +34,15 @@ class SubjectController extends Controller
 
     public function SaveSubject($request)
     {
-        $check = subject::where('name', $request->input('name'))->where('domain', 'TS')->get()->count();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = subject::where('name', $request->input('name'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();
         if ($check > 0)
         {
-            $checkActive = subject::where('name', $request->input('name'))->where('domain', 'TS')->get();
+            $checkActive = subject::where('name', $request->input('name'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();
             if($checkActive[0]->is_active == 'delete')
             {
                 //Save Update is_active
@@ -50,7 +60,8 @@ class SubjectController extends Controller
                 'name' => $request->input('name'),
                 'code' => $request->input('code'),
                 'type' => $request->input('type'),
-                'domain' => 'TS'
+                'domain' => 'TS',
+                'session_id' => $sessionid[0]->id
             ]);
     
             $sub->save();
@@ -59,12 +70,17 @@ class SubjectController extends Controller
     }
 
     public function UpdateSubject($request){
-        $check = subject::where('name', $request->input('name'))->where('domain', 'TS')->get()->count();
+        $sessionid = AcademicYear::where('is_active','yes')->where('domain','TS')->get('id');
+        $check = subject::where('name', $request->input('name'))
+                        ->where('domain', 'TS')
+                        ->where('session_id', $sessionid[0]->id)->get()->count();
         if($check > 0)
         {
-            $checkActive = subject::where('name', $request->input('name'))->where('domain', 'TS')->get();
-            $Subjects = subject::where('id', $request->input('id'))->where('domain', 'TS')->get();
-            if($checkActive[0]->is_active == 'delete')
+            $checkActive = subject::where('name', $request->input('name'))
+                                    ->where('domain', 'TS')
+                                    ->where('session_id', $sessionid[0]->id)->get();
+            $Subjects = subject::where('id', $request->input('id'))->get();
+            if($checkActive[0]->is_active == 'delete' || $Subjects[0]->name == $request->input('name'))
             {
                 $Subjects[0]->name = $request->input('name');
                 $Subjects[0]->code = $request->input('code');

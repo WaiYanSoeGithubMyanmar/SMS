@@ -11,18 +11,9 @@ class AcademicYearController extends Controller
     // get All Session
     public function index()
     {
-        $academicyr = AcademicYear::where('domain','TS')->get()->toArray();
+        $academicyr = AcademicYear::where('domain','TS')->orderBy('id', 'DESC')->get()->toArray();
         return array_reverse($academicyr);
     }
-
-
-// Thein Htike Aung Section 
-public function activeAcademic()
-{
-    $academicyr = AcademicYear::where('is_active','yes')->get()->toArray();
-    return array_reverse($academicyr);
-}
-// End Thein Htike Aung Section 
 
     // Save and Update Session
     public function store(Request $request)
@@ -68,16 +59,16 @@ public function activeAcademic()
     }
 
     public function UpdateSession($request){
-        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();            
+        $check = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get()->count();
         if ($check > 0)
         {
             $checkSession = AcademicYear::where('session', $request->input('session'))->where('domain', 'TS')->get();                
-            $Session = AcademicYear::where('id', $request->input('id'))->where('domain', 'TS')->get()->get();
+            $Session = AcademicYear::where('id', $request->input('id'))->where('domain', 'TS')->get();
             for( $i = 0; $i < count($checkSession); $i++){                
                 $a = 0;
                 if($checkSession[$i]->is_active == "delete") $a = 1;
             }
-            if($a == 1)
+            if($a == 1 || $Session[0]->session == $request->input('session'))
             {
                 $Session[0]->session = $request->input('session');
                 $Session[0]->is_active = "no";

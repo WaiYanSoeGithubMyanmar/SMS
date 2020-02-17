@@ -15,19 +15,21 @@
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
             <message :alertmessage="msg" />
-            <div class="col-12">
-              <label for="session">
-                Session
-                <strong>*</strong>
-              </label>
-              <input id="sessionid" type="text" class="inputbox" v-model="AcademicYr.session" 
-                @keyup="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')" 
-                v-on:blur="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')"/>
-              <span id="sessionmsg" class="error_message">Session is required</span>
-            </div>
-            <div class="col-12">
-              <button @click="goSave()" class="save">Save</button>
-            </div>
+            <form @submit.prevent="goSave">
+              <div class="col-12">
+                <label for="session">
+                  Session
+                  <strong>*</strong>
+                </label>
+                <input id="sessionid" type="text" class="inputbox" v-model="AcademicYr.session" 
+                  @keyup="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')" 
+                  v-on:blur="onValidate(AcademicYr.session, 'sessionid', 'sessionmsg')"/>
+                <span id="sessionmsg" class="error_message">Session is required</span>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="save">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -48,28 +50,18 @@
               class="searchText"
             />
             <div class="copyRows">
-              <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+              <div class="row" id="copyRow">                
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
@@ -162,6 +154,7 @@ export default {
         if(this.AcademicYr.session == "" || this.AcademicYr.session == undefined)
         {
             this.onValidateMessage('sessionid', 'sessionmsg');
+            return false;
         }
         else
         {

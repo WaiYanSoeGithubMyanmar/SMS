@@ -18,6 +18,7 @@ class CreateSectionsTable extends Migration
             $table->char('section', 60);
             $table->char('is_active', 25)->default('yes');
             $table->char('domain',100);
+            $table->integer('session_id')->unsigned();
             $table->timestamps();
         });
     }

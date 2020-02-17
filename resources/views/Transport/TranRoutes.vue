@@ -56,31 +56,23 @@
                         </div>
 
                         <input type="text" placeholder="Search..." class="searchText" />
-                        <div class="row" id="copyRow">
-                            <div class="col-2">
-                                <a href="#" title="Copy">
-                                    <i class="fa fa-copy"></i>
-                                </a>
-                            </div>
-                            <div class="col-2">
-                                <a href="#" title="Excel">
-                                    <i class="fa fa-file-excel-o"></i>
-                                </a>
-                            </div>
-                            <div class="col-2">
-                                <a href="#" title="PDF">
-                                    <i class="fa fa-file-pdf-o"></i>
-                                </a>
-                            </div>
-                            <div class="col-2">
-                                <a href="#" title="Print">
-                                    <i class="fa fa-print"></i>
-                                </a>
-                            </div>
-                            <div class="col-2">
-                                <a href="#" title="Columns">
-                                    <i class="fa fa-columns"></i>
-                                </a>
+                        <div class="copyRows">
+                            <div class="row" id="copyRow">                
+                                <div class="col-3">
+                                    <a href="#" title="Excel">
+                                        <i class="fa fa-file-excel-o"></i>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <a href="#" title="Print">
+                                        <i class="fa fa-print"></i>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <a href="#" title="Columns">
+                                        <i class="fa fa-columns"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="table-responsive">

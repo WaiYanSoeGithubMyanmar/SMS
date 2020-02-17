@@ -18,16 +18,18 @@
                     </div>
                     <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
                         <message :alertmessage="msg"/>
-                        <div class="col-12">
-                            <label for="section">Section Name<strong>*</strong></label>
-                            <input id="sectionid" type="text" class="inputbox" v-model="SectionObj.section"
-                                @keyup="onValidate(SectionObj.section, 'sectionid', 'sectionmsg')" 
-                                v-on:blur="onValidate(SectionObj.section, 'sectionid', 'sectionmsg')"/>
-                            <span id="sectionmsg" class="error_message">Section Name is required</span>
-                        </div>
-                        <div class="col-12">
-                            <button @click="goSave()" class="save">Save</button>
-                        </div>
+                        <form @submit.prevent="goSave">
+                            <div class="col-12">
+                                <label for="section">Section Name<strong>*</strong></label>
+                                <input id="sectionid" type="text" class="inputbox" v-model="SectionObj.section"
+                                    @keyup="onValidate(SectionObj.section, 'sectionid', 'sectionmsg')" 
+                                    v-on:blur="onValidate(SectionObj.section, 'sectionid', 'sectionmsg')"/>
+                                <span id="sectionmsg" class="error_message">Section Name is required</span>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="save">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -47,31 +49,21 @@
                             class="searchText"
                         />
                         <div class="copyRows">
-                            <div class="row" id="copyRow">
-                                <div class="col-2">
-                                    <a href="#" title="Copy">
-                                        <i class="fa fa-copy"></i>
-                                    </a>
+                            <div class="row" id="copyRow">                
+                                <div class="col-3">
+                                <a href="#" title="Excel">
+                                    <i class="fa fa-file-excel-o"></i>
+                                </a>
                                 </div>
-                                <div class="col-2">
-                                    <a href="#" title="Excel">
-                                        <i class="fa fa-file-excel-o"></i>
-                                    </a>
+                                <div class="col-3">
+                                <a href="#" title="Print">
+                                    <i class="fa fa-print"></i>
+                                </a>
                                 </div>
-                                <div class="col-2">
-                                    <a href="#" title="PDF">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                    </a>
-                                </div>
-                                <div class="col-2">
-                                    <a href="#" title="Print">
-                                        <i class="fa fa-print"></i>
-                                    </a>
-                                </div>
-                                <div class="col-2">
-                                    <a href="#" title="Columns">
-                                        <i class="fa fa-columns"></i>
-                                    </a>
+                                <div class="col-3">
+                                <a href="#" title="Columns">
+                                    <i class="fa fa-columns"></i>
+                                </a>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +146,7 @@ export default {
             if(this.SectionObj.section == "" || this.SectionObj.section == undefined)
             {
                 this.onValidateMessage('sectionid', 'sectionmsg');
+                return false;
             }
             else
             {
@@ -167,7 +160,7 @@ export default {
             {
                 this.axios
                     .post('/api/Section/save', this.SectionObj)
-                    .then(response => (            
+                    .then(response => (                        
                         this.SectionObj = {"id":"","section":"","created_at":"","updated_at":""},
                         this.getAllSection(),
                         this.msg.text = response.data.text,

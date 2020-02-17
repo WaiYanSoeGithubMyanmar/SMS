@@ -23,6 +23,7 @@ class Vehicles extends Migration
             $table->string('note',200)->nullable();
             $table->string('is_active',25)->default("Yes");
             $table->string('domain',100);
+            $table->integer('session_id')->unsigned();
             $table->timestamps();
         });
     }

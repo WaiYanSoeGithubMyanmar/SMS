@@ -16,35 +16,37 @@
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
             <message :alertmessage="msg"/>
-            <div class="col-12">
-              <label for="subjectname">
-                Subject Name
-                <strong>*</strong>
-              </label>
-              <input id="subjectid" type="text" class="inputbox" name="subjectname" v-model="subjectObj.name"
-                @keyup="onValidate(subjectObj.name, 'subjectid', 'subjectmsg')" 
-                v-on:blur="onValidate(subjectObj.name, 'subjectid', 'subjectmsg')"/>
-              <span id="subjectmsg" class="error_message">Subject Name is required</span>
-            </div>
-            <div class="col-12">
-              <label
-                style="display: inline-block;margin-bottom: .5rem;margin-top: 15px;padding-right: 20px;"
-              >
-                <input type="radio" name="subjectType" checked value="theory" v-model="type"/> Theory
-              </label>
-              <label
-                style="display: inline-block;margin-bottom: .5rem;margin-top: 15px;padding-right: 20px;"
-              >
-                <input type="radio" name="subjectType" value="practical" v-model="type"/> Practical
-              </label>
-            </div>
-            <div class="col-12">
-              <label for="subjectcode">Subject Code</label>
-              <input type="text" class="inputbox" name="subjectcode" v-model="subjectObj.code"/>
-            </div>
-            <div class="col-12">
-              <button @click="goSave()" class="save">Save</button>
-            </div>
+            <form @submit.prevent="goSave">
+              <div class="col-12">
+                <label for="subjectname">
+                  Subject Name
+                  <strong>*</strong>
+                </label>
+                <input id="subjectid" type="text" class="inputbox" name="subjectname" v-model="subjectObj.name"
+                  @keyup="onValidate(subjectObj.name, 'subjectid', 'subjectmsg')" 
+                  v-on:blur="onValidate(subjectObj.name, 'subjectid', 'subjectmsg')"/>
+                <span id="subjectmsg" class="error_message">Subject Name is required</span>
+              </div>
+              <div class="col-12">
+                <label
+                  style="display: inline-block;margin-bottom: .5rem;margin-top: 15px;padding-right: 20px;"
+                >
+                  <input type="radio" name="subjectType" checked value="theory" v-model="type"/> Theory
+                </label>
+                <label
+                  style="display: inline-block;margin-bottom: .5rem;margin-top: 15px;padding-right: 20px;"
+                >
+                  <input type="radio" name="subjectType" value="practical" v-model="type"/> Practical
+                </label>
+              </div>
+              <div class="col-12">
+                <label for="subjectcode">Subject Code</label>
+                <input type="text" class="inputbox" name="subjectcode" v-model="subjectObj.code"/>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="save">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -64,28 +66,18 @@
               class="searchText"
             />
             <div class="copyRows">
-              <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+              <div class="row" id="copyRow">                
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
@@ -177,6 +169,7 @@ export default {
         if(this.subjectObj.name == "" || this.subjectObj.name == undefined)
         {
             this.onValidateMessage('subjectid', 'subjectmsg');
+            return false;
         }
         else
         {

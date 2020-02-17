@@ -16,31 +16,33 @@
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
             <message :alertmessage="msg" />
-            <div class="col-12">
-              <label for="class">
-                Class
-                <strong>*</strong>
-              </label>
-              <input id="classid" type="text" class="inputbox" name="class" v-model="ClassObj.class"
-                @keyup="onValidate(ClassObj.class, 'classid', 'classmsg')"
-                v-on:blur="onValidate(ClassObj.class, 'classid', 'classmsg')"/>
-              <span id="classmsg" class="error_message">Class is required</span>
-            </div>
-            <div class="col-12">
-              <label for="class">
-                Section
-                <strong>*</strong>
-              </label>
-              <div v-for="Obj in SectionList" :key="Obj.id" class="checkbox">
-                  <label class="checkboxlabel">
-                      <input type="checkbox" class="checkboxinput" value="" v-model="Obj.checked" @click="check($event,Obj)"/> {{Obj.section}}
-                  </label>
+            <form @submit.prevent="goSave">
+              <div class="col-12">
+                <label for="class">
+                  Class
+                  <strong>*</strong>
+                </label>
+                <input id="classid" type="text" class="inputbox" name="class" v-model="ClassObj.class"
+                  @keyup="onValidate(ClassObj.class, 'classid', 'classmsg')"
+                  v-on:blur="onValidate(ClassObj.class, 'classid', 'classmsg')"/>
+                <span id="classmsg" class="error_message">Class is required</span>
               </div>
-              <span id="classsectionmsg" class="error_message">Section is required</span>
-            </div>
-            <div class="col-12">
-              <button @click="goSave()" class="save">Save</button>
-            </div>
+              <div class="col-12">
+                <label for="class">
+                  Section
+                  <strong>*</strong>
+                </label>
+                <div v-for="Obj in SectionList" :key="Obj.id" class="checkbox">
+                    <label class="checkboxlabel">
+                        <input type="checkbox" class="checkboxinput" value="" v-model="Obj.checked" @click="check($event,Obj)"/> {{Obj.section}}
+                    </label>
+                </div>
+                <span id="classsectionmsg" class="error_message">Section is required</span>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="save">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -61,28 +63,18 @@
               class="searchText"
             />
             <div class="copyRows">
-              <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+              <div class="row" id="copyRow">                
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
@@ -102,7 +94,7 @@
                   <tr v-for="classes in ClassList" :key="classes.id" class="active">
                       <td class="all" nowrap>{{classes.class}}</td>
                       <td class="all" nowrap>
-                          <label v-for="section in classes.section" :key="section.section" style="display: block; margin: 0px;font-size: 13px;font-weight: 200;">{{section.section}}</label>                                            
+                          <label v-for="section in classes.section" :key="section.section" style="display: block; margin: 0px;font-size: 13px;font-weight: 200;">{{section.section}}</label>
                       </td>                                        
                       <td style="text-align:right;vertical-align:top;">
                         <i @click="goEdit(classes)" class="fa fa-pencil pen">
@@ -174,7 +166,7 @@ export default {
         if(this.ClassList == [] || this.ClassList.length == 0){
           let obj = [];
           obj.push({"section": aList[i].section});
-          this.ClassList.push({"id": aList[i].id,"class": aList[i].class, "section": obj});
+          this.ClassList.push({"id": aList[i].classid,"class": aList[i].class, "section": obj});
         }
         else{
           let check = 0;
@@ -189,7 +181,7 @@ export default {
           {
             let obj1 = [];
             obj1.push({"section": aList[i].section});
-            this.ClassList.push({"id": aList[i].id,"class": aList[i].class, "section": obj1});
+            this.ClassList.push({"id": aList[i].classid,"class": aList[i].class, "section": obj1});
           }
         }
       }
@@ -224,7 +216,7 @@ export default {
     onValidateMessage(inputId, megId)
     {
         document.getElementById(inputId).style.border = 'solid 1px red';
-        document.getElementById(megId).style.display = 'block';
+        document.getElementById(megId).style.display = 'block';        
     },
 
     checkValidate()
@@ -232,10 +224,12 @@ export default {
         if(this.ClassObj.class == "" || this.ClassObj.class == undefined)
         {
             this.onValidateMessage('classid', 'classmsg');
+            return false;
         }
         if(this.ClassObj.section == []|| this.ClassObj.section.length == 0 || this.ClassObj.section == undefined)
         {          
-          $('#classsectionmsg').css('display', 'block')
+          $('#classsectionmsg').css('display', 'block');
+          return false;
         }
         else
         {
