@@ -10,11 +10,20 @@ class ExamsController extends Controller
 {
    
     public function index()
-    {
-        $exams = exams::all()->toArray();
-        return array_reverse($exams);
+    {   $academicYearId1 = $this->getAcademicActiveId();
+        $exams = exams::where('session_id',$academicYearId1)->where('is_active','yes')->where('domain','TS')->get();
+        return response($exams);
+        // return response($academicYearId1);
+        
     }
-    
+    public function getAcademicActiveId(){
+        $academicYear = AcademicYear::where('is_active','yes')->where('domain','TS')->get();
+        $academicYearId ;
+        foreach($academicYear as $academicYear1){
+            $academicYearId = $academicYear1->id;
+        }
+        return $academicYearId;
+    }
     public function create()
     {
         //
@@ -48,6 +57,7 @@ class ExamsController extends Controller
                     'name' => $request->input('name'),
                     'remark'=>$request->input('remark'),
                     'session_id'=>$request->input('session_id'),
+                    'domain' => $request->input('domain'),
                     'is_active' => 'no'
                 ]);
         

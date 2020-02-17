@@ -15,10 +15,11 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('session_id');
-            $table->string('remark');
-            $table->string('is_active');
+            $table->string('name')->nullable();
+            $table->string('session_id')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
             $table->timestamps();
         });
     }

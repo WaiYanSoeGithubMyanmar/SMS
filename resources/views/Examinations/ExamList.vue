@@ -7,7 +7,6 @@
       </h4>
     </div>
     <hr />
-
     <div class="row rowContainer" style="align-items: end !important;">
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
@@ -31,7 +30,9 @@
             <div class="col-12">
               <label for="note">Note</label><br>
               <textarea class="textareas" rows="3" v-model="saveexam.remark"></textarea>
-            </div>
+            </div><br>
+
+            <label v-if="savebutton == true" style="margin-left:50px;">Please Activate Academic Year <strong>*</strong></label>
             <div class="col-12">
               <button class="save" @click="addExam(SessionList.id)" v-for="SessionList in SessionList" :key="SessionList.id">Save</button>
             </div>
@@ -129,6 +130,7 @@
         </div>
       </div>
     </div>
+    <!-- <button type="button" @click="Test()">Test</button> -->
   </div>
 </template>
 <script>
@@ -141,7 +143,8 @@
                 errors: [],
                 successAlertmsg: "",
                 successAlertmsg1: "",
-                erroralertmsg: ""
+                erroralertmsg: "",
+                savebutton:''
             }
         },
         created() {
@@ -154,12 +157,19 @@
                 .get('/api/ExamList')
                 .then(response => {
                     this.exams = response.data;
+                    // console.log(response.data);
                 });
             },getAcademic(){
                this.axios
                 .get('/api/activeacademicyr') 
                 .then(response => {
                 this.SessionList = response.data;
+                var academicYr = response.data;
+                if (academicYr.length ==1 ){
+                  this.savebutton = false;
+                }else{
+                  this.savebutton = true;
+                }
                 });
             },Test(para){
               console.log(para);
@@ -171,6 +181,7 @@
                 this.saveexam.remark='No Description'
                 }
                 this.saveexam.session_id=session_id;
+                this.saveexam.domain = 'TS',
                 this.axios
                 .post('/api/exams/addexam', this.saveexam)
                 .then(response => (   
@@ -250,13 +261,18 @@
         if(this.saveexam.name == "" || this.saveexam.name == undefined)
         {
             this.onValidateMessage('nameid', 'namemsg');
+            return false;
         }
         else
         {
             return true;
         }
         return false;
-    },
+    },Test(){
+      this.axios.get(`/api/ExamList`).then(response=>{
+        console.log(response.data);
+      })
+    }
   }
   }
     
