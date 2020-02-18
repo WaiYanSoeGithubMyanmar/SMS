@@ -1,4 +1,52 @@
 .systemsetting {
+  .modal-bodys {
+    #row {
+      margin: 0px;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #343a400f;
+    }
+    .Theme {
+      .curTheme {
+        padding-top: 1rem;
+        padding-left: 1rem;
+      }
+    }
+    #ThemeColor {
+      margin: 0px;
+      .col-xs-6 {
+        width: 50%;
+      }
+      .blockColor {
+        margin: 1rem 0;
+        padding: 1px;
+        border-radius: 5px;
+        .backColor {
+          border-radius: 5px;
+          cursor: pointer;
+          background: var(--gray-dark);
+          height: 6rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .default {
+            margin: 0px;
+            font-size: 15px;
+            color: white;
+            filter: opacity(1);
+            text-align: center;
+          }
+        }
+        // .backColor:hover {
+        //   cursor: pointer;
+        //   border: 3px solid rgb(105, 105, 105);
+        //   p {
+        //     filter: opacity(1);
+        //   }
+        // }
+      }
+    }
+  }
+
   .rowContainer {
     margin-left: 0;
     .imgCard {
@@ -44,14 +92,87 @@
     .tableCard {
       padding: 0;
       padding-top: 5px;
-      .theme {
-        padding: 10px 1rem;
-      }
       .table-responsive {
         padding: 0;
         td {
           padding: 7px 1rem;
           border: none;
+          span {
+            display: flex;
+            align-items: center;
+            .rd:after {
+              background: #1b5e20;
+            }
+            .rd:checked:after {
+              background: #1b5e20;
+              border: 2px solid grey;
+            }
+            .rd1:after {
+              background: darkred;
+            }
+            .rd1:checked:after {
+              background: darkred;
+              border: 2px solid grey;
+            }
+            .rd2:after {
+              background: darkcyan;
+            }
+            .rd2:checked:after {
+              background: darkcyan;
+              border: 2px solid grey;
+            }
+            .rd3:after {
+              background: currentColor;
+            }
+            .rd3:checked:after {
+              background: currentColor;
+              border: 2px solid grey;
+            }
+            .rd4:after {
+              background: #edeeef;
+            }
+            .rd4:checked:after {
+              background: #edeeef;
+              border: 2px solid grey;
+            }
+            .rd:after,
+            .rd1:after,
+            .rd2:after,
+            .rd3:after,
+            .rd4:after {
+              width: 15px;
+              height: 15px;
+              border-radius: 0px !important;
+              top: -2px;
+              left: -1px;
+              border: 0.1px solid rgba(0, 0, 0, 0.452);
+              position: relative;
+              content: "";
+              display: inline-block;
+              visibility: visible;
+            }
+            .rd:checked:after,
+            .rd1:checked:after,
+            .rd2:checked:after,
+            .rd3:checked:after,
+            .rd4:checked:after {
+              width: 15px;
+              height: 15px;
+              border-radius: 15px;
+              top: -2px;
+              left: -1px;
+              position: relative;
+              content: "";
+              display: inline-block;
+              visibility: visible;
+            }
+            .radio {
+              margin-right: 8px;
+            }
+            label {
+              margin-bottom: 0.2rem;
+            }
+          }
         }
       }
     }

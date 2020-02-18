@@ -11220,6 +11220,388 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      color: "null"
+    };
+  },
+  methods: {
+    changeTheme: function changeTheme(id) {
+      if (id == "defaultColor") {
+        this.color = id;
+        document.getElementById("default").style.border = "3px solid rgb(105, 105, 105)";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("defaultText").style.filter = "opacity(1)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "redColor") {
+        this.color = id;
+        document.getElementById("red").style.border = "3px solid rgb(105, 105, 105)";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("redText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "blueColor") {
+        this.color = id;
+        document.getElementById("blue").style.border = "3px solid rgb(105, 105, 105)";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("blueText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "darkColor") {
+        this.color = id;
+        document.getElementById("dark").style.border = "3px solid rgb(105, 105, 105)";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("darkText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "lightColor") {
+        this.color = id;
+        document.getElementById("light").style.border = "3px solid rgb(105, 105, 105)";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("lightText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+      }
+
+      console.log(this.color);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/SystemSettings/assign_permission.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/SystemSettings/assign_permission.vue?vue&type=script&lang=js& ***!
@@ -73938,11 +74320,185 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "exampleModalCenter",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered settingModal",
+              staticStyle: { "max-width": "100%" },
+              attrs: { role: "document" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "modal-content",
+                  staticStyle: {
+                    background: "none",
+                    border: "none",
+                    width: "100% !important",
+                    padding: "1rem"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modalCard card",
+                      staticStyle: { background: "none", border: "none" }
+                    },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "card-body modal-bodys" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "Theme" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "row", attrs: { id: "ThemeColor" } },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-md-3 col-sm-6 col-xs-6 col-12"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blockColor",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeTheme("defaultColor")
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(3)]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-md-3 col-sm-6 col-xs-6 col-12"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blockColor",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeTheme("redColor")
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(4)]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-md-3 col-sm-6 col-xs-6 col-12"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blockColor",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeTheme("blueColor")
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(5)]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-md-3 col-sm-6 col-xs-6 col-12"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blockColor",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeTheme("darkColor")
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(6)]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-md-3 col-sm-6 col-xs-6 col-12"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "blockColor",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changeTheme("lightColor")
+                                        }
+                                      }
+                                    },
+                                    [_vm._m(7)]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm._m(8)
+                            ]
+                          )
+                        ])
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _vm._m(1)
+      _vm._m(9)
     ]
   )
 }
@@ -73951,521 +74507,258 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h6", [_vm._v("System Settings")]),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-close",
+        staticStyle: { position: "absolute", right: "25px", cursor: "pointer" },
+        attrs: { "data-dismiss": "modal", id: "close" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row", attrs: { id: "row" } }, [
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Name" } }, [
+            _vm._v("\n                    School Name\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Code" } }, [_vm._v("School Code")]),
+          _vm._v(" "),
+          _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Address" } }, [
+            _vm._v("\n                    Address\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("textarea", { staticClass: "textareas", attrs: { rows: "2" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Phone" } }, [
+            _vm._v("\n                    Phone\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Email" } }, [
+            _vm._v("\n                    Email\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Session" } }, [
+            _vm._v("\n                    Session\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+            _c("option", { attrs: { selected: "", disabled: "" } }, [
+              _vm._v("Select Session")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2011-2012" } }, [
+              _vm._v("2011-2012")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2012-2013" } }, [
+              _vm._v("2012-2013")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2013-2014" } }, [
+              _vm._v("2013-2014")
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-3 col-md-6 col-sm-6 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Month" } }, [
+            _vm._v(
+              "\n                    Session Start Month\n                    "
+            ),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+            _c("option", { attrs: { selected: "", disabled: "" } }, [
+              _vm._v("Select Month")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "June" } }, [_vm._v("June")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "July" } }, [_vm._v("July")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "August" } }, [_vm._v("August")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-12 col-12" }, [
+        _c("div", { staticClass: "setting" }, [
+          _c("label", { attrs: { for: "Language" } }, [
+            _vm._v("\n                    Language\n                    "),
+            _c("strong", [_vm._v("*")])
+          ]),
+          _vm._v(" "),
+          _c("select", { staticClass: "inputbox", attrs: { name: "class" } }, [
+            _c("option", { attrs: { selected: "", disabled: "" } }, [
+              _vm._v("Select Languages")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Myanmar" } }, [_vm._v("Myanmar")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "English" } }, [_vm._v("English")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "curTheme" }, [
+      _c("b", [_vm._v("Current Theme")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
-        staticClass: "modal fade",
-        attrs: {
-          id: "exampleModalCenter",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true"
-        }
+        staticClass: "backColor",
+        staticStyle: { background: "#1b5e20" },
+        attrs: { id: "default" }
+      },
+      [
+        _c("p", { staticClass: "default", attrs: { id: "defaultText" } }, [
+          _vm._v("Default")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "backColor",
+        staticStyle: { background: "darkred" },
+        attrs: { id: "red" }
+      },
+      [
+        _c("p", { staticClass: "default", attrs: { id: "redText" } }, [
+          _vm._v("Red")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "backColor",
+        staticStyle: { background: "darkcyan" },
+        attrs: { id: "blue" }
+      },
+      [
+        _c("p", { staticClass: "default", attrs: { id: "blueText" } }, [
+          _vm._v("Blue")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "backColor",
+        staticStyle: { background: "currentColor" },
+        attrs: { id: "dark" }
+      },
+      [
+        _c("p", { staticClass: "default", attrs: { id: "darkText" } }, [
+          _vm._v("Dark")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "backColor",
+        staticStyle: { background: "#edeeef" },
+        attrs: { id: "light" }
       },
       [
         _c(
-          "div",
+          "p",
           {
-            staticClass: "modal-dialog modal-dialog-centered settingModal",
-            staticStyle: { "max-width": "100%" },
-            attrs: { role: "document" }
+            staticClass: "default",
+            staticStyle: { color: "black" },
+            attrs: { id: "lightText" }
           },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "modal-content",
-                staticStyle: {
-                  background: "none",
-                  border: "none",
-                  width: "100% !important",
-                  padding: "1rem"
-                }
-              },
-              [
-                _c("div", { staticClass: "card" }, [
-                  _c("div", { staticClass: "card-header" }, [
-                    _c("h6", [_vm._v("System Settings")]),
-                    _vm._v(" "),
-                    _c("i", {
-                      staticClass: "fa fa-close",
-                      staticStyle: {
-                        position: "absolute",
-                        right: "25px",
-                        cursor: "pointer"
-                      },
-                      attrs: { "data-dismiss": "modal" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "row",
-                        staticStyle: { margin: "0px" },
-                        attrs: { id: "row" }
-                      },
-                      [
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Name" } }, [
-                              _vm._v(
-                                "\n                    School Name\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Code" } }, [
-                              _vm._v("School Code")
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Address" } }, [
-                              _vm._v(
-                                "\n                    Address\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              staticClass: "textareas",
-                              attrs: { rows: "2" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Phone" } }, [
-                              _vm._v(
-                                "\n                    Phone\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Email" } }, [
-                              _vm._v(
-                                "\n                    Email\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Session" } }, [
-                              _vm._v(
-                                "\n                    Session\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Session")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "2011-2012" } },
-                                  [_vm._v("2011-2012")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "2012-2013" } },
-                                  [_vm._v("2012-2013")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "2013-2014" } },
-                                  [_vm._v("2013-2014")]
-                                )
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Month" } }, [
-                              _vm._v(
-                                "\n                    Session Start Month\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Month")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "June" } }, [
-                                  _vm._v("June")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "July" } }, [
-                                  _vm._v("July")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "August" } }, [
-                                  _vm._v("August")
-                                ])
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-lg-6 col-md-12 col-12" },
-                          [
-                            _c("div", { staticClass: "setting" }, [
-                              _c("label", { attrs: { for: "Mode" } }, [
-                                _vm._v("Teacher Restricted Mode")
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "col-lg-6 col-md-6 col-6",
-                                    staticStyle: { width: "100%" }
-                                  },
-                                  [
-                                    _c("label", [
-                                      _c("input", {
-                                        attrs: {
-                                          type: "radio",
-                                          name: "subjectType",
-                                          checked: "",
-                                          value: "Theory"
-                                        }
-                                      }),
-                                      _vm._v(" Theory\n                      ")
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "col-lg-6 col-md-6 col-6",
-                                    staticStyle: { width: "100%" }
-                                  },
-                                  [
-                                    _c("label", [
-                                      _c("input", {
-                                        attrs: {
-                                          type: "radio",
-                                          name: "subjectType",
-                                          value: "Practical"
-                                        }
-                                      }),
-                                      _vm._v(
-                                        " Practical\n                      "
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ])
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Language" } }, [
-                              _vm._v(
-                                "\n                    Language\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Languages")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "Myanmar" } }, [
-                                  _vm._v("Myanmar")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "English" } }, [
-                                  _vm._v("English")
-                                ])
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Mode" } }, [
-                              _vm._v("Language RTL Text Mode")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "row" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "col-lg-6 col-md-6 col-6",
-                                  staticStyle: { width: "100%" }
-                                },
-                                [
-                                  _c("label", [
-                                    _c("input", {
-                                      attrs: {
-                                        type: "radio",
-                                        name: "types",
-                                        checked: "",
-                                        value: "Disabled"
-                                      }
-                                    }),
-                                    _vm._v(" Disabled\n                      ")
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "col-lg-6 col-md-6 col-6",
-                                  staticStyle: { width: "100%" }
-                                },
-                                [
-                                  _c("label", [
-                                    _c("input", {
-                                      attrs: {
-                                        type: "radio",
-                                        name: "types",
-                                        value: "Enabled"
-                                      }
-                                    }),
-                                    _vm._v(" Enabled\n                      ")
-                                  ])
-                                ]
-                              )
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Timezone" } }, [
-                              _vm._v(
-                                "\n                    Timezone\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Timezone")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "(GMT) Myanmar" } },
-                                  [_vm._v("(GMT) Myanmar")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "(GMT) UTC" } },
-                                  [_vm._v("(GMT) UTC")]
-                                )
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "format" } }, [
-                              _vm._v(
-                                "\n                    Date Format\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Date Format")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "mm/dd/yyyy" } },
-                                  [_vm._v("mm/dd/yyyy")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "mm-dd-yyyy" } },
-                                  [_vm._v("mm-dd-yyyy")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "option",
-                                  { attrs: { value: "mm.dd.yyyy" } },
-                                  [_vm._v("mm.dd.yyyy")]
-                                )
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Currency" } }, [
-                              _vm._v(
-                                "\n                    Currency\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                staticClass: "inputbox",
-                                attrs: { name: "class" }
-                              },
-                              [
-                                _c(
-                                  "option",
-                                  { attrs: { selected: "", disabled: "" } },
-                                  [_vm._v("Select Currency")]
-                                ),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "USD" } }, [
-                                  _vm._v("USD")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "AOA" } }, [
-                                  _vm._v("AOA")
-                                ])
-                              ]
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-lg-6 col-md-6 col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Symbol" } }, [
-                              _vm._v(
-                                "\n                    Currency Symbol\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text", value: "$" }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-12" }, [
-                          _c("div", { staticClass: "setting" }, [
-                            _c("label", { attrs: { for: "Fees" } }, [
-                              _vm._v(
-                                "\n                    Fees Due Days\n                    "
-                              ),
-                              _c("strong", [_vm._v("*")])
-                            ]),
-                            _vm._v(" "),
-                            _c("input", {
-                              staticClass: "inputbox",
-                              attrs: { type: "text" }
-                            })
-                          ])
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            )
-          ]
+          [_vm._v("Light")]
         )
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c(
+        "button",
+        { staticClass: "save", staticStyle: { margin: "5px 0 1rem 0" } },
+        [_vm._v("Save")]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -74542,10 +74835,7 @@ var staticRenderFns = [
               _c("div", { staticClass: "card-body tableCard" }, [
                 _c(
                   "div",
-                  {
-                    staticClass: "table-responsive mailbox-messages",
-                    staticStyle: { "border-bottom": "1px solid green" }
-                  },
+                  { staticClass: "table-responsive mailbox-messages" },
                   [
                     _c("table", { staticClass: "table table-hover" }, [
                       _c("tbody", [
@@ -74651,20 +74941,6 @@ var staticRenderFns = [
                           _c(
                             "td",
                             { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Teacher Restricted Mode")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("Disabled")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
                             [_c("b", [_vm._v("Language")])]
                           ),
                           _vm._v(" "),
@@ -74679,93 +74955,139 @@ var staticRenderFns = [
                           _c(
                             "td",
                             { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Language RTL Text Mode")])]
+                            [_c("b", [_vm._v("Current Theme")])]
                           ),
                           _vm._v(" "),
                           _c(
                             "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("Disabled")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Timezone")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("Myanmar")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Date Format")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("mm/dd/yyyy")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Currency")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("USD")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Currency Symbol")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("$")]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("tr", [
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_c("b", [_vm._v("Fees Due Days")])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "all", attrs: { nowrap: "" } },
-                            [_vm._v("60")]
+                            {
+                              staticClass: "all row",
+                              staticStyle: { margin: "0px", padding: "10px 0" },
+                              attrs: { nowrap: "" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "col-lg-4 col-md-6 col-sm-6 col-12"
+                                },
+                                [
+                                  _c("input", {
+                                    staticClass: "radio rd",
+                                    attrs: {
+                                      disabled: "",
+                                      name: "theme",
+                                      id: "default",
+                                      type: "radio",
+                                      checked: ""
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { attrs: { for: "default" } }, [
+                                    _vm._v("Default")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "col-lg-4 col-md-6 col-sm-6 col-12"
+                                },
+                                [
+                                  _c("input", {
+                                    staticClass: "radio rd1",
+                                    attrs: {
+                                      disabled: "",
+                                      name: "theme",
+                                      id: "theme1",
+                                      type: "radio"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { attrs: { for: "theme1" } }, [
+                                    _vm._v("Theme 1")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "col-lg-4 col-md-6 col-sm-6 col-12"
+                                },
+                                [
+                                  _c("input", {
+                                    staticClass: "radio rd2",
+                                    attrs: {
+                                      disabled: "",
+                                      name: "theme",
+                                      id: "theme2",
+                                      type: "radio"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { attrs: { for: "theme2" } }, [
+                                    _vm._v("Theme 2")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "col-lg-4 col-md-6 col-sm-6 col-12"
+                                },
+                                [
+                                  _c("input", {
+                                    staticClass: "radio rd3",
+                                    attrs: {
+                                      disabled: "",
+                                      name: "theme",
+                                      id: "theme3",
+                                      type: "radio"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { attrs: { for: "theme3" } }, [
+                                    _vm._v("Theme 3")
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "col-lg-4 col-md-6 col-sm-6 col-12"
+                                },
+                                [
+                                  _c("input", {
+                                    staticClass: "radio rd4",
+                                    attrs: {
+                                      disabled: "",
+                                      name: "theme",
+                                      id: "theme4",
+                                      type: "radio"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("label", { attrs: { for: "theme4" } }, [
+                                    _vm._v("Theme 4")
+                                  ])
+                                ]
+                              )
+                            ]
                           )
                         ])
                       ])
                     ])
                   ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "theme" }, [
-                  _c("b", [_vm._v("Current Theme")])
-                ])
+                )
               ])
             ])
           ]
@@ -102188,15 +102510,17 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _GeneralSetting_vue_vue_type_template_id_0c0be3c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GeneralSetting.vue?vue&type=template&id=0c0be3c8& */ "./resources/views/SystemSettings/GeneralSetting.vue?vue&type=template&id=0c0be3c8&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _GeneralSetting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./GeneralSetting.vue?vue&type=script&lang=js& */ "./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-var script = {}
+
+
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  script,
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _GeneralSetting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _GeneralSetting_vue_vue_type_template_id_0c0be3c8___WEBPACK_IMPORTED_MODULE_0__["render"],
   _GeneralSetting_vue_vue_type_template_id_0c0be3c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -102210,6 +102534,20 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/views/SystemSettings/GeneralSetting.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GeneralSetting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./GeneralSetting.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/SystemSettings/GeneralSetting.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GeneralSetting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -102652,8 +102990,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\php\SSMS Project\Upload Github\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

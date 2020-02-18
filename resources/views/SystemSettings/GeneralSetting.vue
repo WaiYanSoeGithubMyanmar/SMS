@@ -23,14 +23,19 @@
           class="modal-content"
           style="background:none;border:none;width:100% !important;padding: 1rem;"
         >
-          <div class="card">
+          <div class="modalCard card" style="background:none;border:none;">
             <div class="card-header">
               <h6>System Settings</h6>
-              <i class="fa fa-close" style="position:absolute;right: 25px;cursor:pointer;" data-dismiss="modal"></i>
+              <i
+                class="fa fa-close"
+                style="position:absolute;right: 25px;cursor:pointer;"
+                data-dismiss="modal"
+                id="close"
+              ></i>
             </div>
-            <div class="card-body">
-              <div class="row" id="row" style="margin: 0px;">
-                <div class="col-lg-6 col-md-6 col-12">
+            <div class="card-body modal-bodys">
+              <div class="row" id="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Name">
                       School Name
@@ -39,7 +44,7 @@
                     <input type="text" class="inputbox" />
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Code">School Code</label>
                     <input type="text" class="inputbox" />
@@ -54,7 +59,7 @@
                     <textarea rows="2" class="textareas"></textarea>
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Phone">
                       Phone
@@ -63,7 +68,7 @@
                     <input type="text" class="inputbox" />
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Email">
                       Email
@@ -72,7 +77,7 @@
                     <input type="text" class="inputbox" />
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Session">
                       Session
@@ -86,7 +91,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                   <div class="setting">
                     <label for="Month">
                       Session Start Month
@@ -102,23 +107,6 @@
                 </div>
                 <div class="col-lg-6 col-md-12 col-12">
                   <div class="setting">
-                    <label for="Mode">Teacher Restricted Mode</label>
-                    <div class="row">
-                      <div class="col-lg-6 col-md-6 col-6" style="width:100%;">
-                        <label>
-                          <input type="radio" name="subjectType" checked value="Theory" /> Theory
-                        </label>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-6" style="width:100%;">
-                        <label>
-                          <input type="radio" name="subjectType" value="Practical" /> Practical
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
                     <label for="Language">
                       Language
                       <strong>*</strong>
@@ -130,79 +118,49 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
-                    <label for="Mode">Language RTL Text Mode</label>
-                    <div class="row">
-                      <div class="col-lg-6 col-md-6 col-6" style="width:100%;">
-                        <label>
-                          <input type="radio" name="types" checked value="Disabled" /> Disabled
-                        </label>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-6" style="width:100%;">
-                        <label>
-                          <input type="radio" name="types" value="Enabled" /> Enabled
-                        </label>
+              </div>
+              <div class="Theme">
+                <div class="curTheme">
+                  <b>Current Theme</b>
+                </div>
+                <div class="row" id="ThemeColor">
+                  <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                    <div class="blockColor" @click="changeTheme('defaultColor')">
+                      <div class="backColor" id="default" style="background:#1b5e20;">
+                        <p class="default" id="defaultText">Default</p>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
-                    <label for="Timezone">
-                      Timezone
-                      <strong>*</strong>
-                    </label>
-                    <select class="inputbox" name="class">
-                      <option selected disabled>Select Timezone</option>
-                      <option value="(GMT) Myanmar">(GMT) Myanmar</option>
-                      <option value="(GMT) UTC">(GMT) UTC</option>
-                    </select>
+                  <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                    <div class="blockColor" @click="changeTheme('redColor')">
+                      <div class="backColor" id="red" style="background:darkred;">
+                        <p class="default" id="redText">Red</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
-                    <label for="format">
-                      Date Format
-                      <strong>*</strong>
-                    </label>
-                    <select class="inputbox" name="class">
-                      <option selected disabled>Select Date Format</option>
-                      <option value="mm/dd/yyyy">mm/dd/yyyy</option>
-                      <option value="mm-dd-yyyy">mm-dd-yyyy</option>
-                      <option value="mm.dd.yyyy">mm.dd.yyyy</option>
-                    </select>
+                  <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                    <div class="blockColor" @click="changeTheme('blueColor')">
+                      <div class="backColor" id="blue" style="background:darkcyan;">
+                        <p class="default" id="blueText">Blue</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
-                    <label for="Currency">
-                      Currency
-                      <strong>*</strong>
-                    </label>
-                    <select class="inputbox" name="class">
-                      <option selected disabled>Select Currency</option>
-                      <option value="USD">USD</option>
-                      <option value="AOA">AOA</option>
-                    </select>
+                  <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                    <div class="blockColor" @click="changeTheme('darkColor')">
+                      <div class="backColor" id="dark" style="background:currentColor;">
+                        <p class="default" id="darkText">Dark</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="setting">
-                    <label for="Symbol">
-                      Currency Symbol
-                      <strong>*</strong>
-                    </label>
-                    <input type="text" value="$" class="inputbox" />
+                  <div class="col-md-3 col-sm-6 col-xs-6 col-12">
+                    <div class="blockColor" @click="changeTheme('lightColor')">
+                      <div class="backColor" id="light" style="background:#edeeef;">
+                        <p class="default" id="lightText" style="color:black;">Light</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="col-12">
-                  <div class="setting">
-                    <label for="Fees">
-                      Fees Due Days
-                      <strong>*</strong>
-                    </label>
-                    <input type="text" class="inputbox" />
+                  <div class="col-12">
+                    <button class="save" style="margin:5px 0 1rem 0;">Save</button>
                   </div>
                 </div>
               </div>
@@ -242,7 +200,7 @@
             <button class="edit" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
           </div>
           <div class="card-body tableCard">
-            <div style="border-bottom: 1px solid green;" class="table-responsive mailbox-messages">
+            <div class="table-responsive mailbox-messages">
               <table class="table table-hover">
                 <tbody>
                   <tr>
@@ -289,58 +247,46 @@
                   </tr>
                   <tr>
                     <td class="all" nowrap>
-                      <b>Teacher Restricted Mode</b>
-                    </td>
-                    <td class="all" nowrap>Disabled</td>
-                  </tr>
-                  <tr>
-                    <td class="all" nowrap>
                       <b>Language</b>
                     </td>
                     <td class="all" nowrap>English</td>
                   </tr>
                   <tr>
                     <td class="all" nowrap>
-                      <b>Language RTL Text Mode</b>
+                      <b>Current Theme</b>
                     </td>
-                    <td class="all" nowrap>Disabled</td>
-                  </tr>
-
-                  <tr>
-                    <td class="all" nowrap>
-                      <b>Timezone</b>
+                    <td class="all row" style="margin:0px;padding:10px 0;" nowrap>
+                      <span class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <input
+                          disabled
+                          name="theme"
+                          class="radio rd"
+                          id="default"
+                          type="radio"
+                          checked
+                        />
+                        <label for="default">Default</label>
+                      </span>
+                      <span class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <input disabled name="theme" class="radio rd1" id="theme1" type="radio" />
+                        <label for="theme1">Theme 1</label>
+                      </span>
+                      <span class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <input disabled name="theme" class="radio rd2" id="theme2" type="radio" />
+                        <label for="theme2">Theme 2</label>
+                      </span>
+                      <span class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <input disabled name="theme" class="radio rd3" id="theme3" type="radio" />
+                        <label for="theme3">Theme 3</label>
+                      </span>
+                      <span class="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <input disabled name="theme" class="radio rd4" id="theme4" type="radio" />
+                        <label for="theme4">Theme 4</label>
+                      </span>
                     </td>
-                    <td class="all" nowrap>Myanmar</td>
-                  </tr>
-                  <tr>
-                    <td class="all" nowrap>
-                      <b>Date Format</b>
-                    </td>
-                    <td class="all" nowrap>mm/dd/yyyy</td>
-                  </tr>
-                  <tr>
-                    <td class="all" nowrap>
-                      <b>Currency</b>
-                    </td>
-                    <td class="all" nowrap>USD</td>
-                  </tr>
-                  <tr>
-                    <td class="all" nowrap>
-                      <b>Currency Symbol</b>
-                    </td>
-                    <td class="all" nowrap>$</td>
-                  </tr>
-                  <tr>
-                    <td class="all" nowrap>
-                      <b>Fees Due Days</b>
-                    </td>
-                    <td class="all" nowrap>60</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-            <div class="theme">
-              <b>Current Theme</b>
             </div>
           </div>
         </div>
@@ -348,3 +294,83 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      color: "null"
+    };
+  },
+  methods: {
+    changeTheme(id) {
+      if (id == "defaultColor") {
+        this.color = id;
+        document.getElementById("default").style.border =
+          "3px solid rgb(105, 105, 105)";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("defaultText").style.filter = "opacity(1)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "redColor") {
+        this.color = id;
+        document.getElementById("red").style.border =
+          "3px solid rgb(105, 105, 105)";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("redText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "blueColor") {
+        this.color = id;
+        document.getElementById("blue").style.border =
+          "3px solid rgb(105, 105, 105)";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("blueText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "darkColor") {
+        this.color = id;
+        document.getElementById("dark").style.border =
+          "3px solid rgb(105, 105, 105)";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("light").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("darkText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("lightText").style.filter = "opacity(0.5)";
+      } else if (id == "lightColor") {
+        this.color = id;
+        document.getElementById("light").style.border =
+          "3px solid rgb(105, 105, 105)";
+        document.getElementById("dark").style.border = "none";
+        document.getElementById("default").style.border = "none";
+        document.getElementById("red").style.border = "none";
+        document.getElementById("blue").style.border = "none";
+        document.getElementById("lightText").style.filter = "opacity(1)";
+        document.getElementById("defaultText").style.filter = "opacity(0.5)";
+        document.getElementById("redText").style.filter = "opacity(0.5)";
+        document.getElementById("blueText").style.filter = "opacity(0.5)";
+        document.getElementById("darkText").style.filter = "opacity(0.5)";
+      }
+      console.log(this.color);
+    }
+  }
+};
+</script>
