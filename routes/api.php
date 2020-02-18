@@ -234,10 +234,10 @@ Route::group(['prefix' => 'examSchadules'], function() {
 });
 Route::get('activeacademicyr', 'AcademicYearController@activeAcademic');
 Route::get('activeAcademicValue','AcademicYearController@activeAcademicValue');
-Route::get('getClasses', 'ClassesController@index');
+Route::get('getClasses', 'ClassesController@Theinindex');
 Route::get('getSection', 'SectionController@index');
 Route::get('getClassSectionId/{arrayids}','ClassSectionController@getAssignSub_id');
-Route::get('getClassSection/{id}', 'ClassSectionController@index');
+Route::get('getClassSection/{id}', 'ClassSectionController@Theinindex');
 Route::get('searchExamSchadule/{arrayClassSectionExam}', 'ExamSchaduleController@index');
 Route::get('getSubjects', 'SubjectController@index');
 // End Thei Htike Aung Section

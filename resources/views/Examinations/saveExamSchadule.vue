@@ -15,38 +15,38 @@
                 <div class="row" id="row">
                     <div class="col-lg-4 col-md-4 col-12 textbox">
                         <label >Exam name: <strong>*</strong> </label>
-                        <select class="inputbox">
-                            <option value="Unit Test-January">Unit Test-January</option>
-                            <option value="Unit Test-February">Unit Test-February</option>
-                            <option value="Unit Test-March">Unit Test-March</option>
+                        <select class="inputbox" @change="getExamId($event)">
+                            <option >Select</option>
+                            <option :value="Exams.id" v-for="Exams in exams" :key="Exams.id">{{Exams.name}}</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 textbox">
                         <label >Class <strong>*</strong> </label>
-                        <select class="inputbox">
-                            <option value="Class A">Class A</option>
-                            <option value="Class B">Class B</option>
-                            <option value="Class C">Class C</option>
+                         <select class="inputbox" @change="getSection($event)">
+                            <option value="">Select</option>
+                            <option :value="Class.id" v-for="Class in Class" :key="Class.id">{{Class.class}}</option>
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-12 textbox">
                         <label >Section <strong>*</strong> </label>
-                        <select class="inputbox">
-                            <option value="Section A">Section A</option>
-                            <option value="Section B">Section B</option>
-                            <option value="Section C">Section C</option>
+                        <select class="inputbox" @change="getSectionId($event)">
+                            <option value="">Select</option>
+                            <option :value="Sections.id" v-for="Sections in Sections" :key="Sections.id">{{Sections.section}}</option>
                         </select>
                     </div>
                     <div class="col-12">
-                        <button class="searchButton">Search</button>
+                        <button class="searchButton" @click="Search">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="sub-header">
+            <div class="sub-header" v-if="display == true">
                 <h6>Exam Schedule</h6>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
+            <div class="card-body" v-if="display == true">
+                <div v-if="data == false">
+                    <h1 class="NoData">No Subject in this Class</h1>
+                </div>
+                <div class="table-responsive"  v-if="data == true">
                     <table class="table table-hover table-striped">
                                 <thead>
                                     <th nowrap>Subject</th>
@@ -58,15 +58,21 @@
                                     <th nowrap>Passing Marks</th>
                                 </thead>
                                 <tbody>
-                                    <td>English(Th:)</td>
-                                    <td><date-picker v-model="time1" valueType="format"></date-picker></td>
-                                    <td><input type="time"></td>
-                                    <td><input type="time"></td>
-                                    <td><input class="inputbox" type="text" /></td>
-                                    <td><input class="inputbox" type="text" /></td>
-                                    <td><input class="inputbox" type="text" /></td>
+                                    <tr v-for="n in mainExamSubjects" :key="n.id">
+                                    <td >{{n.subject}}</td>
+                                    <td><input type="date" v-model="n.date"></td>
+                                    <td><input type="time" v-model="n.start_time"></td>
+                                    <td><input type="time" v-model="n.end_time"></td>
+                                    <td><input class="inputbox" type="text" v-model="n.room"/></td>
+                                    <td><input class="inputbox" type="text" v-model="n.full_marks"/></td>
+                                    <td><input class="inputbox" type="text" v-model="n.passing_marks"/></td>
+                                    </tr>
                                 </tbody>
                     </table>
+                </div>
+                <div >
+                    <button v-if="data == true" class="save" style="margin:10px 1rem 1rem 0px" type="button" @click="saveExamSchadule()"><router-link to="examschadule" style="color:white" class="submit">Submit</router-link></button>
+                    <button v-if="data == false" class="save" style="margin:10px 1rem 1rem 0px" type="button" ><router-link to="examschadule" style="color:white" class="submit">Back</router-link></button>
                 </div>
             </div>
         </div>
@@ -81,10 +87,101 @@
     components: { DatePicker },
     data() {
       return {
-        time1: null,
-        time2: null,
-        time3: null,
+        exams: [],
+        id1:'',
+        id2:'',
+        id3:'',
+        academicYearId:'',
+        Sections:[],
+        Class:[],
+        arrayClassSectionExam:[],
+        Subjects:[],
+        check1 : null,
+        check2 : null,
+        SubjectName:[],
+        SubjectNameS:[],
+        mainExamSubjects:[],
+        SaveExamSchadule:{examSchaduleObj:[]},
+        message:'',
+        display : false,
+        data : false
       };
+    },created(){
+        this.getExamName();
+        this.getClass();
+    },methods:{
+        getClass(){
+      this.axios
+        .get(`/api/getClasses`)
+        .then(response => {            
+            this.Class = response.data;
+        });
     },
+        getExamName(){
+            this.axios
+                .get('/api/ExamList')
+                .then(response => {
+                    this.exams = response.data;
+                });
+        },getSection(event){
+       this.axios
+        .get(`/api/getClassSection/${event.target.value}`)
+        .then(response => {
+          this.Sections = response.data;
+          this.id2=event.target.value;
+        });
+    },getSectionId(eventS){
+      this.id3 = eventS.target.value;
+    },getExamId(event){
+            this.id1=event.target.value;
+        },Search(){
+        this.mainExamSubjects = [];
+        this.arrayClassSectionExam.push(this.id1);
+        this.arrayClassSectionExam.push(this.id2);
+        this.arrayClassSectionExam.push(this.id3);
+        this.axios
+        .get(`/api/searchExamSchadule/${this.arrayClassSectionExam}`)
+        .then(response=>{
+            // this.Subjects = response.data;
+            this.mainExamSubjects = response.data;
+            this.arrayClassSectionExam = [];
+        })
+        ;
+        
+        setTimeout(() => {
+            var dataValue ;
+            for(var i = 0;i<this.mainExamSubjects.length;i++){
+                dataValue = this.mainExamSubjects[i].subject;
+            }
+            if(dataValue == undefined){
+                this.data = false;
+            }else{
+                this.data = true;
+            }
+
+            this.display = true;
+        }, 500);
+        
+    },
+    allData(){
+        for(var i = 0;i<this.mainExamSubjects.length;i++){
+            this.SaveExamSchadule.examSchaduleObj.push({'session_id':'','exam_id':this.id1,'assign_subject_id':this.mainExamSubjects[i].id,
+            'date_of_exam':this.mainExamSubjects[i].date,'start_time':this.mainExamSubjects[i].start_time,'end_time':this.mainExamSubjects[i].end_time,
+            'room_no':this.mainExamSubjects[i].room,'full_marks':this.mainExamSubjects[i].full_marks,'passing_marks':this.mainExamSubjects[i].passing_marks,
+            'note':'no','is_active':'yes','domain':'TS'
+            });
+        }
+    },saveExamSchadule(){
+        this.allData();
+        this.axios.post(`/api/examSchadules/addExamSchadule`,this.SaveExamSchadule).then(response=>{
+            this.message = response.data;
+        })
+    },activeAcademicValue(){
+        this.axios.get(`/api/activeAcademicValue`)
+        .then(response=>{
+            this.academicYearId = response.data;
+        })
+    },
+    }
   };
 </script>

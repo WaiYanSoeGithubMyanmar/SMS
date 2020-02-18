@@ -57,8 +57,8 @@ class ExamsController extends Controller
                     'name' => $request->input('name'),
                     'remark'=>$request->input('remark'),
                     'session_id'=>$request->input('session_id'),
-                    'domain' => $request->input('domain'),
-                    'is_active' => 'no'
+                    'domain' => 'TS',
+                    'is_active' => 'yes'
                 ]);
         
                 $exams->save();
