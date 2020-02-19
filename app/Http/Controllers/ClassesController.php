@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes;
+use App\classes;
 use App\class_section;
 use App\Section;
+use App\AcademicYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\AcademicYear;
 
 class ClassesController extends Controller
 {
@@ -18,6 +18,20 @@ class ClassesController extends Controller
         return $classList;
     }
 
+    public function Theinindex()
+    {   $academicYearId=$this->getAcademicActiveId();
+        $classes = classes::where('session_id',$academicYearId)->where('is_active','yes')->where('domain','TS')->get();
+        return response($classes);
+    }
+    public function getAcademicActiveId(){
+        $academicYear = AcademicYear::where('is_active','yes')->where('domain','TS')->get();
+        $academicYearId ;
+        foreach($academicYear as $academicYear1){
+            $academicYearId = $academicYear1->id;
+        }
+        return $academicYearId;
+    }
+    
     public function store(Request $request)
     {
         if($request->input('id') == "")

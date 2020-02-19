@@ -15,6 +15,12 @@ class AcademicYearController extends Controller
         return array_reverse($academicyr);
     }
 
+    public function activeAcademic()
+{
+    $academicyr = AcademicYear::where('is_active','yes')->where('domain','TS')->get()->toArray();
+    return array_reverse($academicyr);
+}
+
     // Save and Update Session
     public function store(Request $request)
     {           

@@ -6029,121 +6029,141 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      Class: [],
+      Sections: [],
+      id1: '',
+      id2: '',
+      array: [],
+      Class_Name: 'Class',
+      Section_name: 'Section',
+      examNames: [],
+      examName: '',
+      getExamData: [],
+      receiveExamData: [],
+      display: false,
+      data: false,
+      TestArray: []
+    };
+  },
+  created: function created() {
+    this.getClass();
+  },
   methods: {
-    allTableHeader: function allTableHeader(id, id1, id2) {
-      document.getElementById(id).style.background = "#1b5e20";
-      document.getElementById(id).style.color = "white";
-      document.getElementById(id1).style.background = "#1b5e20";
-      document.getElementById(id1).style.color = "white";
-      document.getElementById(id2).style.background = "#1b5e20";
-      document.getElementById(id2).style.color = "white";
+    getClass: function getClass() {
+      var _this = this;
+
+      this.axios.get("/api/getClasses").then(function (response) {
+        _this.Class = response.data;
+      });
+    },
+    getClassName: function getClassName(class_name) {
+      console.log(class_name);
+    },
+    getSectionName: function getSectionName(section_name) {
+      console.log(section_name);
+    },
+    getSection: function getSection(event) {
+      var _this2 = this;
+
+      this.axios.get("/api/getClassSection/".concat(event.target.value)).then(function (response) {
+        _this2.Sections = response.data;
+        _this2.id1 = event.target.value;
+      });
+    },
+    getSectionId: function getSectionId(eventS) {
+      this.id2 = eventS.target.value;
+    },
+    Search: function Search(Class_id, Section_id) {
+      var _this3 = this;
+
+      this.array.push(Class_id);
+      this.array.push(Section_id);
+      this.axios.get("/api/getClassSectionId/".concat(this.array)).then(function (response) {
+        // this.examNames = response.data;
+        var ReturnData = response.data;
+        var RealData = [];
+
+        for (var i = 0; i < ReturnData.length; i++) {
+          for (var ii = 0; ii < RealData.length; ii++) {
+            if (ReturnData[i].name == RealData[ii].name) {
+              var iii = RealData.map(function (item) {
+                return item.name;
+              }).indexOf(ReturnData[i].name);
+              RealData.splice(iii, 1);
+            }
+          }
+
+          RealData.push(ReturnData[i]);
+        }
+
+        _this3.examNames = RealData;
+      });
+      this.axios.get("/api/examSchadules/getClassName/".concat(Class_id)).then(function (response) {
+        _this3.Class_Name = response.data;
+      });
+      this.axios.get("/api/examSchadules/getSectionName/".concat(Section_id)).then(function (response) {
+        _this3.Section_name = response.data;
+      });
+      setTimeout(function () {
+        var dataValue;
+
+        for (var i = 0; i < _this3.examNames.length; i++) {
+          dataValue = _this3.examNames[i].name;
+        }
+
+        if (dataValue == undefined || dataValue == null || dataValue == '') {
+          _this3.data = false;
+        } else {
+          _this3.data = true;
+        }
+
+        _this3.display = true;
+      }, 500);
+      this.array = [];
+    },
+    GetExamData: function GetExamData(class_id, section_id, exam_id, exam_name) {
+      var _this4 = this;
+
+      this.getExamData.push(class_id);
+      this.getExamData.push(section_id);
+      this.getExamData.push(exam_id);
+      this.examName = exam_name;
+      this.axios.get("/api/examSchadules/getExamData/".concat(this.getExamData)).then(function (response) {
+        _this4.receiveExamData = response.data;
+      });
+      this.getExamData = [];
+    },
+    searchTable: function searchTable() {
+      var input, filter, found, table, tr, td, i, j;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+
+        for (j = 0; j < td.length; j++) {
+          if (td[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            found = true;
+          }
+        }
+
+        if (found) {
+          tr[i].style.display = "";
+          found = false;
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    },
+    Test: function Test() {
+      for (var i = 0; i < this.TestArray.length; i++) {
+        console.log(this.TestArray[i].name);
+      }
     }
   }
 });
@@ -6425,6 +6445,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6433,10 +6459,115 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      time1: null,
-      time2: null,
-      time3: null
+      exams: [],
+      id1: '',
+      id2: '',
+      id3: '',
+      academicYearId: '',
+      Sections: [],
+      Class: [],
+      arrayClassSectionExam: [],
+      Subjects: [],
+      check1: null,
+      check2: null,
+      SubjectName: [],
+      SubjectNameS: [],
+      mainExamSubjects: [],
+      SaveExamSchadule: {
+        examSchaduleObj: []
+      },
+      message: '',
+      display: false,
+      data: false
     };
+  },
+  created: function created() {
+    this.getExamName();
+    this.getClass();
+  },
+  methods: {
+    getClass: function getClass() {
+      var _this = this;
+
+      this.axios.get("/api/getClasses").then(function (response) {
+        _this.Class = response.data;
+      });
+    },
+    getExamName: function getExamName() {
+      var _this2 = this;
+
+      this.axios.get('/api/ExamList').then(function (response) {
+        _this2.exams = response.data;
+      });
+    },
+    getSection: function getSection(event) {
+      var _this3 = this;
+
+      this.axios.get("/api/getClassSection/".concat(event.target.value)).then(function (response) {
+        _this3.Sections = response.data;
+        _this3.id2 = event.target.value;
+      });
+    },
+    getSectionId: function getSectionId(eventS) {
+      this.id3 = eventS.target.value;
+    },
+    getExamId: function getExamId(event) {
+      this.id1 = event.target.value;
+    },
+    Search: function Search() {
+      var _this4 = this;
+
+      this.mainExamSubjects = [];
+      this.arrayClassSectionExam.push(this.id1);
+      this.arrayClassSectionExam.push(this.id2);
+      this.arrayClassSectionExam.push(this.id3);
+      this.axios.get("/api/searchExamSchadule/".concat(this.arrayClassSectionExam)).then(function (response) {
+        // this.Subjects = response.data;
+        _this4.mainExamSubjects = response.data;
+        _this4.arrayClassSectionExam = [];
+      });
+      setTimeout(function () {
+        var dataValue;
+
+        for (var i = 0; i < _this4.mainExamSubjects.length; i++) {
+          dataValue = _this4.mainExamSubjects[i].subject;
+        }
+
+        if (dataValue == undefined) {
+          _this4.data = false;
+        } else {
+          _this4.data = true;
+        }
+
+        _this4.display = true;
+      }, 500);
+    },
+    allData: function allData() {
+      for (var i = 0; i < this.mainExamSubjects.length; i++) {
+        this.SaveExamSchadule.examSchaduleObj.push({
+          'session_id': '',
+          'exam_id': this.id1,
+          'assign_subject_id': this.mainExamSubjects[i].id,
+          'date_of_exam': this.mainExamSubjects[i].date,
+          'start_time': this.mainExamSubjects[i].start_time,
+          'end_time': this.mainExamSubjects[i].end_time,
+          'room_no': this.mainExamSubjects[i].room,
+          'full_marks': this.mainExamSubjects[i].full_marks,
+          'passing_marks': this.mainExamSubjects[i].passing_marks,
+          'note': 'no',
+          'is_active': 'yes',
+          'domain': 'TS'
+        });
+      }
+    },
+    saveExamSchadule: function saveExamSchadule() {
+      var _this5 = this;
+
+      this.allData();
+      this.axios.post("/api/examSchadules/addExamSchadule", this.SaveExamSchadule).then(function (response) {
+        _this5.message = response.data;
+      });
+    }
   }
 });
 
@@ -59204,7 +59335,18 @@ var render = function() {
                   "div",
                   { staticClass: "modal-body", staticStyle: { padding: "0" } },
                   [
-                    _vm._m(0),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "card-header",
+                        staticStyle: {
+                          "background-color": "#1b5e20",
+                          width: "100%",
+                          "margin-left": "0"
+                        }
+                      },
+                      [_c("h6", [_vm._v("Exam " + _vm._s(this.examName))])]
+                    ),
                     _vm._v(" "),
                     _c("div", { staticStyle: { padding: "1rem" } }, [
                       _c(
@@ -59212,10 +59354,15 @@ var render = function() {
                         {
                           staticStyle: { height: "20px", "font-size": "20px" }
                         },
-                        [_vm._v("Class 1 - A")]
+                        [
+                          _vm._v(
+                            _vm._s(_vm.Class_Name) +
+                              " = " +
+                              _vm._s(_vm.Section_name) +
+                              "\r\n              "
+                          )
+                        ]
                       ),
-                      _vm._v(" "),
-                      _vm._m(1),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -59225,39 +59372,64 @@ var render = function() {
                         },
                         [
                           _c("table", { staticClass: "table table-hover" }, [
-                            _vm._m(2),
+                            _vm._m(0),
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(6, function(n) {
-                                return _c("tr", { key: n.id }, [
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("English(Th:)")
-                                  ]),
+                              _vm._l(_vm.receiveExamData, function(
+                                ReceiveExamData
+                              ) {
+                                return _c("tr", { key: ReceiveExamData.id }, [
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(
+                                          _vm._s(ReceiveExamData.subject) +
+                                            "(Th:)"
+                                        )
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("4-4-2019")
-                                  ]),
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(_vm._s(ReceiveExamData.date))
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("12:00 PM")
-                                  ]),
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(
+                                          _vm._s(ReceiveExamData.start_time)
+                                        )
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("01:00 PM")
-                                  ]),
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(_vm._s(ReceiveExamData.end_time))
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("08")
-                                  ]),
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(_vm._s(ReceiveExamData.room))
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("100")
-                                  ]),
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(
+                                          _vm._s(ReceiveExamData.full_marks)
+                                        )
+                                      ])
+                                    : _vm._e(),
                                   _vm._v(" "),
-                                  _c("td", { attrs: { nowrap: "" } }, [
-                                    _vm._v("40")
-                                  ])
+                                  ReceiveExamData.date != null
+                                    ? _c("td", { attrs: { nowrap: "" } }, [
+                                        _vm._v(
+                                          _vm._s(ReceiveExamData.passing_marks)
+                                        )
+                                      ])
+                                    : _vm._e()
                                 ])
                               }),
                               0
@@ -59269,7 +59441,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(1)
               ]
             )
           ]
@@ -59287,7 +59459,7 @@ var render = function() {
           _c("router-link", { staticClass: "home", attrs: { to: "/home" } }, [
             _vm._v("Home")
           ]),
-          _vm._v("> Exam Schedule\n    ")
+          _vm._v("> Examinations\r\n      ")
         ],
         1
       )
@@ -59304,136 +59476,200 @@ var render = function() {
           _vm._v(" "),
           _c(
             "router-link",
-            {
-              staticClass: "add",
-              attrs: { to: "/saveexamschdule", onclick: "showForm()" }
-            },
+            { staticClass: "add", attrs: { to: "/saveexamschdule" } },
             [_vm._v("Add")]
           )
         ],
         1
       ),
       _vm._v(" "),
-      _vm._m(4),
-      _vm._v(" "),
-      _vm._m(5),
-      _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("input", {
-          staticClass: "searchText",
-          attrs: { type: "text", placeholder: "Search..." }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "copyRows" }, [
-          _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-            _vm._m(6),
+        _c("div", { staticClass: "row", attrs: { id: "row" } }, [
+          _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 textbox" }, [
+            _vm._m(2),
             _vm._v(" "),
-            _vm._m(7),
+            _c("br"),
             _vm._v(" "),
-            _vm._m(8),
-            _vm._v(" "),
-            _vm._m(9),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _vm._m(10),
-              _vm._v(" "),
-              _c("div", { staticClass: "columns", attrs: { id: "columns" } }, [
-                _vm._m(11),
+            _c(
+              "select",
+              {
+                staticClass: "inputbox",
+                on: {
+                  change: function($event) {
+                    return _vm.getSection($event)
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Select")]),
                 _vm._v(" "),
-                _vm._m(12),
+                _vm._l(_vm.Class, function(sclass) {
+                  return _c(
+                    "option",
+                    { key: sclass.id, domProps: { value: sclass.id } },
+                    [_vm._v(_vm._s(sclass.class))]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 textbox" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                staticClass: "inputbox",
+                on: {
+                  change: function($event) {
+                    return _vm.getSectionId($event)
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Select")]),
                 _vm._v(" "),
-                _vm._m(13),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: "tableLinks",
-                    staticStyle: { "border-radius": "0 0 5px 5px" },
-                    on: {
-                      click: function($event) {
-                        return _vm.allTableHeader("No", "Exam", "Action")
-                      }
-                    }
-                  },
-                  [_c("span", [_vm._v("Restore visibility")])]
-                )
-              ])
-            ])
+                _vm._l(_vm.Sections, function(Ssection) {
+                  return _c(
+                    "option",
+                    { key: Ssection.id, domProps: { value: Ssection.id } },
+                    [_vm._v(_vm._s(Ssection.section))]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "button",
+              {
+                staticClass: "searchButton",
+                on: {
+                  click: function($event) {
+                    return _vm.Search(_vm.id1, _vm.id2)
+                  }
+                }
+              },
+              [_vm._v("Search")]
+            )
           ])
-        ]),
-        _vm._v(" "),
-        _vm._m(14)
-      ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.display == true
+        ? _c("div", { staticClass: "sub-header" }, [
+            _c("h6", [_vm._v("Exam List")])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.display == true
+        ? _c("div", { staticClass: "card-body" }, [
+            _c("input", {
+              staticClass: "searchText",
+              attrs: { type: "text", id: "myInput", placeholder: "Search..." },
+              on: {
+                keyup: function($event) {
+                  return _vm.searchTable()
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm.data == false
+              ? _c("div", [
+                  _c("h1", { staticClass: "NoData" }, [
+                    _vm._v("No Exam is held")
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.data == true
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-hover table-striped",
+                      attrs: { id: "studenttable" }
+                    },
+                    [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        { attrs: { id: "myTable" } },
+                        _vm._l(_vm.examNames, function(examnames) {
+                          return _c(
+                            "tr",
+                            { key: examnames.id, staticClass: "active" },
+                            [
+                              _c("td", [_vm._v("1")]),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                { staticClass: "all", attrs: { nowrap: "" } },
+                                [
+                                  _c("p", { staticClass: "toolText" }, [
+                                    _vm._v(
+                                      "\r\n                    " +
+                                        _vm._s(examnames.name) +
+                                        "\r\n                    "
+                                    ),
+                                    _c(
+                                      "span",
+                                      { staticClass: "tooltipLabel" },
+                                      [_vm._v(_vm._s(examnames.remark))]
+                                    )
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "td",
+                                { staticStyle: { "text-align": "right" } },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "viewButton btn-sm",
+                                      attrs: {
+                                        "data-toggle": "modal",
+                                        "data-target": "#exampleModalCenter"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.GetExamData(
+                                            _vm.id1,
+                                            _vm.id2,
+                                            examnames.id,
+                                            examnames.name
+                                          )
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("View")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ])
+        : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "card-header",
-        staticStyle: {
-          "background-color": "#1b5e20",
-          width: "100%",
-          "margin-left": "0"
-        }
-      },
-      [_c("h6", [_vm._v("Exam Unit Test - June")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticStyle: { "margin-top": "20px", "margin-left": "-13px" } },
-      [
-        _c("input", {
-          staticClass: "searchText",
-          attrs: { type: "text", placeholder: "Search..." }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "copyRows" }, [
-          _c("div", { staticClass: "row", attrs: { id: "copyRow" } }, [
-            _c("div", { staticClass: "col-2" }, [
-              _c("a", { attrs: { href: "#", title: "Copy" } }, [
-                _c("i", { staticClass: "fa fa-copy" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("a", { attrs: { href: "#", title: "Excel" } }, [
-                _c("i", { staticClass: "fa fa-file-excel-o" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("a", { attrs: { href: "#", title: "PDF" } }, [
-                _c("i", { staticClass: "fa fa-file-pdf-o" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("a", { attrs: { href: "#", title: "Print" } }, [
-                _c("i", { staticClass: "fa fa-print" })
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("a", { attrs: { href: "#", title: "Columns" } }, [
-                _c("i", { staticClass: "fa fa-columns" })
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -59473,267 +59709,42 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row", attrs: { id: "row" } }, [
-        _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 textbox" }, [
-          _c("label", [
-            _vm._v("\n            Class\n            "),
-            _c("strong", [_vm._v("*")])
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox" }, [
-            _c("option", { attrs: { value: "Class A" } }, [_vm._v("Class A")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Class B" } }, [_vm._v("Class B")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Class C" } }, [_vm._v("Class C")])
-          ])
+    return _c("label", [
+      _vm._v("\r\n              Class\r\n              "),
+      _c("strong", { staticStyle: { color: "var(--danger)" } }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [
+      _vm._v("\r\n              Section\r\n              "),
+      _c("strong", { staticStyle: { color: "var(--danger)" } }, [_vm._v("*")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [_vm._v("No")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
+          _vm._v("Exam")
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 textbox" }, [
-          _c("label", [
-            _vm._v("\n            Section\n            "),
-            _c("strong", [_vm._v("*")])
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox" }, [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Section A")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("Names")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "" } }, [_vm._v("Names")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("button", { staticClass: "searchButton" }, [_vm._v("Search")])
-        ])
+        _c(
+          "th",
+          {
+            staticClass: "all",
+            staticStyle: { "text-align": "right" },
+            attrs: { nowrap: "" }
+          },
+          [_vm._v("Action")]
+        )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sub-header" }, [
-      _c("h6", [_vm._v("Exam List")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("a", { attrs: { href: "#", title: "Copy" } }, [
-        _c("i", { staticClass: "fa fa-copy" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("a", { attrs: { href: "#", title: "Excel" } }, [
-        _c("i", { staticClass: "fa fa-file-excel-o" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("a", { attrs: { href: "#", title: "PDF" } }, [
-        _c("i", { staticClass: "fa fa-file-pdf-o" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c("a", { attrs: { href: "#", title: "Print" } }, [
-        _c("i", { staticClass: "fa fa-print" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { onclick: "showColumns()", title: "Columns" } }, [
-      _c("i", { staticClass: "fa fa-columns" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      {
-        staticClass: "tableLink",
-        attrs: { onclick: "showTableHeader('No')", id: "No" }
-      },
-      [_c("span", [_vm._v("No")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      {
-        staticClass: "tableLink",
-        attrs: { onclick: "showTableHeader('Exam')", id: "Exam" }
-      },
-      [_c("span", [_vm._v("Exam")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      {
-        staticClass: "tableLink",
-        attrs: { onclick: "showTableHeader('Action')", id: "Action" }
-      },
-      [_c("span", [_vm._v("Action")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-responsive" }, [
-      _c(
-        "table",
-        {
-          staticClass: "table table-hover table-striped",
-          attrs: { id: "studenttable" }
-        },
-        [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                _vm._v("No")
-              ]),
-              _vm._v(" "),
-              _c("th", { staticClass: "all", attrs: { nowrap: "" } }, [
-                _vm._v("Exam")
-              ]),
-              _vm._v(" "),
-              _c(
-                "th",
-                {
-                  staticClass: "all",
-                  staticStyle: { "text-align": "right" },
-                  attrs: { nowrap: "" }
-                },
-                [_vm._v("Action")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", { staticClass: "active" }, [
-              _c("td", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                _c("p", { staticClass: "toolText" }, [
-                  _vm._v(
-                    "\n                  Unit Test-January\n                  "
-                  ),
-                  _c("span", { staticClass: "tooltipLabel" }, [
-                    _vm._v("No Description")
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticStyle: { "text-align": "right" } }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "viewButton btn-sm",
-                    attrs: {
-                      "data-toggle": "modal",
-                      "data-target": "#exampleModalCenter"
-                    }
-                  },
-                  [_vm._v("View")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", { staticClass: "active" }, [
-              _c("td", [_vm._v("2")]),
-              _vm._v(" "),
-              _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                _c("p", { staticClass: "toolText" }, [
-                  _vm._v(
-                    "\n                  Unit Test-February\n                  "
-                  ),
-                  _c("span", { staticClass: "tooltipLabel" }, [
-                    _vm._v("No Description")
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticStyle: { "text-align": "right" } }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "viewButton btn-sm",
-                    attrs: {
-                      "data-toggle": "modal",
-                      "data-target": "#exampleModalCenter"
-                    }
-                  },
-                  [_vm._v("View")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("tr", { staticClass: "active" }, [
-              _c("td", [_vm._v("3")]),
-              _vm._v(" "),
-              _c("td", { staticClass: "all", attrs: { nowrap: "" } }, [
-                _c("p", { staticClass: "toolText" }, [
-                  _vm._v(
-                    "\n                  Unit Test-March\n                  "
-                  ),
-                  _c("span", { staticClass: "tooltipLabel" }, [
-                    _vm._v("No Description")
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticStyle: { "text-align": "right" } }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "viewButton btn-sm",
-                    attrs: {
-                      "data-toggle": "modal",
-                      "data-target": "#exampleModalCenter"
-                    }
-                  },
-                  [_vm._v("View")]
-                )
-              ])
-            ])
-          ])
-        ]
-      )
     ])
   }
 ]
@@ -61210,48 +61221,347 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "table-responsive" }, [
-          _c("table", { staticClass: "table table-hover table-striped" }, [
+        _c("div", { staticClass: "row", attrs: { id: "row" } }, [
+          _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                staticClass: "inputbox",
+                on: {
+                  change: function($event) {
+                    return _vm.getExamId($event)
+                  }
+                }
+              },
+              [
+                _c("option", [_vm._v("Select")]),
+                _vm._v(" "),
+                _vm._l(_vm.exams, function(Exams) {
+                  return _c(
+                    "option",
+                    { key: Exams.id, domProps: { value: Exams.id } },
+                    [_vm._v(_vm._s(Exams.name))]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                staticClass: "inputbox",
+                on: {
+                  change: function($event) {
+                    return _vm.getSection($event)
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Select")]),
+                _vm._v(" "),
+                _vm._l(_vm.Class, function(Class) {
+                  return _c(
+                    "option",
+                    { key: Class.id, domProps: { value: Class.id } },
+                    [_vm._v(_vm._s(Class.class))]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
             _vm._m(3),
             _vm._v(" "),
-            _c("tbody", [
-              _c("td", [_vm._v("English(Th:)")]),
-              _vm._v(" "),
-              _c(
-                "td",
-                [
-                  _c("date-picker", {
-                    attrs: { valueType: "format" },
-                    model: {
-                      value: _vm.time1,
-                      callback: function($$v) {
-                        _vm.time1 = $$v
-                      },
-                      expression: "time1"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _vm._m(6),
-              _vm._v(" "),
-              _vm._m(7),
-              _vm._v(" "),
-              _vm._m(8)
-            ])
+            _c(
+              "select",
+              {
+                staticClass: "inputbox",
+                on: {
+                  change: function($event) {
+                    return _vm.getSectionId($event)
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "" } }, [_vm._v("Select")]),
+                _vm._v(" "),
+                _vm._l(_vm.Sections, function(Sections) {
+                  return _c(
+                    "option",
+                    { key: Sections.id, domProps: { value: Sections.id } },
+                    [_vm._v(_vm._s(Sections.section))]
+                  )
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12" }, [
+            _c(
+              "button",
+              { staticClass: "searchButton", on: { click: _vm.Search } },
+              [_vm._v("Search")]
+            )
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.display == true
+        ? _c("div", { staticClass: "sub-header" }, [
+            _c("h6", [_vm._v("Exam Schedule")])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.display == true
+        ? _c("div", { staticClass: "card-body" }, [
+            _vm.data == false
+              ? _c("div", [
+                  _c("h1", { staticClass: "NoData" }, [
+                    _vm._v("No Subject in this Class")
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.data == true
+              ? _c("div", { staticClass: "table-responsive" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover table-striped" },
+                    [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.mainExamSubjects, function(n) {
+                          return _c("tr", { key: n.id }, [
+                            _c("td", [_vm._v(_vm._s(n.subject))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.date,
+                                    expression: "n.date"
+                                  }
+                                ],
+                                attrs: { type: "date" },
+                                domProps: { value: n.date },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(n, "date", $event.target.value)
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.start_time,
+                                    expression: "n.start_time"
+                                  }
+                                ],
+                                attrs: { type: "time" },
+                                domProps: { value: n.start_time },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      n,
+                                      "start_time",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.end_time,
+                                    expression: "n.end_time"
+                                  }
+                                ],
+                                attrs: { type: "time" },
+                                domProps: { value: n.end_time },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(n, "end_time", $event.target.value)
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.room,
+                                    expression: "n.room"
+                                  }
+                                ],
+                                staticClass: "inputbox",
+                                attrs: { type: "text" },
+                                domProps: { value: n.room },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(n, "room", $event.target.value)
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.full_marks,
+                                    expression: "n.full_marks"
+                                  }
+                                ],
+                                staticClass: "inputbox",
+                                attrs: { type: "text" },
+                                domProps: { value: n.full_marks },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      n,
+                                      "full_marks",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: n.passing_marks,
+                                    expression: "n.passing_marks"
+                                  }
+                                ],
+                                staticClass: "inputbox",
+                                attrs: { type: "text" },
+                                domProps: { value: n.passing_marks },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      n,
+                                      "passing_marks",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("div", [
+              _vm.data == true
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "save",
+                      staticStyle: { margin: "10px 1rem 1rem 0px" },
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.saveExamSchadule()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "submit",
+                          staticStyle: { color: "white" },
+                          attrs: { to: "examschadule" }
+                        },
+                        [_vm._v("Submit")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.data == false
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "save",
+                      staticStyle: { margin: "10px 1rem 1rem 0px" },
+                      attrs: { type: "button" }
+                    },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "submit",
+                          staticStyle: { color: "white" },
+                          attrs: { to: "examschadule" }
+                        },
+                        [_vm._v("Back")]
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e()
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }
@@ -61268,69 +61578,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row", attrs: { id: "row" } }, [
-        _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
-          _c("label", [_vm._v("Exam name: "), _c("strong", [_vm._v("*")])]),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox" }, [
-            _c("option", { attrs: { value: "Unit Test-January" } }, [
-              _vm._v("Unit Test-January")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Unit Test-February" } }, [
-              _vm._v("Unit Test-February")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Unit Test-March" } }, [
-              _vm._v("Unit Test-March")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
-          _c("label", [_vm._v("Class "), _c("strong", [_vm._v("*")])]),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox" }, [
-            _c("option", { attrs: { value: "Class A" } }, [_vm._v("Class A")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Class B" } }, [_vm._v("Class B")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Class C" } }, [_vm._v("Class C")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-4 col-md-4 col-12 textbox" }, [
-          _c("label", [_vm._v("Section "), _c("strong", [_vm._v("*")])]),
-          _vm._v(" "),
-          _c("select", { staticClass: "inputbox" }, [
-            _c("option", { attrs: { value: "Section A" } }, [
-              _vm._v("Section A")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Section B" } }, [
-              _vm._v("Section B")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Section C" } }, [
-              _vm._v("Section C")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("button", { staticClass: "searchButton" }, [_vm._v("Search")])
-        ])
-      ])
-    ])
+    return _c("label", [_vm._v("Exam name: "), _c("strong", [_vm._v("*")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sub-header" }, [
-      _c("h6", [_vm._v("Exam Schedule")])
-    ])
+    return _c("label", [_vm._v("Class "), _c("strong", [_vm._v("*")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_vm._v("Section "), _c("strong", [_vm._v("*")])])
   },
   function() {
     var _vm = this
@@ -61350,42 +61610,6 @@ var staticRenderFns = [
       _c("th", { attrs: { nowrap: "" } }, [_vm._v("Full Marks")]),
       _vm._v(" "),
       _c("th", { attrs: { nowrap: "" } }, [_vm._v("Passing Marks")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("input", { attrs: { type: "time" } })])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [_c("input", { attrs: { type: "time" } })])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("input", { staticClass: "inputbox", attrs: { type: "text" } })
     ])
   }
 ]
@@ -102990,8 +103214,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Hp\Desktop\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\GitHub\SMS\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\GitHub\SMS\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

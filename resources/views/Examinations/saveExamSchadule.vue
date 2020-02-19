@@ -176,11 +176,6 @@
         this.axios.post(`/api/examSchadules/addExamSchadule`,this.SaveExamSchadule).then(response=>{
             this.message = response.data;
         })
-    },activeAcademicValue(){
-        this.axios.get(`/api/activeAcademicValue`)
-        .then(response=>{
-            this.academicYearId = response.data;
-        })
     },
     }
   };

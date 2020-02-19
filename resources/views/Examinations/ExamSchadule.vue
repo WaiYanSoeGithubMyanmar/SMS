@@ -30,13 +30,13 @@
                   </thead>
                   <tbody>
                     <tr v-for="ReceiveExamData in receiveExamData" :key="ReceiveExamData.id">
-                      <td nowrap>{{ReceiveExamData.subject}}(Th:)</td>
-                      <td nowrap>{{ReceiveExamData.date}}</td>
-                      <td nowrap>{{ReceiveExamData.start_time}}</td>
-                      <td nowrap>{{ReceiveExamData.end_time}}</td>
-                      <td nowrap>{{ReceiveExamData.room}}</td>
-                      <td nowrap>{{ReceiveExamData.full_marks}}</td>
-                      <td nowrap>{{ReceiveExamData.passing_marks}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.subject}}(Th:)</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.date}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.start_time}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.end_time}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.room}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.full_marks}}</td>
+                      <td nowrap v-if="ReceiveExamData.date != null">{{ReceiveExamData.passing_marks}}</td>
                     </tr>
                   </tbody>
                 </table>
