@@ -6071,10 +6071,12 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get("/api/getClassSection/".concat(event.target.value)).then(function (response) {
         _this2.Sections = response.data;
         _this2.id1 = event.target.value;
+        _this2.display = false;
       });
     },
     getSectionId: function getSectionId(eventS) {
       this.id2 = eventS.target.value;
+      this.display = false;
     },
     Search: function Search(Class_id, Section_id) {
       var _this3 = this;
@@ -6506,13 +6508,16 @@ __webpack_require__.r(__webpack_exports__);
       this.axios.get("/api/getClassSection/".concat(event.target.value)).then(function (response) {
         _this3.Sections = response.data;
         _this3.id2 = event.target.value;
+        _this3.display = false;
       });
     },
     getSectionId: function getSectionId(eventS) {
       this.id3 = eventS.target.value;
+      this.display = false;
     },
     getExamId: function getExamId(event) {
       this.id1 = event.target.value;
+      this.display = false;
     },
     Search: function Search() {
       var _this4 = this;

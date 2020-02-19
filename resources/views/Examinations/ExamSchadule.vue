@@ -179,9 +179,11 @@ export default {
         .then(response => {
           this.Sections = response.data;
           this.id1=event.target.value;
+          this.display = false;
         });
     },getSectionId(eventS){
       this.id2 = eventS.target.value;
+      this.display = false;
       
     },Search(Class_id,Section_id){
       this.array.push(Class_id);

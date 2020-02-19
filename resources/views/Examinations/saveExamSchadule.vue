@@ -129,11 +129,14 @@
         .then(response => {
           this.Sections = response.data;
           this.id2=event.target.value;
+          this.display = false;
         });
     },getSectionId(eventS){
       this.id3 = eventS.target.value;
+      this.display = false;
     },getExamId(event){
             this.id1=event.target.value;
+            this.display = false;
         },Search(){
         this.mainExamSubjects = [];
         this.arrayClassSectionExam.push(this.id1);
