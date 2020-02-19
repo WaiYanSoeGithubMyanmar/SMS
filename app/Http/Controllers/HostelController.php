@@ -41,7 +41,6 @@ class HostelController extends Controller
     {
         //
         // if ($request->input('hostel_name') == "") {
-
         // } else {
         $request->validate([
             'hostel_name' => 'required'
@@ -55,7 +54,7 @@ class HostelController extends Controller
             'is_active'   => "No"
         ]);
         $hostel->save();
-        return response()->json('The Hostel successfully added');
+        return response()->json(['text' => 'Hostel added successfully', 'type' => 'success']);
         // }
     }
 

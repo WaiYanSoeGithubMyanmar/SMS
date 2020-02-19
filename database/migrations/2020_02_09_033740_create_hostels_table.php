@@ -17,10 +17,11 @@ class CreateHostelsTable extends Migration
             $table->increments('id');
             $table->string('hostel_name',100);
             $table->string('type',50);
-            $table->text('address');
-            $table->integer('intake');
-            $table->text('description');
-            $table->string('is_active');
+            $table->text('address')->nullable();
+            $table->integer('intake')->nullable();
+            $table->text('description')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
             $table->timestamps();
         });
     }

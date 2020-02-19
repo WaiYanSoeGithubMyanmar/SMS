@@ -7,6 +7,7 @@
       </h4>
     </div>
     <hr />
+    <confirm :url="delurl"></confirm>
     <div class="row" style="align-items: end !important;">
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
@@ -20,14 +21,29 @@
                   Room Number / Name
                   <strong>*</strong>
                 </label>
-                <input v-model="hostelroom.room_no" type="text" class="inputbox" />
+                <input
+                  id="name_id"
+                  @keyup="onValidate(hostelroom.room_no, 'name_id', 'namemsg')"
+                  v-on:blur="onValidate(hostelroom.room_no, 'name_id', 'namemsg')"
+                  v-model="hostelroom.room_no"
+                  type="text"
+                  class="inputbox"
+                />
+                <span id="namemsg" class="error_message">Room Number / Name is required</span>
               </div>
               <div class="col-12">
                 <label for="hostel">
                   Hostel
                   <strong>*</strong>
                 </label>
-                <select v-model="hostelroom.hostel_id" class="inputbox" name="class">
+                <select
+                  id="hostel_id"
+                  @keyup="onValidate(hostelroom.hostel_id, 'hostel_id', 'hostelmsg')"
+                  v-on:blur="onValidate(hostelroom.hostel_id, 'hostel_id', 'hostelmsg')"
+                  v-model="hostelroom.hostel_id"
+                  class="inputbox"
+                  name="class"
+                >
                   <option selected disabled>Select</option>
                   <option
                     :value="hostel_data.id"
@@ -35,13 +51,21 @@
                     v-bind:key="hostel_data.id"
                   >{{hostel_data.hostel_name}}</option>
                 </select>
+                <span id="hostelmsg" class="error_message">Hostel is required</span>
               </div>
               <div class="col-12">
                 <label for="room_type">
                   Room Type
                   <strong>*</strong>
                 </label>
-                <select v-model="hostelroom.room_type_id" class="inputbox" name="class">
+                <select
+                  id="roomtype_id"
+                  @keyup="onValidate(hostelroom.room_type_id, 'roomtype_id', 'roomtypemsg')"
+                  v-on:blur="onValidate(hostelroom.room_type_id, 'roomtype_id', 'roomtypemsg')"
+                  v-model="hostelroom.room_type_id"
+                  class="inputbox"
+                  name="class"
+                >
                   <option selected disabled>Select</option>
                   <option
                     :value="roomtype_data.id"
@@ -49,27 +73,45 @@
                     v-bind:key="roomtype_data.id"
                   >{{roomtype_data.room_type}}</option>
                 </select>
+                <span id="roomtypemsg" class="error_message">Room Type is required</span>
               </div>
               <div class="col-12">
                 <label for="no_of_bed">
                   Number Of Bed
                   <strong>*</strong>
                 </label>
-                <input v-model="hostelroom.no_of_bed" type="text" class="inputbox" />
+                <input
+                  id="nob_id"
+                  @keyup="onValidate(hostelroom.no_of_bed, 'nob_id', 'nobmsg')"
+                  v-on:blur="onValidate(hostelroom.no_of_bed, 'nob_id', 'nobmsg')"
+                  v-model="hostelroom.no_of_bed"
+                  type="text"
+                  class="inputbox"
+                />
+                <span id="nobmsg" class="error_message">Number Of Bed is required</span>
               </div>
               <div class="col-12">
                 <label for="cost_per_bed">
                   Cost Per Bed
                   <strong>*</strong>
                 </label>
-                <input v-model="hostelroom.cost_per_bed" type="text" class="inputbox" />
+                <input
+                  id="cpb_id"
+                  @keyup="onValidate(hostelroom.cost_per_bed, 'cpb_id', 'cpbmsg')"
+                  v-on:blur="onValidate(hostelroom.cost_per_bed, 'cpb_id', 'cpbmsg')"
+                  v-model="hostelroom.cost_per_bed"
+                  type="text"
+                  class="inputbox"
+                />
+                <span id="cpbmsg" class="error_message">Number Of Bed is required</span>
               </div>
               <div class="col-12 end">
                 <label for="description">Description</label>
                 <textarea v-model="hostelroom.description" class="textareas" rows="3"></textarea>
               </div>
               <div class="col-12">
-                <button type="submit" class="save">Save</button>
+                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
+                <button v-else @click="updateHostelRoom()" type="button" class="save">Save</button>
               </div>
             </form>
           </div>
@@ -91,39 +133,28 @@
             />
             <div class="copyRows">
               <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
                 </div>
               </div>
             </div>
-
             <div class="table-responsive">
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
                   <tr>
-                    <th class="all" nowrap>Room Number / Name</th>
+                    <th class="all" nowrap>Room Number</th>
                     <th class="all" nowrap>Hostel</th>
                     <th class="all" nowrap>Room Type</th>
                     <th class="all" nowrap>Number Of Bed</th>
@@ -140,7 +171,7 @@
                           v-if="room.description"
                           class="tooltipLabel"
                         >{{room.description}}</span>
-                        <span v-else class="tooltipLabel">No Description</span>
+                        <span v-else class="tooltipLabel text-danger">No Description</span>
                       </p>
                     </td>
                     <td class="all" nowrap>{{room.hostel.hostel_name}}</td>
@@ -151,7 +182,12 @@
                       <i @click="editHostelRoom(room)" class="fa fa-pencil pen">
                         <span class="penLabel">Edit</span>
                       </i>
-                      <i @click="deleteHostelRoom(room.id)" class="fa fa-trash time">
+                      <i
+                        data-toggle="modal"
+                        data-target="#exampleModalCenter"
+                        class="fa fa-trash time"
+                        @click="deleteHostelRoom(room.id)"
+                      >
                         <span class="timeLabel">Delete</span>
                       </i>
                     </td>
@@ -166,11 +202,23 @@
   </div>
 </template>
 <script>
+/**
+ *  COMPONENTS
+ */
+import message from "../Alertmessage/message.vue";
+import confirm from "../message/confirm.vue";
+import { EventBus } from "../../js/event-bus.js";
+
 export default {
+  components: {
+    confirm,
+    message
+  },
   data() {
     return {
       hostelroom: {},
       search: "",
+      delurl: "",
       hostelrooms: [],
       hostel_table: [],
       roomtypes: [],
@@ -184,6 +232,11 @@ export default {
     this.getHostelRooms();
   },
   created() {
+    EventBus.$on("clicked", clickCount => {
+      this.getHostels();
+      this.getRoomTypes();
+      this.getHostelRooms();
+    });
     this.getHostels();
     this.getRoomTypes();
     this.getHostelRooms();
@@ -199,14 +252,16 @@ export default {
       });
     },
     addHostelRooms() {
-      console.log("-->" + JSON.stringify(this.hostelroom));
-      this.axios
-        .post("/api/hostelroom/store", this.hostelroom)
-        .then(response => {
-          this.getHostelRooms();
-          this.hostelroom = {};
-        })
-        .catch(error => console.log(error));
+      if (this.checkValidate()) {
+        console.log("-->" + JSON.stringify(this.hostelroom));
+        this.axios
+          .post("/api/hostelroom/store", this.hostelroom)
+          .then(response => {
+            this.getHostelRooms();
+            this.hostelroom = {};
+          })
+          .catch(error => console.log(error));
+      }
     },
     editHostelRoom(hos) {
       let to = this.moveToDown ? this.$refs.description.offsetTop - 60 : 0;
@@ -228,6 +283,7 @@ export default {
       this.isEdit = true;
     },
     updateHostelRoom() {
+      console.log("Model --->" + JSON.stringify(this.hostelroom));
       this.axios
         .post(`/api/hostelroom/update/${this.hostelroom.id}`, this.hostelroom)
         .then(res => {
@@ -238,11 +294,8 @@ export default {
         });
     },
     deleteHostelRoom(id) {
-      this.axios.delete(`/api/hostelroom/delete/${id}`).then(response => {
-        this.getHostelRooms();
-        let i = this.hostelrooms.map(item => item.id).indexOf(id); // find index of your object
-        this.hostelrooms.splice(i, 1);
-      });
+      var funName = "delete"; /**Delete function */
+      this.delurl = `hostelroom/${funName}/${id}`;
     },
     /***
      * Hostel
@@ -287,6 +340,51 @@ export default {
             }
           });
       }
+    },
+
+    /***
+     * FORM VALIDATION
+     */
+    onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined)
+        document.getElementById(inputId).style.border = "solid 1px red";
+      else {
+        document.getElementById(inputId).style.border = "solid 1px #d2d6de";
+        document.getElementById(megId).style.display = "none";
+      }
+    },
+
+    onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = "solid 1px red";
+      document.getElementById(megId).style.display = "block";
+    },
+    checkValidate() {
+      if (!this.hostelroom.room_no) {
+        this.onValidateMessage("name_id", "namemsg");
+        return false;
+      }
+      if (!this.hostelroom.hostel_id) {
+        this.onValidateMessage("hostel_id", "hostelmsg");
+        return false;
+      }
+      if (!this.hostelroom.room_type_id) {
+        this.onValidateMessage("roomtype_id", "roomtypemsg");
+        return false;
+      }
+      if (!this.hostelroom.no_of_bed) {
+        this.onValidateMessage("nob_id", "nobmsg");
+        return false;
+      }
+      if (!this.hostelroom.cost_per_bed) {
+        this.onValidateMessage("cpb_id", "cpbmsg");
+        return false;
+      } else {
+        return true;
+      }
+      return false;
+    },
+    goAlertClose() {
+      $(".alert").css("display", "none");
     }
   }
 };

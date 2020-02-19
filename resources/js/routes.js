@@ -16,6 +16,7 @@ import AddStudent from '../views/Student/AddStudent.vue';
 import StudentHistory from '../views/Student/StudentHistory.vue';
 import ViewStudent from '../views/Student/ViewStudent.vue';
 
+
 //Academic 
 import Timetable from '../views/Academics/classtimetable.vue';
 import ViewTimetable from '../views/Academics/viewclasstimetable.vue';
@@ -236,11 +237,6 @@ export const routes = [
         component: OthDownloads
     },
     {
-        name: 'stadirectory',
-        path: '/stadirectory',
-        component: StaDirectory
-    },
-    {
         name: 'routes',
         path: '/routes',
         component: Route
@@ -309,10 +305,22 @@ export const routes = [
         name: 'evaluation_report',
         path: '/evaluation_report',
         component: EvaluationReport
+    }
+    ,
+    {
+        name: 'staffdirectory',
+        path: '/staffdirectory',
+        component: StaDirectory
     },
     {
         name: 'addstadirectory',
-        path: '/addstadirectory',
+        path: '/staffdirectory/add',
+        component: AddStaDirectory
+    },
+    ,
+    {
+        name: 'editstadirectory',
+        path: '/stadirectory/edit',
         component: AddStaDirectory
     }
 ];

@@ -15,18 +15,30 @@
             <h6>Add Designation</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form>
+            <form @submit.prevent="addDesignation">
               <div class="col-12">
                 <label for="name">
                   Name
                   <strong>*</strong>
                 </label>
-                <input type="text" class="inputbox" v-model="designation.designation_name" />
+                <input
+                  id="name_id"
+                  @keyup="onValidate(designation.designation_name, 'name_id', 'namemsg')"
+                  v-on:blur="onValidate(designation.designation_name, 'name_id', 'namemsg')"
+                  type="text"
+                  class="inputbox"
+                  v-model="designation.designation_name"
+                />
+                <span id="namemsg" class="error_message">Name is required</span>
               </div>
               <div class="col-12">
-           <!--- store -->
-                <button v-if="this.isEdit == false" @click="addDesignation" type="submit" class="save">Save</button>
-                <button v-else @click="updateDesignation()" type="submit" class="save">Save</button>
+                <!--- store -->
+                <button
+                  v-if="this.isEdit == false"
+                  type="submit"
+                  class="save"
+                >Save</button>
+                <button v-else @click="updateDesignation()" type="button" class="save">Save</button>
               </div>
             </form>
           </div>
@@ -42,27 +54,17 @@
             <input type="text" placeholder="Search..." class="searchText" />
             <div class="copyRows">
               <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
@@ -127,7 +129,7 @@ export default {
     this.getDesignations();
   },
   created() {
-    EventBus.$on("clicked", clickCount => {
+    EventBus.$on("clicked", response => {
       this.getDesignations();
     });
     this.getDesignations();
@@ -140,15 +142,17 @@ export default {
     },
     addDesignation() {
       console.log(JSON.stringify(this.designation));
-      this.axios
-        .post("/api/designation/store", this.designation)
-        .then(response => {
-          this.getDesignations();
-          setTimeout(() => {
-            this.designation = {};
-          }, 100);
-        })
-        .catch(error => console.log(error));
+      if (this.checkValidate()) {
+        this.axios
+          .post("/api/designation/store", this.designation)
+          .then(response => {
+            this.getDesignations();
+            setTimeout(() => {
+              this.designation = {};
+            }, 100);
+          })
+          .catch(error => console.log(error));
+      }
     },
     editDesignation(data) {
       console.log(JSON.stringify(data.name));
@@ -168,7 +172,10 @@ export default {
     updateDesignation() {
       console.log(JSON.stringify(this.designation));
       this.axios
-        .post(`/api/designation/update/${this.designation.id}`, this.designation)
+        .post(
+          `/api/designation/update/${this.designation.id}`,
+          this.designation
+        )
         .then(res => {
           this.isEdit = false;
           this.designation = {};
@@ -194,6 +201,33 @@ export default {
             this.roomtypes = response.data;
           });
       }
+    },
+    /***
+     * FORM VALIDATIOn
+     */
+    onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined)
+        document.getElementById(inputId).style.border = "solid 1px red";
+      else {
+        document.getElementById(inputId).style.border = "solid 1px #d2d6de";
+        document.getElementById(megId).style.display = "none";
+      }
+    },
+    onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = "solid 1px red";
+      document.getElementById(megId).style.display = "block";
+    },
+    checkValidate() {
+      if (!this.designation.designation_name) {
+        this.onValidateMessage("name_id", "namemsg");
+        return false;
+      } else {
+        return true;
+      }
+      return false;
+    },
+    goAlertClose() {
+      $(".alert").css("display", "none");
     }
   }
 };

@@ -32,21 +32,13 @@ class RoomTypeController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
-            'room_type' => 'required'
-        ], [
-            'room_type.required' => 'Password is required'
-        ]);
         $roomtype = new RoomType([
             'room_type' => $request->input('room_type'),
             'description' => $request->input('description'),
-            'is_active' => "No"
         ]);
         $roomtype->save();
-        return response()->json('The RoomType successfully added');
+        return response()->json(['text' => 'RoomType added successfully', 'type' => 'success']);
     }
-
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,7 +63,7 @@ class RoomTypeController extends Controller
     {
         $roomtype = RoomType::find($id);
         $roomtype->update($request->all());
-        return response()->json('The Hostel successfully updated');
+        return response()->json(['text' => 'RoomType updated successfully', 'type' => 'success']);
     }
     /**
      * Remove the specified resource from storage.
@@ -83,7 +75,7 @@ class RoomTypeController extends Controller
     {
         $roomtype = RoomType::find($id);
         $roomtype->delete();
-        return response()->json('The RoomType successfully deleted');
+        return response()->json(['text' => 'RoomType deleted successfully', 'type' => 'success']);
     }
 
     public function search($data)

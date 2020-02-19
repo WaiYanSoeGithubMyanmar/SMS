@@ -8,7 +8,6 @@
     </div>
     <hr />
     <confirm :url="delurl"></confirm>
-
     <div class="row" style="align-items: end !important;">
       <div class="col-lg-5 col-md-12" style="padding-left:2px;">
         <div class="card">
@@ -16,25 +15,41 @@
             <h6>Add Hostel</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form @submit.prevent="addHostel">
+            <form action>
+              <message :alertmessage="msg" />
               <div class="col-12">
                 <label for="hostel_name">
                   Hostel Name
                   <strong>*</strong>
                 </label>
-                <input type="text" class="inputbox" v-model="hostel.hostel_name" />
+                <input
+                  type="text"
+                  class="inputbox"
+                  v-model="hostel.hostel_name"
+                  id="sectionid"
+                  @keyup="onValidate(hostel.hostel_name, 'sectionid', 'sectionmsg')"
+                  v-on:blur="onValidate(hostel.hostel_name, 'sectionid', 'sectionmsg')"
+                />
+                <span id="sectionmsg" class="error_message">Hostel Name is required</span>
               </div>
               <div class="col-12">
                 <label for="type">
                   Type
                   <strong>*</strong>
                 </label>
-                <select class="inputbox" v-model="hostel.type">
+                <select
+                  id="typeid"
+                  v-model="hostel.type"
+                  @keyup="onValidate(hostel.type, 'typeid', 'typemsg')"
+                  v-on:blur="onValidate(hostel.type, 'typeid', 'typemsg')"
+                  class="inputbox"
+                >
                   <option selected disabled>Select</option>
                   <option value="Boys">Boys</option>
                   <option value="Girls">Girls</option>
                   <option value="Combine">Combine</option>
                 </select>
+                <span id="typemsg" class="error_message">Type is required</span>
               </div>
               <div class="col-12">
                 <label for="address">Address</label>
@@ -50,7 +65,12 @@
               </div>
               <div class="col-12">
                 <!--- store -->
-                <button v-if="this.isEdit == false" type="submit" class="save">Save</button>
+                <button
+                  v-if="this.isEdit == false"
+                  @click="addHostel()"
+                  type="button"
+                  class="save"
+                >Save</button>
                 <button v-else @click="updateHostel()" type="button" class="save">Save</button>
               </div>
             </form>
@@ -72,34 +92,23 @@
             />
             <div class="copyRows">
               <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
                 </div>
               </div>
             </div>
-
             <div class="table-responsive">
               <table class="table table-hover table-striped" id="studenttable">
                 <thead>
@@ -132,7 +141,7 @@
                       <p class="toolText">
                         {{hos.hostel_name}}
                         <span
-                          v-if="hos.hostel_name"
+                          v-if="hos.description"
                           class="tooltipLabel"
                         >{{hos.description}}</span>
                         <span v-else class="tooltipLabel text-danger">No Description</span>
@@ -173,12 +182,14 @@
 /**
  *  COMPONENTS
  */
+import message from "../Alertmessage/message.vue";
 import confirm from "../message/confirm.vue";
 import { EventBus } from "../../js/event-bus.js";
 
 export default {
   components: {
-    confirm
+    confirm,
+    message
   },
   data() {
     return {
@@ -189,7 +200,15 @@ export default {
       id: "",
       isEdit: false,
       noMatch: false,
-      delurl: ""
+      delurl: "",
+      msg: {
+        text: "",
+        type: ""
+      },
+      deletemsg: {
+        text: "",
+        type: ""
+      }
     };
   },
   mounted() {
@@ -202,7 +221,6 @@ export default {
     this.axios
       .get("/api/hostels")
       .then(response => (this.hostels = response.data));
-    this.hostel.type = "Select";
   },
   methods: {
     /**
@@ -217,14 +235,18 @@ export default {
      * STORE DATA
      */
     addHostel() {
-      console.log("-->" + JSON.stringify(this.hostel));
-      this.axios
-        .post("/api/hostel/store", this.hostel)
-        .then(response => {
-          this.getHostels();
-          this.hostel = {};
-        })
-        .catch(error => console.log(error));
+      if (this.checkValidate()) {
+        console.log("-->" + JSON.stringify(this.hostel));
+        this.axios
+          .post("/api/hostel/store", this.hostel)
+          .then(response => {
+            (this.msg.text = response.data.text),
+              (this.msg.type = response.data.type);
+            this.getHostels();
+            this.hostel = {};
+          })
+          .catch(error => console.log(error));
+      }
     },
     /**
      * EDIT SHOW DATA
@@ -261,7 +283,8 @@ export default {
         });
     },
     deleteHostel(id) {
-      this.delurl = `hostel/delete/${id}`;
+      var funName = "delete"; /**Delete function */
+      this.delurl = `hostel/${funName}/${id}`;
     },
     /**
      * SEARCH
@@ -285,6 +308,37 @@ export default {
           }
         });
       }
+    },
+    /***
+     * FORM VALIDATION
+     */
+    onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined)
+        document.getElementById(inputId).style.border = "solid 1px red";
+      else {
+        document.getElementById(inputId).style.border = "solid 1px #d2d6de";
+        document.getElementById(megId).style.display = "none";
+      }
+    },
+
+    onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = "solid 1px red";
+      document.getElementById(megId).style.display = "block";
+    },
+    checkValidate() {
+      if (!this.hostel.hostel_name) {
+        this.onValidateMessage("sectionid", "sectionmsg");
+        return false;
+      } else if (!this.hostel.type) {
+        this.onValidateMessage("typeid", "typemsg");
+        return false;
+      } else {
+        return true;
+      }
+      return false;
+    },
+    goAlertClose() {
+      $(".alert").css("display", "none");
     }
   }
 };

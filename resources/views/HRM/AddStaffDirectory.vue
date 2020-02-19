@@ -2,9 +2,13 @@
   <div class="form" id="bar">
     <div class="toplink">
       <h2 class="stuName">HRM</h2>
-      <h4 class="stuLink">
+      <h4 class="stuLink" v-if="checkroute == false">
         <router-link to="/home" class="home">Home</router-link>
-        <router-link to="/stadirectory" class="home">> Staff Directory</router-link>> Add Staff Directory
+        <router-link to="/staffdirectory" class="home">> Staff Directory</router-link>> Add Staff Directory
+      </h4>
+      <h4 class="stuLink" v-else>
+        <router-link to="/home" class="home">Home</router-link>
+        <router-link to="/staffdirectory" class="home">> Staff Directory</router-link>> Edit Staff Directory
       </h4>
     </div>
     <hr />
@@ -335,7 +339,8 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="save">Save</button>
+        <button v-if="checkroute == false" type="submit" class="save">Save</button>
+        <button v-else @click="updateStaffDirectory()" type="button" class="save">Save</button>
       </form>
       <br />
     </div>
@@ -354,11 +359,22 @@ export default {
       roles: [],
       designations: [],
       departments: [],
-      addMore: false
+      addMore: false,
+      checkroute: false
     };
   },
   mounted() {},
   created() {
+    console.log(this.$route.path);
+    if (this.$route.path == "/stadirectory/edit") {
+      this.checkroute = true;
+    }
+    this.axios
+      .get(`/api/staffdirectory/edit/${this.$route.params.id}`)
+      .then(response => {
+        this.model = response.data;
+        console.log("Staff" + JSON.stringify(response));
+      });
     this.getRoles();
     this.getDesignations();
     this.getDepartments();
@@ -397,8 +413,8 @@ export default {
       this.model.image = e.target.files[0];
     },
     addStaffDirectory(e) {
-      this.model.dob =new Date().toISOString().slice(0,10),
-      e.preventDefault();
+      (this.model.dob = new Date().toISOString().slice(0, 10)),
+        e.preventDefault();
       let currentObj = this;
       const config = {
         headers: { "content-type": "multipart/form-data" }
@@ -454,6 +470,68 @@ export default {
           this.model = {};
         })
         .catch(error => console.log(error));
+    },
+    updateStaffDirectory(e) {
+      this.model.dob = new Date().toISOString().slice(0, 10);
+      // e.preventDefault();
+
+      let currentObj = this;
+      const config = {
+        headers: { "content-type": "multipart/form-data" }
+      };
+      let formData = new FormData();
+      formData.append("staff_id", this.model.staff_id);
+      formData.append("role_id", this.model.role_id);
+      formData.append("designation_id", this.model.designation_id);
+      formData.append("department_id", this.model.department_id);
+      formData.append("name", this.model.name);
+      formData.append("father_name", this.model.father_name);
+      formData.append("mother_name", this.model.mother_name);
+      formData.append("email", this.model.email);
+      formData.append("gender", this.model.gender);
+      formData.append("dob", this.model.dob);
+      formData.append("phone", this.model.phone);
+      formData.append("emergency_contact_no", this.model.emergency_contact_no);
+      formData.append("marital_status", this.model.marital_status);
+      formData.append("image", this.model.image);
+      formData.append("current_address", this.model.current_address);
+      formData.append("permanent_address", this.model.permanent_address);
+      formData.append("qualification", this.model.qualification);
+      formData.append("work_exp", this.model.work_exp);
+      formData.append("note", this.model.note);
+      formData.append("password", this.model.password);
+      formData.append("epf_no", this.model.epf_no);
+      formData.append("basic_salary", this.model.basic_salary);
+      formData.append("contract_type", this.model.contract_type);
+      formData.append("work_shift", this.model.work_shift);
+      formData.append("location", this.model.location);
+      formData.append("medical_leave", this.model.medical_leave);
+      formData.append("casual_leave", this.model.casual_leave);
+      formData.append("maternity_leave", this.model.maternity_leave);
+      formData.append("account_title", this.model.account_title);
+      formData.append("bank_account_no", this.model.bank_account_no);
+      formData.append("ifsc_code", this.model.ifsc_code);
+      formData.append("bank_branch_name", this.model.bank_branch_name);
+      formData.append("facebook", this.model.facebook);
+      formData.append("twitter", this.model.twitter);
+      formData.append("instagram", this.model.instagram);
+      formData.append("linkedin", this.model.linkedin);
+      formData.append("resume", this.model.resume);
+      formData.append("joining_letter", this.model.joining_letter);
+      formData.append("other_document", this.model.other_document);
+      formData.append("location", this.model.location);
+      formData.append("date_of_joining", this.model.date_of_joining);
+      this.axios
+        .post(
+          `/api/staffdirectory/update/${this.$route.params.id}`,
+          formData,
+          config
+        )
+        .then(response => {
+          console.log("-->" + JSON.stringify(response));
+          
+          // this.$router.push({ name: "staffdirectory" });
+        });
     }
   }
 };

@@ -11,7 +11,7 @@
     <div class="card">
       <div class="stucard-header">
         <h6>Select Criteria</h6>
-        <router-link to="/addstadirectory" class="add">Add Staff</router-link>
+        <router-link to="/staffdirectory/add" class="add">Add Staff</router-link>
       </div>
       <div class="stucard-body">
         <div class="row">
@@ -111,9 +111,9 @@
                   <router-link to="#">
                     <i class="fa fa-list"></i>
                   </router-link>
-                  <router-link to="#">
-                    <i class="fa fa-pencil pen"></i>
-                  </router-link>
+                  <router-link :to="{name: 'editstadirectory', params: { id: staff.id }}">
+                      <i class="fa fa-pencil pen"></i>
+                    </router-link>
                 </td>
               </tr>
             </tbody>
@@ -157,9 +157,11 @@
                     <a title="Show">
                       <i class="fa fa-navicon"></i>
                     </a>
-                    <a title="Edit">
-                      <i class="fa fa-pencil"></i>
-                    </a>
+                    <router-link :to="{name: 'editstadirectory', params: { id: staff.id }}">
+                      <a title="Edit">
+                        <i @click="editStaff(staff)" class="fa fa-pencil"></i>
+                      </a>
+                    </router-link>
                   </div>
                 </div>
               </div>
@@ -195,7 +197,8 @@ export default {
     },
     detailsView() {
       this.view = false;
-    }
+    },
+    editStaff(data) {}
   }
 };
 </script>

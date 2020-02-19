@@ -15,7 +15,7 @@
             <h6>Add Department</h6>
           </div>
           <div class="card-body" style="padding:1rem 0;border-bottom: 1px solid #8080808c;">
-            <form>
+            <form @submit.prevent="addDepartment">
               <message :alertmessage="msg" />
               <div class="col-12">
                 <label for="name">
@@ -34,8 +34,12 @@
               </div>
               <div class="col-12">
                 <!--- store -->
-                <button v-if="this.isEdit == false" @click="addDepartment" type="submit" class="save">Save</button>
-                <button v-else @click="updateDepartment()" type="submit" class="save">Save</button>
+                <button
+                  v-if="this.isEdit == false"
+                  type="submit"
+                  class="save"
+                >Save</button>
+                <button v-else @click="updateDepartment()" type="button" class="save">Save</button>
               </div>
             </form>
           </div>
@@ -51,27 +55,17 @@
             <input type="text" placeholder="Search..." class="searchText" />
             <div class="copyRows">
               <div class="row" id="copyRow">
-                <div class="col-2">
-                  <a href="#" title="Copy">
-                    <i class="fa fa-copy"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Excel">
                     <i class="fa fa-file-excel-o"></i>
                   </a>
                 </div>
-                <div class="col-2">
-                  <a href="#" title="PDF">
-                    <i class="fa fa-file-pdf-o"></i>
-                  </a>
-                </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Print">
                     <i class="fa fa-print"></i>
                   </a>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                   <a href="#" title="Columns">
                     <i class="fa fa-columns"></i>
                   </a>
@@ -147,40 +141,7 @@ export default {
     });
     this.getDepartments();
   },
-  methods: {
-    /***
-     *
-     * Form Validation
-     *
-     */
-    onValidate(value, inputId, megId) {
-      if (value == "" || value == undefined)
-        document.getElementById(inputId).style.border = "solid 1px red";
-      else document.getElementById(inputId).style.border = "solid 1px #d2d6de";
-      document.getElementById(megId).style.display = "none";
-    },
-    onValidationMessage(inputId, megId) {
-      document.getElementById(inputId).style.border = "solid 1px red";
-      document.getElementById(megId).style.display = "block";
-    },
-
-    checkValidate() {
-      if (
-        this.department.department_name == "" ||
-        this.department.department_name == undefined
-      ) {
-        this.onValidationMessage("sessionid", "sessionmsg");
-      } else {
-        return true;
-      }
-      return false;
-    },
-
-    /***
-     *
-     *End of Form Validation
-     *
-     */
+  methods:{
     getDepartments() {
       this.axios
         .get("/api/departments")
@@ -249,7 +210,42 @@ export default {
             this.roomtypes = response.data;
           });
       }
-    }
+    },
+
+
+     /***
+     *
+     * Form Validation
+     *
+     */
+    onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined)
+        document.getElementById(inputId).style.border = "solid 1px red";
+      else document.getElementById(inputId).style.border = "solid 1px #d2d6de";
+      document.getElementById(megId).style.display = "none";
+    },
+    onValidationMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = "solid 1px red";
+      document.getElementById(megId).style.display = "block";
+    },
+
+    checkValidate() {
+      if (
+        this.department.department_name == "" ||
+        this.department.department_name == undefined
+      ) {
+        this.onValidationMessage("sessionid", "sessionmsg");
+      } else {
+        return true;
+      }
+      return false;
+    },
+
+    /***
+     *
+     *End of Form Validation
+     *
+     */
   }
 };
 </script>

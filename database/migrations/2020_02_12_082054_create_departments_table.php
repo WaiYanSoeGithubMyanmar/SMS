@@ -16,8 +16,8 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('department_name', 200);
-            $table->string('is_active', 25);
-            $table->text('domain')->default('tastysoft');
+            $table->string('is_active', 25)->nullable();
+            $table->text('domain')->nullable();
             $table->timestamps();
         });
     }

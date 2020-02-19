@@ -55,7 +55,6 @@ export default {
       this.axios.delete(`/api/${this.url}`).then(response => {
         this.response = response.data;
         console.log("" + JSON.stringify(response.data));
-
         setTimeout(() => {
           EventBus.$emit("clicked", this.response);
         }, 100);

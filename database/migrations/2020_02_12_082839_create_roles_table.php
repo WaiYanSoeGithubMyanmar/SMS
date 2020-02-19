@@ -16,8 +16,8 @@ class CreateRolesTable extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 200);
-            $table->string('is_active', 25);
-            $table->text('domain')->default('tastysoft');
+            $table->string('is_active', 25)->nullable();
+            $table->text('domain')->nullable();
             $table->timestamps();
         });
     }
