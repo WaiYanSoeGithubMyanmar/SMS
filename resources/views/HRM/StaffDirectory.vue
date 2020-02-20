@@ -16,21 +16,35 @@
       <div class="stucard-body">
         <div class="row">
           <div class="textarea">
-            <label for="class">
-              Role
-              <strong>*</strong>
-            </label>
-            <select id="class" class="inputbox">
-              <option value="one">Grade One</option>
-              <option value="two">Grade Two</option>
-              <option value="three">Grade Three</option>
-            </select>
-            <button class="save">Search</button>
+            <form @submit.prevent="searchByRole()">
+              <label for="class">
+                Role
+                <strong>*</strong>
+              </label>
+              <select
+                id="search_role_id"
+                @keyup="onValidate(search_by_role, 'search_role_id', 'search_rolemsg')"
+                v-on:blur="onValidate(search_by_role, 'search_role_id', 'search_rolemsg')"
+                v-model="search_by_role"
+                class="inputbox"
+              >
+                <option value>Select</option>
+                <option :value="role.id" v-for="(role) in roles" :key="role.id">{{role.name}}</option>
+              </select>
+              <span id="search_rolemsg" class="error_message">Role is required</span>
+              <button type="submit" class="save">Search</button>
+            </form>
           </div>
           <div class="textarea">
             <label for="other">Search By Other Option</label>
-            <textarea id="other" class="inputbox" placeholder="Search By staff id,name,..etc."></textarea>
-            <button class="save">Search</button>
+            <form @submit.prevent="searchByOther()">
+              <input
+                v-model="search_by_other"
+                class="inputbox"
+                placeholder="Search By staff id,name,..etc."
+              />
+              <button type="submit" class="save">Search</button>
+            </form>
           </div>
         </div>
       </div>
@@ -58,34 +72,23 @@
         <input type="text" placeholder="Search..." class="searchText" />
         <div class="copyRows">
           <div class="row" id="copyRow">
-            <div class="col-2">
-              <a href="#">
-                <i class="fa fa-copy"></i>
-              </a>
-            </div>
-            <div class="col-2">
-              <a href="#">
+            <div class="col-3">
+              <a href="#" title="Excel">
                 <i class="fa fa-file-excel-o"></i>
               </a>
             </div>
-            <div class="col-2">
-              <a href="#">
-                <i class="fa fa-file-pdf-o"></i>
-              </a>
-            </div>
-            <div class="col-2">
-              <a href="#">
+            <div class="col-3">
+              <a href="#" title="Print">
                 <i class="fa fa-print"></i>
               </a>
             </div>
-            <div class="col-2">
-              <a href="#">
+            <div class="col-3">
+              <a href="#" title="Columns">
                 <i class="fa fa-columns"></i>
               </a>
             </div>
           </div>
         </div>
-
         <div class="table-responsive">
           <table class="table table-hover table-striped">
             <thead>
@@ -112,8 +115,8 @@
                     <i class="fa fa-list"></i>
                   </router-link>
                   <router-link :to="{name: 'editstadirectory', params: { id: staff.id }}">
-                      <i class="fa fa-pencil pen"></i>
-                    </router-link>
+                    <i class="fa fa-pencil pen"></i>
+                  </router-link>
                 </td>
               </tr>
             </tbody>
@@ -121,6 +124,13 @@
         </div>
       </div>
       <div class="stucard-body view" v-else>
+        <div
+          v-if="isEmpty !== false"
+          style="margin: 25px;"
+          class="alert alert-success"
+          role="alert"
+        >No Record Found</div>
+
         <div>
           <div class="row main">
             <div class="imgcard" v-for="(staff) in staffs" :key="staff.id">
@@ -172,24 +182,32 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       view: true,
-      staffs: []
+      search_by_role: "",
+      search_by_other: "",
+      staffs: [],
+      roles: [],
+      isEmpty: false
     };
   },
   created() {
     this.getStaffs();
+    this.getRoles();
   },
   methods: {
     getStaffs() {
       this.axios.get("/api/staffs").then(response => {
         console.log(JSON.stringify(response.data));
-
         this.staffs = response.data;
+      });
+    },
+    getRoles() {
+      this.axios.get("/api/roles").then(response => {
+        this.roles = response.data;
       });
     },
     listView() {
@@ -198,7 +216,67 @@ export default {
     detailsView() {
       this.view = false;
     },
-    editStaff(data) {}
+    editStaff(data) {},
+    searchByRole() {
+      if (this.checkValidate()) {
+        this.axios
+          .get(`/api/staffdirectory/search_by_role/${this.search_by_role}`)
+          .then(response => {
+            console.log("-->" + JSON.stringify(response));
+            this.staffs = response.data;
+            this.isEmpty = false;
+          });
+      }
+    },
+    searchByOther() {
+      if (!this.search_by_other) {
+        this.getStaffs();
+      } else {
+        this.axios
+          .get(`/api/staffdirectory/search_by_other/${this.search_by_other}`)
+          .then(response => {
+            console.log("-->" + JSON.stringify(response));
+            this.staffs = response.data;
+            if ((response.data == "")) {
+              this.isEmpty = true;
+            } else {
+              this.isEmpty = false;
+            }
+            setTimeout(() => {
+              this.search_by_other = "";
+            }, 100);
+            
+          });
+      }
+    },
+    /***
+     * FORM VALIDATION
+     */
+    onValidate(value, inputId, megId) {
+      if (value == "" || value == undefined)
+        document.getElementById(inputId).style.border = "solid 1px red";
+      else {
+        document.getElementById(inputId).style.border = "solid 1px #d2d6de";
+        document.getElementById(megId).style.display = "none";
+      }
+    },
+
+    onValidateMessage(inputId, megId) {
+      document.getElementById(inputId).style.border = "solid 1px red";
+      document.getElementById(megId).style.display = "block";
+    },
+    checkValidate() {
+      if (!this.search_by_role) {
+        this.onValidateMessage("search_role_id", "search_rolemsg");
+        return false;
+      } else {
+        return true;
+      }
+      return false;
+    },
+    goAlertClose() {
+      $(".alert").css("display", "none");
+    }
   }
 };
 </script>

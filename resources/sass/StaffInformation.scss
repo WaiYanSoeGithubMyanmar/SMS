@@ -74,7 +74,6 @@
     .main {
         min-height: 110px;
     }
-
     .staffinfo-box {
         box-sizing: border-box;
         position: relative;
@@ -84,7 +83,6 @@
         box-shadow: 0 1px 1px rgba(0,0,0,0.1);
         border-radius: 2px;
     }
-
     .staffleft-box {
         float: left;
         padding-right: 10px;
@@ -149,10 +147,11 @@
     }
 
     .staffinfo-box h5 {
+        font-size: 1em;
+        font-weight: 600;
         display: block;
-        margin-bottom: 0;
+        margin-bottom: 2px;
         margin-top: 5px;
-        font-family: 'Roboto-Bold';
     }
 
     .staffinfo-box p {
@@ -160,6 +159,8 @@
         display: block;
         font-size: 10px;
         line-height: normal;
+        margin-top: 2px;
+        margin-bottom: 2px;
     }
 
     .staffinfo-box p span {
@@ -170,6 +171,9 @@
         text-align: center;
         color: #424242;
         line-height: 18px;
+    }
+    .staffsub{
+        font-size: 0.8em;
     }
 
     .infoFooter {
@@ -201,10 +205,7 @@
         color: black;
         font-size: 14px;
     }
-    .center {
-        width: 45% !important;
-        float: left;
-    }
+   
     table {
         img {
             width: 30px;

@@ -71,12 +71,15 @@
                 <thead>
                   <tr>
                     <th class="all" nowrap>Name</th>
+                    <th class="all" nowrap>Type</th>
                     <th class="all" nowrap style="text-align: right;">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="(rol) in roles" v-bind:key="rol.id" class="active">
                     <td class="all" nowrap>{{rol.name}}</td>
+                    <td class="all" nowrap>{{rol.type}}</td>
+
                     <td style="text-align: right;">
                       <router-link to="role/assign">
                         <i class="fa fa-tag assign" aria-hidden="true">

@@ -43,6 +43,34 @@ class DatabaseSeeder extends Seeder
             'session_id' => '1'
         ]
         ];
+
+
+        $roles = [
+            [
+                'name' => "Super Admin",
+                'is_active' => "No",
+                "domain"  => "sms"
+            ],
+            [
+                'name' => "Teacher",
+                'is_active' => "No",
+                "domain"  => "sms"
+            ],
+            [
+                'name' => "Student",
+                'is_active' => "No",
+                "domain"  => "sms"
+            ],
+        ];
+
+        foreach ($roles as $role) {
+            DB::table('roles')->insert([
+                'name' => $role['name'],
+                'type' => 'System',
+                'is_active' => $role['is_active'],
+                'domain' => $role['domain'],
+            ]);
+        }
         foreach ($items as $item) {
             DB::table('attendance_types')->insert([
                 'type' => $item['type'],
