@@ -35,7 +35,17 @@ class StudentSessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $session = new student_session([
+            'session_id'=>$request->input('session_id'),
+            'admission_no'=>$request->input('admission_no'),
+            'class_section_id'=>$request->input('class_section_id'),
+            'route_id'=>$request->input('route_id'),
+            'hostel_room_id'=>$request->input('hostel_room_id'),
+            'is_active'=>$request->input('is_active'),
+            'domain'=>$request->input('domain'),
+        ]);
+        $session->save();
+        return response()->json("Session Save Successfully");
     }
 
     /**

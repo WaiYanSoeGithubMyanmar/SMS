@@ -15,12 +15,13 @@ class CreateStudentSessionsTable extends Migration
     {
         Schema::create('student_sessions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('session_id');
-            $table->string('admission_no');
-            $table->string('class_section_id');
-            $table->string('route_id');
-            $table->string('hostel_room_id');
-            $table->string('is_active');
+            $table->string('session_id')->nullable();
+            $table->string('admission_no')->nullable();
+            $table->string('class_section_id')->nullable();
+            $table->string('route_id')->nullable();
+            $table->string('hostel_room_id')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
             $table->timestamps();
         });
     }

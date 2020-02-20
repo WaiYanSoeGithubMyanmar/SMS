@@ -9,8 +9,82 @@
     </div>
     <hr />
     <br />
+    <form @submit.prevent="save" enctype="multipart/form-data" >
+    
     <div class="card">
-      
+      <!-- Modal start -->
+      <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="card">
+
+            <div class="stucard-header">
+              <h6 style="width:100%">
+                Add Sibling
+                <i
+                  class="fa fa-times"
+                  style="float:right;margin-right:10px;cursor:pointer;padding:5px;"
+                  data-dismiss="modal"
+                ></i>
+              </h6>
+            </div>
+            <div class="card-body">
+              <div class="modalinput">
+                <label for="class">
+                  Class
+                  <strong>*</strong>
+                </label>
+                <select id="class" class="inputbox" v-model="sibling_class_id"
+                @change="selectSiblingClass($event)"
+                >
+                  <option selected disabled>Select class</option>
+              <option v-for="list in classList" :key="list.id" :value="list.id">
+                {{list.class}}
+              </option>
+                </select>
+              </div>
+              <div class="modalinput">
+                <label for="section">
+                  Section
+                  <strong>*</strong>
+                </label>
+                <select id="section" class="inputbox" v-model="sibling_section_id"
+                @change="selectSiblingSection($event)"
+                >
+                  <option disabled selected>Select section</option>
+                  <option v-for="list in siblingSectionList" :key="list.id" :value="list.id">
+                    {{list.section}}
+                  </option>
+                </select>
+              </div>
+              <div class="modalinput">
+                <label for="student">
+                  Student
+                  <strong>*</strong>
+                </label>
+                <select id="student" class="inputbox" v-model="sibling_id">
+                  <option disabled selected>Select sibling</option>
+                  <option v-for="sib in siblings" :key="sib.id" :value="sib.admission_no">
+                    {{sib.name}}
+                  </option>
+                </select>
+              </div>
+              <div style="width:100%;">
+                <button class="modalbtn" style="text-align:center;" type="button" @click="saveSibling()">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------modal end --------------------------- -->
       <div class="stucard-header">
         <h6>Student Admission</h6>
       </div>
@@ -24,7 +98,6 @@
     <img :src="student.image"/>
     <button @click="removeImage">Remove image</button>
   </div> -->
-
         <div class="row">
           <div class="textbox">
             <label for="admnumber">
@@ -46,13 +119,15 @@
               Class
               <strong>*</strong>
             </label>
-            <select id="stuclass" class="inputbox" v-model="student.class"
-            @keyup="onValidate(student.class, 'stuclass', 'stuclass_msg')"
-            v-on:blur="onValidate(student.class, 'stuclass', 'stuclass_msg')"
+            <select id="stuclass" class="inputbox" v-model="class_id"
+            @keyup="onValidate(class_id, 'stuclass', 'stuclass_msg')"
+            v-on:blur="onValidate(class_id, 'stuclass', 'stuclass_msg')"
+            @change="selectClass($event)"
             >
-              <option value="one">Grade One</option>
-              <option value="two">Grade Two</option>
-              <option value="three">Grade Three</option>
+              <option selected="selected" disabled>Select class</option>
+              <option v-for="list in classList" :key="list.id" :value="list.id">
+                {{list.class}}
+              </option>
             </select>
             <span id="stuclass_msg" class="error_message">Class is required</span>
           </div>
@@ -61,12 +136,15 @@
               Section
               <strong>*</strong>
             </label>
-            <select id="stuSection" class="inputbox" v-model="student.section"
-            @keyup="onValidate(student.section, 'stuSection', 'section_msg')"
-            v-on:blur="onValidate(student.section, 'stuSection', 'section_msg')"
+            <select id="stuSection" class="inputbox" v-model="section_id"
+            @keyup="onValidate(section_id, 'stuSection', 'section_msg')"
+            v-on:blur="onValidate(section_id, 'stuSection', 'section_msg')"
+            @change="selectSection($event)"
             >
-              <option value="A">A</option>
-              <option value="B">B</option>
+              <option selected="selected" disabled>Select section</option>
+              <option v-for="list in sectionList" :key="list.id" :value="list.id">
+                {{list.section}}
+              </option>
             </select>
             <span id="section_msg" class="error_message">Section is required</span>
           </div>
@@ -132,15 +210,14 @@
           <div class="textbox" id="photo">
             
             <label for="stuPhoto">Student Photo</label>
-              <input type="file" class="inputbox"   id="stuPhoto" v-if="!student.image" @change="onFileChange($event,'student')" accept="image/*">
-              <div class="inputbox" v-else>
+            
+              <input type="file" class="inputbox"   id="stuPhoto" @change="onFileChange($event,'student')" accept="image/*">
+              <!-- <div class="inputbox" v-else>
                 <div style="width:100%;padding:0;">
                 <img :src="student.image" alt="error" style="height: 25px;width: auto;">
                 <span @click="removeImage($event,'student')" class="span">X</span>
                 </div>
-                
-
-              </div>
+              </div> -->
               
 
           </div>
@@ -172,7 +249,7 @@
           </div>
           <div class="textbox">
             <label for="addSibling" style="visibility:hidden;">Add Sibling</label>
-            <button class="inputbtn" id="addSibling">
+            <button type="button" class="inputbtn" id="addSibling" data-toggle="modal" data-target="#exampleModalCenter">
               <i class="fa fa-plus"></i> Add Sibling
             </button>
           </div>
@@ -202,13 +279,13 @@
           </div>
           <div class="textbox">
             <label for="faPhoto">Father Photo</label>
-            <input type="file" class="inputbox" @change="onFileChange($event,'father')"   id="faPhoto" v-if="!student.father_photo" accept="image/*">
-              <div class="inputbox" v-else>
+            <input type="file" class="inputbox" @change="onFileChange($event,'father')"   id="faPhoto"  accept="image/*">
+              <!-- <div class="inputbox" v-else>
                 <div style="width:100%;padding:0;">
                 <img :src="student.father_photo" alt="error" style="height: 25px;width: auto;">
                 <span @click="removeImage($event,'father')" class="span">X</span>
                 </div>
-              </div>
+              </div> -->
           </div>
         </div>
         <div class="row">
@@ -230,13 +307,13 @@
           </div>
           <div class="textbox">
             <label for="moPhoto">Mother Photo</label>
-            <input type="file" class="inputbox" @change="onFileChange($event,'mother')"   id="moPhoto" v-if="!student.mother_photo" accept="image/*">
-              <div class="inputbox" v-else>
+            <input type="file" class="inputbox" @change="onFileChange($event,'mother')"   id="moPhoto"  accept="image/*">
+              <!-- <div class="inputbox" v-else>
                 <div style="width:100%;padding:0;">
                 <img :src="student.mother_photo" alt="error" style="height: 25px;width: auto;">
                 <span @click="removeImage($event,'mother')" class="span">X</span>
                 </div>
-              </div>
+              </div> -->
           </div>
           </div>
           <div class="row">
@@ -307,13 +384,13 @@
           </div>
           <div class="textbox">
             <label for="guPhoto">Guardian Photo</label>
-            <input type="file" class="inputbox" @change="onFileChange($event,'guardian')"   id="guPhoto" v-if="!student.guardian_photo" accept="image/*">
-              <div class="inputbox" v-else id="showguPhoto">
+            <input type="file" class="inputbox" @change="onFileChange($event,'guardian')"   id="guPhoto"  accept="image/*">
+              <!-- <div class="inputbox" v-else id="showguPhoto">
                 <div style="width:100%;padding:0;">
                 <img :src="student.guardian_photo" alt="error" style="height: 25px;width: auto;">
                 <span @click="removeImage($event,'guardian')" class="span">X</span>
                 </div>
-              </div>
+              </div> -->
           </div>
         </div>
         </div>
@@ -407,21 +484,20 @@
             <div class="row">
               <div class="textarea">
                 <label for="hostel">Hostel</label>
-                <select id="hostel" class="inputbox" v-model="hostel_id">
-                  <option value="one">Hostel One</option>
-                  <option value="two">Hostel Two</option>
-                  <option value="three">Hostel Three</option>
-                  <option value="four">Hostel Four</option>
-                  <option value="five">Hostel Five</option>
+                <select id="hostel" class="inputbox" v-model="hostel_id" @change="changeHostel($event)">
+                  <option selected disabled>Select hostel</option>
+                  <option v-for="hostel in hostelList" :key="hostel.id" :value="hostel.id">
+                    {{hostel.name}}
+                  </option>
                 </select>
               </div>
               <div class="textarea">
                 <label for="roomNum">Room Number</label>
                 <select class="inputbox" id="roomNum" v-model="room_id">
-                  <option value="RM-1">RM-1</option>
-                  <option value="RM-2">RM-2</option>
-                  <option value="RM-3">RM-3</option>
-                  <option value="RM-4">RM-4</option>
+                  <option selected disabled>Select room number</option>
+                 <option v-for="room in rooms" :key="room.id" :value="room.id">
+                   {{room.room_no}}
+                 </option>
                 </select>
               </div>
             </div>
@@ -452,31 +528,31 @@
                 <label>1</label>
               </div>
               <div class="col2">
-                <input type="text" class="inputbox" accept="image/*"/>
+                <input type="text" class="inputbox" v-model="title1" />
               </div>
               <div class="col3">
-                <input type="file" class="inputbox" accept="image/*"/>
+                <input type="file" class="inputbox" @change="onFileChange($event,'one')" />
               </div>
               <div class="col4">
-                <input type="text" class="inputbox" accept="image/*"/>
+                <input type="text" class="inputbox" v-model="title2"/>
               </div>
               <div class="col5">
-                <input type="file" class="inputbox" accept="image/*"/>
+                <input type="file" class="inputbox" accept="image/*" @change="onFileChange($event,'two')"/>
               </div>
               <div class="col1">
                 <label>2</label>
               </div>
               <div class="col2">
-                <input type="text" class="inputbox" />
+                <input type="text" class="inputbox" v-model="title3" />
               </div>
               <div class="col3">
-                <input type="file" class="inputbox" />
+                <input type="file" class="inputbox" @change="onFileChange($event,'three')" />
               </div>
               <div class="col4">
-                <input type="text" class="inputbox" />
+                <input type="text" class="inputbox" v-model="title4"/>
               </div>
               <div class="col5">
-                <input type="file" class="inputbox" />
+                <input type="file" class="inputbox" @change="onFileChange($event,'four')" />
               </div>
             </div>
           </div>
@@ -484,10 +560,10 @@
       </div>
 
       <div class="footer" id="footer">
-        <button @click="save()">Save</button>
+        <button type="submit">Save</button>
       </div>
       </div>
-
+</form>
       
       </div>
 </template>
@@ -502,15 +578,53 @@ export default {
   },
   data() {
     return {
-      // el:'#photo',
-      photo:{},
+      session:{},
+      hostelList:[],
+      rooms:[],
+      title1:'',
+      document1:'',
+      file1:'',
+
+      title2:'',
+      document2:'',
+      file2:'',
+
+      title3:'',
+      document3:'',
+      file3:'',
+
+      title4:'',
+      document4:'',
+      file4:'',
+
+      
+      classList:[],
+      sectionList:[],
+      sibling_section_id:'',
+      sibling_class_id:'',
+      
+      sibling_id:'',
+      student_document:{doObj:[]},
+      siblingSectionList:[],
       current:true,
       permanent:true,
       hostel_id:'',
       room_id:'',
+      class_id:'',
+      section_id:'',
+      sibling:[],
+      siblings:[],
       student: {
         image:'',
+        father_name:'',
+        father_phone:'',
+        father_nrc:'',
+        father_job:'',
         father_photo:'',
+        mother_name:'',
+        mother_phone:'',
+        mother_nrc:'',
+        mother_job:'',
         mother_photo:'',
         guardian_photo:'',
         dob: new Date().toISOString().slice(0,10),
@@ -518,6 +632,13 @@ export default {
         register_date: new Date().toISOString().slice(0,10),
         current_address:'',
         permanent_address:'',
+        class_section_id:'',
+        domain:'TS',
+        is_active:'yes',
+        session_id: '1',
+        session_start:'2020-2021',
+        session_end:'',
+        disable_at:'',
       },
       viladition: false,
       errors: {
@@ -537,8 +658,165 @@ export default {
     };
   },
   created() {
+    this.allData();
   },
   methods: {
+    changeHostel(e){
+      var id = e.target.value;
+      this.axios
+        .get(`/api/student/rooms/${id}`)
+        .then(response=>{
+          this.rooms = response.data;
+        });
+    },
+    
+    refresh(){
+      this.student = [];
+      this.title1 ='';
+      this.title2 ='';
+      this.title3='';
+      this.title4 ='';
+      this.document1 ='';
+      this.document2 ='';
+      this.document3='';
+      this.document4='';
+      this.file1='';
+      this.file2='';
+      this.file3='';
+      this.file4='';
+      this.classList =[];
+      this.sectionList=[];
+      this.sibling_class_id='';
+      this.sibling_section_id='';
+      this.student_document={};
+      this.siblingSectionList=[];
+      this.current=true;
+      this.permanent=true;
+      this.hostel_id='';
+      this.room_id='';
+      this.class_id='';
+      this.section_id='';
+      this.sibling=[];
+      this.siblings=[];
+      student= {
+        image:'',
+        father_name:'',
+        father_phone:'',
+        father_nrc:'',
+        father_job:'',
+        father_photo:'',
+        mother_name:'',
+        mother_phone:'',
+        mother_nrc:'',
+        mother_job:'',
+        mother_photo:'',
+        guardian_photo:'',
+        dob: new Date().toISOString().slice(0,10),
+        admission_date: new Date().toISOString().slice(0,10),
+        register_date: new Date().toISOString().slice(0,10),
+        current_address:'',
+        permanent_address:'',
+        class_section_id:'',
+        domain:'TS',
+        is_active:'yes',
+        session_id: '1',
+      }
+    },
+    saveSibling(){
+      this.sibling=[];
+      this.sibling =[
+        {
+          'sibling_admission_no':this.sibling_id,
+          'admission_no':this.student.admission_no,
+          'is_active': this.student.is_active, 
+          'domain': this.student.domain,
+          'session_id':this.student.session_id,
+        }
+      ];
+      var data=[];
+      if(this.sibling_id){
+        this.axios
+      .get(`api/student/siblings/${this.sibling_id}`)
+      .then(response=>{
+        data = response.data;
+        console.log(JSON.stringify(data));
+        if(data[0].father_name || data[0].father_phone || data[0].father_nrc || data[0].father_job ||data[0].father_photo || data[0].mother_name ||data[0].mother_phone ||data[0].mother_nrc ||data[0].mother_job ||data[0].mother_photo){
+        this.student.father_name = data[0].father_name;
+        this.student.father_phone = data[0].father_phone;
+        this.student.father_nrc = data[0].father_nrc;
+        this.student.father_job = data[0].father_job;
+        this.student.father_photo = data[0].father_photo;
+
+        this.student.mother_name = data[0].mother_name;
+        this.student.mother_phone = data[0].mother_phone;
+        this.student.mother_nrc = data[0].mother_nrc;
+        this.student.mother_job = data[0].mother_job;
+        this.student.mother_photo = data[0].mother_photo;
+
+        document.getElementById('faName').disabled = true;
+        document.getElementById('faPhone').disabled = true;
+        document.getElementById('faNrc').disabled = true;
+        document.getElementById('faJob').disabled = true;
+
+        document.getElementById('moName').disabled = true;
+        document.getElementById('moPhone').disabled = true;
+        document.getElementById('moNrc').disabled = true;
+        document.getElementById('moJob').disabled = true;
+        }
+      })
+      }
+      
+    },
+    allData(){
+      this.axios
+        .get('/api/student')
+        .then(response=>{
+          this.classList = response.data.class;
+          this.hostelList = response.data.hostel;
+        });
+    },
+    selectClass(e){
+      var id = e.target.value;
+      this.sibling_class_id = id;
+      this.axios
+        .get(`/api/student/section/${id}`)
+        .then(response=>{
+          this.sectionList = response.data;
+        })
+    },
+    selectSiblingClass(e){
+      var id = e.target.value;
+      this.axios
+        .get(`/api/student/section/${id}`)
+        .then(response=>{
+          this.siblingSectionList = response.data;
+        })
+    },
+    selectSection(e){
+      var id_section = e.target.value;
+      var id_class = this.sibling_class_id;
+      var array =[];
+      this.axios
+      .get(`/api/student/class_section/${id_class}/${id_section}`)
+      .then(response=>{
+        array = response.data;
+        this.student.class_section_id = array[0].id;
+      })
+    },
+    selectSiblingSection(e){
+      var id_section = e.target.value;
+      var id_class = this.sibling_class_id;
+      this.axios
+      .get(`/api/student/class_section/${id_class}/${id_section}`)
+      .then(response=>{
+        var array = response.data;
+         this.axios
+          .get(`api/student/sibling/${array[0].id}`)
+          .then(response=>{
+            this.siblings = response.data;
+          })
+      })
+    },
     currentAddress(){
       if(this.current == true){
         this.current = false;
@@ -574,13 +852,20 @@ export default {
         this.student.mother_photo_name = e.target.files[0].name;
       }else if(type=='guardian'){
         this.student.guardian_photo_name = e.target.files[0].name;
+      }else if(type=='one'){
+        this.document1 = e.target.files[0].name;
+      }else if(type=='two'){
+        this.document2 = e.target.files[0].name;
+      }else if(type=='three'){
+        this.document3 = e.target.files[0].name;
+      }else if(type=='four'){
+        this.document4 = e.target.files[0].name;
       }
         var files = e.target.files || e.dataTransfer.files;
         if (!files.length)
         return;
       this.createImage(files[0],type);
     },
-
     createImage(file,type) {
       var image = new Image();
       var reader = new FileReader();
@@ -589,26 +874,40 @@ export default {
       
         if(type=="student"){
           reader.onload = (e) => {
-        vm.student.image = e.target.result;
+        vm.student.image = file;
           }
       }else if(type=="father"){
          reader.onload = (e) => {
-        vm.student.father_photo = e.target.result;
+        vm.student.father_photo = file;
           }
       }else if(type=="mother"){
          reader.onload = (e) => {
-        vm.student.mother_photo = e.target.result;
+        // vm.student.mother_photo = e.target.result;
+        vm.student.mother_photo = file;
           }
       }else if(type=='guardian'){
          reader.onload = (e) => {
-        vm.student.guardian_photo = e.target.result;
+        vm.student.guardian_photo = file;
+          }
+      }else if(type=='one'){
+         reader.onload = (e) => {
+        vm.file1 = file;
+          }
+      }else if(type=='two'){
+         reader.onload = (e) => {
+        vm.file2 = file;
+          }
+      }else if(type=='three'){
+         reader.onload = (e) => {
+        vm.file3 = file;
+          }
+      }else if(type=='four'){
+         reader.onload = (e) => {
+        vm.file4 = file;
           }
       }
-        
-      
       reader.readAsDataURL(file);
     },
-
     removeImage: function (e,type) {
       if(type=="student"){
        this.student.image = '';
@@ -624,37 +923,36 @@ export default {
         this.student.guardian_photo_name='';
       }
     },
-   closeOpen(){
-      if (this.addMore == false) {
-        console.log(addMore);
-        this.addMore = true;
-        document.getElementById("footer").style.marginTop = "0";
-        document.getElementById("smBar").style.height = "311vh";
-        document.getElementById('addMore').style.display = "block";
-      } else{
-        console.log(addMore);
-        this.addMore = false;
-        document.getElementById("footer").style.marginTop = "10px";
-        document.getElementById("smBar").style.height = "201vh";
-        document.getElementById('addMore').style.display = "none";
-      }
-      
-  },
+    closeOpen(){
+        if (this.addMore == false) {
 
+          this.addMore = true;
+          document.getElementById("footer").style.marginTop = "0";
+          document.getElementById("smBar").style.height = "311vh";
+          document.getElementById('addMore').style.display = "block";
+        } else{
 
+          this.addMore = false;
+          document.getElementById("footer").style.marginTop = "10px";
+          document.getElementById("smBar").style.height = "201vh";
+          document.getElementById('addMore').style.display = "none";
+        }
+        
+    },
     formViladition(){
       this.viladition = {};
       this.viladition = false;
       this.errors= {
       };
+      
       if(!this.student.admission_no){
         this.onValidationMessage("admnumber", "admission_no_msg");
         this.viladition = false;
-      } if(!this.student.class){
+      } if(!this.class_id){
         this.onValidationMessage("stuclass", "stuclass_msg");
         this.viladition = false;
       }
-       if(!this.student.section){
+       if(!this.section_id){
         this.onValidationMessage("stuSection", "section_msg");
         this.viladition = false;
       }
@@ -682,12 +980,10 @@ export default {
         this.onValidationMessage("guPhone", "guPhone_msg");
         this.viladition = false;
       }
-      else{
+      else {
         this.viladition = true;
-        console.log('viladioan',this.viladition)
       }
     },
-
     clickOther(){
       this.student.guardian_name = '';
       this.student.guardian_relation ='';
@@ -729,33 +1025,214 @@ export default {
       document.getElementById('guJob').disabled = true;
       }
     },
-    save(){
-      // this.photo.image = this.student.image;
-      // this.photo.father_photo = this.student.father_photo;
-      // this.photo.mother_photo = this.student.mother_photo;
-      // this.photo.guardian_photo = this.student.guardian_photo;
-      // this.axios
-      // .post('/api/student/upload',this.photo)
-      // .then(response=>{
-      //   console.log(response.data);
-
-      // }).catch(errors=>{
-      //   console.log(errors)
-      // })
-      this.formViladition();
-      if(this.viladition == true){
-        this.axios
-          .post('/api/student/add',this.student)
+    addStudent(){
+      const config = {
+        headers: { "content-type": "multipart/form-data" }
+      };
+      this.student.hostel_room_id = this.hostel_id;
+      let formData = new FormData();
+      formData.append('admission_no',this.student.admission_no);
+      formData.append('name',this.student.name);
+      formData.append('image',this.student.image);
+      formData.append('image_name',this.student.image_name);
+      formData.append('mobileno',this.student.mobileno);
+      formData.append('email',this.student.email);
+      formData.append('gender',this.student.gender);
+      formData.append('dob',this.student.dob);
+      formData.append('religion',this.student.religion);
+      formData.append('blood_group',this.student.blood_group);
+      formData.append('height',this.student.height);
+      formData.append('weight',this.student.weight);
+      formData.append('roll_no',this.student.roll_no);
+      formData.append('class_sections_id',this.student.class_section_id);
+      formData.append('admission_date',this.student.admission_date);
+      formData.append('register_date',this.student.register_date);
+      formData.append('father_name',this.student.father_name);
+      formData.append('father_phone',this.student.father_phone);
+      formData.append('father_nrc',this.student.father_nrc);
+      formData.append('father_job',this.student.father_job);
+      formData.append('father_photo',this.student.father_photo);
+      formData.append('father_photo_name',this.student.father_photo_name);
+      formData.append('mother_name',this.student.mother_name);
+      formData.append('mother_phone',this.student.mother_phone);
+      formData.append('mother_nrc',this.student.mother_nrc);
+      formData.append('mother_job',this.student.mother_job);
+      formData.append('mother_photo',this.student.mother_photo);
+      formData.append('mother_photo_name',this.student.mother_photo_name);
+      formData.append('guardian_name',this.student.guardian_name);
+      formData.append('guardian_nrc',this.student.guardian_nrc);
+      formData.append('guardian_phone',this.student.guardian_phone);
+      formData.append('guardian_job',this.student.guardian_job);
+      formData.append('guardian_relation',this.student.guardian_relation);
+      formData.append('guardian_email',this.student.guardian_email);
+      formData.append('guardian_photo',this.student.guardian_photo);
+      formData.append('guardian_photo_name',this.student.guardian_photo_name);
+      formData.append('guardian_address',this.student.guardian_address);
+      formData.append('current_address',this.student.current_address);
+      formData.append('permanent_address',this.student.permanent_address);
+      formData.append('previous_school',this.student.previous_school);
+      formData.append('route_id',this.student.route_id);
+      formData.append('hostel_room_id',this.student.hostel_room_id);
+      formData.append('session_id',this.student.session_id);
+      formData.append('session_start',this.student.session_start);
+      formData.append('session_end',this.student.session_end);
+      formData.append('note',this.student.note);
+      formData.append('disable_at',this.student.disable_at);
+      formData.append('domain',this.student.domain);
+      formData.append('is_active',this.student.is_active);
+      formData.append('session_id',this.student.session_id);
+      this.axios
+          .post('/api/student/add', formData,config)
           .then(response=> {
-            // this.student ='',
-            alert(response.data);
-            console.log('response data',response.data)
+            if(response.data !="not"){
+              console.log("saved")
+            }
           })
           .catch(errors=>{
             alert(errors);
           })
-      }else{
-        console.log('viladition required')
+    },
+    addSibling(){
+      if(this.sibling){
+              this.axios
+            .post('api/studentsiblings/add',this.sibling)
+            .then(response=>{
+            }).catch(errors=>{
+            })
+          }
+    },
+    addSessions(){
+      this.session = {
+        'session_id':this.student.session_id,
+        'admission_no':this.student.admission_no,
+        'class_section_id':this.student.class_section_id,
+        'route_id':this.route_id,
+        'hostel_room_id':this.student.hostel_room_id,
+        'is_active':this.student.is_active,
+        'domain':this.student.domain,
+      }
+       this.axios
+      .post('api/sessions/add',this.session)
+      .then(response=>{
+        console.log(response.data);
+      })
+      .catch(errors=>{
+      })
+    },
+    addDocument(){
+      const config = {
+        headers: { "content-type": "multipart/form-data" }
+      };
+      var fileOne ={};
+      var fileTwo ={};
+      var fileThree = {};
+      var fileFour = {};
+      if(this.title1 || this.document1){
+        fileOne={
+          'admission_no':this.student.admission_no,
+          'document_title':this.title1,
+          'document_name':this.document1,
+          'is_active':this.student.is_active,
+          'domain':this.student.domain,
+          'file':this.file1,
+          'session_id':this.student.session_id,
+        }
+      }
+      if(this.title2||this.document2){
+        fileTwo={
+          'admission_no':this.student.admission_no,
+          'document_title':this.title2,
+          'document_name':this.document2,
+          'is_active':this.student.is_active,
+          'domain':this.student.domain,
+          'file':this.file2,
+          'session_id':this.student.session_id,
+        }
+      }
+      if(this.title3||this.document3){
+      fileThree={
+          'admission_no':this.student.admission_no,
+          'document_title':this.title3,
+          'document_name':this.document3,
+          'is_active':this.student.is_active,
+          'domain':this.student.domain,
+          'file':this.file3,
+          'session_id':this.student.session_id,
+        }
+      }
+      if(this.title4||this.document4){
+        fileFour={
+          'admission_no':this.student.admission_no,
+          'document_title':this.title4,
+          'document_name':this.document4,
+          'is_active':this.student.is_active,
+          'domain':this.student.domain,
+          'file':this.file4,
+          'session_id':this.student.session_id,
+        }
+      }
+
+      let dataDocument1 = new FormData();
+      let dataDocument2 = new FormData();
+      let dataDocument3 = new FormData();
+      let dataDocument4 = new FormData();
+      if(fileOne.admission_no){
+        dataDocument1.append('admission_no',fileOne.admission_no);
+        dataDocument1.append('document_title',fileOne.document_title);
+        dataDocument1.append('document_name',fileOne.document_name);
+        dataDocument1.append('is_active',fileOne.is_active);
+        dataDocument1.append('domain',fileOne.domain);
+        dataDocument1.append('file',fileOne.file);
+        dataDocument1.append('session_id',fileOne.session_id);
+        this.axios
+              .post('api/uploaddocuments/add',dataDocument1,config)
+              .then(response=>{
+              })
+      }
+      if(fileTwo.admission_no){
+        dataDocument2.append('admission_no',fileTwo.admission_no);
+        dataDocument2.append('document_title',fileTwo.document_title);
+        dataDocument2.append('document_name',fileTwo.document_name);
+        dataDocument2.append('is_active',fileTwo.is_active);
+        dataDocument2.append('domain',fileTwo.domain);
+        dataDocument2.append('file',fileTwo.file);
+        dataDocument2.append('session_id',fileTwo.session_id);
+        this.axios
+              .post('api/uploaddocuments/add',dataDocument2,config)
+              .then(response=>{
+              })
+      }
+      if(fileThree.admission_no){
+        dataDocument3.append('admission_no',fileThree.admission_no);
+        dataDocument3.append('document_title',fileThree.document_title);
+        dataDocument3.append('document_name',fileThree.document_name);
+        dataDocument3.append('is_active',fileThree.is_active);
+        dataDocument3.append('domain',fileThree.domain);
+        dataDocument3.append('file',fileThree.file);
+        dataDocument3.append('session_id',fileThree.session_id);
+        this.axios
+              .post('api/uploaddocuments/add',dataDocument3,config)
+              .then(response=>{
+              })
+      }
+      if(fileFour.admission_no){
+        dataDocument4.append('admission_no',fileFour.admission_no);
+        dataDocument4.append('document_title',fileFour.document_title);
+        dataDocument4.append('document_name',fileFour.document_name);
+        dataDocument4.append('is_active',fileFour.is_active);
+        dataDocument4.append('domain',fileFour.domain);
+        dataDocument4.append('file',fileFour.file);
+        dataDocument4.append('session_id',fileFour.session_id);
+        this.axios
+              .post('api/uploaddocuments/add',dataDocument4,config)
+              .then(response=>{
+              })
+      }
+    },
+    save(){
+      this.formViladition();
+      if(this.viladition == true){
+        this.addStudent();
       }
     },
     onValidate(value, inputId, megId) {

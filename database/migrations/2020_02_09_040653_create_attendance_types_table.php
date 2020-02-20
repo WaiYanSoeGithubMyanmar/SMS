@@ -15,9 +15,11 @@ class CreateAttendanceTypesTable extends Migration
     {
         Schema::create('attendance_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
-            $table->string('key_value');
-            $table->string('is_active');
+            $table->string('type')->nullable();
+            $table->string('key_value')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('session_id')->nullable();
             $table->timestamps();
         });
     }

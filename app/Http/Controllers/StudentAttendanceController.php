@@ -1,4 +1,4 @@
-Gr<?php
+<?php
 
 namespace App\Http\Controllers;
 
@@ -38,7 +38,6 @@ class StudentAttendanceController extends Controller
         // $request->validate([
         //     'date' => 'required',
         //   ]);
-        print_r ($request->studObj);
         for($i=0;$i<count($request->studObj);$i++){
             // print_r($request->studObj[$i]['admission_no']);
             $student_attendances = new student_attendances([

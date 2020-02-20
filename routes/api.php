@@ -128,6 +128,7 @@ Route::get('features', 'ActivityController@index');
  */
 
 //  Wai Yan Moung
+// ---------------------------------------------- Wai Yan Moung ------------------------------------------------
 Route::get('attendancetypes', 'AttendanceTypeController@index');
 Route::group(['prefix' => 'attendancetype'], function () {
     Route::post('add', 'AttendanceTypeController@store');
@@ -150,7 +151,37 @@ Route::group(['prefix' => 'student'], function() {
     Route::get('edit/{id}','StudentController@edit');
     Route::post('update/{id}','StudentController@update');
     Route::delete('delete/{id}','StudentController@destroy');
+    Route::get('section/{para}','StudentController@section');
+    Route::get('class_section/{class_id}/{section_id}','StudentController@classSection');
+    Route::get('sibling/{id}','StudentController@selectStudent');
+    Route::get('siblings/{id}','StudentController@selectSibling');
+    Route::get('rooms/{id}','StudentController@selectHostel');
 });
+Route::get('studentsibling', 'StudentSiblingController@index');
+Route::group(['prefix' => 'studentsiblings'], function () {
+    Route::post('add', 'StudentSiblingController@store');
+    Route::get('show/{para}', 'StudentSiblingController@show');
+    Route::get('edit/{id}', 'StudentSiblingController@edit');
+    Route::post('update/{id}', 'StudentSiblingController@update');
+    Route::delete('delete/{id}', 'StudentSiblingController@destroy');
+});
+Route::get('session', 'StudentSessionController@index');
+Route::group(['prefix' => 'sessions'], function () {
+    Route::post('add', 'StudentSessionController@store');
+    Route::get('show/{para}', 'StudentSessionController@show');
+    Route::get('edit/{id}', 'StudentSessionController@edit');
+    Route::post('update/{id}', 'StudentSessionController@update');
+    Route::delete('delete/{id}', 'StudentSessionController@destroy');
+});
+Route::get('uploaddocument', 'StudentDocumentController@index');
+Route::group(['prefix' => 'uploaddocuments'], function () {
+    Route::post('add', 'StudentDocumentController@store');
+    Route::get('show/{para}', 'StudentDocumentController@show');
+    Route::get('edit/{id}', 'StudentDocumentController@edit');
+    Route::post('update/{id}', 'StudentDocumentController@update');
+    Route::delete('delete/{id}', 'StudentDocumentController@destroy');
+});
+// end of wai yan moung -------------------------------------------------------------------
 
 // Kyaw Soe Hein
 Route::get('tranRouteList', 'RouteController@index');

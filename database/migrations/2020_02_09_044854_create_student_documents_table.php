@@ -15,11 +15,12 @@ class CreateStudentDocumentsTable extends Migration
     {
         Schema::create('student_documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('admission_no');
-            $table->string('document_no');
-            $table->string('document_title');
-            $table->string('document_name');
-            $table->string('is_active');
+            $table->string('admission_no')->nullable();
+            $table->string('document_title')->nullable();
+            $table->string('document_name')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('session_id')->nullable();
             $table->timestamps();
         });
     }

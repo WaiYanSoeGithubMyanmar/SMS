@@ -2197,11 +2197,12 @@ input[type=file] {
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   position: absolute;
   z-index: 1;
-  top: -5px;
+  top: -10px;
   left: 110%;
+  box-shadow: 10px 10px 15px rgba(124, 124, 126, 0.479);
 }
 
 .active .toolText .tooltipLabel::after {

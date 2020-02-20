@@ -15,9 +15,11 @@ class CreateStudentSiblingsTable extends Migration
     {
         Schema::create('student_siblings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('admission_no');
-            $table->string('sibling_admission_no');
-            $table->string('is_active');
+            $table->string('admission_no')->nullable();
+            $table->string('sibling_admission_no')->nullable();
+            $table->string('is_active')->nullable();
+            $table->string('domain')->nullable();
+            $table->string('session_id')->nullable();
             $table->timestamps();
         });
     }

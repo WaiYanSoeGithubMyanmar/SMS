@@ -14,7 +14,7 @@ class StudentSiblingController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,15 @@ class StudentSiblingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sibling = new student_sibling([
+            'admission_no' => $request->input('admission_no'),
+            'sibling_admission_no' =>$request->input('sibling_admission_no'),
+            'is_active'=>$request->input('is_active'),
+            'domain'=>$request->input('domain'),
+            'session_id'=>$request->input('session_id'),
+        ]);
+        $sibling->save();
+        return response()->json("Sibling Save Success");
     }
 
     /**
